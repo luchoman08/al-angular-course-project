@@ -1,3 +1,10 @@
-<p>
-  movie-detail works!
-</p>
+<div>
+  <h3 i18n> Titulo </h3>
+  {{movie.title}} works!
+  <ng-container *ngIf="movie.videos">
+    <h3 i18n> {movie.videos.results, plural, =0 {No hay videos} =1 {Video} other {Videos}} </h3>
+    <p *ngFor="let video of movie.videos.results" >
+      {{video.name}}
+    </p>
+  </ng-container>
+</div>
