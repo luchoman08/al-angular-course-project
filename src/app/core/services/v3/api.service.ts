@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+import {  HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
 import { JwtService } from './jwt.service';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators/catchError';
 @Injectable()
 export class ApiService {
-  private api_url = environment.apiUrl;
+  private api_url = environment.apiTMDBURL_V3;
   constructor(
     private http: HttpClient,
     private jwtService: JwtService
