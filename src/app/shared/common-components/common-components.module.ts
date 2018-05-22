@@ -9,7 +9,7 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
 } from '@angular/material';
-import { CoreModule } from '../../core/core.module';
+import { CoreModule } from '../../page-components/core/core.module';
 @NgModule({
   imports: [
     CoreModule,
