@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
       this.router.events.subscribe((event) => {
         this.sidebarClose();
-         const $layer: any = document.getElementsByClassName('close-layer')[0];
+         let $layer: any = document.getElementsByClassName('close-layer')[0];
          if ($layer) {
            $layer.remove();
            this.mobile_menu_visible = 0;
@@ -45,6 +45,7 @@ export class NavbarComponent implements OnInit {
 
         this.sidebarVisible = true;
     }
+    
     sidebarClose() {
         const body = document.getElementsByTagName('body')[0];
         this.toggleButton.classList.remove('toggled');
@@ -63,7 +64,7 @@ export class NavbarComponent implements OnInit {
         }
         const body = document.getElementsByTagName('body')[0];
 
-        if (this.mobile_menu_visible == 1) {
+        if (this.mobile_menu_visible === 1) {
             // $('html').removeClass('nav-open');
             body.classList.remove('nav-open');
             if ($layer) {
@@ -79,7 +80,7 @@ export class NavbarComponent implements OnInit {
                 $toggle.classList.add('toggled');
             }, 430);
 
-            const $layer = document.createElement('div');
+            let $layer = document.createElement('div');
             $layer.setAttribute('class', 'close-layer');
 
 
@@ -116,8 +117,8 @@ export class NavbarComponent implements OnInit {
       }
       titlee = titlee.split('/').pop();
 
-      for ( let item = 0; item < this.listTitles.length; item++ ) {
-          if ( this.listTitles[item].path === titlee ) {
+      for ( let item = 0; item < this.listTitles.length; item++) {
+          if (this.listTitles[item].path === titlee) {
               return this.listTitles[item].title;
           }
       }
