@@ -9,8 +9,7 @@ import { catchError } from 'rxjs/operators/catchError';
 export class ApiService {
   private api_url = environment.apiTMDBURL_V3;
   constructor(
-    private http: HttpClient,
-    private jwtService: JwtService
+    private http: HttpClient
   ) {}
 
   private formatErrors(error: any) {
