@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MovieDetailComponent } from './movie-detail/movie-detail.component';
-import { MovieResolver } from './movie-detail/movie-detail-resolver.service';
+import { MovieDetailComponent } from '../movie/movie-detail/movie-detail.component';
+import { MovieResolver } from '../movie/movie-detail/movie-detail-resolver.service';
 
 const routes: Routes = [
   {
