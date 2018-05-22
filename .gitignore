@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# Generated files for cache (too long size)
+src/app/mokcs/generated_daily_tar
+
 # compiled output
 /dist/
 /tmp
