@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from './main-user-page-components/main-components/sidebar/sidebar.component';
-import { FooterComponent } from './main-user-page-components/main-components/footer/footer.component';
-import { NavbarComponent } from './main-user-page-components/main-components/navbar/navbar.component';
+import { SidebarComponent } from './shared-components/sidebar/sidebar.component';
+import { FooterComponent } from './shared-components/footer/footer.component';
+import { NavbarComponent } from './shared-components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import {
      SingleDataDialogEditOrAddComponent
