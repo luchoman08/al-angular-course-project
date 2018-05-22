@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MainRoutingModule } from './main-routing.module';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieResolver } from './movie-detail/movie-detail-resolver.service';
+import { MoviePageComponent } from './movie-page/movie-page.component';
+import { MainComponentComponent } from './main-component/main-component.component';
 
 @NgModule({
   imports: [
@@ -11,7 +13,9 @@ import { MovieResolver } from './movie-detail/movie-detail-resolver.service';
     MainRoutingModule
   ],
   declarations: [
-    MovieDetailComponent
+    MovieDetailComponent,
+    MoviePageComponent,
+    MainComponentComponent
   ],
   providers : [
     MovieResolver
