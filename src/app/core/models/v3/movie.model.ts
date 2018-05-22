@@ -16,5 +16,5 @@ export class Movie {
     video: boolean; // movie video preview available?
     video_count: number;
     genres?: Genre[];
-    videos?: Video[];
+    videos?: {results: Video[]};
 }
