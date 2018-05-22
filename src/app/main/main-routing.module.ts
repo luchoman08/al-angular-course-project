@@ -5,11 +5,8 @@ import { MovieResolver } from '../movie/movie-detail/movie-detail-resolver.servi
 
 const routes: Routes = [
   {
-    path: ':id',
-    component: MovieDetailComponent,
-    resolve: {
-      movie: MovieResolver
-    }
+    path: 'movies',
+    loadChildren: '../movie/movie.module#MovieModule',
   }
 ];
 
