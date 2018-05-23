@@ -19,7 +19,7 @@ export class MovieResolver implements Resolve<Movie> {
     state: RouterStateSnapshot
   ): Observable<any> {
 
-    return this.movieService.get(route.params['id'])
+    return this.movieService.get(route.params['id'], true, true)
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
 }

@@ -1,0 +1,27 @@
+.principal-container {
+    min-height: 800px;  
+
+}
+.close-sidenav {
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+.sidenav-button {
+    margin-top: 3px;
+}
+.menu-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.example-icon {
+    padding: 0 14px;
+  }
+  .mat-sidenav {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }

@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { FirstWordPipe } from './pipes/firstWord.pipe';
 import { FormsModule } from '@angular/forms';
+import { MaterialNavbarComponent } from './layout/material-navbar/material-navbar.component';
+import { MaterialSidenavComponent } from './layout/material-sidenav/material-sidenav.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     SingleDataDialogEditOrAddComponent,
 
     CapitalizePipe,
-    FirstWordPipe
+    FirstWordPipe,
+    MaterialNavbarComponent,
+    MaterialSidenavComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,9 @@ import { FormsModule } from '@angular/forms';
   providers: [],
   exports: [
     NavbarComponent,
+    MaterialNavbarComponent,
     SidebarComponent,
+    MaterialSidenavComponent,
     FooterComponent,
     SingleDataDialogEditOrAddComponent,
 

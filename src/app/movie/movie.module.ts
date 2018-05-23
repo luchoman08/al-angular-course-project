@@ -6,11 +6,13 @@ import { MovieResolver } from './movie-detail/movie-detail-resolver.service';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieService } from '../core/services/v3/movie.service';
 import { MainComponentComponent } from '../main/main-component/main-component.component';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 @NgModule({
   imports: [
     CommonModule,
     CoreModule,
+    NgxGalleryModule,
     MovieRoutingModule
   ],
   providers: [

@@ -1,4 +1,4 @@
-import { Genre, Video,  SpokenLanguage, ProductionCompany } from './';
+import { Genre, Video,  SpokenLanguage, ProductionCompany, Image } from './';
 export class Movie {
     id: number;
     title: string;
@@ -17,4 +17,5 @@ export class Movie {
     video_count: number;
     genres?: Genre[];
     videos?: {results: Video[]};
+    images?: { backdrops: Image[], posters: Image[]};
 }

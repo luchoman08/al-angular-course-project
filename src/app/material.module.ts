@@ -15,6 +15,8 @@ import {
   MatSelectModule,
   MatOptionModule,
   MatListModule,
+  MatToolbarModule,
+  MatSidenavModule,
 } from '@angular/material';
 
 
@@ -24,8 +26,10 @@ import {
     MatButtonModule,
     MatButtonToggleModule,
     MatStepperModule,
+    MatToolbarModule,
     MatInputModule,
     MatExpansionModule,
+    MatSidenavModule,
     MatRippleModule,
     MatTooltipModule,
     MatDialogModule,
@@ -44,6 +48,8 @@ import {
     MatStepperModule,
     MatInputModule,
     MatExpansionModule,
+    MatSidenavModule,
+    MatToolbarModule,
     MatRippleModule,
     MatTooltipModule,
     MatDialogModule,

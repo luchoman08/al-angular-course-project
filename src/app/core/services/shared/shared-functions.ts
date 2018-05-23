@@ -19,10 +19,10 @@ export function paramsAppendToResponse(
         case 'true,false': {
             return new HttpParams().set('append_to_response', 'videos');
         }
-        case 'true,false': {
+        case 'false,true': {
             return new HttpParams().set('append_to_response', 'images');
         }
-        case 'true,false': {
+        case 'true,true': {
             return new HttpParams().set('append_to_response', 'images,videos');
         }
         default:

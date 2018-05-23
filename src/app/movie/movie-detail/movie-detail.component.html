@@ -1,10 +1,27 @@
-<div class = "main-content">
+
   <h3 i18n> Titulo </h3>
   {{movie.title}} works!
   <ng-container *ngIf="movie.videos">
+  <h3 i18n> Popularidad </h3>
+  {{movie.popularity}}
+  <div class="row">
+  <div class="col-4">
+  <h3 i18n> Vote count </h3>
+      {{movie.vote_count}}
+  </div>
+    <div class="col-4">
+<h3 i18n> Vote average </h3>
+      {{movie.vote_average}}
+</div>
+    <div class="col-4">
+<h3 i18n> Resumen </h3>
+      {{movie.overview}}
+</div>
+</div>
     <h3 i18n> {movie.videos.results, plural, =0 {No hay videos} =1 {Video} other {Videos}} </h3>
     <p *ngFor="let video of movie.videos.results" >
       {{video.name}}
     </p>
+    <ngx-gallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+
   </ng-container>
-</div>

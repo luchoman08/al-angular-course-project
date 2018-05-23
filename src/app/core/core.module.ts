@@ -7,6 +7,7 @@ import {
     ApiService,
     MovieService
 } from './services/v3';
+import { TVSeriesCacheService } from './services/cache/tv-series.cache.service';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
     ApiService,
-    MovieService
+    MovieService,
+    TVSeriesCacheService
   ],
   declarations: []
 })

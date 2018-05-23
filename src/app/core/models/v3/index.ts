@@ -7,3 +7,4 @@ export * from './user-movie-list.model';
 export * from './person.model';
 export * from './genre.model';
 export * from './tv-show.model';
+export * from './image.model';
