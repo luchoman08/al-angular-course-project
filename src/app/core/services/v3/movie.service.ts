@@ -5,7 +5,6 @@ import { ApiService } from '../shared/api.service';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators/map';
-import { HttpParams } from '@angular/common/http';
 import { paramsAppendToResponse } from '../shared/shared-functions';
 @Injectable()
 export class MovieService {
