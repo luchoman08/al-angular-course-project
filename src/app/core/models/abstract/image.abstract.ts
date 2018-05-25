@@ -1,4 +1,6 @@
-export class Image {
+import { ImageSize } from "../enums/image-size.enum";
+
+export abstract class Image {
     aspect_ratio: number;
     file_path: string;
     height: number;
@@ -6,4 +8,6 @@ export class Image {
     vote_average: number;
     vote_count: number;
     width: number;
+    sizes: {};
+    constructor() { }
 }
