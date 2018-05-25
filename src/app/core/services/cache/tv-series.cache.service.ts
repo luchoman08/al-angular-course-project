@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Movie } from '../../models/v3';
-import { ApiService } from '../v3/api.service';
+import { ApiService } from '../shared/api.service';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators/map';

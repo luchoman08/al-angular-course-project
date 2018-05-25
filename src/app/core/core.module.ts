@@ -4,11 +4,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ApiKeyInterceptor } from './interceptors';
 
 import {
-    ApiService,
     MovieService
 } from './services/v3';
 import { TVSeriesCacheService } from './services/cache/tv-series.cache.service';
-
+import { ApiService } from './services';
 @NgModule({
   imports: [
     CommonModule,

@@ -25,7 +25,6 @@ export class MovieDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tvSeriesCacheService.get().subscribe ( res => {  console.log(res); } );
 
     this.galleryOptions = [
       {
