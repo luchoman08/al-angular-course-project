@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import {  HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { JwtService } from '../v3/jwt.service';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators/catchError';
 @Injectable()
