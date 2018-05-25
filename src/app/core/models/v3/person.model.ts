@@ -1,5 +1,5 @@
 import { Gender } from '../enums/';
-import { Image } from './image.model';
+import { ProfileImage } from './images/profile-image.model';
 
 export class Person {
     id: number;
@@ -8,7 +8,7 @@ export class Person {
     also_known_as: string[];
     profile_path: string;
     biography: string;
-    images: { profiles: Image[]};
+    images: { profiles: ProfileImage[]};
     birthday: string;
     deathdate: string;
     gender: Gender;

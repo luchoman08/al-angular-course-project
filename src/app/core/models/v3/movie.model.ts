@@ -1,4 +1,6 @@
-import { Genre, Video,  SpokenLanguage, ProductionCompany, Image } from './';
+import { Genre, Video,  SpokenLanguage, ProductionCompany } from './';
+import { BackdropImage } from './images/backdrop-image.model';
+import { PosterImageSizes } from '../enums/poster-image-sizes.enum';
 export class Movie {
     id: number;
     title: string;
@@ -6,7 +8,7 @@ export class Movie {
     vote_average: number;
     vote_count: number;
     imdb_id: string | null;
-    backdrop_path: string;
+    backdrop_path: BackdropImage;
     genre_ids: number[];
     original_language?: string;
     original_title: string;
@@ -17,5 +19,5 @@ export class Movie {
     video_count: number;
     genres?: Genre[];
     videos?: {results: Video[]};
-    images?: { backdrops: Image[], posters: Image[]};
+    images?: { backdrops: BackdropImage[], posters: PosterImageSizes[]};
 }
