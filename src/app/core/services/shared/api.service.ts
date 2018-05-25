@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../../environments/environment';
 import {  HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators/catchError';
+import { environment } from '@env/environment';
 @Injectable()
 export class ApiService {
-  private api_url = environment.apiTMDBURL_V3;
+  protected api_url = environment.apiTMDBURL_V3;
   constructor(
     private http: HttpClient
   ) {}

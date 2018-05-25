@@ -10,9 +10,7 @@
     "baseUrl": "src",
     "paths": {
       "@app/*": ["app/*"],
-      "@env/*": ["environments/*"],
-      "@core/*": ["app/core/*"],
-      "@shared/*": ["app/shared/*"]
+      "@env/*": ["environments/*"]
     },
     "target": "es5",
     "typeRoots": [

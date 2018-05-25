@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../../core/models/v3/movie.model';
-import { MovieService } from '../../core/services/v3/movie.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
-import { TVSeriesCacheService } from '../../core/services/cache/tv-series.cache.service';
-import { AuthService } from '../../core/services/v3/auth.service';
-import { JwtService } from '../../core/services/v3/jwt.service';
-
+import { Movie, AuthService, JwtService } from '@app/core';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -26,7 +21,6 @@ export class MovieDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.jwtService.destroyToken();
     console.log(this.jwtService.getToken());
     if (!this.jwtService.getToken()) {
       this.authService.createRequestToken().subscribe();
@@ -34,10 +28,10 @@ export class MovieDetailComponent implements OnInit {
     if (!this.jwtService.getSessionId()) {
     console.log(this.jwtService.getToken());
     this.authService.createSession().subscribe(
-      response => 
+      response =>
       console.log(response)
-    )
-  }else {
+    );
+    } else {
     console.log (this.jwtService.getSessionId());
   }
   }

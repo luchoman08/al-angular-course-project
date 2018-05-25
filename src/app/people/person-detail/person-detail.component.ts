@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Person } from '../../core/models/v3';
+import { Person } from '@app/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class PersonDetailComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(
       data  => {
-        console.log(data)
+        console.log(data);
         this.person = data.movie;
       }
     );
