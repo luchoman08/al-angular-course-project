@@ -20,13 +20,15 @@ export class AppComponent implements OnInit {
     private yScrollStack: number[] = [];
     @ViewChild('sidenav') sidenav: MatSidenav;
 
+    reason = '';
+    close(reason: string) {
+      this.reason = reason;
+      this.sidenav.close();
+    }
     constructor(
         public location: Location,
         private router: Router,
         public loader: LoadingBarService) {}
-    close(reason: string) {
-            this.sidenav.close();
-    }
     ngOnInit() {
     }
 }

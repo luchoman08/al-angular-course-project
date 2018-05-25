@@ -7,9 +7,14 @@ import {MatSidenav} from '@angular/material/sidenav';
   styleUrls: ['./material-sidenav.component.scss']
 })
 export class MaterialSidenavComponent implements OnInit {
+  @ViewChild('sidenav') sidenav: MatSidenav;
 
   reason = '';
   constructor() { }
+  close(reason: string) {
+    this.reason = reason;
+    this.sidenav.close();
+  }
 
 
   ngOnInit() {
