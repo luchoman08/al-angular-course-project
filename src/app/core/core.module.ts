@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ApiKeyInterceptor } from './interceptors';
 
 import {
-    MovieService
+    MovieService, PeopleService
 } from './services/v3';
 import { TVSeriesCacheService } from './services/cache/tv-series.cache.service';
 import { ApiService } from './services';
@@ -18,6 +18,7 @@ import { JwtService } from './services/v3/jwt.service';
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
     ApiService,
     MovieService,
+    PeopleService,
     TVSeriesCacheService,
     JwtService
   ],
