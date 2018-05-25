@@ -7,6 +7,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieService } from '../core/services/v3/movie.service';
 import { MainComponentComponent } from '../main/main-component/main-component.component';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { AuthService } from '../core/services/v3/auth.service';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
   ],
   providers: [
     MovieResolver,
-    MovieService
+    MovieService,
+    AuthService
   ],
   declarations: [MovieDetailComponent],
   exports: [MovieDetailComponent],

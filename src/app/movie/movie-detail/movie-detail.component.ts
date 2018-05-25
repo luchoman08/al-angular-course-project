@@ -4,6 +4,8 @@ import { MovieService } from '../../core/services/v3/movie.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { TVSeriesCacheService } from '../../core/services/cache/tv-series.cache.service';
+import { AuthService } from '../../core/services/v3/auth.service';
+import { JwtService } from '../../core/services/v3/jwt.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -16,16 +18,29 @@ export class MovieDetailComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService,
-    private router: Router,
-    private tvSeriesCacheService: TVSeriesCacheService
+    private jwtService: JwtService,
+    private authService: AuthService
   ) {
     this.movie = new Movie();
     this.galleryImages = new Array<NgxGalleryImage>();
   }
 
   ngOnInit() {
-
+    //this.jwtService.destroyToken();
+    console.log(this.jwtService.getToken());
+    if (!this.jwtService.getToken()) {
+      this.authService.createRequestToken().subscribe();
+  } else {
+    if (!this.jwtService.getSessionId()) {
+    console.log(this.jwtService.getToken());
+    this.authService.createSession().subscribe(
+      response => 
+      console.log(response)
+    )
+  }else {
+    console.log (this.jwtService.getSessionId());
+  }
+  }
     this.galleryOptions = [
       {
           width: '600px',

@@ -8,6 +8,7 @@ import {
 } from './services/v3';
 import { TVSeriesCacheService } from './services/cache/tv-series.cache.service';
 import { ApiService } from './services';
+import { JwtService } from './services/v3/jwt.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import { ApiService } from './services';
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
     ApiService,
     MovieService,
-    TVSeriesCacheService
+    TVSeriesCacheService,
+    JwtService
   ],
   declarations: []
 })
