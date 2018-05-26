@@ -1,4 +1,4 @@
-import { Video } from './';
+import { Video } from '@app/core/models/';
 export class TVShow {
     id: number;
     name: string;

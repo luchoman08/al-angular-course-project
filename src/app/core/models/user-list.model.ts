@@ -1,5 +1,5 @@
-import { TVShow, Movie} from '../v3';
-import { ProductionCompany } from '../v3/production-company.model';
+import { TVShow, Movie} from '@app/core';
+import { ProductionCompany } from '@app/core/models/production-company.model';
 /**
  * Api v4
  * User list, than allow have private lists for save

@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators/map';
 import { JwtService } from './jwt.service';
 import { HttpParams } from '@angular/common/http';
-import { ApiService } from '../shared/api.service';
+import { ApiService } from '@app/core/services/shared/api.service';
 
 class RequestToken {
     succes: boolean;

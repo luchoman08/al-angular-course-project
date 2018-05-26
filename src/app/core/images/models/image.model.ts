@@ -1,6 +1,4 @@
-
-export abstract class Image {
-    public static sizes: any; // enumerator of sizes
+export class Image {
     aspect_ratio: number;
     file_path: string;
     height: number;
@@ -8,5 +6,4 @@ export abstract class Image {
     vote_average: number;
     vote_count: number;
     width: number;
-    constructor() { }
 }

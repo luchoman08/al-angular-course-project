@@ -1,5 +1,5 @@
 .principal-container {
-    min-height: 800px;  
+    min-height: 800px;
 
 }
 .close-sidenav {
@@ -25,3 +25,16 @@
   .example-spacer {
     flex: 1 1 auto;
   }
+.mat-sidenav-content {
+  padding-top: 5%;
+}
+.line-with-icon md-icon {
+  font-size: 1rem;
+  width: inherit;
+  height: 1.2rem;
+  vertical-align: middle;
+}
+button:focus { outline-style: none; }
+.main-icon > p {
+  margin-top: 20px;
+}

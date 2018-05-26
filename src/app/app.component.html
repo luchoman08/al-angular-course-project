@@ -1,26 +1,48 @@
-
-<mat-toolbar  class="mat-elevation-z6" color="primary">
-
-    <span>Third Line</span>
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="mat-elevation-z6">
+    <div class="main-icon">
+      <p>
+        TMdb <mat-icon matBadgeColor="warn">local_movies</mat-icon>
+      </p>
+    </div>
+    <a>
+      <button mat-button>Peliculas</button>
+    </a>
+    <a>
+      <button mat-button>Actores</button>
+    </a>
+    <a>
+      <button mat-button>Series</button>
+    </a>
     <span class="example-spacer"></span>
-    <mat-icon class="example-icon">favorite</mat-icon>
     <mat-icon class="example-icon">delete</mat-icon>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-mini-fab>
+      <mat-icon (click)="sidenav.open()">menu</mat-icon>
+    </button>
 
+
+
+    <span class="example-spacer"></span>
+
+
+  </mat-toolbar-row>
 </mat-toolbar>
-<mat-sidenav-container  
-    class="principal-container" (backdropClick)="close('backdrop')" >
+<mat-sidenav-container class="principal-container" (backdropClick)="close('backdrop')">
   <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
     <mat-icon (click)="close('toggle button')" class="close-sidenav">close</mat-icon>
-      <div class="menu-container">
-
-    <button class="sidenav-button" color="primary" mat-flat-button >Movies</button>
-    <button class="sidenav-button" color="primary" mat-flat-button >People</button>
-</div>
+    <div class="menu-container">
+      <mat-chip-list class="mat-chip-list-stacked">
+        <mat-chip color="warn">Movies </mat-chip>
+        <mat-chip selected="true" color="warn">People </mat-chip>
+        <mat-chip color="warn">Series </mat-chip>
+        <mat-chip color="warn">My profile</mat-chip>
+      </mat-chip-list>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <p><button mat-button (click)="sidenav.open()">Open</button></p>
-    <p>Closed due to: {{reason}}</p>
-        <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

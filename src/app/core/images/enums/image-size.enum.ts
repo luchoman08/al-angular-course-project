@@ -7,6 +7,7 @@ export enum ImageSize {
     W342 = 'w342',
     W500 = 'w500',
     W632 = 'w632',
+    H632 = 'h632',
     W780 = 'w780',
     W1280 = 'w1280',
     ORIGINAL = 'original'

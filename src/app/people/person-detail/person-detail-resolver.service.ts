@@ -2,8 +2,7 @@ import { Injectable, } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { PeopleService } from '../../core/services/v3';
-import { Person } from '../../core/models/v3';
+import { PeopleService, Person } from '@app/core';
 import { catchError } from 'rxjs/operators/catchError';
 
 
@@ -15,8 +14,7 @@ export class PersonResolver implements Resolve<Person> {
   ) {}
 
   resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    route: ActivatedRouteSnapshot
   ): Observable<any> {
 
     return this.peopleService.get(route.params['id'], true, true)

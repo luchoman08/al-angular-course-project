@@ -4,11 +4,12 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ApiKeyInterceptor } from './interceptors';
 
 import {
-    MovieService, PeopleService
-} from './services/v3';
-import { TVSeriesCacheService } from './services/cache/tv-series.cache.service';
+    MovieService, PeopleService, TVSeriesCacheService
+} from './services';
 import { ApiService } from './services';
-import { JwtService } from './services/v3/jwt.service';
+import { JwtService } from '@app/core/services/jwt.service';
+import { ImageService } from '@app/core/services/image.service';
+import { ApiImagesService } from './services/shared/apiImages.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,6 +20,8 @@ import { JwtService } from './services/v3/jwt.service';
     ApiService,
     MovieService,
     PeopleService,
+    ImageService,
+    ApiImagesService,
     TVSeriesCacheService,
     JwtService
   ],

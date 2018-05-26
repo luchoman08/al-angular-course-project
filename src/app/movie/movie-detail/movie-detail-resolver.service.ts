@@ -2,8 +2,8 @@ import { Injectable, } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { MovieService } from '../../core/services/v3';
-import { Movie } from '../../core/models/v3';
+import { MovieService } from '@app/core/services/';
+import { Movie } from '@app/core/models/';
 import { catchError } from 'rxjs/operators/catchError';
 
 
