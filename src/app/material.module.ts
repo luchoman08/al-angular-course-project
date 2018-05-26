@@ -13,7 +13,6 @@ import {
   MatIconModule,
   MatProgressBarModule,
   MatFormFieldModule,
-  MatBadgeModule,
   MatSelectModule,
   MatChipsModule,
   MatOptionModule,
