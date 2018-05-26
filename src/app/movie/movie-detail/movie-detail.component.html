@@ -1,28 +1,36 @@
-
-  <h3 i18n> Titulo </h3>
-  {{movie.title}} works!
-  <ng-container *ngIf="movie.videos">
-  <h3 i18n> Popularidad </h3>
-  {{movie.popularity}}
+<div class="container">
   <div class="row">
-  <div class="col-4">
-  <h3 i18n> Vote count </h3>
-      {{movie.vote_count}}
-  </div>
-    <div class="col-4">
-<h3 i18n> Vote average </h3>
-<mat-progress-spinner [color]="'accent'" [value]="movie.vote_average * 10"></mat-progress-spinner>
+    <div class=" postercol-lg-2">
+      <img src="{{posterPath}}" alt="" srcset="">
+    </div>
+    <div class="col-lg-7">
+      <h3 i18n> {{movie.title}} </h3>
 
-</div>
-    <div class="col-4">
-<h3 i18n> Resumen </h3>
-      {{movie.overview}}
-</div>
-</div>
+        <h5 i18n> Resumen </h5>
+        {{movie.overview}}
+    </div>
+    <div class="col-lg-1">
+        <h5 i18n> Vote average </h5>
+        <mat-progress-spinner [color]="'warn'" [strokeWidth]="4" [diameter]="40" [value]="movie.vote_average * 10">a</mat-progress-spinner>
+
+      </div>
+  </div>
+  <ng-container *ngIf="movie.videos">
+    <h3 i18n> Popularidad </h3>
+    {{movie.popularity}}
+    <div class="row">
+      <div class="col-4">
+        <h3 i18n> Vote count </h3>
+        {{movie.vote_count}}
+      </div>
+
+
+    </div>
     <h3 i18n> {movie.videos.results, plural, =0 {No hay videos} =1 {Video} other {Videos}} </h3>
-    <p *ngFor="let video of movie.videos.results" >
+    <p *ngFor="let video of movie.videos.results">
       {{video.name}}
     </p>
     <ngx-gallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
 
   </ng-container>
+</div>

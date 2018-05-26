@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { Movie, AuthService, JwtService } from '@app/core';
+import { ImageService } from '@app/core/services/image.service';
+import { BackdropImageSizes } from '../../core/images/enums/backdrop-image-sizes.interface';
+import { PosterImageSizes } from '../../core/images/enums/poster-image-sizes.interface';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -9,12 +12,14 @@ import { Movie, AuthService, JwtService } from '@app/core';
 })
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
+  posterPath: string;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   constructor(
     private route: ActivatedRoute,
     private jwtService: JwtService,
-    private authService: AuthService
+    private authService: AuthService,
+    private imageService: ImageService
   ) {
     this.movie = new Movie();
     this.galleryImages = new Array<NgxGalleryImage>();
@@ -61,13 +66,15 @@ export class MovieDetailComponent implements OnInit {
     this.route.data.subscribe(
       (data: { movie: Movie }) => {
         this.movie = data.movie;
+        this.posterPath = this.imageService.get(this.movie.poster_path, PosterImageSizes.W185);
+        console.log(this.movie);
         if ( this.movie.images ) {
           for (const backdrop of this.movie.images.backdrops) {
 
       this.galleryImages.push({
-        small: 'https://image.tmdb.org/t/p/w500/' + backdrop.file_path,
-        medium: 'https://image.tmdb.org/t/p/w500/' + backdrop.file_path,
-        big: 'https://image.tmdb.org/t/p/w500/' + backdrop.file_path
+        small: this.imageService.get(backdrop.file_path, BackdropImageSizes.W300),
+        medium: this.imageService.get(backdrop.file_path, BackdropImageSizes.W780),
+        big: this.imageService.get(backdrop.file_path, BackdropImageSizes.W1280)
     });
           }
         }

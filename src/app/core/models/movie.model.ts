@@ -4,10 +4,11 @@ export class Movie {
     id: number;
     title: string;
     overview: string;
+    poster_path: string;
     vote_average: number;
     vote_count: number;
     imdb_id: string | null;
-    backdrop_path: Image;
+    backdrop_path: string;
     genre_ids: number[];
     original_language?: string;
     original_title: string;
