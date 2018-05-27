@@ -11,6 +11,7 @@ import { ProfileImageSizes } from '@app/core/images/enums';
 })
 export class PersonDetailComponent implements OnInit {
   person: Person;
+  profileImagePath: string;
   mode: string;
   constructor(
     private route: ActivatedRoute,
@@ -19,16 +20,13 @@ export class PersonDetailComponent implements OnInit {
     this.mode = 'determinate';
     this.person = new Person();
    }
-   get profileImage() {
-     console.log('una vez y otra mas ');
-     return this.imageService.get(this.person.profile_path,
-       ProfileImageSizes.W154);
-   }
   ngOnInit() {
     this.route.data.subscribe(
       (data: { person: Person })  => {
         console.log(data);
         this.person = data.person;
+        this.profileImagePath = this.imageService.get(this.person.profile_path,
+          ProfileImageSizes.W154);
       }
     );
   }
