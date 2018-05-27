@@ -8,7 +8,8 @@ import reframe from 'reframe.js';
 export class YoutubeVideoComponent implements OnInit {
 
   public YT: any;
-  @Input() public video: any;
+  @Input() public video: string;
+  @Input() public key_videos: string[];
   public player: any;
   public reframed: Boolean = false;
   constructor() { }
@@ -32,7 +33,7 @@ export class YoutubeVideoComponent implements OnInit {
           'rel': 0,
           'showinfo': 1,
           'color': 'white',
-          'playlist': 'GLPJSmUHZvU,GyR4RK0LA_E',
+          'playlist': this.key_videos.join(','),
 
         },
        // videoId: this.video,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery';
 import { Movie, AuthService, JwtService } from '@app/core';
 import { ImageService } from '@app/core/services/image.service';
 import { PosterImageSizes, BackdropImageSizes } from '@app/core/images/enums/';
@@ -15,8 +15,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
   safeURL: SafeResourceUrl;
-  private player;
-  private ytEvent;
+
   posterPath: string;
 
   galleryOptions: NgxGalleryOptions[];
@@ -31,20 +30,7 @@ export class MovieDetailComponent implements OnInit {
     this.movie = new Movie();
     this.galleryImages = new Array<NgxGalleryImage>();
   }
-  onStateChange(event) {
-    this.ytEvent = event.data;
-  }
-  savePlayer(player) {
-    this.player = player;
-  }
 
-  playVideo() {
-    this.player.playVideo();
-  }
-
-  pauseVideo() {
-    this.player.pauseVideo();
-  }
   ngOnInit() {
     console.log(this.jwtService.getToken());
     if (!this.jwtService.getToken()) {
@@ -63,7 +49,7 @@ export class MovieDetailComponent implements OnInit {
     this.galleryOptions = galleryOptions;
     this.route.data.subscribe(
       (data: { movie: Movie }) => {
-        this.movie = data.movie;
+        this.movie = Movie.fromJSON(data.movie);
         this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.movie.videos.results[0].key);
         this.posterPath = this.imageService.get(this.movie.poster_path, PosterImageSizes.W185);
         console.log(this.movie);
