@@ -1,10 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import 'rxjs/add/operator/filter';
 import { LoadingBarService } from '@ngx-loading-bar/core';
-import { MaterialSidenavComponent } from '@app/shared/layout';
-import { MatSidenav } from '@angular/material/sidenav';
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
