@@ -4,15 +4,16 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "allowJs": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "baseUrl": "src",
-    "paths": {
-      "@app/*": ["app/*"],
-      "@env/*": ["environments/*"]
-    },
     "target": "es5",
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"]
+    },
     "typeRoots": [
       "node_modules/@types"
     ],
