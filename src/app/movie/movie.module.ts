@@ -6,11 +6,12 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { AuthService, MovieService, CoreModule } from '@app/core';
 import { MaterialModule } from '@app/material.module';
-
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   imports: [
     CommonModule,
     CoreModule,
+    SharedModule,
     NgxGalleryModule,
     MovieRoutingModule,
     MaterialModule

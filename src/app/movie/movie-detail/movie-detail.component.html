@@ -31,6 +31,6 @@
       {{video.name}}
     </p>
     <ngx-gallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-
+    <app-youtube-video [video] = "movie.videos.results[0].key"> </app-youtube-video>
   </ng-container>
 </div>

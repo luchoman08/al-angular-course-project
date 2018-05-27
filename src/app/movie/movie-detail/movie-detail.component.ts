@@ -3,8 +3,10 @@ import { ActivatedRoute} from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { Movie, AuthService, JwtService } from '@app/core';
 import { ImageService } from '@app/core/services/image.service';
-import { BackdropImageSizes } from '../../core/images/enums/backdrop-image-sizes.interface';
-import { PosterImageSizes } from '../../core/images/enums/poster-image-sizes.interface';
+import { PosterImageSizes, BackdropImageSizes } from '@app/core/images/enums/';
+import { galleryOptions } from './gallery-options';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -12,10 +14,15 @@ import { PosterImageSizes } from '../../core/images/enums/poster-image-sizes.int
 })
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
+  safeURL: SafeResourceUrl;
+  private player;
+  private ytEvent;
   posterPath: string;
+
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   constructor(
+    private _sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private jwtService: JwtService,
     private authService: AuthService,
@@ -24,7 +31,20 @@ export class MovieDetailComponent implements OnInit {
     this.movie = new Movie();
     this.galleryImages = new Array<NgxGalleryImage>();
   }
+  onStateChange(event) {
+    this.ytEvent = event.data;
+  }
+  savePlayer(player) {
+    this.player = player;
+  }
 
+  playVideo() {
+    this.player.playVideo();
+  }
+
+  pauseVideo() {
+    this.player.pauseVideo();
+  }
   ngOnInit() {
     console.log(this.jwtService.getToken());
     if (!this.jwtService.getToken()) {
@@ -40,32 +60,11 @@ export class MovieDetailComponent implements OnInit {
     console.log (this.jwtService.getSessionId());
   }
   }
-    this.galleryOptions = [
-      {
-          width: '600px',
-          height: '400px',
-          thumbnailsColumns: 4,
-          imageAnimation: NgxGalleryAnimation.Slide
-      },
-      // max-width 800
-      {
-          breakpoint: 800,
-          width: '100%',
-          height: '600px',
-          imagePercent: 80,
-          thumbnailsPercent: 20,
-          thumbnailsMargin: 20,
-          thumbnailMargin: 20
-      },
-      // max-width 400
-      {
-          breakpoint: 400,
-          preview: true
-      }
-  ];
+    this.galleryOptions = galleryOptions;
     this.route.data.subscribe(
       (data: { movie: Movie }) => {
         this.movie = data.movie;
+        this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.movie.videos.results[0].key);
         this.posterPath = this.imageService.get(this.movie.poster_path, PosterImageSizes.W185);
         console.log(this.movie);
         if ( this.movie.images ) {

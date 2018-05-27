@@ -1,30 +1,21 @@
 import { NgModule } from '@angular/core';
-import { NavbarComponent } from './layout/navbar/navbar.component';
-import { SidebarComponent, FooterComponent } from './layout';
 import {
     SingleDataDialogEditOrAddComponent
-} from './common-components/single-data-dialog-edit-or-add/single-data-dialog-edit-or-add.component';
+} from '@app/shared/common-components';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '@app/material.module';
 import { RouterModule } from '@angular/router';
-import { CapitalizePipe } from './pipes/capitalize.pipe';
-import { FirstWordPipe } from './pipes/firstWord.pipe';
+import { CapitalizePipe, FirstWordPipe } from '@app/shared/pipes';
 import { FormsModule } from '@angular/forms';
-import { MaterialNavbarComponent } from './layout/material-navbar/material-navbar.component';
-import { MaterialSidenavComponent } from './layout/material-sidenav/material-sidenav.component';
+import { YoutubeVideoComponent } from '@app/shared/common-components';
 
 
 @NgModule({
   declarations: [
-    NavbarComponent,
-    SidebarComponent,
-    FooterComponent,
     SingleDataDialogEditOrAddComponent,
-
     CapitalizePipe,
     FirstWordPipe,
-    MaterialNavbarComponent,
-    MaterialSidenavComponent
+    YoutubeVideoComponent
   ],
   imports: [
     CommonModule,
@@ -34,14 +25,9 @@ import { MaterialSidenavComponent } from './layout/material-sidenav/material-sid
   ],
   providers: [],
   exports: [
-    NavbarComponent,
-    MaterialNavbarComponent,
-    SidebarComponent,
-    MaterialSidenavComponent,
-    FooterComponent,
     SingleDataDialogEditOrAddComponent,
-
     CapitalizePipe,
+    YoutubeVideoComponent,
     FirstWordPipe
   ]
 })
