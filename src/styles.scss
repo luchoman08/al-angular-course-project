@@ -1,5 +1,5 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import "~bootstrap/scss/bootstrap";
+
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
@@ -21,3 +21,4 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 // `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
 
 @include angular-material-theme($dark-theme);
+@import "~bootstrap/scss/bootstrap";
