@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { CapitalizePipe, FirstWordPipe } from '@app/shared/pipes';
 import { FormsModule } from '@angular/forms';
 import { YoutubeVideoComponent } from '@app/shared/common-components';
+import { YoutubeVideoDialogComponent } from './common-components/youtube-video-dialog/youtube-video-dialog.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { YoutubeVideoComponent } from '@app/shared/common-components';
     SingleDataDialogEditOrAddComponent,
     CapitalizePipe,
     FirstWordPipe,
-    YoutubeVideoComponent
+    YoutubeVideoComponent,
+    YoutubeVideoDialogComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,9 @@ import { YoutubeVideoComponent } from '@app/shared/common-components';
     SingleDataDialogEditOrAddComponent,
     CapitalizePipe,
     YoutubeVideoComponent,
+    YoutubeVideoDialogComponent,
     FirstWordPipe
-  ]
+  ],
+  entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
 })
 export class SharedModule { }

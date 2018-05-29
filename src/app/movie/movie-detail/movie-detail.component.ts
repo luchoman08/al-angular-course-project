@@ -6,7 +6,8 @@ import { ImageService } from '@app/core/services/image.service';
 import { PosterImageSizes, BackdropImageSizes } from '@app/core/images/enums/';
 import { galleryOptions } from './gallery-options';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
+import { MatDialog } from '@angular/material';
+import { YoutubeVideoDialogComponent } from '../../shared/common-components/youtube-video-dialog/youtube-video-dialog.component';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -24,13 +25,22 @@ export class MovieDetailComponent implements OnInit {
     private _sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private jwtService: JwtService,
+    public dialog: MatDialog,
     private authService: AuthService,
     private imageService: ImageService
   ) {
     this.movie = new Movie();
     this.galleryImages = new Array<NgxGalleryImage>();
   }
-
+  openDialog(): void {
+    const dialogRef = this.dialog.open(YoutubeVideoDialogComponent, {
+      width: '750px',
+      height: '500px',
+      data: {
+        video_keys : this.movie.getVideoKeys()
+      }
+    });
+  }
   ngOnInit() {
     console.log(this.jwtService.getToken());
     if (!this.jwtService.getToken()) {
