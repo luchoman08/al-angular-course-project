@@ -1,8 +1,6 @@
 .video-container {
   position:relative;
-  height: 20%;
-  padding-bottom:56.25%;
-  padding-top:30px;
+  padding-bottom:64.09%;
   height:0;
   overflow:hidden;
 }
@@ -17,14 +15,18 @@
 }
 .mat-dialog-container {
   display: flex !important;
+  background-color: transparent;
   flex-direction: column;
 }
 
 .mat-dialog-container > * {
   display: flex;
   flex-direction: column;
-}
 
+}
+.mat-dialog-container {
+  background-color: transparent !important;
+}
 .mat-dialog-content {
   max-height: inherit !important;
 }
@@ -33,7 +35,6 @@
   display: block !important;
   flex-grow: inherit;
   flex-shrink: inherit;
-  padding: 12px 0 0 !important;
 
   &:last-child {
       margin-bottom: 0 !important;

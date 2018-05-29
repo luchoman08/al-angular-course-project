@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import reframe from 'reframe.js';
 @Component({
   selector: 'app-youtube-video',
@@ -19,6 +19,7 @@ export class YoutubeVideoComponent implements OnInit {
     const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   }
+
 
   ngOnInit() {
     this.init();

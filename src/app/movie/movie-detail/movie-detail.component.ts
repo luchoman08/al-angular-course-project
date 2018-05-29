@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryComponent } from 'ngx-gallery';
 import { Movie, AuthService, JwtService } from '@app/core';
 import { ImageService } from '@app/core/services/image.service';
 import { PosterImageSizes, BackdropImageSizes } from '@app/core/images/enums/';
 import { galleryOptions } from './gallery-options';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { YoutubeVideoDialogComponent } from '../../shared/common-components/youtube-video-dialog/youtube-video-dialog.component';
+
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -15,14 +15,13 @@ import { YoutubeVideoDialogComponent } from '../../shared/common-components/yout
 })
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
-  safeURL: SafeResourceUrl;
+  @ViewChild('onlyPreviewGallery') onlyPreviewGallery: NgxGalleryComponent;
 
   posterPath: string;
 
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   constructor(
-    private _sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private jwtService: JwtService,
     public dialog: MatDialog,
@@ -31,6 +30,9 @@ export class MovieDetailComponent implements OnInit {
   ) {
     this.movie = new Movie();
     this.galleryImages = new Array<NgxGalleryImage>();
+  }
+  openPreviewImages(): void {
+    this.onlyPreviewGallery.openPreview(0);
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(YoutubeVideoDialogComponent, {
@@ -60,7 +62,6 @@ export class MovieDetailComponent implements OnInit {
     this.route.data.subscribe(
       (data: { movie: Movie }) => {
         this.movie = Movie.fromJSON(data.movie);
-        this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.movie.videos.results[0].key);
         this.posterPath = this.imageService.get(this.movie.poster_path, PosterImageSizes.W185);
         console.log(this.movie);
         if ( this.movie.images ) {

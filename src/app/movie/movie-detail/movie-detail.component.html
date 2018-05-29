@@ -1,39 +1,40 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="poster col-lg-2">
+
       <img src="{{posterPath}}" alt="" srcset="">
     </div>
     <div class="col-lg-6">
       <h3 i18n> {{movie.title}} </h3>
+      <div class="row">
+          <div class=" col-lg-3">
+            <div class="vote-average">
+              <div>
 
-        <h5 i18n> Resumen </h5>
-        {{movie.overview}}
+                <mat-progress-spinner aria-label="movie.vote_average" [color]="movie.vote_average < 8 ? (movie.vote_average < 4? 'warn' : accent): 'default'"
+                  [strokeWidth]="4" [diameter]="40" [value]="movie.vote_average * 10">
+                </mat-progress-spinner>
+                <div class="value"> {{movie.vote_average}} </div>
+
+                <small class="circle-number">Puntuación</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 view-trailers">
+            <button mat-button (click)="openDialog()">
+              <mat-icon>movie</mat-icon> Ver trailers</button>
+          </div>
+          <div class="col-lg-2 view-images">
+              <button mat-button (click)="openPreviewImages()">
+                <mat-icon>photo_library</mat-icon> Ver imagenes</button>
+            </div>
+
+        </div>
+      <h5 i18n> Resumen </h5>
+      {{movie.overview}}
     </div>
 
-    <div class="col-lg-1">
-        <h5 i18n> Vote average </h5>
-        <button mat-button (click) = "openDialog()" >Ver trailers</button>
-        <mat-progress-spinner [color]="'warn'" [strokeWidth]="4" [diameter]="40" [value]="movie.vote_average * 10">a</mat-progress-spinner>
 
-      </div>
+
+    <ngx-gallery #onlyPreviewGallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
   </div>
-  <ng-container *ngIf="movie.videos">
-    <h3 i18n> Popularidad </h3>
-    {{movie.popularity}}
-    <div class="row">
-      <div class="col-4">
-        <h3 i18n> Vote count </h3>
-        {{movie.vote_count}}
-      </div>
-
-
-    </div>
-    <h3 i18n> {movie.videos.results, plural, =0 {No hay videos} =1 {Video} other {Videos}} </h3>
-    <p *ngFor="let video of movie.videos.results">
-      {{video.name}}
-    </p>
-    <ngx-gallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-  </ng-container>
-</div>
-
-

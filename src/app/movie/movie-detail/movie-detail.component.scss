@@ -4,3 +4,22 @@
 .poster {
   margin-right: 20px;
 }
+.circle-number {
+  margin-left: -8px;
+}
+.vote-average {
+  position: relative;
+  text-align: center;
+  .value {
+    position:absolute;
+    top: 8px;
+    left: 9px;
+  }
+}
+.view-trailers {
+  margin-top: 8px;
+}
+.view-images {
+  margin-left: 20px;
+  @extend .view-trailers;
+}
