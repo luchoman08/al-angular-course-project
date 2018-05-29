@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "build-github": "ng build --prod --base-href 'https://luchoman08.github.io/al-angular-course-project/' ",
+    "build-github": "ng build --extract-css true --sourcemaps false --named-chunks true --prod --output-hashing all --build-optimizer --vendor-chunk --base-href 'https://luchoman08.github.io/al-angular-course-project/' ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
