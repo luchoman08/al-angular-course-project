@@ -9,7 +9,7 @@ export class Person {
     biography: string;
     images: { profiles: Image[]};
     birthday: string;
-    deathdate: string;
+    deathday: string;
     gender: Gender;
     imdb_id: string;
     place_of_birth: string | null;
