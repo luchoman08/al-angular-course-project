@@ -1,11 +1,14 @@
-.principal-container {
-    min-height: 800px;
 
-}
 .close-sidenav {
     position: relative;
     float: right;
     cursor: pointer;
+}
+.top-toolbar {
+  background-color: rgba(0,0,0,1);
+}
+a{
+  color: white;
 }
 .sidenav-button {
     margin-top: 3px;
@@ -26,20 +29,31 @@
     flex: 1 1 auto;
   }
 .mat-sidenav-content {
-  padding-top: 5%;
+  padding-top: 15%;
+  min-height: 750px;
 }
 .footer {
-  position: fixed;
   left: 0;
   bottom: 0;
   z-index: 1;
   text-align: center;
 }
+.example-form {
+  margin-top: 45px;
+}
+.example-full-width {
+  width: 500px;
+}
+
 button:focus { outline-style: none; }
 .main-icon > p {
   margin-top: 20px;
   margin-right: 30px;
 }
+.mat-drawer-content {
+  overflow: unset !important;
+}
+
 .mat-button {
   color: white;
 }
