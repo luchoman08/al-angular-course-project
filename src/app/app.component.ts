@@ -68,9 +68,7 @@ export class AppComponent implements OnInit {
           return this.states.filter(state =>
             state.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
         }
-    ngOnInit() {
-      this.movies$ = this.searchService.searchMovies('the avengers');
-    }
+    ngOnInit() {    }
     close() {
       this.sidenav.close();
     }
