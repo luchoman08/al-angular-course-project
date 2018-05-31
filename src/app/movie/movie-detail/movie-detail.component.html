@@ -1,10 +1,14 @@
 <mat-list>
 
-<div class="movie-detail container-fluid" [ngStyle]="{'background': '
+<div class="movie-detail container-fluid" [ngStyle]="{'background': galleryImages[0]? '
   linear-gradient(
   rgba(0, 0, 0, 0.75),
   rgba(0, 0, 0, 0.75)
-  ), url( ' + galleryImages[0].big + ')' ,
+  ), url( ' + galleryImages[0].big + ')' :
+   'linear-gradient(
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.75)
+    )' ,
   'background-repeat': 'no-repeat',
   'background-size': '',
   'width': '100%' }">
@@ -30,15 +34,26 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-2 col-lg-2 view-trailers">
-            <button mat-button (click)="openDialog()">
+          <div *ngIf="movie.videos.results.length > 0; else notrailers" class="col-sm-2 col-lg-2 view-trailers">
+            <button  mat-button (click)="openDialog()">
               <mat-icon>movie</mat-icon> Ver trailers</button>
           </div>
-          <div class="col-lg-2 col-sm-2 view-images">
+          <ng-template #notrailers >
+          <div class="col-sm-2 col-lg-2 view-trailers">
+              <button [disabled]="true" mat-button >
+                No hay trailers</button>
+            </div>
+          </ng-template>
+          <div *ngIf="movie.images.backdrops.length > 0; else noimages" class="col-lg-2 col-sm-2 view-images">
             <button mat-button (click)="openPreviewImages()">
               <mat-icon>photo_library</mat-icon> Ver imagenes</button>
           </div>
-
+          <ng-template #noimages >
+              <div class="col-sm-2 col-lg-2 view-trailers">
+                  <button [disabled]="true" mat-button >
+                    No hay imágenes</button>
+                </div>
+              </ng-template>
         </div>
         <h5 i18n> Resumen </h5>
         {{movie.overview}}
