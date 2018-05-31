@@ -1,8 +1,25 @@
-.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
-    transform: none !important;
-}
+
 .poster {
-  margin-right: 20px;
+  margin-top: -20px;
+  position: relative;
+}
+.content {
+  margin-top: 5%;
+
+}
+
+.movie-detail {
+  min-height: 400px;
+}
+.principal-info {
+  position: relative;
+  margin-left: 3%;
+}
+.container-fluid {
+  padding-top: 1px;
+  position: relative;
+  margin-top: -1px;
+  padding-left: 12%;
 }
 .circle-number {
   margin-left: -8px;
@@ -10,16 +27,18 @@
 .vote-average {
   position: relative;
   text-align: center;
-  .value {
-    position:absolute;
-    top: 8px;
-    left: 9px;
-  }
+
+ }
+
+.value {
+  position:absolute;
+  top: 8px;
+  left: 10px;
 }
 .view-trailers {
   margin-top: 8px;
 }
 .view-images {
-  margin-left: 20px;
-  @extend .view-trailers;
+  margin-top: 8px;
+  margin-left: 16px;
 }

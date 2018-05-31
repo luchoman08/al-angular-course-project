@@ -1,13 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="poster col-lg-2">
+<mat-list>
 
-      <img src="{{posterPath}}" alt="" srcset="">
-    </div>
-    <div class="col-lg-6">
-      <h3 i18n> {{movie.title}} </h3>
-      <div class="row">
-          <div class=" col-lg-3">
+<div class="movie-detail container-fluid" [ngStyle]="{'background': '
+  linear-gradient(
+  rgba(0, 0, 0, 0.75),
+  rgba(0, 0, 0, 0.75)
+  ), url( ' + galleryImages[0].big + ')' ,
+  'background-repeat': 'no-repeat',
+  'background-size': '',
+  'width': '100%' }">
+
+
+  <div class="content">
+    <div class="row">
+      <div class="poster col-sm-12 col-md-3 col-lg-2">
+
+        <img src="{{posterPath}}" alt="" srcset="">
+      </div>
+      <div class="col-md-9 col-lg-6 principal-info">
+        <h3 i18n> {{movie.title}} </h3>
+        <div class="row">
+          <div class=" col-sm-2 col-lg-3">
             <div class="vote-average">
               <div>
 
@@ -15,26 +27,33 @@
                   [strokeWidth]="4" [diameter]="40" [value]="movie.vote_average * 10">
                 </mat-progress-spinner>
                 <div class="value"> {{movie.vote_average}} </div>
-
-                <small class="circle-number">Puntuación</small>
               </div>
             </div>
           </div>
-          <div class="col-lg-2 view-trailers">
+          <div class="col-sm-2 col-lg-2 view-trailers">
             <button mat-button (click)="openDialog()">
               <mat-icon>movie</mat-icon> Ver trailers</button>
           </div>
-          <div class="col-lg-2 view-images">
-              <button mat-button (click)="openPreviewImages()">
-                <mat-icon>photo_library</mat-icon> Ver imagenes</button>
-            </div>
+          <div class="col-lg-2 col-sm-2 view-images">
+            <button mat-button (click)="openPreviewImages()">
+              <mat-icon>photo_library</mat-icon> Ver imagenes</button>
+          </div>
 
         </div>
-      <h5 i18n> Resumen </h5>
-      {{movie.overview}}
+        <h5 i18n> Resumen </h5>
+        {{movie.overview}}
+      </div>
+
+
+      <ngx-gallery #onlyPreviewGallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
     </div>
-
-
-
-    <ngx-gallery #onlyPreviewGallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
   </div>
+</div>
+</mat-list>
+<mat-list>
+<mat-divider></mat-divider>
+<div class="container">
+<div class="row" ><h3>Cast</h3>
+</div>
+</div>
+</mat-list>

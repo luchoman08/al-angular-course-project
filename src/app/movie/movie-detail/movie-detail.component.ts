@@ -35,6 +35,7 @@ export class MovieDetailComponent implements OnInit {
     this.onlyPreviewGallery.openPreview(0);
   }
   openDialog(): void {
+    console.log(this.movie.getVideoKeys());
     const dialogRef = this.dialog.open(YoutubeVideoDialogComponent, {
       width: '750px',
       height: '500px',
@@ -59,8 +60,10 @@ export class MovieDetailComponent implements OnInit {
   }
   }
     this.galleryOptions = galleryOptions;
+
     this.route.data.subscribe(
       (data: { movie: Movie }) => {
+        this.galleryImages = new Array<NgxGalleryImage>();
         this.movie = Movie.fromJSON(data.movie);
         this.posterPath = this.imageService.get(this.movie.poster_path, PosterImageSizes.W185);
         console.log(this.movie);
@@ -73,6 +76,7 @@ export class MovieDetailComponent implements OnInit {
         big: this.imageService.get(backdrop.file_path, BackdropImageSizes.W1280)
     });
           }
+          console.log(this.galleryImages);
         }
       }
     );
