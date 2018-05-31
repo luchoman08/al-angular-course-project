@@ -10,6 +10,7 @@ import { ApiService } from './services';
 import { JwtService } from '@app/core/services/jwt.service';
 import { ImageService } from '@app/core/services/image.service';
 import { ApiImagesService } from './services/shared/apiImages.service';
+import { SearchService } from '@app/core/services/search.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,6 +22,7 @@ import { ApiImagesService } from './services/shared/apiImages.service';
     MovieService,
     PeopleService,
     ImageService,
+    SearchService,
     ApiImagesService,
     TVSeriesCacheService,
     JwtService
