@@ -1,16 +1,5 @@
-<div *ngIf="(credits$ | async) as credits" class="credit-detail">
-
-  {{credits.cast[0].id}}
-  {{credits.cast[0].gender}}
-  {{credits.cast[0].name}}
-  {{credits.cast[0].character}}
-<!--  <div class="cast">
-
-  </div>
-  <mat-divider></mat-divider>
-  <div class="crew">
-
-  </div>
--->
+<div  [ngClass] = "classes.join(' ')"  class="credit-detail">
+  <a [routerLink]="['/people', credit.id]"> <img [src]="image"> </a>    {{credit.name}} as   {{credit.character}} {{credit.id}}
+ 
 </div>
 
