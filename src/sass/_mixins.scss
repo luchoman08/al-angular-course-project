@@ -1,0 +1,16 @@
+@import 'functions';
+
+@mixin contrast($background: 'light', $type: 'primary') {
+  color: contrast($background, $type)
+}
+@mixin text-color($background: 'dark', $type: 'primary'){
+  color: contrast($background, $type);
+}
+@mixin background-color($background: 'light', $type: 'primary'){
+  background-color: contrast($background, $type);
+}
+
+@mixin primary-element() {
+  @include background-color();
+  @include text-color();
+}
