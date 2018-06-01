@@ -16,7 +16,7 @@
         </div>
         <div class="row birth-day">
 
-          <div class="birth-day" *ngIf="person.also_known_as">
+          <div class="birth-day" *ngIf="person.also_known_as.length > 0">
             <small>Tambien conocido como: {{person.also_known_as.join(', ')}}</small>
           </div>
           <div class="birth-day">
