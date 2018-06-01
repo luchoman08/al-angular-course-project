@@ -1,9 +1,10 @@
-import { CreditInterface } from '@app/core/models/';
-import { Gender } from '@app/core/models/enums';
+import { CreditInterface } from '@app/core/';
+import { Gender } from '@app/core/';
 export class Crew implements CreditInterface {
+   id: string;
   gender: Gender;
   name: string;
   order: number;
-  prfoile_path: string;
+  profile_path: string;
   job: string;
 }
