@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ApiKeyInterceptor } from './interceptors';
 
 import {
-    MovieService, PeopleService, TVSeriesCacheService
+    MovieService, PeopleService, TVSeriesCacheService, CreditsService
 } from './services';
 import { ApiService } from './services';
 import { JwtService } from '@app/core/services/jwt.service';
@@ -23,6 +23,7 @@ import { SearchService } from '@app/core/services/search.service';
     PeopleService,
     ImageService,
     SearchService,
+    CreditsService,
     ApiImagesService,
     TVSeriesCacheService,
     JwtService

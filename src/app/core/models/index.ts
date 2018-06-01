@@ -6,6 +6,8 @@ export * from './video.model';
 export * from './user-movie-list.model';
 export * from './person.model';
 export * from './genre.model';
+export * from './cast.model';
+export * from './crew.model';
 export * from './tv-show.model';
 export * from './enums';
 export * from './user-list.model';

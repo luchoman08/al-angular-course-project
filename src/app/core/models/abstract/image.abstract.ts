@@ -1,4 +1,4 @@
-import { ImageSize } from "../enums/image-size.enum";
+import { ImageSize } from '../enums/image-size.enum';
 
 export abstract class Image {
     aspect_ratio: number;
