@@ -1,4 +1,4 @@
-
+@import '~sass/mixins';
 .close-sidenav {
     position: relative;
     float: right;
@@ -6,14 +6,14 @@
 }
 
 .mat-drawer-container {
-  background-color: rgba(0,0,0,1);
+  @include background-color();
   min-height: 700px;
 }
 .top-toolbar {
-  background-color: rgba(0,0,0,1);
+  @include background-color();
 }
 a{
-  color: white;
+  @include text-color();
 }
 .sidenav-button {
     margin-top: 3px;
@@ -38,6 +38,7 @@ a{
   min-height: 750px;
 }
 .footer {
+  @include primary-element();
   left: 0;
   bottom: 0;
   border-top: 3px;
@@ -45,8 +46,6 @@ a{
   border-right: 0px;
   border-bottom: 0px;
   border-style: solid;
-  border-color: white;
-  background-color: rgba(0,0,0,1);
   z-index: 1;
   text-align: center;
 }
@@ -67,5 +66,5 @@ button:focus { outline-style: none; }
 }
 
 .mat-button {
-  color: white;
+  @include text-color();
 }
