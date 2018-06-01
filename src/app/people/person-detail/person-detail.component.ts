@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '@app/core';
 import { ActivatedRoute } from '@angular/router';
-import { ImageService } from '@app/core/services/image.service';
-import { ProfileImageSizes } from '@app/core/images/enums';
+import { ImageService, ProfileImageSizes } from '@app/core';
 
 @Component({
   selector: 'app-person-detail',
@@ -26,7 +25,7 @@ export class PersonDetailComponent implements OnInit {
         console.log(data);
         this.person = data.person;
         this.profileImagePath = this.imageService.get(this.person.profile_path,
-          ProfileImageSizes.W154);
+          ProfileImageSizes.W185);
       }
     );
   }
