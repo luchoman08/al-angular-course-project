@@ -7,4 +7,5 @@ export class Crew implements CreditInterface {
   order: number;
   profile_path: string;
   job: string;
+  character?: string;
 }

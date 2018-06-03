@@ -6,4 +6,5 @@ export class Cast implements CreditInterface {
   order: number;
   profile_path: string;
   character: string;
+  job?: string;
 }
