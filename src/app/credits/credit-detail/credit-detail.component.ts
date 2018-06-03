@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Crew, Cast, ImageService, ProfileImageSizes  } from '@app/core/';
-
+import { Crew, Cast, ProfileImageSizesInterface } from '@app/core/';
+import { ImageURLPipe } from '@app/shared';
+import { PROFILE_IMAGE_SIZES } from '@app/core';
 
 @Component({
   selector: 'app-credit-detail',
@@ -8,17 +9,15 @@ import { Crew, Cast, ImageService, ProfileImageSizes  } from '@app/core/';
   styleUrls: ['./credit-detail.component.scss']
 })
 export class CreditDetailComponent implements OnInit {
-  image: string;
   @Input() credit: Cast|Crew;
-  @Input() classes: string[];
-  constructor(
-    private imageService: ImageService) {
-
+  PROFILE_IMAGE_SIZES: ProfileImageSizesInterface;
+  typeOfCredit: string;
+  constructor() {
+    this.PROFILE_IMAGE_SIZES = PROFILE_IMAGE_SIZES;
    }
 
 
   ngOnInit() {
-        this.image = this.imageService.get(this.credit.profile_path, ProfileImageSizes.W45);
   }
 
 }

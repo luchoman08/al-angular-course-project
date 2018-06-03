@@ -1,5 +1,21 @@
-<div  [ngClass] = "classes.join(' ')"  class="credit-detail">
-  <a [routerLink]="['/people', credit.id]"> <img [src]="image"> </a>    {{credit.name}} as   {{credit.character}} {{credit.id}}
- 
+<div    class="credit-detail">
+  <a [routerLink]="['/people', credit.id]">
+    <img
+    width="{{PROFILE_IMAGE_SIZES.W45.width}}"
+    height= "{{PROFILE_IMAGE_SIZES.W45.height}}"
+    [src]=
+      "credit.profile_path? (credit.profile_path | imageURL: PROFILE_IMAGE_SIZES.W45) :
+      './assets/img/people/default-profile-men.png'"
+    > </a>
+    {{credit.name}}
+  <ng-container *ngIf="credit.character then credit_character; else credit_job">
+  </ng-container >
+  <ng-template #credit_character>
+      como  <em><{{credit.character}}></em>
+  </ng-template>
+  <ng-template #credit_job>
+      trabajando como <em>{{credit.job}}</em>
+  </ng-template>
+
 </div>
 
