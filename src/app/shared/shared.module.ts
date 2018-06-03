@@ -1,23 +1,28 @@
 import { NgModule } from '@angular/core';
-import {
-    SingleDataDialogEditOrAddComponent
-} from '@app/shared/common-components';
+
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@app/material.module';
 import { RouterModule } from '@angular/router';
-import { CapitalizePipe, FirstWordPipe } from '@app/shared/pipes';
+import {  } from '@app/shared/pipes';
 import { FormsModule } from '@angular/forms';
-import { YoutubeVideoComponent } from '@app/shared/common-components';
-import { YoutubeVideoDialogComponent } from './common-components/youtube-video-dialog/youtube-video-dialog.component';
+import {
+  YoutubeVideoComponent,
+  SingleDataDialogEditOrAddComponent,
+  YoutubeVideoDialogComponent,
+  CapitalizePipe,
+  ImageURLPipe,
+  FirstWordPipe
+} from '@app/shared/';
 
 
 @NgModule({
   declarations: [
     SingleDataDialogEditOrAddComponent,
+    YoutubeVideoComponent,
+    YoutubeVideoDialogComponent,
     CapitalizePipe,
     FirstWordPipe,
-    YoutubeVideoComponent,
-    YoutubeVideoDialogComponent
+    ImageURLPipe
   ],
   imports: [
     CommonModule,
@@ -25,13 +30,14 @@ import { YoutubeVideoDialogComponent } from './common-components/youtube-video-d
     RouterModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [ImageURLPipe, FirstWordPipe, CapitalizePipe],
   exports: [
     SingleDataDialogEditOrAddComponent,
-    CapitalizePipe,
     YoutubeVideoComponent,
     YoutubeVideoDialogComponent,
-    FirstWordPipe
+    CapitalizePipe,
+    FirstWordPipe,
+    ImageURLPipe
   ],
   entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
 })
