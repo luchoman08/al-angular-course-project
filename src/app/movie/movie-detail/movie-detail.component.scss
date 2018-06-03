@@ -1,19 +1,18 @@
 
-.poster {
-  margin-top: -20px;
-  position: relative;
-}
+
 .content {
   margin-top: 5%;
 
 }
-
+.poster-image {
+  width: 100%;
+}
 .movie-detail {
   min-height: 400px;
 }
 .principal-info {
   position: relative;
-  margin-left: 3%;
+  margin-left: 1%;
 }
 .container-fluid {
   padding-top: 1px;
@@ -35,10 +34,6 @@
   top: 8px;
   left: 10px;
 }
-.view-trailers {
-  margin-top: 8px;
-}
-.view-images {
-  margin-top: 8px;
-  margin-left: 16px;
+.menu-item{
+  margin-left: 15px;
 }

@@ -1,12 +1,31 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryComponent } from 'ngx-gallery';
-import { Movie, AuthService, JwtService } from '@app/core';
-import { ImageService } from '@app/core/services/image.service';
-import { PosterImageSizes, BackdropImageSizes } from '@app/core/images/enums/';
+import { ActivatedRoute } from '@angular/router';
 import { galleryOptions } from './gallery-options';
 import { MatDialog } from '@angular/material';
-import { YoutubeVideoDialogComponent } from '../../shared/common-components/youtube-video-dialog/youtube-video-dialog.component';
+import { Observable } from 'rxjs/Observable';
+import { PosterImageSizesInterface } from '../../core/images/interfaces/poster-image-sizes.interface';
+
+import {
+  NgxGalleryOptions,
+  NgxGalleryImage,
+  NgxGalleryComponent
+} from 'ngx-gallery';
+
+import {
+  Movie,
+  POSTER_IMAGE_SIZES,
+  BackdropImageSizesInterface,
+  BACKDROP_IMAGE_SIZES,
+  CreditsModel,
+  CreditsService
+} from '@app/core';
+
+import {
+  YoutubeVideoDialogComponent,
+  ImageURLPipe,
+ } from '@app/shared';
+
+
 
 @Component({
   selector: 'app-movie-detail',
@@ -16,18 +35,20 @@ import { YoutubeVideoDialogComponent } from '../../shared/common-components/yout
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
   @ViewChild('onlyPreviewGallery') onlyPreviewGallery: NgxGalleryComponent;
-
+  POSTER_IMAGE_SIZES: PosterImageSizesInterface;
+  BACKDROP_IMAGE_SIZES: BackdropImageSizesInterface;
   posterPath: string;
-
+  credits$: Observable<CreditsModel>;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   constructor(
     private route: ActivatedRoute,
-    private jwtService: JwtService,
     public dialog: MatDialog,
-    private authService: AuthService,
-    private imageService: ImageService
+    private creditsService: CreditsService,
+    private imgURLPipe: ImageURLPipe
   ) {
+    this.BACKDROP_IMAGE_SIZES = BACKDROP_IMAGE_SIZES;
+    this.POSTER_IMAGE_SIZES =  POSTER_IMAGE_SIZES;
     this.movie = new Movie();
     this.galleryImages = new Array<NgxGalleryImage>();
   }
@@ -40,47 +61,39 @@ export class MovieDetailComponent implements OnInit {
       width: '750px',
       height: '500px',
       data: {
-        video_keys : this.movie.getVideoKeys()
+        video_keys: this.movie.getVideoKeys()
       }
     });
+  }
+  initImages(): void {
+    if (this.movie.images) {
+      for (const backdrop of this.movie.images.backdrops) {
+        this.galleryImages.push({
+          small: this.imgURLPipe.transform(
+            backdrop.file_path,
+            this.BACKDROP_IMAGE_SIZES.W300
+          ),
+          medium: this.imgURLPipe.transform(
+            backdrop.file_path,
+            this.BACKDROP_IMAGE_SIZES.W780
+          ),
+          big: this.imgURLPipe.transform(
+            backdrop.file_path,
+            this.BACKDROP_IMAGE_SIZES.W1280
+          )
+        });
+      }
+    }
   }
   ngOnInit() {
-    console.log(this.jwtService.getToken());
-    if (!this.jwtService.getToken()) {
-      this.authService.createRequestToken().subscribe();
-  } else {
-    if (!this.jwtService.getSessionId()) {
-    console.log(this.jwtService.getToken());
-    this.authService.createSession().subscribe(
-      response =>
-      console.log(response)
-    );
-    } else {
-    console.log (this.jwtService.getSessionId());
-  }
-  }
     this.galleryOptions = galleryOptions;
 
-    this.route.data.subscribe(
-      (data: { movie: Movie }) => {
-        this.galleryImages = new Array<NgxGalleryImage>();
-        this.movie = Movie.fromJSON(data.movie);
-        this.posterPath = this.imageService.get(this.movie.poster_path, PosterImageSizes.W185);
-        console.log(this.movie);
-        if ( this.movie.images ) {
-          for (const backdrop of this.movie.images.backdrops) {
-
-      this.galleryImages.push({
-        small: this.imageService.get(backdrop.file_path, BackdropImageSizes.W300),
-        medium: this.imageService.get(backdrop.file_path, BackdropImageSizes.W780),
-        big: this.imageService.get(backdrop.file_path, BackdropImageSizes.W1280)
+    this.route.data.subscribe((data: { movie: Movie }) => {
+      this.movie = new Movie();
+      this.galleryImages = new Array<NgxGalleryImage>();
+      this.movie = Movie.fromJSON(data.movie);
+      this.credits$ = this.creditsService.getMovieCredits(this.movie.id);
+      this.initImages();
     });
-          }
-          console.log(this.galleryImages);
-        }
-      }
-    );
-
   }
-
 }

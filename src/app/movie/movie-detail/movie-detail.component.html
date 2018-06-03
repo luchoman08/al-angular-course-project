@@ -16,14 +16,18 @@
 
   <div class="content">
     <div class="row">
-      <div class="poster col-sm-12 col-md-3 col-lg-2">
+      <div class=" col-2 col-md-3">
 
-        <img src="{{posterPath}}" alt="" srcset="">
+        <img
+        class= "poster-image"
+        [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
+        src="{{movie.poster_path | imageURL: POSTER_IMAGE_SIZES.W185}}"
+        alt="movie poster image" srcset="">
       </div>
-      <div class="col-md-9 col-lg-6 principal-info">
+      <div class="col-9 col-md-6 principal-info">
         <h3 i18n> {{movie.title}} </h3>
         <div class="row">
-          <div class=" col-sm-2 col-lg-3">
+          <div class=" col-3">
             <div class="vote-average">
               <div>
 
@@ -34,22 +38,18 @@
               </div>
             </div>
           </div>
-          <div *ngIf="movie.videos.results.length > 0; else notrailers" class="col-sm-2 col-lg-2 view-trailers">
-            <button  mat-button (click)="openDialog()">
-              <mat-icon>movie</mat-icon> Ver trailers</button>
-          </div>
+            <button matTooltip="Ver trailers" [matTooltipPosition]="'above'" class="menu-item" *ngIf="movie.videos.results.length > 0; else notrailers" mat-mini-fab (click)="openDialog()">
+              <mat-icon>movie</mat-icon> </button>
           <ng-template #notrailers >
-          <div class="col-sm-2 col-lg-2 view-trailers">
+          <div class="col-2 view-trailers">
               <button [disabled]="true" mat-button >
                 No hay trailers</button>
             </div>
           </ng-template>
-          <div *ngIf="movie.images.backdrops.length > 0; else noimages" class="col-lg-2 col-sm-2 view-images">
-            <button mat-button (click)="openPreviewImages()">
-              <mat-icon>photo_library</mat-icon> Ver imagenes</button>
-          </div>
+            <button  matTooltip="Ver imágenes"  [matTooltipPosition]="'above'"mat-mini-fab class="menu-item"(click)="openPreviewImages()">
+              <mat-icon>photo_library</mat-icon> </button>
           <ng-template #noimages >
-              <div class="col-sm-2 col-lg-2 view-trailers">
+              <div class="col-2 view-trailers">
                   <button [disabled]="true" mat-button >
                     No hay imágenes</button>
                 </div>
@@ -67,10 +67,10 @@
 </mat-list>
 <mat-list>
 <mat-divider></mat-divider>
-<div class="container">
-<div class="row" ><h3>Cast</h3>
-<div class="col-lg-12">
-  <app-credit-list [movieId] = "movie.id"></app-credit-list>
+<div *ngIf = "credits$ | async as credits"class="container">
+<div class="row" >
+<div class="col-12">
+  <app-credit-list [credits] = "credits"></app-credit-list>
 </div>
 </div>
 </div>
