@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Person } from '@app/core';
+import { Person, ProfileImageSizesInterface, PROFILE_IMAGE_SIZES } from '@app/core';
 import { ActivatedRoute } from '@angular/router';
-import { ImageService, ProfileImageSizes } from '@app/core';
 
 @Component({
   selector: 'app-person-detail',
@@ -10,12 +9,12 @@ import { ImageService, ProfileImageSizes } from '@app/core';
 })
 export class PersonDetailComponent implements OnInit {
   person: Person;
-  profileImagePath: string;
   mode: string;
+  PROFILE_IMAGE_SIZES: ProfileImageSizesInterface;
   constructor(
     private route: ActivatedRoute,
-    private imageService: ImageService
   ) {
+    this.PROFILE_IMAGE_SIZES = PROFILE_IMAGE_SIZES;
     this.mode = 'determinate';
     this.person = new Person();
    }
@@ -24,8 +23,6 @@ export class PersonDetailComponent implements OnInit {
       (data: { person: Person })  => {
         console.log(data);
         this.person = data.person;
-        this.profileImagePath = this.imageService.get(this.person.profile_path,
-          ProfileImageSizes.W185);
       }
     );
   }
