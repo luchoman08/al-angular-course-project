@@ -5,4 +5,3 @@ export * from './jwt.service';
 export * from './auth.service';
 export * from './cache';
 export * from './credits.service';
-export * from './image.service';
