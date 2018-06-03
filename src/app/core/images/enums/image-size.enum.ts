@@ -12,3 +12,5 @@ export enum ImageSize {
     W1280 = 'w1280',
     ORIGINAL = 'original'
 }
+
+
