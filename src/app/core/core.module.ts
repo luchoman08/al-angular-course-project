@@ -8,7 +8,6 @@ import {
 } from './services';
 import { ApiService } from './services';
 import { JwtService } from '@app/core/services/jwt.service';
-import { ImageService } from '@app/core/services/image.service';
 import { ApiImagesService } from './services/shared/apiImages.service';
 import { SearchService } from '@app/core/services/search.service';
 @NgModule({
@@ -21,7 +20,6 @@ import { SearchService } from '@app/core/services/search.service';
     ApiService,
     MovieService,
     PeopleService,
-    ImageService,
     SearchService,
     CreditsService,
     ApiImagesService,
