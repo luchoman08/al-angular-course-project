@@ -7,8 +7,7 @@ import { PersonResolver } from './person-detail/person-detail-resolver.service';
 import { CoreModule, PeopleService } from '@app/core';
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '@app/shared/shared.module';
-import { PersonCreditsCombinedComponent } from './person-credits-combined/person-credits-combined.component';
-import { PersonCreditsCombinedDetailComponent } from './person-credits-combined-detail/person-credits-combined-detail.component';
+import { CreditsModule } from '@app/credits/credits.module';
 
 @NgModule({
   imports: [
@@ -16,9 +15,10 @@ import { PersonCreditsCombinedDetailComponent } from './person-credits-combined-
     PeopleRoutingModule,
     CoreModule,
     SharedModule,
+    CreditsModule,
     MaterialModule
   ],
-  declarations: [PersonDetailComponent, PersonCreditsCombinedComponent, PersonCreditsCombinedDetailComponent],
+  declarations: [PersonDetailComponent],
   providers: [
     PeopleService,
     PersonResolver
