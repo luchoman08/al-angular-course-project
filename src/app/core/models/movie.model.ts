@@ -32,6 +32,7 @@ export class Movie {
     vote_count: number;
     imdb_id: string | null;
     backdrop_path: string;
+    release_date: string;
     genre_ids: number[];
     original_language?: string;
     original_title: string;
