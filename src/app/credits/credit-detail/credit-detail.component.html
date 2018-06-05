@@ -1,10 +1,9 @@
 <div    class="credit-detail">
   <a [routerLink]="['/people', credit.id]">
     <img
-    width="{{PROFILE_IMAGE_SIZES.W45.width}}"
-    height= "{{PROFILE_IMAGE_SIZES.W45.height}}"
+    width="90px"
     [src]=
-      "credit.profile_path? (credit.profile_path | imageURL: PROFILE_IMAGE_SIZES.W45) :
+      "credit.profile_path? (credit.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185) :
       './assets/img/people/default-profile-men.png'"
     > </a>
     {{credit.name}}
