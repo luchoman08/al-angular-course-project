@@ -3,7 +3,7 @@ import { Person, ProfileImageSizesInterface, PROFILE_IMAGE_SIZES } from '@app/co
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { PeopleService } from '../../core/services/people.service';
-import { PersonCreditsCombinedModel } from '@app/people/models/person-credits-combined.model';
+import { PersonCreditsCombinedModel } from '@app/core/models/person-credits-combined.model';
 
 @Component({
   selector: 'app-person-detail',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PersonCreditsCombinedModel } from '@app/people/models/person-credits-combined.model';
+import { PersonCreditsCombinedModel } from '@app/core/models/person-credits-combined.model';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

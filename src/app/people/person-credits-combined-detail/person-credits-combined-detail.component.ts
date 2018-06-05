@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PersonCastCreditCombinedModel } from '@app/people/models/person-cast-credit-combined.model';
-import { PersonCrewCreditCombinedModel } from '../models/person-crew-credit-combined.model';
+import { PersonCastCreditCombinedModel } from '@app/core/models/person-cast-credit-combined.model';
+import { PersonCrewCreditCombinedModel } from '@app/core/models/person-crew-credit-combined.model';
 import { PosterImageSizesInterface, POSTER_IMAGE_SIZES } from '@app/core';
 
 @Component({
