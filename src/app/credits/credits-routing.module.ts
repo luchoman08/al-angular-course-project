@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreditListComponent } from './credit-list/credit-list.component';
-import { CreditsResolver } from './credit-list/credit-list-resolver.service';
+import { MovieCreditListComponent } from './movie-credit-list/movie-credit-list.component';
+import { MovieCreditsResolver } from './movie-credit-list/movie-credit-list-resolver.service';
 const routes: Routes = [
   {
     path: ':movieID',
-    component: CreditListComponent,
+    component: MovieCreditListComponent,
     resolve: {
-      credit: CreditsResolver
+      credit: MovieCreditsResolver
     }
   }
 ];

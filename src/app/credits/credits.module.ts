@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreditListComponent } from './credit-list/credit-list.component';
+import { MovieCreditListComponent } from './movie-credit-list/movie-credit-list.component';
 import { MovieCreditDetailComponent } from '@app/credits/movie-credit-detail/movie-credit-detail.component';
 import { MaterialModule } from '@app/material.module';
 import { CoreModule } from '@app/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { CreditsResolver } from '@app/credits/credit-list/credit-list-resolver.service';
+import { MovieCreditsResolver } from '@app/credits/movie-credit-list/movie-credit-list-resolver.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,9 +16,9 @@ import { CreditsResolver } from '@app/credits/credit-list/credit-list-resolver.s
     CoreModule
   ],
   providers: [
-    CreditsResolver
+    MovieCreditsResolver
   ],
-  declarations: [CreditListComponent, MovieCreditDetailComponent],
-  exports: [MovieCreditDetailComponent, CreditListComponent]
+  declarations: [MovieCreditListComponent, MovieCreditDetailComponent],
+  exports: [MovieCreditDetailComponent, MovieCreditListComponent]
 })
 export class CreditsModule { }
