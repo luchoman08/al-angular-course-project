@@ -1,14 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Crew, Cast, ProfileImageSizesInterface } from '@app/core/';
-import { ImageURLPipe } from '@app/shared';
+import { Crew, Cast, ProfileImageSizesInterface } from '@app/core';
 import { PROFILE_IMAGE_SIZES } from '@app/core';
 
 @Component({
-  selector: 'app-credit-detail',
-  templateUrl: './credit-detail.component.html',
-  styleUrls: ['./credit-detail.component.scss']
+  selector: 'app-movie-credit-detail',
+  templateUrl: './movie-credit-detail.component.html',
+  styleUrls: ['./movie-credit-detail.component.scss']
 })
-export class CreditDetailComponent implements OnInit {
+export class MovieCreditDetailComponent implements OnInit {
   @Input() credit: Cast|Crew;
   PROFILE_IMAGE_SIZES: ProfileImageSizesInterface;
   typeOfCredit: string;
