@@ -4,7 +4,7 @@ import { MovieCreditListComponent } from './movie-credit-list/movie-credit-list.
 import { MovieCreditDetailComponent } from '@app/credits/movie-credit-detail/movie-credit-detail.component';
 import { MaterialModule } from '@app/material.module';
 import { CoreModule } from '@app/core/';
-import { PersonCreditsCombinedComponent } from '@app/credits/person-credits-combined/person-credits-combined.component';
+import { PersonCreditsCombinedListComponent } from './person-credits-combined-list/person-credits-combined-list.component';
 import { PersonCreditsCombinedDetailComponent } from '@app/credits/person-credits-combined-detail/person-credits-combined-detail.component';
 
 import { RouterModule } from '@angular/router';
@@ -24,13 +24,13 @@ import { MovieCreditsResolver } from '@app/credits/movie-credit-list/movie-credi
   declarations: [
     MovieCreditListComponent,
     MovieCreditDetailComponent,
-    PersonCreditsCombinedComponent,
+    PersonCreditsCombinedListComponent,
     PersonCreditsCombinedDetailComponent
   ],
   exports: [
     MovieCreditDetailComponent,
     MovieCreditListComponent,
-    PersonCreditsCombinedComponent,
+    PersonCreditsCombinedListComponent,
     PersonCreditsCombinedDetailComponent
   ]
 })
