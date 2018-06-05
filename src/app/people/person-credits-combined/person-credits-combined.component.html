@@ -1,0 +1,26 @@
+
+<ng-container *ngIf="personCreditsCombined$ | async as personCreditsCombined ">
+  <div class="container-fluid">
+    <div class="row">
+      <div *ngIf="personCreditsCombined.cast.length > 0" class="col-6" >
+        Cast <br>
+        <app-person-credits-combined-detail
+         *ngFor=" let cast of personCreditsCombined.cast | slice: 0 : 7"
+         [personCredit] = "cast">>
+        </app-person-credits-combined-detail>
+      </div>
+
+
+      <div *ngIf="personCreditsCombined.crew.length > 0" class="col-6" >
+        Crew <br>
+        <div>
+
+       <app-person-credits-combined-detail
+       *ngFor=" let crew of personCreditsCombined.crew | slice: 0 : 7"
+       [personCredit] = "crew">
+      </app-person-credits-combined-detail>
+      </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

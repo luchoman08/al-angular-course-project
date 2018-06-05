@@ -6,6 +6,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators/map';
 import { paramsAppendToResponse } from '@app/core/services/shared/shared-functions';
+import { PersonCreditsCombinedModel } from '@app/people/models/person-credits-combined.model';
 @Injectable()
 export class PeopleService {
   constructor (
@@ -19,6 +20,10 @@ export class PeopleService {
         const params = paramsAppendToResponse(videos, images);
         return this.apiService.get('/person/' + id, params)
         .pipe(map(data => data));
+  }
+  getCreditsCombined(personId: number|string): Observable<PersonCreditsCombinedModel>{
+    return this.apiService.get(`/person/${personId}/combined_credits`)
+    .pipe(map(data => { console.log(data); return data; }));
   }
 
 
