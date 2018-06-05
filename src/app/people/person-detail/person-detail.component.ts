@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Person, ProfileImageSizesInterface, PROFILE_IMAGE_SIZES } from '@app/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { PeopleService } from '../../core/services/people.service';
+import { PersonCreditsCombinedModel } from '@app/people/models/person-credits-combined.model';
 
 @Component({
   selector: 'app-person-detail',
@@ -10,9 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 export class PersonDetailComponent implements OnInit {
   person: Person;
   mode: string;
+  personCreditsCombined$: Observable<PersonCreditsCombinedModel>;
   PROFILE_IMAGE_SIZES: ProfileImageSizesInterface;
   constructor(
     private route: ActivatedRoute,
+    private peopleService: PeopleService
   ) {
     this.PROFILE_IMAGE_SIZES = PROFILE_IMAGE_SIZES;
     this.mode = 'determinate';
@@ -23,6 +28,7 @@ export class PersonDetailComponent implements OnInit {
       (data: { person: Person })  => {
         console.log(data);
         this.person = data.person;
+        this.personCreditsCombined$ = this.peopleService.getCreditsCombined(this.person.id);
       }
     );
   }
