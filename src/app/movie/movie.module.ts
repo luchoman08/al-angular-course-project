@@ -20,7 +20,6 @@ import { CreditsModule } from '@app/credits/credits.module';
   ],
   providers: [
     MovieResolver,
-    MovieService,
     AuthService
   ],
   declarations: [MovieDetailComponent],

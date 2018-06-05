@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <td valign="top">
+      <a [routerLink]="['/movies', personCredit.id]">
+        <img
+        class="poster-image"
+        [ngStyle]="{'max-width.px' : '90'}"
+        src="{{personCredit.poster_path | imageURL: POSTER_IMAGE_SIZES.W154}}"
+        alt="Poster image" srcset="">
+      </a>
+    </td>
+    <td valign="middle">
+      <ng-container *ngIf="personCredit.job">
+        <div class = "info" >
+          {{personCredit.job}}
+        </div>
+        </ng-container>
+      <ng-container *ngIf="personCredit.character">
+          <div class = "info" >
+        {{personCredit.character}}
+        </div>
+      </ng-container>
+    </td>
+  </tr>
+</table>

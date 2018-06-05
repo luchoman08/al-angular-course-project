@@ -1,6 +1,6 @@
-import { ImageSize } from '../enums/image-size.enum';
+import { ImageSize } from '@app/core';
 
-export abstract class Image {
+export abstract class ImageAbstract {
     aspect_ratio: number;
     file_path: string;
     height: number;

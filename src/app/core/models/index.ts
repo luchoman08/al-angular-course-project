@@ -12,3 +12,4 @@ export * from './tv-show.model';
 export * from './enums';
 export * from './user-list.model';
 export * from './abstract';
+export * from './credits.model';

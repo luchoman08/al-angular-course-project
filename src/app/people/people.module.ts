@@ -6,15 +6,19 @@ import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { PersonResolver } from './person-detail/person-detail-resolver.service';
 import { CoreModule, PeopleService } from '@app/core';
 import { MaterialModule } from '../material.module';
+import { SharedModule } from '@app/shared/shared.module';
+import { PersonCreditsCombinedComponent } from './person-credits-combined/person-credits-combined.component';
+import { PersonCreditsCombinedDetailComponent } from './person-credits-combined-detail/person-credits-combined-detail.component';
 
 @NgModule({
   imports: [
     CommonModule,
     PeopleRoutingModule,
     CoreModule,
+    SharedModule,
     MaterialModule
   ],
-  declarations: [PersonDetailComponent],
+  declarations: [PersonDetailComponent, PersonCreditsCombinedComponent, PersonCreditsCombinedDetailComponent],
   providers: [
     PeopleService,
     PersonResolver

@@ -2,7 +2,9 @@ import { CreditInterface, Gender } from '@app/core/';
 export class Cast implements CreditInterface {
   gender: Gender;
   name: string;
+  id: string;
   order: number;
-  prfoile_path: string;
+  profile_path: string;
   character: string;
+  job?: string;
 }

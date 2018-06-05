@@ -1,16 +1,20 @@
-<div *ngIf="(credits$ | async) as credits" class="credit-detail">
+<div    class="credit-detail">
+  <a [routerLink]="['/people', credit.id]">
+    <img
+    width="90px"
+    [src]=
+      "credit.profile_path? (credit.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185) :
+      './assets/img/people/default-profile-men.png'"
+    > </a>
+    {{credit.name}}
+  <ng-container *ngIf="credit.character then credit_character; else credit_job">
+  </ng-container >
+  <ng-template #credit_character>
+      como  <em><{{credit.character}}></em>
+  </ng-template>
+  <ng-template #credit_job>
+      trabajando como <em>{{credit.job}}</em>
+  </ng-template>
 
-  {{credits.cast[0].id}}
-  {{credits.cast[0].gender}}
-  {{credits.cast[0].name}}
-  {{credits.cast[0].character}}
-<!--  <div class="cast">
-
-  </div>
-  <mat-divider></mat-divider>
-  <div class="crew">
-
-  </div>
--->
 </div>
 

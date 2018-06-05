@@ -1,7 +1,11 @@
-import { Gender } from '@app/core/models/enums';
+import { Gender } from '@app/core';
 export interface CreditInterface {
+    id: string;
     gender: Gender;
     name: string;
     order: number;
-    prfoile_path: string;
+    profile_path: string;
+    job?: string;
+    character?: string;
+
 }

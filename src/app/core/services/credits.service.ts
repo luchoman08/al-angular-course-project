@@ -11,7 +11,7 @@ export class CreditsService {
     private apiService: ApiService
   ) {}
 
-  getMovieCredits(idMovie: string): Observable<{id: string, cast: Cast[], crew: Crew[]}> {
+  getMovieCredits(idMovie: string|number): Observable<{id: string, cast: Cast[], crew: Crew[]}> {
         return this.apiService.get(`/movie/${idMovie}/credits`)
         .pipe(map(data => data));
   }

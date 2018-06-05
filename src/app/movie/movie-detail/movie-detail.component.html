@@ -16,44 +16,40 @@
 
   <div class="content">
     <div class="row">
-      <div class="poster col-sm-12 col-md-3 col-lg-2">
+      <div class=" col-2 col-md-3">
 
-        <img src="{{posterPath}}" alt="" srcset="">
+        <img
+        class= "poster-image"
+        [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
+        src="{{movie.poster_path | imageURL: POSTER_IMAGE_SIZES.W185}}"
+        alt="movie poster image" srcset="">
       </div>
-      <div class="col-md-9 col-lg-6 principal-info">
-        <h3 i18n> {{movie.title}} </h3>
+      <div class="col-9 col-md-6 principal-info">
+        <h3 i18n> {{movie.title}} ({{movie.release_date | date:'yyyy'}})</h3>
         <div class="row">
-          <div class=" col-sm-2 col-lg-3">
+          <div class=" col-5">
             <div class="vote-average">
               <div>
+                  <mat-icon class="icon-rate">star_rate</mat-icon>
+                <p class="icon-rate"> {{movie.vote_average}} </p>
 
-                <mat-progress-spinner aria-label="movie.vote_average" [color]="movie.vote_average < 8 ? (movie.vote_average < 4? 'warn' : 'accent'): 'default'"
-                  [strokeWidth]="4" [diameter]="40" [value]="movie.vote_average * 10">
-                </mat-progress-spinner>
-                <div class="value"> {{movie.vote_average}} </div>
+                <p class="vote-count"> Votos: {{movie.vote_count}}</p>
               </div>
             </div>
           </div>
-          <div *ngIf="movie.videos.results.length > 0; else notrailers" class="col-sm-2 col-lg-2 view-trailers">
-            <button  mat-button (click)="openDialog()">
-              <mat-icon>movie</mat-icon> Ver trailers</button>
-          </div>
-          <ng-template #notrailers >
-          <div class="col-sm-2 col-lg-2 view-trailers">
-              <button [disabled]="true" mat-button >
-                No hay trailers</button>
-            </div>
-          </ng-template>
-          <div *ngIf="movie.images.backdrops.length > 0; else noimages" class="col-lg-2 col-sm-2 view-images">
-            <button mat-button (click)="openPreviewImages()">
-              <mat-icon>photo_library</mat-icon> Ver imagenes</button>
-          </div>
-          <ng-template #noimages >
-              <div class="col-sm-2 col-lg-2 view-trailers">
-                  <button [disabled]="true" mat-button >
-                    No hay imágenes</button>
-                </div>
-              </ng-template>
+            <button
+            [matTooltip]="movie.videos.results.length > 0? 'Ver trailers': 'No hay trailers'"
+            [matTooltipPosition]="'above'"
+            [disabled] = "movie.videos.results.length === 0"
+            class="menu-item"
+            mat-mini-fab (click)="openDialog()">
+              <mat-icon>movie</mat-icon> </button>
+            <button  matTooltip="Ver imágenes"
+            [matTooltipPosition]="'above'"
+            mat-mini-fab class="menu-item"
+            (click)="openPreviewImages()">
+              <mat-icon>photo_library</mat-icon> </button>
+
         </div>
         <h5 i18n> Resumen </h5>
         <p align="justify">{{movie.overview}}</p>
@@ -67,9 +63,11 @@
 </mat-list>
 <mat-list>
 <mat-divider></mat-divider>
-<div class="container">
-<div class="row" ><h3>Cast</h3>
-<app-credit-detail></app-credit-detail>
+<div *ngIf = "credits$ | async as credits"class="container">
+<div class="row" >
+<div class="col-12">
+  <app-credit-list [credits] = "credits"></app-credit-list>
+</div>
 </div>
 </div>
 </mat-list>

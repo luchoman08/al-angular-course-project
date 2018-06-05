@@ -1,3 +1,13 @@
-<p>
-  credit-list works!
-</p>
+<div class="row">
+
+
+  <div *ngIf="credits.cast.length > 0" [ngClass]="{'col-6' : credits.crew, 'col-12': !credits.crew}">
+    <h3>Cast</h3>
+    <app-credit-detail *ngFor="let cast of credits.cast | slice:0:7" [credit]="cast"> </app-credit-detail>
+  </div>
+
+  <div *ngIf="credits.crew.length > 0" [ngClass]="{'col-6' : credits.cast, 'col-12': !credits.cast}">
+    <h3>Crew</h3>
+    <app-credit-detail *ngFor="let crew of credits.crew | slice:0:7" [credit]="crew"> </app-credit-detail>
+  </div>
+</div>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Crew, Cast, CreditsService } from '@app/core/';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, Input } from '@angular/core';
+import { Crew, Cast, ProfileImageSizesInterface } from '@app/core/';
+import { ImageURLPipe } from '@app/shared';
+import { PROFILE_IMAGE_SIZES } from '@app/core';
 
 @Component({
   selector: 'app-credit-detail',
@@ -8,10 +9,13 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./credit-detail.component.scss']
 })
 export class CreditDetailComponent implements OnInit {
-  credits$: Observable<{id: string, cast: Cast[], crew: Crew[]}>;
-  constructor(private creditsService: CreditsService) {
-    this.credits$ = this.creditsService.getMovieCredits('500');
+  @Input() credit: Cast|Crew;
+  PROFILE_IMAGE_SIZES: ProfileImageSizesInterface;
+  typeOfCredit: string;
+  constructor() {
+    this.PROFILE_IMAGE_SIZES = PROFILE_IMAGE_SIZES;
    }
+
 
   ngOnInit() {
   }
