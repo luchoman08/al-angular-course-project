@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Person } from '@app/core/models';
-import { ApiService } from '@app/core/services/shared/api.service';
+import { ApiService, paramsAppendToResponse } from './shared';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators/map';
-import { paramsAppendToResponse } from '@app/core/services/shared/shared-functions';
-import { PersonCreditsCombinedModel } from '@app/core/models/person-credits-combined.model';
+import { PersonCreditsCombinedModel, Person } from '@app/core/models';
 @Injectable()
 export class PeopleService {
   constructor (

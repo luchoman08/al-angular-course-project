@@ -5,8 +5,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { SearchService } from '@app/core/services/search.service';
-import { Movie } from '@app/core/models/';
+import { SearchService } from '@app/core/';
+import { Movie } from '@app/core/';
 
 export class State {
   constructor(public name: string, public population: string, public flag: string) { }

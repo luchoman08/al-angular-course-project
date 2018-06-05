@@ -1,4 +1,4 @@
-import { PersonCreditInterface } from './interfaces/person-credit.interface';
+import { PersonCreditInterface } from '@app/core/models/interfaces/person-credit.interface';
 
 export class PersonCastCreditCombinedModel  implements PersonCreditInterface {
   id: string;

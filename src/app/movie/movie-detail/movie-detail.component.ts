@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { galleryOptions } from './gallery-options';
 import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
-import { PosterImageSizesInterface } from '../../core/images/interfaces/poster-image-sizes.interface';
+import { PosterImageSizesInterface } from '@app/core';
 
 import {
   NgxGalleryOptions,
@@ -18,7 +18,7 @@ import {
   BACKDROP_IMAGE_SIZES,
   CreditsModel,
   CreditsService
-} from '@app/core';
+} from '@app/core/';
 
 import {
   YoutubeVideoDialogComponent,

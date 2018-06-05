@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { ApiService } from '@app/core/services/shared/api.service';
+import { ApiService } from './shared';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators/map';
-import { Cast, Crew } from '@app/core/';
+import { Cast, Crew } from '@app/core/models';
 @Injectable()
 export class CreditsService {
   constructor (

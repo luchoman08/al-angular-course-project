@@ -1,5 +1,5 @@
 import { Genre, Video,  SpokenLanguage, ProductionCompany } from './';
-import { Image } from '../images';
+import { Image } from '@app/core/';
 
 export interface MovieJSON {
     id: number;

@@ -2,7 +2,7 @@ import { Injectable, } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { PeopleService, Person } from '@app/core';
+import { PeopleService, Person } from '@app/core/';
 import { catchError } from 'rxjs/operators/catchError';
 
 

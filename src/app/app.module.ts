@@ -19,7 +19,7 @@ import {
   MatButtonModule
 } from '@angular/material';
 
-import { CoreModule } from '@app/core';
+import { CoreModule } from '@app/core/';
 
 @NgModule({
   declarations: [

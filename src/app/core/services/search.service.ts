@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Person } from '@app/core/models';
-import { ApiService } from '@app/core/services/shared/api.service';
+import { ApiService } from './shared';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators/map';
 import { HttpParams } from '@angular/common/http';
-import { Movie } from '../models/movie.model';
+import { Movie } from '@app/core/models';
 @Injectable()
 export class SearchService {
   constructor (

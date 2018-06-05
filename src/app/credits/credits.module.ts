@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MovieCreditListComponent } from './movie-credit-list/movie-credit-list.component';
 import { MovieCreditDetailComponent } from '@app/credits/movie-credit-detail/movie-credit-detail.component';
 import { MaterialModule } from '@app/material.module';
-import { CoreModule } from '@app/core';
+import { CoreModule } from '@app/core/';
 import { PersonCreditsCombinedComponent } from '@app/credits/person-credits-combined/person-credits-combined.component';
 import { PersonCreditsCombinedDetailComponent } from '@app/credits/person-credits-combined-detail/person-credits-combined-detail.component';
 

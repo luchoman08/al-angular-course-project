@@ -1,5 +1,5 @@
-import { CreditInterface } from '@app/core/';
-import { Gender } from '@app/core/';
+import { CreditInterface } from '@app/core';
+import { Gender } from '@app/core';
 export class Crew implements CreditInterface {
    id: string;
   gender: Gender;

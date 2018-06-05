@@ -1,4 +1,4 @@
-import { CreditInterface, Gender } from '@app/core/';
+import { CreditInterface, Gender } from '@app/core';
 export class Cast implements CreditInterface {
   gender: Gender;
   name: string;

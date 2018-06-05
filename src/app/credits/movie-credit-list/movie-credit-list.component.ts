@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CreditsService, CreditsModel } from '@app/core';
-import { Observable } from 'rxjs/Observable';
+import {  CreditsModel } from '@app/core';
 @Component({
   selector: 'app-movie-credit-list',
   templateUrl: './movie-credit-list.component.html',

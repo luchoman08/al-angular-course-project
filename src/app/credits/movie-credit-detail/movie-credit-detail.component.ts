@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Crew, Cast, ProfileImageSizesInterface } from '@app/core';
-import { PROFILE_IMAGE_SIZES } from '@app/core';
+import { Crew, Cast, ProfileImageSizesInterface } from '@app/core/';
+import { PROFILE_IMAGE_SIZES } from '@app/core/';
 
 @Component({
   selector: 'app-movie-credit-detail',

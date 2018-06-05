@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PersonCastCreditCombinedModel } from '@app/core/models/person-cast-credit-combined.model';
-import { PersonCrewCreditCombinedModel } from '@app/core/models/person-crew-credit-combined.model';
-import { PosterImageSizesInterface, POSTER_IMAGE_SIZES } from '@app/core';
+import { PersonCastCreditCombinedModel } from '@app/core/';
+import { PersonCrewCreditCombinedModel } from '@app/core/';
+import { PosterImageSizesInterface, POSTER_IMAGE_SIZES } from '@app/core/';
 
 @Component({
   selector: 'app-person-credits-combined-detail',

@@ -1,5 +1,5 @@
-import { Gender } from '@app/core/models/enums';
-import { Image } from '@app/core/images/';
+import { Gender } from '@app/core/';
+import { Image } from '@app/core/';
 export class Person {
     id: number;
     name: string;
