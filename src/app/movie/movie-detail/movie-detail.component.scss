@@ -20,20 +20,19 @@
   margin-top: -1px;
   padding-left: 12%;
 }
-.circle-number {
-  margin-left: -8px;
-}
-.vote-average {
-  position: relative;
-  text-align: center;
 
+.vote-average {
+  margin-top: 10px;
  }
 
-.value {
-  position:absolute;
-  top: 8px;
-  left: 10px;
+.icon-rate {
+  float:left;
 }
+.vote-count {
+  margin-left: 60px;
+}
+button:focus { outline-style: none; }
 .menu-item{
+  background-color: purple;
   margin-left: 15px;
 }
