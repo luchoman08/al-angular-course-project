@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@app/material.module';
+import { MaterialModule } from '@app/shared/material.module';
 import { RouterModule } from '@angular/router';
 import {  } from '@app/shared/pipes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
