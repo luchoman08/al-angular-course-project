@@ -6,3 +6,4 @@ export * from './auth.service';
 export * from './cache';
 export * from './credits.service';
 export * from './search.service';
+export * from './tv-show.service';
