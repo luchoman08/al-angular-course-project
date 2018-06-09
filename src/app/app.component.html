@@ -1,79 +1,10 @@
 
-        <mat-toolbar  color="primary" class=" top-toolbar mat-elevation-z6">
-          <div class="main-icon">
-            <p>
-              TMdb <mat-icon matBadgeColor="warn">local_movies</mat-icon>
-            </p>
-          </div>
-            <a routerLink="/movies/500" ><button mat-button>Peliculas</button></a>
-          <a routerLink="/people/2">
-            <button mat-button>Actores</button>
-          </a>
-          <a>
-            <button mat-button>Series</button>
-          </a>
-          <span class="example-spacer"></span>
-
-
-
-          <form class="example-form">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Buscar peliculas" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
-              <mat-autocomplete #auto="matAutocomplete" disableRipple = "true">
-                <mat-option *ngFor="let movie of this.movies$ | async" [value]="movie.title">
-                    <a [routerLink]="['movies', movie.id]">
-                  <img style="vertical-align:middle;" aria-hidden  height="25" />
-                  <span>{{ movie.title }}</span>
-                 |
-                  <small>Votación: {{movie.vote_average}}</small>
-                </a>
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-
-            <br />
-
-            <mat-slide-toggle
-              [checked]="stateCtrl.disabled"
-              (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
-              Disable Input?
-            </mat-slide-toggle>
-          </form>
-
-
-
-
-        </mat-toolbar>
-  <mat-drawer-container class="principal-container" (backdropClick)="close()">
-
-
-    <mat-drawer #drawer   (keydown.escape)="close()"   mode="side" >
-      <mat-icon (click)="close()" class="close-sidenav">close</mat-icon>
-      <div class="menu-container">
-        <mat-chip-list class="mat-chip-list-stacked">
-          <mat-chip color="warn">Movies </mat-chip>
-          <mat-chip selected="true" color="warn">People </mat-chip>
-          <mat-chip color="warn">Series </mat-chip>
-          <mat-chip color="warn">My profile</mat-chip>
-        </mat-chip-list>
-      </div>
-    </mat-drawer>
-
-      <!-- mat-toolbar color = "default" >
-        <button (click)="sidenav.open()" mat-mini-fab>
-          <mat-icon >menu</mat-icon>
-        </button>
-
-
-
-        <span class="example-spacer"></span>
-
-
-      </mat-toolbar -->
+<app-navbar></app-navbar>
+  <div class="principal-container" >
         <router-outlet></router-outlet>
-  </mat-drawer-container>
+  </div>
 
 
 
- <mat-toolbar class="footer" color="primary"> <span class="example-spacer"></span><small>TMdb Material Inc &reg; 2018</small></mat-toolbar>
 
+<app-footer> </app-footer>

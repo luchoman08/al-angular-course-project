@@ -9,37 +9,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {
-  MatSlideToggleModule,
-  MatIconModule,
-  MatToolbarModule,
-  MatChipsModule,
-  MatInputModule,
-  MatSidenavModule,
-  MatButtonModule
-} from '@angular/material';
 
 import { CoreModule } from '@app/core/';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    FormsModule,
     CoreModule,
-    ReactiveFormsModule,
-    MatChipsModule,
-    MatInputModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatAutocompleteModule,
+    SharedModule,
     AppRoutingModule,
-    MatIconModule,
     LoadingBarModule.forRoot(),
 
   ],
