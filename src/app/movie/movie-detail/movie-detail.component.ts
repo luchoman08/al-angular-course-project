@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { galleryOptions } from './gallery-options';
+import { galleryOptionsFullScreenOnly } from '@app/core';
 import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs';
 import { PosterImageSizesInterface } from '@app/core';
@@ -86,7 +86,7 @@ export class MovieDetailComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.galleryOptions = galleryOptions;
+    this.galleryOptions = galleryOptionsFullScreenOnly;
 
     this.route.data.subscribe((data: { movie: Movie }) => {
       this.movie = new Movie();
