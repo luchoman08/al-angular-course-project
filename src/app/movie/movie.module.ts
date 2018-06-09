@@ -11,7 +11,6 @@ import { CreditsModule } from '@app/credits/credits.module';
 @NgModule({
   imports: [
     CommonModule,
-    CoreModule,
     SharedModule,
     CreditsModule,
     NgxGalleryModule,

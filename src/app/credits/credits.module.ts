@@ -15,8 +15,7 @@ import { MovieCreditsResolver } from '@app/credits/movie-credit-list/movie-credi
     CommonModule,
     RouterModule,
     MaterialModule,
-    SharedModule,
-    CoreModule
+    SharedModule
   ],
   providers: [
     MovieCreditsResolver

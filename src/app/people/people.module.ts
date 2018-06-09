@@ -13,7 +13,6 @@ import { CreditsModule } from '@app/credits/credits.module';
   imports: [
     CommonModule,
     PeopleRoutingModule,
-    CoreModule,
     SharedModule,
     CreditsModule,
     MaterialModule
