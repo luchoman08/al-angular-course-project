@@ -1,0 +1,15 @@
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Buscar peliculas" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+              <mat-autocomplete #auto="matAutocomplete" disableRipple = "true">
+                <mat-option *ngFor="let movie of this.movies$ | async" [value]="movie.title">
+                    <a [routerLink]="['movies', movie.id]">
+                  <img style="vertical-align:middle;" aria-hidden  height="25" />
+                  <span>{{ movie.title }}</span>
+                 |
+                  <small>Votación: {{movie.vote_average}}</small>
+                </a>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>

@@ -1,0 +1,10 @@
+@import '~sass/mixins';
+.example-form {
+    margin-top: 45px;
+  }
+  .example-full-width {
+    width: 500px;
+  }
+  a{
+    @include text-color();
+  }

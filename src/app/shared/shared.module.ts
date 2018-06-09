@@ -15,6 +15,7 @@ import {
 } from '@app/shared/';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { SearchInputComponent } from './search-input/search-input.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FooterComponent } from './layout/footer/footer.component';
     FirstWordPipe,
     ImageURLPipe,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    SearchInputComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +52,8 @@ import { FooterComponent } from './layout/footer/footer.component';
     FirstWordPipe,
     ImageURLPipe,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    SearchInputComponent
   ],
   entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
 })

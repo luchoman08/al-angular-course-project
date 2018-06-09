@@ -12,6 +12,8 @@
 a{
   @include text-color();
 }
+
+
 .sidenav-button {
     margin-top: 3px;
 }
@@ -34,12 +36,6 @@ a{
 }
 
 
-.example-form {
-  margin-top: 45px;
-}
-.example-full-width {
-  width: 500px;
-}
 
 button:focus { outline-style: none; }
 .main-icon > p {
