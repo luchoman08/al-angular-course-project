@@ -1,7 +1,7 @@
 import { Genre, Video,  SpokenLanguage, ProductionCompany } from './';
 import { Image } from '@app/core/';
 
-export interface MovieJSON {
+export interface MovieInterface {
     id: number;
     title: string;
     overview: string;
@@ -44,13 +44,12 @@ export class Movie {
     genres?: Genre[];
     videos?: {results: Video[]};
     images?: { backdrops: Image[], posters: Image[]};
-    public static fromJSON(json: MovieJSON): Movie {
+    public static fromJSON(json: MovieInterface): Movie {
       const movie = Object.create(Movie.prototype);
       return Object.assign(movie, json);
       }
     getVideoKeys(): string[] {
       if (this.videos) {
-        console.log('una vez y otra mas');
         return this.videos.results.map((video: Video) => video.key );
       } else {
         return new Array<string>();
