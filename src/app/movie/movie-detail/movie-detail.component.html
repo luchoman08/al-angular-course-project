@@ -40,6 +40,9 @@
             <button
             [matTooltip]="movie.videos.results.length > 0? 'Ver trailers': 'No hay trailers'"
             [matTooltipPosition]="'above'"
+            [matBadge]="movie.videos.results.length" 
+            matBadgePosition="after" 
+            matBadgeColor="default"
             [disabled] = "movie.videos.results.length === 0"
             class="menu-item"
             mat-mini-fab (click)="openDialog()">
@@ -47,6 +50,9 @@
             <button 
             [matTooltip]="movie.images.backdrops.length > 0? 'Ver imágenes': 'No hay imágenes'"
             [matTooltipPosition]="'above'"
+            [matBadge]="movie.images.backdrops.length" 
+            matBadgePosition="after" 
+            matBadgeColor="default"
             [disabled]="movie.images.backdrops.length === 0"
             mat-mini-fab class="menu-item"
             (click)="openPreviewImages()">
