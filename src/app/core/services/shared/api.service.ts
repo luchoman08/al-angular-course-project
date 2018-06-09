@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {  HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { catchError } from 'rxjs/operators/catchError';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from '@env/environment';
 @Injectable()
 export class ApiService {
@@ -12,7 +11,7 @@ export class ApiService {
   ) {}
 
   private formatErrors(error: any) {
-    return new ErrorObservable(error.error);
+    return new Observable(error.error);
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
-import { map } from 'rxjs/operators/map';
+import { Observable } from 'rxjs';
+
+
+import { map } from 'rxjs/operators';
 import { JwtService } from './jwt.service';
 import { HttpParams } from '@angular/common/http';
 import { ApiService } from './shared';
@@ -39,11 +39,13 @@ export class AuthService {
 
   public createSession(): Observable<any> {
       const params: HttpParams = new HttpParams().set('request_token', this.jwtService.getToken());
-      return this.apiService.get('/authentication/session/new', params).map(
+      return this.apiService.get('/authentication/session/new', params).pipe(
+        map(
           response =>  {
           console.log(response);
           return response;
           }
+        )
       );
   }
 
