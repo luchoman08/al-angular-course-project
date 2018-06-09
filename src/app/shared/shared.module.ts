@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NgxGalleryModule } from 'ngx-gallery';
+
 import {
   CapitalizePipe,
   ImageURLPipe,
@@ -36,6 +38,7 @@ import { NavbarComponent, FooterComponent } from './layout';
     CommonModule,
     RouterModule,
     MaterialModule,
+    NgxGalleryModule,
     ReactiveFormsModule,
     FormsModule
   ],
@@ -46,6 +49,8 @@ import { NavbarComponent, FooterComponent } from './layout';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+
+    NgxGalleryModule,
 
     SingleDataDialogEditOrAddComponent,
     YoutubeVideoComponent,
