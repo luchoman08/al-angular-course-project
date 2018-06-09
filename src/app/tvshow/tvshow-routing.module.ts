@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { TvshowDetailComponent } from './tvshow-detail/tvshow-detail.component';
+import { TvShowResolver } from './tvshow-detail/tvshow-detail-resolver.service';
 
 const routes: Routes = [
   {
     path: ':id',
-    component: TvshowDetailComponent
+    component: TvshowDetailComponent,
+    resolve: {
+      tvShow: TvShowResolver
+    }
   }
 ];
 
