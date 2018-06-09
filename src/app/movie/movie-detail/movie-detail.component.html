@@ -17,11 +17,13 @@
   <div class="content">
     <div class="row">
       <div class=" col-2 col-md-3">
-
         <img
         class= "poster-image"
         [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
-        src="{{movie.poster_path | imageURL: POSTER_IMAGE_SIZES.W185}}"
+        [src]="
+        movie.poster_path?
+        (movie.poster_path | imageURL: POSTER_IMAGE_SIZES.W185):
+        './assets/img/posters/poster_default.png'"
         alt="movie poster image" srcset="">
       </div>
       <div class="col-9 col-md-6 principal-info">
@@ -40,18 +42,18 @@
             <button
             matTooltip="Trailers"
             [matTooltipPosition]="'above'"
-            [matBadge]="movie.videos.results.length" 
-            matBadgePosition="after" 
+            [matBadge]="movie.videos.results.length"
+            matBadgePosition="after"
             matBadgeColor="default"
             [disabled] = "movie.videos.results.length === 0"
             class="menu-item"
             mat-mini-fab (click)="openTrailers()">
               <mat-icon>movie</mat-icon> </button>
-            <button 
+            <button
             matTooltip="Images"
             [matTooltipPosition]="'above'"
-            [matBadge]="movie.images.backdrops.length" 
-            matBadgePosition="after" 
+            [matBadge]="movie.images.backdrops.length"
+            matBadgePosition="after"
             matBadgeColor="default"
             [disabled]="movie.images.backdrops.length === 0"
             mat-mini-fab class="menu-item"

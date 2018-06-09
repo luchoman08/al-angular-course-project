@@ -28,7 +28,6 @@ export class TvshowDetailComponent implements OnInit {
     private route: ActivatedRoute,
     public dialog: MatDialog,
     private galleryImageService: GalleryImagesService,
-    private imgURLPipe: ImageURLPipe
   ) {
     this.POSTER_IMAGE_SIZES =  POSTER_IMAGE_SIZES;
     this.tvShow = new TVShow();
@@ -53,7 +52,6 @@ export class TvshowDetailComponent implements OnInit {
     this.route.data.subscribe((data: { tvShow: TVShow }) => {
       this.tvShow = new TVShow();
       this.tvShow = TVShow.fromJSON(data.tvShow);
-
       this.galleryImages = this.galleryImageService.
       getBackdropGalleryImages(this.tvShow.images.backdrops);
 
