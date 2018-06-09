@@ -44,8 +44,10 @@
             class="menu-item"
             mat-mini-fab (click)="openDialog()">
               <mat-icon>movie</mat-icon> </button>
-            <button  matTooltip="Ver imágenes"
+            <button 
+            [matTooltip]="movie.images.backdrops.length > 0? 'Ver imágenes': 'No hay imágenes'"
             [matTooltipPosition]="'above'"
+            [disabled]="movie.images.backdrops.length === 0"
             mat-mini-fab class="menu-item"
             (click)="openPreviewImages()">
               <mat-icon>photo_library</mat-icon> </button>
