@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@app/shared/material.module';
 import { RouterModule } from '@angular/router';
-import {  } from '@app/shared/pipes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import {
+  CapitalizePipe,
+  ImageURLPipe,
+  FirstWordPipe
+} from './pipes';
+
 import {
   YoutubeVideoComponent,
   SingleDataDialogEditOrAddComponent,
   YoutubeVideoDialogComponent,
-  CapitalizePipe,
-  ImageURLPipe,
-  FirstWordPipe
-} from '@app/shared/';
-import { NavbarComponent } from './layout/navbar/navbar.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { SearchInputComponent } from './search-input/search-input.component';
+  SearchInputComponent,
+} from './components';
+
+import { MaterialModule } from './material.module';
+import { NavbarComponent, FooterComponent } from './layout';
 
 
 @NgModule({

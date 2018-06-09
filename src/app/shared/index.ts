@@ -1,2 +1,2 @@
-export * from './common-components';
+export * from './components';
 export * from './pipes';

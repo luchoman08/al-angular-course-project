@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Image } from '@app/core/';
 import { NgxGalleryImage } from 'ngx-gallery';
-import { ImageURLPipe } from '@app/shared';
-import { BACKDROP_IMAGE_SIZES } from '@app/core/models';
+import { ImageURLPipe } from '@app/shared/pipes';
+import { BACKDROP_IMAGE_SIZES, Image } from '@app/core/models';
 @Injectable({
   providedIn: 'root'
 })
