@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import 'rxjs/add/operator/filter';
+
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { SearchService } from '@app/core/';
 import { Movie } from '@app/core/';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PersonCreditsCombinedModel } from '@app/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-person-credits-combined-list',

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Movie } from '@app/core/models';
 import { ApiService } from './shared';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
-import { map } from 'rxjs/operators/map';
+
+
+import { map } from 'rxjs/operators';
 import { paramsAppendToResponse } from '@app/core/services/shared';
 @Injectable()
 export class MovieService {

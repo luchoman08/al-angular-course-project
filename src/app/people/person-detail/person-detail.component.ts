@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person, ProfileImageSizesInterface, PROFILE_IMAGE_SIZES } from '@app/core/';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { PeopleService } from '../../core/services/people.service';
 import { PersonCreditsCombinedModel } from '@app/core/';
 
