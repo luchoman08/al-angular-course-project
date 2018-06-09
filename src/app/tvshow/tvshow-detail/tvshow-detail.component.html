@@ -1,3 +1,71 @@
-<p>
-  tvshow-detail works!
-</p>
+
+
+<div class="tvShow-detail container-fluid" [ngStyle]="{'background': galleryImages[0]? '
+  linear-gradient(
+  rgba(0, 0, 0, 0.75),
+  rgba(0, 0, 0, 0.75)
+  ), url( ' + galleryImages[0].big + ')' :
+   'linear-gradient(
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.75)
+    )' ,
+  'background-repeat': 'no-repeat',
+  'background-size': '',
+  'width': '100%' }">
+
+
+  <div class="content">
+    <div class="row">
+      <div class=" col-2 col-md-3">
+
+        <img
+        class= "poster-image"
+        [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
+        src="{{tvShow.poster_path | imageURL: POSTER_IMAGE_SIZES.W185}}"
+        alt="tvShow poster image" srcset="">
+      </div>
+      <div class="col-9 col-md-6 principal-info">
+        <h3 i18n> {{tvShow.title}} {{ tvShow.release_date? '(' + (tvShow.release_date | date:'yyyy') + ')' : ''}}</h3>
+        <div class="row">
+          <div class=" col-5">
+            <div class="vote-average">
+              <div>
+                  <mat-icon class="icon-rate">star_rate</mat-icon>
+                <p class="icon-rate"> {{tvShow.vote_average}} </p>
+
+                <p class="vote-count"> Votos: {{tvShow.vote_count}}</p>
+              </div>
+            </div>
+          </div>
+            <button
+            matTooltip="Trailers"
+            [matTooltipPosition]="'above'"
+            [matBadge]="tvShow.videos.results.length" 
+            matBadgePosition="after" 
+            matBadgeColor="default"
+            [disabled] = "tvShow.videos.results.length === 0"
+            class="menu-item"
+            mat-mini-fab (click)="openTrailers()">
+              <mat-icon>tvShow</mat-icon> </button>
+            <button 
+            matTooltip="Images"
+            [matTooltipPosition]="'above'"
+            [matBadge]="tvShow.images.backdrops.length" 
+            matBadgePosition="after" 
+            matBadgeColor="default"
+            [disabled]="tvShow.images.backdrops.length === 0"
+            mat-mini-fab class="menu-item"
+            (click)="openPreviewImages()">
+              <mat-icon>photo_library</mat-icon> </button>
+
+        </div>
+        <h5 i18n> Summary </h5>
+        <p align="justify">{{tvShow.overview}}</p>
+      </div>
+
+
+      <ngx-gallery #onlyPreviewGallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+    </div>
+  </div>
+</div>
+
