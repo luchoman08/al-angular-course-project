@@ -7,7 +7,11 @@ const routes: Routes = [
     },
     {
       path: 'people',
-          loadChildren: './people/people.module#PeopleModule'
+      loadChildren: './people/people.module#PeopleModule'
+    },
+    {
+      path: 'tv',
+      loadChildren: './tvshow/tvshow.module#TvShowModule'
     }
 ];
 
