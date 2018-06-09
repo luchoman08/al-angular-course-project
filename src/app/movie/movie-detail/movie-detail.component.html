@@ -38,7 +38,7 @@
             </div>
           </div>
             <button
-            [matTooltip]="movie.videos.results.length > 0? 'Ver trailers': 'No hay trailers'"
+            matTooltip="Trailers"
             [matTooltipPosition]="'above'"
             [matBadge]="movie.videos.results.length" 
             matBadgePosition="after" 
@@ -48,7 +48,7 @@
             mat-mini-fab (click)="openDialog()">
               <mat-icon>movie</mat-icon> </button>
             <button 
-            [matTooltip]="movie.images.backdrops.length > 0? 'Ver imágenes': 'No hay imágenes'"
+            matTooltip="Images"
             [matTooltipPosition]="'above'"
             [matBadge]="movie.images.backdrops.length" 
             matBadgePosition="after" 
@@ -59,7 +59,7 @@
               <mat-icon>photo_library</mat-icon> </button>
 
         </div>
-        <h5 i18n> Resumen </h5>
+        <h5 i18n> Summary </h5>
         <p align="justify">{{movie.overview}}</p>
       </div>
 
