@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
-    { path: 'movies',
+    {
+      path: 'movies',
       loadChildren: './movie/movie.module#MovieModule'
     },
-    { path: 'people',
+    {
+      path: 'people',
           loadChildren: './people/people.module#PeopleModule'
     }
 ];
