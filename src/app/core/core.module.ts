@@ -6,12 +6,12 @@ import { ApiKeyInterceptor } from './interceptors';
 import {
   MovieService,
   PeopleService,
-  TVSeriesCacheService,
   CreditsService,
   ApiService,
   JwtService,
   SearchService,
-  ApiImagesService
+  ApiImagesService,
+  GalleryImagesService
 } from './services';
 @NgModule({
   imports: [
@@ -26,7 +26,7 @@ import {
     SearchService,
     CreditsService,
     ApiImagesService,
-    TVSeriesCacheService,
+    GalleryImagesService,
     JwtService
   ],
   declarations: []
