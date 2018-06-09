@@ -32,6 +32,9 @@ import {
   ],
   providers: [ImageURLPipe, FirstWordPipe, CapitalizePipe],
   exports: [
+    CommonModule,
+    MaterialModule,
+
     SingleDataDialogEditOrAddComponent,
     YoutubeVideoComponent,
     YoutubeVideoDialogComponent,
