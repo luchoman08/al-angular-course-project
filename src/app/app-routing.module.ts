@@ -14,7 +14,7 @@ const routes: Routes = [
       loadChildren: './tvshow/tvshow.module#TvShowModule'
     },
     {
-      path: 'home',
+      path: '',
       loadChildren: './home/home.module#HomeModule'
     }
 ];
