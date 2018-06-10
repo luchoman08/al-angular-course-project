@@ -31,7 +31,7 @@ export class MoviesGalleryComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.galleryMovieImages = this.galeryImagesService.getBackdropDescriptionGalleryImages(this.movies);
+    this.galleryMovieImages = this.galeryImagesService.getMovieBackdropDescriptionGalleryImages(this.movies);
     this.selectedImage = this.galleryMovieImages[0];
   }
   /**
