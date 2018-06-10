@@ -29,6 +29,7 @@ export class TVShow {
     status: TvSeriesStatusEnum ;
     type: TvSeriesTypeEnum;
     poster_path: string;
+    last_air_date: Date;
     backdrop_path: string;
     seasons: TvSeason[];
     videos?: {results: Video[]};
