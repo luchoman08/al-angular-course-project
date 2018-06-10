@@ -24,25 +24,25 @@
         <div class="row birth-day">
 
           <div class="mini-detail-element" *ngIf="person.also_known_as.length > 0">
-            <small>Tambien conocido como: {{(person.also_known_as | slice:0:2).join(', ')}}</small>
+            <small>Also known as: {{(person.also_known_as | slice:0:2).join(', ')}}</small>
           </div>
           <div *ngIf="person.birthday" class="mini-detail-element">
             <mat-icon>today</mat-icon>
-            <small>Fecha de nacimiento: {{person.birthday | date: 'dd/MM/yyyy'}}</small>
+            <small>Birth date: {{person.birthday | date: 'dd/MM/yyyy'}}</small>
           </div>
           <div *ngIf="person.deathday" class="mini-detail-element">
             <mat-icon>today</mat-icon>
-            <small>Fecha de defunción: {{person.deathday | date: 'dd/MM/yyyy'}}</small>
+            <small>Dead dathe: {{person.deathday | date: 'dd/MM/yyyy'}}</small>
           </div>
 
         </div>
         <div class="biography row" *ngIf="person.biography; else nobiography">
-          <h4>Biografía</h4>
+          <h4>Biography</h4>
           <p align="justify">{{person.biography}} </p>
         </div>
         <ng-template #nobiography>
           <div class="biography row">
-            <h4>No se ha encontrado una biografía</h4>
+            <h4>Biography not available</h4>
             <p align="justify">{{person.biography}}</p>
           </div>
         </ng-template>
