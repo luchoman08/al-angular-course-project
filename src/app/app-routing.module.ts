@@ -12,6 +12,10 @@ const routes: Routes = [
     {
       path: 'tv',
       loadChildren: './tvshow/tvshow.module#TvShowModule'
+    },
+    {
+      path: 'home',
+      loadChildren: './home/home.module#HomeModule'
     }
 ];
 

@@ -1,0 +1,16 @@
+<div class="container">
+  <div fxLayout="row" fxLayoutGap="20px" >
+    <div
+    *ngIf="popularMoviesResults$ | async as popularMoviesResults"
+    fxLayout="column">
+      <h3>Popular movies</h3>
+      <app-movies-gallery [movies]="popularMoviesResults.results"></app-movies-gallery>
+    </div>
+    <div
+    *ngIf="inTheatresMoviesResults$ | async as inTheatresMoviesResults"
+    fxLayout="column">
+      <h3>In theatres</h3>
+      <app-movies-gallery [movies]="inTheatresMoviesResults.results"></app-movies-gallery>
+    </div>
+  </div>
+</div>
