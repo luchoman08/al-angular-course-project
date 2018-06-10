@@ -1,8 +1,16 @@
-import { NgxGalleryAnimation } from 'ngx-gallery';
+import { NgxGalleryAnimation, NgxGalleryOptions } from 'ngx-gallery';
 
-export const galleryOptionsFullScreenOnly = [{
+export const galleryOptionsFullScreenOnly: NgxGalleryOptions[] = [{
   image: false,
   thumbnails: false,
   width: '0px',
   height: '0px'
 }];
+
+export const galleryOptionsMovieBackdropDetail: NgxGalleryOptions[] = [
+      {
+        imageDescription: true,
+        lazyLoading: true
+      },
+      ];
+
