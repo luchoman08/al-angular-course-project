@@ -7,7 +7,7 @@
     "start": "ng serve",
     "serve-c9": "ng serve --host 0.0.0.0 --port $PORT --public $C9_HOSTNAME",
     "build": "ng build --prod",
-    "build-github": "ng build   --named-chunks true --prod --output-hashing all --build-optimizer --aot --vendor-chunk --base-href 'https://luchoman08.github.io/al-angular-course-project/' ",
+    "build-github": "ng build   --named-chunks true --prod --output-hashing all  --aot --base-href 'https://luchoman08.github.io/al-angular-course-project/' ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
