@@ -40,6 +40,9 @@ export class MovieService {
   getInTheatres(page?: number): Observable<Results<Movie>> {
     return this.getResultsMultiplePage('/movie/now_playing', page);
   }
+  getTopRated(page?: number): Observable<Results<Movie>> {
+    return this.getResultsMultiplePage('/movie/top_rated', page);
+  }
 
 }
 
