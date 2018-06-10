@@ -5,6 +5,7 @@ export * from './production-company.model';
 export * from './video.model';
 export * from './user-movie-list.model';
 export * from './person.model';
+export * from './results.model';
 export * from './genre.model';
 export * from './credits';
 export * from './tv-show.model';
