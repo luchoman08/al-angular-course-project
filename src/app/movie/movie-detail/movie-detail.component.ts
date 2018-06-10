@@ -39,9 +39,11 @@ export class MovieDetailComponent implements OnInit {
   movie: Movie;
   @ViewChild('onlyPreviewGallery') onlyPreviewGallery: NgxGalleryComponent;
   POSTER_IMAGE_SIZES: PosterImageSizesInterface;
-  credits$: Observable<CreditsModel>;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+
+  credits$: Observable<CreditsModel>;
+
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
@@ -49,9 +51,10 @@ export class MovieDetailComponent implements OnInit {
     private creditsService: CreditsService,
     private imgURLPipe: ImageURLPipe
   ) {
-    this.POSTER_IMAGE_SIZES =  POSTER_IMAGE_SIZES;
     this.movie = new Movie();
+    this.POSTER_IMAGE_SIZES =  POSTER_IMAGE_SIZES;
     this.galleryImages = new Array<NgxGalleryImage>();
+    this.galleryOptions = galleryOptionsFullScreenOnly;
   }
   openPreviewImages(): void {
     this.onlyPreviewGallery.openPreview(0);
@@ -68,7 +71,6 @@ export class MovieDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.galleryOptions = galleryOptionsFullScreenOnly;
     this.route.data.subscribe((data: { movie: Movie }) => {
       this.movie = new Movie();
       this.movie = Movie.fromJSON(data.movie);
