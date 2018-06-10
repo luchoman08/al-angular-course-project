@@ -12,7 +12,6 @@ import {
 } from './pipes';
 
 import {
-  YoutubeVideoComponent,
   SingleDataDialogEditOrAddComponent,
   YoutubeVideoDialogComponent,
   SearchInputComponent,
@@ -29,7 +28,6 @@ import {
 @NgModule({
   declarations: [
     SingleDataDialogEditOrAddComponent,
-    YoutubeVideoComponent,
     YoutubeVideoDialogComponent,
     CapitalizePipe,
     FirstWordPipe,
@@ -63,7 +61,6 @@ import {
     NgxGalleryModule,
 
     SingleDataDialogEditOrAddComponent,
-    YoutubeVideoComponent,
     YoutubeVideoDialogComponent,
     CapitalizePipe,
     FirstWordPipe,
