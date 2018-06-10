@@ -17,7 +17,7 @@ export class SearchService {
     const params = new HttpParams().set('query', query);
         return this.apiService.get('/search/movie', params)
         .pipe(map(data => {
-          return (<Movie[]> data.results).sort((movie1: Movie, movie2: Movie) => movie2.vote_average - movie1.vote_average);
+          return (<Movie[]> data.results).sort(Movie.sortMethod);
         } ));
   }
 
