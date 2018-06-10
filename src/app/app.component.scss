@@ -2,5 +2,5 @@
 .principal-container {
   @include background-color();
   @include text-color();
-  min-height: 700px;
+  min-height: 500px;
 }
