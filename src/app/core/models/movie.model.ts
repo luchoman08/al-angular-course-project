@@ -1,5 +1,10 @@
-import { Genre, Video,  SpokenLanguage, ProductionCompany } from './';
-import { Image } from '@app/core/';
+import {
+  Image,
+  Genre,
+  Video,
+  SpokenLanguage,
+  ProductionCompany
+} from './';
 
 export interface MovieInterface {
     id: number;
@@ -48,6 +53,12 @@ export class Movie {
       const movie = Object.create(Movie.prototype);
       return Object.assign(movie, json);
       }
+    public static sortMethod(movie1: Movie, movie2: Movie): number {
+      return movie2.vote_average - movie1.vote_average;
+    }
+    public static sortReverseMethod(movie1: Movie, movie2: Movie): number {
+      return movie1.vote_average - movie2.vote_average;
+    }
     getVideoKeys(): string[] {
       if (this.videos) {
         return this.videos.results.map((video: Video) => video.key );
@@ -55,5 +66,6 @@ export class Movie {
         return new Array<string>();
       }
     }
+
 
 }
