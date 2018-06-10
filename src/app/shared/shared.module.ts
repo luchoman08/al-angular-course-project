@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxGalleryModule } from 'ngx-gallery';
 
 import {
@@ -20,6 +20,10 @@ import {
 
 import { MaterialModule } from './material.module';
 import { NavbarComponent, FooterComponent } from './layout';
+import {
+  MoviesGalleryComponent,
+  MovieMiniDetailComponent
+} from '@app/movie/shared';
 
 
 @NgModule({
@@ -32,6 +36,10 @@ import { NavbarComponent, FooterComponent } from './layout';
     ImageURLPipe,
     NavbarComponent,
     FooterComponent,
+
+    MoviesGalleryComponent,
+    MovieMiniDetailComponent,
+
     SearchInputComponent
   ],
   imports: [
@@ -39,6 +47,7 @@ import { NavbarComponent, FooterComponent } from './layout';
     RouterModule,
     MaterialModule,
     NgxGalleryModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule
   ],
@@ -47,6 +56,7 @@ import { NavbarComponent, FooterComponent } from './layout';
     CommonModule,
     RouterModule,
     MaterialModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
 
@@ -58,9 +68,14 @@ import { NavbarComponent, FooterComponent } from './layout';
     CapitalizePipe,
     FirstWordPipe,
     ImageURLPipe,
+
     NavbarComponent,
     FooterComponent,
-    SearchInputComponent
+
+    SearchInputComponent,
+
+    MoviesGalleryComponent,
+    MovieMiniDetailComponent
   ],
   entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
 })
