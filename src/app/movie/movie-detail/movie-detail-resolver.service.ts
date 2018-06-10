@@ -1,5 +1,5 @@
 import { Injectable, } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { MovieService } from '@app/core/';
@@ -15,10 +15,9 @@ export class MovieResolver implements Resolve<Movie> {
   ) {}
 
   resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    route: ActivatedRouteSnapshot
   ): Observable<any> {
-
+    console.log('kha');
     return this.movieService.get(route.params['id'], true, true)
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
