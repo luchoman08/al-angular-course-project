@@ -16,6 +16,7 @@ import {
   MatFormFieldModule,
   MatSelectModule,
   MatChipsModule,
+  MatCardModule,
   MatSlideToggleModule,
   MatInputModule,
   MatOptionModule,
@@ -40,6 +41,7 @@ import {
     MatSidenavModule,
     MatRippleModule,
     MatTooltipModule,
+    MatCardModule,
     MatDialogModule,
     MatDividerModule,
     MatProgressSpinnerModule,
@@ -74,6 +76,7 @@ import {
     MatProgressBarModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatCardModule,
     MatListModule,
 
   ],
