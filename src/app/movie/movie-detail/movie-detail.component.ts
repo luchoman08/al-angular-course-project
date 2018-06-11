@@ -2,30 +2,26 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs';
-
-import {
-  NgxGalleryOptions,
-  NgxGalleryImage,
-  NgxGalleryComponent
-} from 'ngx-gallery';
+import { FullScreenGalleryComponent } from '@app/shared';
 
 import {
   Movie,
   CreditsModel,
-  BackdropImageSizesInterface,
 
+  BackdropImageSizesInterface,
   PosterImageSizesInterface,
   POSTER_IMAGE_SIZES,
-  galleryOptionsFullScreenOnly,
   BACKDROP_IMAGE_SIZES,
 
-  GalleryImagesService,
-  CreditsService
+  CreditsService,
+  Image,
+  ImageTypeEnum,
+  MediaTypeEnum
 } from '@app/core/';
 
 import {
-  YoutubeVideoDialogComponent,
   ImageURLPipe,
+  YoutubeVideoDialogComponent,
  } from '@app/shared';
 
 
@@ -36,28 +32,33 @@ import {
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
+  @ViewChild('backdropsGallery') backdropGallery: FullScreenGalleryComponent;
+  @ViewChild('postersGallery') postersGallery: FullScreenGalleryComponent;
+
   movie: Movie;
-  @ViewChild('onlyPreviewGallery') onlyPreviewGallery: NgxGalleryComponent;
   POSTER_IMAGE_SIZES: PosterImageSizesInterface;
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[];
-
+  BACKDROP_IMAGE_SIZES: BackdropImageSizesInterface;
+  backdropType: ImageTypeEnum;
+  posterType: ImageTypeEnum;
+  movieType: MediaTypeEnum;
   credits$: Observable<CreditsModel>;
-
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private galleryImageService: GalleryImagesService,
-    private creditsService: CreditsService,
-    private imgURLPipe: ImageURLPipe
+    private creditsService: CreditsService
   ) {
     this.movie = new Movie();
+    this.movieType = MediaTypeEnum.MOVIE;
+    this.posterType = ImageTypeEnum.POSTER;
+    this.backdropType = ImageTypeEnum.BACKDROP;
     this.POSTER_IMAGE_SIZES =  POSTER_IMAGE_SIZES;
-    this.galleryImages = new Array<NgxGalleryImage>();
-    this.galleryOptions = galleryOptionsFullScreenOnly;
+    this.BACKDROP_IMAGE_SIZES = BACKDROP_IMAGE_SIZES;
   }
-  openPreviewImages(): void {
-    this.onlyPreviewGallery.openPreview(0);
+  openPreviewPosters() {
+    this.postersGallery.openPreviewImages();
+  }
+  openPreviewBackdrops() {
+    this.backdropGallery.openPreviewImages();
   }
   openTrailers(): void {
     console.log(this.movie.getVideoKeys());
@@ -74,10 +75,6 @@ export class MovieDetailComponent implements OnInit {
     this.route.data.subscribe((data: { movie: Movie }) => {
       this.movie = new Movie();
       this.movie = Movie.fromJSON(data.movie);
-
-      this.galleryImages = this.galleryImageService.
-      getBackdropGalleryImages(this.movie.images.backdrops);
-
       this.credits$ = this.creditsService.getMovieCredits(this.movie.id);
     });
   }

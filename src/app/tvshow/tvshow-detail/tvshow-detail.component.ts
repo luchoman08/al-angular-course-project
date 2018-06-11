@@ -52,8 +52,8 @@ export class TvshowDetailComponent implements OnInit {
     this.route.data.subscribe((data: { tvShow: TVShow }) => {
       this.tvShow = new TVShow();
       this.tvShow = TVShow.fromJSON(data.tvShow);
-      this.galleryImages = this.galleryImageService.
-      getBackdropGalleryImages(this.tvShow.images.backdrops);
+      // this.galleryImages = this.galleryImageService.
+     // getFullScreenGalleryImages(this.tvShow.images.backdrops);
 
   });
   }

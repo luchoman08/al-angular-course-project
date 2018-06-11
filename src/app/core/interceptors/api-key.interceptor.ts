@@ -15,10 +15,7 @@ export class ApiKeyInterceptor implements HttpInterceptor {
     const paramsConfig = {
         'api_key': environment.apiTMDB_Key_V3
     };
-    if (!req.url.includes('files')) {
     const request = req.clone({ setParams: paramsConfig });
     return next.handle(request);
-    }
-    next.handle(req);
   }
 }

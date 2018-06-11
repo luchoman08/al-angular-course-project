@@ -1,7 +1,19 @@
 import { Injectable } from '@angular/core';
 import { NgxGalleryImage } from 'ngx-gallery';
+
 import { ImageURLPipe } from '@app/shared/pipes';
-import { BACKDROP_IMAGE_SIZES, Image, Movie } from '@app/core/models';
+
+import {
+  Image,
+  Movie,
+  ImageSizeValueModel,
+  BACKDROP_IMAGE_SIZES,
+  MediaTypeEnum,
+  ImageTypeEnum,
+  PROFILE_IMAGE_SIZES,
+  POSTER_IMAGE_SIZES
+} from '@app/core/models';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,27 +22,60 @@ export class GalleryImagesService {
   constructor(
     private imageURLPipe: ImageURLPipe
   ) { }
-  getBackdropGalleryImages(backdropImages: Image[]): NgxGalleryImage[] {
+
+  private getBigSize(mediaType: MediaTypeEnum, imageType: ImageTypeEnum): ImageSizeValueModel {
+    switch ( mediaType ) {
+      case  MediaTypeEnum.MOVIE: {
+        switch ( imageType ) {
+          case ImageTypeEnum.BACKDROP: return BACKDROP_IMAGE_SIZES.W1280;
+          case ImageTypeEnum.POSTER: return POSTER_IMAGE_SIZES.W780;
+        }
+        break;
+      }
+      case MediaTypeEnum.PERSON: {
+        return PROFILE_IMAGE_SIZES.H632;
+      }
+      }
+    }
+  private getBigURL(file_path: string, mediaType: MediaTypeEnum, imageType: ImageTypeEnum) {
+    const bigSize = this.getBigSize(mediaType, imageType);
+    return this.imageURLPipe.transform( file_path, bigSize);
+  }
+
+  getFullScreenGalleryImages(
+    images: Image[],
+    mediaType: MediaTypeEnum,
+    imageType: ImageTypeEnum,
+    sortImages: boolean = false): NgxGalleryImage[] {
+      if ( sortImages ) {
+        images.sort(Image.sortMethod);
+      }
     const galleryImages = new Array<NgxGalleryImage>();
-      for (const backdrop of backdropImages) {
+      for (const image of images) {
+        const bigURL = this.getBigURL(image.file_path, mediaType, imageType);
         galleryImages.push({
-          small: this.imageURLPipe.transform(
-            backdrop.file_path,
-            BACKDROP_IMAGE_SIZES.W300
-          ),
-          medium: this.imageURLPipe.transform(
-            backdrop.file_path,
-            BACKDROP_IMAGE_SIZES.W780
-          ),
-          big: this.imageURLPipe.transform(
-            backdrop.file_path,
-            BACKDROP_IMAGE_SIZES.W1280
-          )
+          big: bigURL
         });
       }
-
       return galleryImages;
     }
+  getFullScreenBackdropGalleryImages(images: Image[]): NgxGalleryImage[] {
+    return this.getFullScreenGalleryImages(images, MediaTypeEnum.MOVIE, ImageTypeEnum.BACKDROP);
+  }
+/**
+ * Get full screen poster gallery images based in array of images
+ *
+ * @param {Image[]} images
+ * @returns {NgxGalleryImage[]}
+ * @memberof GalleryImagesService
+ */
+getFullScreenPosterGalleryImages(images: Image[], sort: boolean = false): NgxGalleryImage[] {
+  if (sort) {
+    images.sort(Image.sortMethod);
+  }
+    return this.getFullScreenGalleryImages(images, MediaTypeEnum.MOVIE, ImageTypeEnum.POSTER);
+  }
+
     /**
      * Get backdrop image description in gallery ngx for a movie
      *
@@ -59,8 +104,7 @@ export class GalleryImagesService {
               movie.title,
               movie.vote_average,
               movie.vote_count),
-            // url: './movies/' + movie.id,
-            small: this.imageURLPipe.transform(
+              small: this.imageURLPipe.transform(
               movie.backdrop_path,
               BACKDROP_IMAGE_SIZES.W300,
             ),

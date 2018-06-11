@@ -26,6 +26,7 @@ import {
   SingleDataDialogEditOrAddComponent,
   YoutubeVideoDialogComponent,
   SearchInputComponent,
+  FullScreenGalleryComponent
 } from './components';
 
 import { MaterialModule } from './material.module';
@@ -40,6 +41,7 @@ import {
   declarations: [
     SingleDataDialogEditOrAddComponent,
     YoutubeVideoDialogComponent,
+    FullScreenGalleryComponent,
     CapitalizePipe,
     FirstWordPipe,
     SortMediaPipe,
@@ -83,7 +85,9 @@ import {
     NgxGalleryModule,
 
     SingleDataDialogEditOrAddComponent,
+    FullScreenGalleryComponent,
     YoutubeVideoDialogComponent,
+    FullScreenGalleryComponent,
     CapitalizePipe,
     FirstWordPipe,
     ImageURLPipe,
