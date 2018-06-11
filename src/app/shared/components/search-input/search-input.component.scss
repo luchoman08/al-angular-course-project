@@ -7,4 +7,24 @@
   }
   a{
     @include text-color();
+    text-decoration: none;
   }
+.mat-option {
+  overflow: unset;
+}
+.move:hover {
+  transform: translateX(50px,100px);
+}
+.zoom:hover {
+    z-index: 1;
+    position: absolute;
+    transform: scale(3.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.zoom {
+  transform-origin: left top;
+
+  transition: transform .2s; /* Animation */
+}
+.mat-autocomplete-panel {
+  max-height: 500px;
+}

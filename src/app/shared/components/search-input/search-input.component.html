@@ -1,15 +1,76 @@
-          <form class="example-form">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Search movies" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
-              <mat-autocomplete #auto="matAutocomplete" disableRipple = "true">
-                <mat-option *ngFor="let movie of this.movies$ | async" [value]="movie.title">
-                    <a [routerLink]="['movies', movie.id]">
-                  <img style="vertical-align:middle;" aria-hidden  height="25" />
-                  <span>{{ movie.title }}</span>
-                 |
-                  <small>Vote average: {{movie.vote_average}}</small>
-                </a>
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </form>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+    <mat-autocomplete #auto="matAutocomplete" >
+      <ng-container *ngIf=" this.results$ | async as results  ">
+        <mat-option *ngFor="let result of results.results" [value]="result.name">
+<ng-container [ngSwitch]="result.media_type">
+
+    <a *ngSwitchCase="MEDIA_TYPE.PERSON" [routerLink]="['./people', result.id]">
+        <img
+        class="move zoom "
+        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
+        style="vertical-align:middle;"
+        aria-hidden height="45" />
+          <span>
+            {{ result.name }} | People |
+            <small> Popularity: {{result.popularity | number: '1.0-0'}}%</small>
+          </span>
+      </a>
+      <a *ngSwitchCase="MEDIA_TYPE.MOVIE" [routerLink]="['./movies', result.id]">
+          <img
+          class="move zoom"
+          [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE"
+          flexLayout="row" flexAlign="center"
+          aria-hidden
+          height = "45"
+          width = "32" />
+            <span>
+              {{ result.title }} | Movie |
+              <small> Vote Average: {{result.vote_average |  number: '1.1-1'}}%</small>
+            </span>
+        </a>
+        <a *ngSwitchCase="MEDIA_TYPE.TV" [routerLink]="['./tv', result.id]">
+          <img
+          class="move zoom"
+          [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154"
+          flexLayout="row" flexAlign="center"
+          aria-hidden
+          height="45" />
+            <span>
+              {{ result.name }} | Tv series |
+              <small> Popularity: {{ result.vote_average   |  number: '1.0-0' }}%</small>
+            </span>
+        </a>
+
+</ng-container>
+
+
+
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+          <!--<a [routerLink]="['movies', result.id]">
+            <img style="vertical-align:middle;" aria-hidden height="25" />
+            <ng-template #movie_detail>
+              <span>
+                {{ result.title }} |
+                <small>Vote average: {{result.vote_average}}</small>
+              </span>
+            </ng-template>
+            <ng-template #tv_detail>
+              <span>
+                {{ result.name }} |
+                <small>Vote average: {{result.vote_average}}</small>
+              </span>
+            </ng-template>
+            <ng-template #person_detail>
+              <span>
+                {{ result.name }} |
+                <small> Popularity: {{result.popularity}}%</small>
+              </span>
+            </ng-template>
+          </a>
+        -->
