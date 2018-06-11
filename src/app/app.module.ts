@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 import { CoreModule } from '@app/core/';
@@ -17,13 +17,13 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CoreModule,
-    SharedModule,
-    AppRoutingModule,
+
     LoadingBarModule.forRoot(),
 
+    CoreModule,
+    SharedModule,
+    AppRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
