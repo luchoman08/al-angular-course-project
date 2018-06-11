@@ -1,15 +1,16 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
-    <mat-autocomplete #auto="matAutocomplete" >
-      <ng-container *ngIf=" this.results$ | async as results  ">
-        <mat-option *ngFor="let result of results.results" [value]="result.name">
+    <input matInput placeholder="Search movies and more" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+    <mat-autocomplete  #auto="matAutocomplete" >
+        <perfect-scrollbar *ngIf=" this.results$ | async as results  " style="max-width: 600px; max-height: 400px;" [config]="config">
+
+        <div>
+        <mat-option *ngFor="let result of results.results; let i = index" [value]="result.name">
 <ng-container [ngSwitch]="result.media_type">
 
     <a *ngSwitchCase="MEDIA_TYPE.PERSON" [routerLink]="['./people', result.id]">
         <img
-        class="move zoom "
-        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
+        [ngClass]="{'zoom': i!==0, 'zoom-first': i===0, 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
         style="vertical-align:middle;"
         aria-hidden height="45" />
           <span>
@@ -19,7 +20,7 @@
       </a>
       <a *ngSwitchCase="MEDIA_TYPE.MOVIE" [routerLink]="['./movies', result.id]">
           <img
-          class="move zoom"
+          [ngClass]="{'zoom': i!==0, 'zoom-first': i===0, 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"
           [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE"
           flexLayout="row" flexAlign="center"
           aria-hidden
@@ -32,14 +33,13 @@
         </a>
         <a *ngSwitchCase="MEDIA_TYPE.TV" [routerLink]="['./tv', result.id]">
           <img
-          class="move zoom"
-          [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154"
+          [ngClass]="{'zoom': i!==0, 'zoom-first': i===0, 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"          [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154"
           flexLayout="row" flexAlign="center"
           aria-hidden
           height="45" />
             <span>
-              {{ result.name }} | Tv series |
-              <small> Popularity: {{ result.vote_average   |  number: '1.0-0' }}%</small>
+              {{ result.name }} | Tv series | {{i}} | {{results.results.length}}
+              <small> Popularity:   {{ result.vote_average   | number: '1.0-0' }}%</small>
             </span>
         </a>
 
@@ -48,7 +48,10 @@
 
 
         </mat-option>
-      </ng-container>
+      <mat-option class="search-options">
+        </mat-option>
+      </div>
+      </perfect-scrollbar>
     </mat-autocomplete>
   </mat-form-field>
 </form>

@@ -12,19 +12,33 @@
 .mat-option {
   overflow: unset;
 }
-.move:hover {
-  transform: translateX(50px,100px);
-}
+
 .zoom:hover {
     z-index: 1;
+    margin-top: -35px;
     position: absolute;
-    transform: scale(3.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(2.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
-.zoom {
+.zoom-first:hover {
+  margin-top: 10px;
+  z-index: 1;
+  position: absolute;
+  transform: scale(2.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.zoom-last:hover {
+  margin-top: -55px;
+  z-index: 1;
+  position: absolute;
+  transform: scale(2.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.zoom, .zoom-first, .zoom-last{
   transform-origin: left top;
-
-  transition: transform .2s; /* Animation */
+  transition: transform .1s; /* Animation */
 }
 .mat-autocomplete-panel {
   max-height: 500px;
+}
+.search-options{
+  position:fixed;
+  bottom: 0px;
 }

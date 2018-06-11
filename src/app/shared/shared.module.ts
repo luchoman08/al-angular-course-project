@@ -2,8 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { NgxGalleryModule } from 'ngx-gallery';
+
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 import {
   CapitalizePipe,
@@ -49,9 +59,18 @@ import {
     NgxGalleryModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    PerfectScrollbarModule,
     FormsModule
   ],
-  providers: [ImageURLPipe, FirstWordPipe, CapitalizePipe],
+  providers: [
+    ImageURLPipe,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    FirstWordPipe,
+    CapitalizePipe
+  ],
   exports: [
     CommonModule,
     RouterModule,
@@ -59,6 +78,7 @@ import {
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
+
 
     NgxGalleryModule,
 
