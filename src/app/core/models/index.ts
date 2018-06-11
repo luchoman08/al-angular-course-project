@@ -16,3 +16,5 @@ export * from './image.model';
 export * from './images';
 export * from './tv-season.model';
 export * from './const';
+export * from './interfaces';
+export * from './search';
