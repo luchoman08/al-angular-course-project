@@ -8,7 +8,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import {
   CapitalizePipe,
   ImageURLPipe,
-  FirstWordPipe
+  FirstWordPipe,
+  SortMediaPipe
 } from './pipes';
 
 import {
@@ -31,6 +32,7 @@ import {
     YoutubeVideoDialogComponent,
     CapitalizePipe,
     FirstWordPipe,
+    SortMediaPipe,
     ImageURLPipe,
     NavbarComponent,
     FooterComponent,
@@ -65,6 +67,7 @@ import {
     CapitalizePipe,
     FirstWordPipe,
     ImageURLPipe,
+    SortMediaPipe,
 
     NavbarComponent,
     FooterComponent,
