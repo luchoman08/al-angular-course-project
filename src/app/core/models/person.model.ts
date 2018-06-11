@@ -1,13 +1,13 @@
-import { Gender } from '@app/core/';
-import { Image } from '@app/core/';
-export class Person {
+import { Gender, Image } from './';
+import { PersonInterface } from './interfaces';
+export class Person implements PersonInterface {
     id: number;
     name: string;
     popularity: number;
     also_known_as: string[];
     profile_path: string; // name of image to profile image
     biography: string;
-    images: { profiles: Image[]};
+    images?: { profiles: Image[]};
     birthday: string;
     deathday: string;
     gender: Gender;
