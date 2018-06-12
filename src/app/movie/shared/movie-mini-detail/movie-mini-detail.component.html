@@ -1,0 +1,16 @@
+<mat-card >
+  <mat-card-content fxLayout="column" fxLayoutGap="3px" fxLayoutAlign="start center" >
+      <a  [routerLink]="['/movies', movie.id]">
+        <img mat-card-image [src]="movie.poster_path | imageURL: POSTER_IMAGE_SIZES.W342" alt="{{movie.title}}">
+      </a>
+    <b align="center">{{movie.title}}</b>
+    <div  fxLayout="row" fxLayoutAlign="center" >
+      <mat-icon>star_rate</mat-icon>
+      <p >{{movie.vote_average}}</p>
+    </div>
+
+  </mat-card-content>
+  <mat-card-footer fxLayout="row" fxLayoutAlign="center center" >
+  <p  > {{movie.release_date | date: 'longDate'}}</p>
+   </mat-card-footer>
+</mat-card>

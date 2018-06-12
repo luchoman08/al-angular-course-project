@@ -1,28 +1,34 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { galleryOptions } from './gallery-options';
 import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs';
-import { PosterImageSizesInterface } from '@app/core';
 
 import {
-  NgxGalleryOptions,
-  NgxGalleryImage,
-  NgxGalleryComponent
-} from 'ngx-gallery';
+  FullScreenGalleryComponent,
+} from '@app/shared';
+
+import { MovieService, Image } from '@app/core/';
 
 import {
   Movie,
-  POSTER_IMAGE_SIZES,
-  BackdropImageSizesInterface,
-  BACKDROP_IMAGE_SIZES,
   CreditsModel,
-  CreditsService
+  Results,
+  Review,
+
+  BackdropImageSizesInterface,
+  PosterImageSizesInterface,
+  POSTER_IMAGE_SIZES,
+  BACKDROP_IMAGE_SIZES,
+
+  CreditsService,
+  ReviewsService,
+
+  ImageTypeEnum,
+  MediaTypeEnum
 } from '@app/core/';
 
 import {
   YoutubeVideoDialogComponent,
-  ImageURLPipe,
  } from '@app/shared';
 
 
@@ -33,29 +39,39 @@ import {
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
+  @ViewChild('backdropsGallery') backdropGallery: FullScreenGalleryComponent;
+  @ViewChild('postersGallery') postersGallery: FullScreenGalleryComponent;
+
   movie: Movie;
-  @ViewChild('onlyPreviewGallery') onlyPreviewGallery: NgxGalleryComponent;
   POSTER_IMAGE_SIZES: PosterImageSizesInterface;
   BACKDROP_IMAGE_SIZES: BackdropImageSizesInterface;
-  posterPath: string;
+  backdropType: ImageTypeEnum;
+  posterType: ImageTypeEnum;
+  movieType: MediaTypeEnum;
+  resultsRelatedMovies$: Observable<Results<Movie>>;
   credits$: Observable<CreditsModel>;
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[];
+  resultsReviews$: Observable<Results<Review>>;
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private creditsService: CreditsService,
-    private imgURLPipe: ImageURLPipe
+    private reviewService: ReviewsService,
+    private movieService: MovieService,
+    private creditsService: CreditsService
   ) {
-    this.BACKDROP_IMAGE_SIZES = BACKDROP_IMAGE_SIZES;
-    this.POSTER_IMAGE_SIZES =  POSTER_IMAGE_SIZES;
     this.movie = new Movie();
-    this.galleryImages = new Array<NgxGalleryImage>();
+    this.movieType = MediaTypeEnum.MOVIE;
+    this.posterType = ImageTypeEnum.POSTER;
+    this.backdropType = ImageTypeEnum.BACKDROP;
+    this.POSTER_IMAGE_SIZES =  POSTER_IMAGE_SIZES;
+    this.BACKDROP_IMAGE_SIZES = BACKDROP_IMAGE_SIZES;
   }
-  openPreviewImages(): void {
-    this.onlyPreviewGallery.openPreview(0);
+  openPreviewPosters() {
+    this.postersGallery.openPreviewImages();
   }
-  openDialog(): void {
+  openPreviewBackdrops() {
+    this.backdropGallery.openPreviewImages();
+  }
+  openTrailers(): void {
     console.log(this.movie.getVideoKeys());
     const dialogRef = this.dialog.open(YoutubeVideoDialogComponent, {
       width: '750px',
@@ -65,35 +81,16 @@ export class MovieDetailComponent implements OnInit {
       }
     });
   }
-  initImages(): void {
-    if (this.movie.images) {
-      for (const backdrop of this.movie.images.backdrops) {
-        this.galleryImages.push({
-          small: this.imgURLPipe.transform(
-            backdrop.file_path,
-            this.BACKDROP_IMAGE_SIZES.W300
-          ),
-          medium: this.imgURLPipe.transform(
-            backdrop.file_path,
-            this.BACKDROP_IMAGE_SIZES.W780
-          ),
-          big: this.imgURLPipe.transform(
-            backdrop.file_path,
-            this.BACKDROP_IMAGE_SIZES.W1280
-          )
-        });
-      }
-    }
-  }
-  ngOnInit() {
-    this.galleryOptions = galleryOptions;
 
+  ngOnInit() {
     this.route.data.subscribe((data: { movie: Movie }) => {
+
       this.movie = new Movie();
-      this.galleryImages = new Array<NgxGalleryImage>();
       this.movie = Movie.fromJSON(data.movie);
+      console.log(data.movie);
+      this.resultsRelatedMovies$ = this.movieService.getRelated(this.movie.id);
       this.credits$ = this.creditsService.getMovieCredits(this.movie.id);
-      this.initImages();
+      this.resultsReviews$ = this.reviewService.getMovieReviews(this.movie.id);
     });
   }
 }

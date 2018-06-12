@@ -1,33 +1,39 @@
-<mat-list>
 
-<div class="movie-detail container-fluid" [ngStyle]="{'background': galleryImages[0]? '
+<div  class="movie-detail container-fluid"
+[ngStyle]="{'background': movie.images.backdrops[0]? '
   linear-gradient(
   rgba(0, 0, 0, 0.75),
   rgba(0, 0, 0, 0.75)
-  ), url( ' + galleryImages[0].big + ')' :
+  ), url( ' + (movie.images.backdrops[0].file_path  | imageURL: BACKDROP_IMAGE_SIZES.W1280) + ')' :
    'linear-gradient(
     rgba(0, 0, 0, 0.75),
     rgba(0, 0, 0, 0.75)
     )' ,
   'background-repeat': 'no-repeat',
-  'background-size': '',
+  'background-size': 'cover',
   'width': '100%' }">
 
 
   <div class="content">
-    <div class="row">
-      <div class=" col-2 col-md-3">
-
+    <div fxLayout="row" fxLayoutAlign="left center"fxLayoutGap="20px">
+      <div  class="poster-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
         <img
-        class= "poster-image"
+        class="image"
         [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
-        src="{{movie.poster_path | imageURL: POSTER_IMAGE_SIZES.W185}}"
-        alt="movie poster image" srcset="">
+        [src]="
+        movie.poster_path?
+        (movie.poster_path | imageURL: POSTER_IMAGE_SIZES.W185):
+        './assets/img/posters/poster_default.png'"
+        alt="movie poster image"
+        srcset="">
+        <div class="open-posters">
+            <button (click)="openPreviewPosters()" mat-button class="open-button">Open posters</button>
+        </div>
       </div>
-      <div class="col-9 col-md-6 principal-info">
-        <h3 i18n> {{movie.title}} {{ movie.relase_date? '(' + (movie.release_date | date:'yyyy') + ')' : ''}}</h3>
-        <div class="row">
-          <div class=" col-5">
+      <div fxLayout="column" fxFlex="60%"  class=" principal-info">
+        <h3 i18n> {{movie.title}} {{ movie.release_date? '(' + (movie.release_date | date:'yyyy') + ')' : ''}}</h3>
+        <div fxLayout="row">
+          <div fxLayout="column" fxFlex="50%">
             <div class="vote-average">
               <div>
                   <mat-icon class="icon-rate">star_rate</mat-icon>
@@ -37,37 +43,68 @@
               </div>
             </div>
           </div>
+          <div fxLayout="row">
             <button
-            [matTooltip]="movie.videos.results.length > 0? 'Ver trailers': 'No hay trailers'"
+            matTooltip="Trailers"
             [matTooltipPosition]="'above'"
+            [matBadge]="movie.videos.results.length"
+            matBadgePosition="after"
+            matBadgeColor="default"
             [disabled] = "movie.videos.results.length === 0"
             class="menu-item"
-            mat-mini-fab (click)="openDialog()">
+            mat-mini-fab (click)="openTrailers()">
               <mat-icon>movie</mat-icon> </button>
-            <button  matTooltip="Ver imágenes"
+            <button
+            matTooltip="Backdrops"
             [matTooltipPosition]="'above'"
+            [matBadge]="movie.images.backdrops.length"
+            matBadgePosition="after"
+            matBadgeColor="default"
+            [disabled]="movie.images.backdrops.length === 0"
             mat-mini-fab class="menu-item"
-            (click)="openPreviewImages()">
+            (click)="openPreviewBackdrops()">
               <mat-icon>photo_library</mat-icon> </button>
-
+            </div>
         </div>
-        <h5 i18n> Resumen </h5>
+        <h5 i18n> Summary </h5>
         <p align="justify">{{movie.overview}}</p>
       </div>
+      <!-- Image Galleries full screen-->
+      <app-full-screen-gallery
+        #backdropsGallery
+        [mediaType]="movieType"
+        [imageType]="backdropType"
+        [images]="movie.images.backdrops">
+      </app-full-screen-gallery>
 
-
-      <ngx-gallery #onlyPreviewGallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+      <app-full-screen-gallery
+        #postersGallery
+        [mediaType]="movieType"
+        [imageType]="posterType"
+        [images]="movie.images.posters">
+      </app-full-screen-gallery>
+      <!-- End image galleryes full screen-->
     </div>
   </div>
 </div>
-</mat-list>
-<mat-list>
-<mat-divider></mat-divider>
-<div *ngIf = "credits$ | async as credits"class="container">
-<div class="row" >
-<div class="col-12">
-  <app-movie-credit-list [credits] = "credits"></app-movie-credit-list>
-</div>
-</div>
-</div>
-</mat-list>
+<mat-tab-group>
+    <mat-tab label="Related Movies">
+        <app-movie-mini-detail-list
+        *ngIf="resultsRelatedMovies$ | async as resultsRelatedMovies"
+        [movies]="resultsRelatedMovies.results"></app-movie-mini-detail-list>
+    </mat-tab>
+    <mat-tab label="Reviews">
+        <div class="container">
+          <br>
+        <app-review-list *ngIf="resultsReviews$ | async as resultsReviews" [reviews]="resultsReviews.results">
+        </app-review-list>
+      </div>
+      </mat-tab>
+    <mat-tab label="Credits">
+
+      <div class="container">
+          <app-movie-credit-list   *ngIf = "credits$ | async as credits" [credits] = "credits"></app-movie-credit-list>
+      </div>
+    </mat-tab>
+</mat-tab-group>
+

@@ -7,7 +7,7 @@ export class PersonCastCreditCombinedModel  implements PersonCreditInterface {
   overview: string;
   character: string;
   job?: string; // trick for credit combined
-  media_type: string;
+  media_type: string; // movie or tv
   episode_count: number;
   vote_average: number;
   first_air_date: string;

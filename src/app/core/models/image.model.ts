@@ -6,4 +6,9 @@ export class Image {
     vote_average: number;
     vote_count: number;
     width: number;
+    constructor() {}
+
+    public static sortMethod(image1: Image, image2: Image): number {
+      return image2.vote_average - image1.vote_average;
+    }
 }

@@ -21,22 +21,13 @@ export class AppComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
 
-  stateCtrl: FormControl;
-  filteredStates: Observable<any[]>;
-  movies$: Observable<Movie[]>;
+
 
 
 
     constructor(
       private router: Router,
-      private searchService: SearchService,
-      public loader: LoadingBarService, private route: ActivatedRoute) {
-          this.stateCtrl = new FormControl();
-          this.stateCtrl.valueChanges
-            .subscribe(
-              res =>
-              this.movies$ = this.searchService.searchMovies(res)
-            );
+      private route: ActivatedRoute) {
         }
 
     ngOnInit() {

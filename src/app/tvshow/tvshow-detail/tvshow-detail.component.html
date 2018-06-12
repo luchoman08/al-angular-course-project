@@ -1,0 +1,79 @@
+
+
+<div class="tv-show-detail container-fluid" [ngStyle]="{'background': galleryImages[0]? '
+  linear-gradient(
+  rgba(0, 0, 0, 0.75),
+  rgba(0, 0, 0, 0.75)
+  ), url( ' + galleryImages[0].big + ')' :
+   'linear-gradient(
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.75)
+    )' ,
+  'background-repeat': 'no-repeat',
+  'background-size': '',
+  'width': '100%' }">
+
+
+  <div class="content">
+      <div fxLayout="row" fxLayoutAlign="left center"fxLayoutGap="20px">
+          <div  class="poster-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
+              <img
+              class="image"
+              [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
+              [src]="
+              tvShow.poster_path?
+              (tvShow.poster_path | imageURL: POSTER_IMAGE_SIZES.W185):
+              './assets/img/posters/poster_default.png'"
+              alt="tv show poster image"
+              srcset="">
+              <div class="open-posters">
+                  <button (click)="openPreviewPosters()" mat-button class="open-button">Open posters</button>
+              </div>
+            </div>
+      <div >
+        <h3 i18n> {{tvShow.name }}   </h3>
+        <div  fxLayout="row"  fxLayoutGap="20px" >
+              <div fxLayout="row" >
+                  <mat-icon >star_rate</mat-icon>
+                  <p> {{tvShow.vote_average}} </p>
+              </div>
+                <p> Votes: {{tvShow.vote_count}}</p>
+
+
+              <div fxLayout="row"  *ngIf="tvShow.last_air_date" >
+                  <mat-icon>today</mat-icon>
+                  <small>Last air date: {{tvShow.last_air_date | date: 'dd/MM/yyyy'}}</small>
+              </div>
+            <button
+            matTooltip="Images"
+            [matTooltipPosition]="'above'"
+            [matBadge]="tvShow.images.backdrops.length"
+            matBadgePosition="after"
+            matBadgeColor="default"
+            [disabled]="tvShow.images.backdrops.length === 0"
+            mat-mini-fab class="menu-item"
+            (click)="openPreviewBackdrops()">
+              <mat-icon>photo_library</mat-icon> </button>
+
+        </div>
+        <h5 i18n> Summary </h5>
+        <p align="justify">{{tvShow.overview}}</p>
+      </div>
+
+      <app-full-screen-gallery
+      #backdropsGallery
+      [mediaType]="tvShowType"
+      [imageType]="backdropType"
+      [images]="tvShow.images.backdrops">
+    </app-full-screen-gallery>
+
+    <app-full-screen-gallery
+      #postersGallery
+      [mediaType]="tvShowType"
+      [imageType]="posterType"
+      [images]="tvShow.images.posters">
+    </app-full-screen-gallery>
+    </div>
+  </div>
+</div>
+

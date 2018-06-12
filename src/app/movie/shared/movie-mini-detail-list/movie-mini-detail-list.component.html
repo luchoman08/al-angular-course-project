@@ -1,0 +1,9 @@
+<div fxLayout="row"   fxLayoutAlign="stretch stretch" fxLayoutGap="10px">
+  <app-movie-mini-detail
+  fxFlex="200px"
+  *ngFor="let movie of movies"
+  fxLayoutAlign="stretch stretch"
+  [movie]="movie"
+  >
+  </app-movie-mini-detail>
+</div>

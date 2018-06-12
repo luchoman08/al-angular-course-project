@@ -1,0 +1,46 @@
+@import '~sass/mixins';
+.close-sidenav {
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+
+
+.top-toolbar {
+  @include background-color();
+}
+a{
+  @include text-color();
+  text-decoration:none;
+}
+
+.search-input {
+  margin-top: 20px;
+}
+.sidenav-button {
+    margin-top: 3px;
+}
+.example-icon {
+    padding: 0 14px;
+  }
+  .mat-sidenav {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+.mat-sidenav-content {
+  padding-top: 15%;
+  min-height: 750px;
+}
+
+
+
+button:focus { outline-style: none; }
+.main-icon > p {
+  margin-top: 20px;
+  margin-right: 30px;
+}
+
+.mat-button {
+  @include text-color();
+}

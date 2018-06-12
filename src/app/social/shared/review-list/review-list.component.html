@@ -1,0 +1,6 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px"
+*ngFor="let review of reviews">
+  <app-review-detail  [review]=review> </app-review-detail>
+</div>
+
+<h3 *ngIf="reviews.length === 0"> No reviews found </h3>

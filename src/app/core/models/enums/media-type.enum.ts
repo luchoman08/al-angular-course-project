@@ -1,4 +1,5 @@
-export enum MediaType {
-  MEDIA = 'media',
-  TV = 'tv'
+export enum MediaTypeEnum {
+  MOVIE = 'movie',
+  TV = 'tv',
+  PERSON = 'person'
 }
