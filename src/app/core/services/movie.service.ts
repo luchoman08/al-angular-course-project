@@ -30,10 +30,11 @@ export class MovieService {
       images: Boolean = false
     ): Observable<Movie> {
         const params = paramsAppendToResponse(videos, images);
-        return this.apiService.get('/movie/' + id, params)
-        .pipe(map(data => data));
+        return this.apiService.get('/movie/' + id, params);
   }
-
+  getRelated(movieId: number, page?: number): Observable<Results<Movie>> {
+    return this.getResultsMultiplePage(`/movie/${movieId}/similar`, page);
+  }
   getPopular(page?: number): Observable<Results<Movie>> {
     return this.getResultsMultiplePage('/movie/popular', page);
   }
