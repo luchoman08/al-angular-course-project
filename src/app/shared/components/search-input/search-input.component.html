@@ -5,75 +5,59 @@
         <perfect-scrollbar *ngIf=" this.results$ | async as results  " style="max-width: 600px; max-height: 400px;" [config]="config">
 
         <div>
-        <mat-option *ngFor="let result of results.results; let i = index" [value]="result.name">
+        <mat-option
+        [style.minHeight]="(results.results.length <= 3)? '100px': '50px'"
+        *ngFor="let result of results.results; let i = index"
+        [value]="result.name">
 <ng-container [ngSwitch]="result.media_type">
 
-    <a *ngSwitchCase="MEDIA_TYPE.PERSON" [routerLink]="['./people', result.id]">
+    <a
+    *ngSwitchCase="MEDIA_TYPE.PERSON" [routerLink]="['./people', result.id]">
         <img
-        [ngClass]="{'zoom': i!==0, 'zoom-first': i===0, 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
+        [ngClass]="{'zoom': (i!==0 ||  results.results.length <= 3), 'zoom-first': (i===0 && results.results.length > 3), 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
         style="vertical-align:middle;"
-        aria-hidden height="45" />
+        aria-hidden
+        height="45"
+        width = "32" />
           <span>
             {{ result.name }} | People |
             <small> Popularity: {{result.popularity | number: '1.0-0'}}%</small>
           </span>
       </a>
-      <a *ngSwitchCase="MEDIA_TYPE.MOVIE" [routerLink]="['./movies', result.id]">
+      <a
+      *ngSwitchCase="MEDIA_TYPE.MOVIE" [routerLink]="['./movies', result.id]">
           <img
-          [ngClass]="{'zoom': i!==0, 'zoom-first': i===0, 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"
+          [ngClass]="{'zoom': (i!==0 ||  results.results.length <= 3), 'zoom-first': (i===0 && results.results.length > 3), 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
           [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE"
-          flexLayout="row" flexAlign="center"
           aria-hidden
           height = "45"
           width = "32" />
-            <span>
+          <span >
               {{ result.title }} | Movie |
-              <small> Vote Average: {{result.vote_average |  number: '1.1-1'}}%</small>
+              <mat-icon>start_rate</mat-icon>
+              {{result.vote_average |  number: '1.1-1'}}
             </span>
         </a>
-        <a *ngSwitchCase="MEDIA_TYPE.TV" [routerLink]="['./tv', result.id]">
+        <a
+        *ngSwitchCase="MEDIA_TYPE.TV"
+        [routerLink]="['./tv', result.id]">
           <img
-          [ngClass]="{'zoom': i!==0, 'zoom-first': i===0, 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"          [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154"
+          [ngClass]="{'zoom': (i!==0 ||  results.results.length < 3), 'zoom-first': (i===0 && results.results.length > 3), 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
           flexLayout="row" flexAlign="center"
+          [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE"
           aria-hidden
-          height="45" />
+          height="45"
+          width = "32" />
             <span>
-              {{ result.name }} | Tv series | {{i}} | {{results.results.length}}
+            {{ result.name }} | Tv series |
               <small> Popularity:   {{ result.vote_average   | number: '1.0-0' }}%</small>
             </span>
         </a>
 
 </ng-container>
-
-
-
-        </mat-option>
-      <mat-option class="search-options">
         </mat-option>
       </div>
       </perfect-scrollbar>
     </mat-autocomplete>
   </mat-form-field>
 </form>
-          <!--<a [routerLink]="['movies', result.id]">
-            <img style="vertical-align:middle;" aria-hidden height="25" />
-            <ng-template #movie_detail>
-              <span>
-                {{ result.title }} |
-                <small>Vote average: {{result.vote_average}}</small>
-              </span>
-            </ng-template>
-            <ng-template #tv_detail>
-              <span>
-                {{ result.name }} |
-                <small>Vote average: {{result.vote_average}}</small>
-              </span>
-            </ng-template>
-            <ng-template #person_detail>
-              <span>
-                {{ result.name }} |
-                <small> Popularity: {{result.popularity}}%</small>
-              </span>
-            </ng-template>
-          </a>
-        -->
