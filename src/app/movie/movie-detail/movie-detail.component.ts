@@ -2,11 +2,18 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs';
-import { FullScreenGalleryComponent } from '@app/shared';
+
+import {
+  FullScreenGalleryComponent,
+} from '@app/shared';
+
+import { MovieService, Image } from '@app/core/';
 
 import {
   Movie,
   CreditsModel,
+  Results,
+  Review,
 
   BackdropImageSizesInterface,
   PosterImageSizesInterface,
@@ -14,13 +21,13 @@ import {
   BACKDROP_IMAGE_SIZES,
 
   CreditsService,
-  Image,
+  ReviewsService,
+
   ImageTypeEnum,
   MediaTypeEnum
 } from '@app/core/';
 
 import {
-  ImageURLPipe,
   YoutubeVideoDialogComponent,
  } from '@app/shared';
 
@@ -41,10 +48,14 @@ export class MovieDetailComponent implements OnInit {
   backdropType: ImageTypeEnum;
   posterType: ImageTypeEnum;
   movieType: MediaTypeEnum;
+  resultsRelatedMovies$: Observable<Results<Movie>>;
   credits$: Observable<CreditsModel>;
+  resultsReviews$: Observable<Results<Review>>;
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
+    private reviewService: ReviewsService,
+    private movieService: MovieService,
     private creditsService: CreditsService
   ) {
     this.movie = new Movie();
@@ -73,9 +84,13 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: { movie: Movie }) => {
+
       this.movie = new Movie();
       this.movie = Movie.fromJSON(data.movie);
+      console.log(data.movie);
+      this.resultsRelatedMovies$ = this.movieService.getRelated(this.movie.id);
       this.credits$ = this.creditsService.getMovieCredits(this.movie.id);
+      this.resultsReviews$ = this.reviewService.getMovieReviews(this.movie.id);
     });
   }
 }
