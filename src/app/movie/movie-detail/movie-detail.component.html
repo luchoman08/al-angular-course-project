@@ -1,23 +1,22 @@
-<mat-list>
 
-<div class="movie-detail container-fluid"
+<div  class="movie-detail container-fluid"
 [ngStyle]="{'background': movie.images.backdrops[0]? '
   linear-gradient(
   rgba(0, 0, 0, 0.75),
   rgba(0, 0, 0, 0.75)
-  ), url( ' + (movie.images.backdrops[0] | imageURL: BACKDROP_IMAGE_SIZES.W1280) + ')' :
+  ), url( ' + (movie.images.backdrops[0].file_path  | imageURL: BACKDROP_IMAGE_SIZES.W1280) + ')' :
    'linear-gradient(
     rgba(0, 0, 0, 0.75),
     rgba(0, 0, 0, 0.75)
     )' ,
   'background-repeat': 'no-repeat',
-  'background-size': '',
+  'background-size': 'cover',
   'width': '100%' }">
 
 
   <div class="content">
     <div fxLayout="row" fxLayoutAlign="left center"fxLayoutGap="20px">
-      <div class="poster-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
+      <div  class="poster-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
         <img
         class="image"
         [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
@@ -88,12 +87,23 @@
     </div>
   </div>
 </div>
-</mat-list>
-<mat-list>
-<mat-divider></mat-divider>
-<div *ngIf = "credits$ | async as credits"class="container">
-<div fxLayout="row" fxLayoutAlign="center center">
-  <app-movie-credit-list [credits] = "credits"></app-movie-credit-list>
-</div>
-</div>
-</mat-list>
+<mat-tab-group>
+    <mat-tab label="Related Movies">
+        <app-movie-mini-detail-list
+        *ngIf="resultsRelatedMovies$ | async as resultsRelatedMovies"
+        [movies]="resultsRelatedMovies.results"></app-movie-mini-detail-list>
+    </mat-tab>
+    <mat-tab label="Reviews">
+        <div class="container">
+          <br>
+        <app-review-list *ngIf="resultsReviews$ | async as resultsReviews" [reviews]="resultsReviews.results">
+        </app-review-list>
+      </div>
+      </mat-tab>
+    <mat-tab label="Credits">
+        <div  *ngIf = "credits$ | async as credits"  fxLayout="row" fxLayoutAlign="center center">
+          <app-movie-credit-list [credits] = "credits"></app-movie-credit-list>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+
