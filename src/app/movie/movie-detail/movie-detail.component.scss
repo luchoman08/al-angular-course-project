@@ -39,7 +39,9 @@ button:focus { outline-style: none; }
   opacity: 1;
 }
 
-
+.mat-tab {
+  padding-top: 20px;
+}
 
 
 .poster-image:hover .image {
@@ -64,4 +66,9 @@ button:focus { outline-style: none; }
   .open-button {
     background-color: purple;
   }
+}
+
+
+.container {
+  margin-top: 30px;
 }
