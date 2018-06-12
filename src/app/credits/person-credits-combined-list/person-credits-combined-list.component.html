@@ -1,8 +1,10 @@
 
-<ng-container *ngIf="personCreditsCombined$ | async as personCreditsCombined ">
-  <div class="container-fluid">
-    <div class="row">
-      <div *ngIf="personCreditsCombined.cast.length > 0" class="col-6" >
+
+  <div *ngIf="personCreditsCombined$ | async as personCreditsCombined " fxLayout="row">
+
+      <div
+      *ngIf="personCreditsCombined.cast.length > 0"
+      [fxFlex]="personCreditsCombined.crew.length > 0? '50%' : '100%'">
         Cast <br>
         <app-person-credits-combined-detail
          *ngFor=" let cast of personCreditsCombined.cast | slice: 0 : 7"
@@ -11,7 +13,8 @@
       </div>
 
 
-      <div *ngIf="personCreditsCombined.crew.length > 0" class="col-6" >
+      <div *ngIf="personCreditsCombined.crew.length > 0"
+        [fxFlex]="personCreditsCombined.cast.length > 0? '50%' : '100%'">
         Crew <br>
         <div>
 
@@ -21,6 +24,6 @@
       </app-person-credits-combined-detail>
       </div>
       </div>
-    </div>
+
   </div>
-</ng-container>
+

@@ -101,9 +101,10 @@
       </div>
       </mat-tab>
     <mat-tab label="Credits">
-        <div  *ngIf = "credits$ | async as credits"  fxLayout="row" fxLayoutAlign="center center">
-          <app-movie-credit-list [credits] = "credits"></app-movie-credit-list>
-        </div>
+
+      <div class="container">
+          <app-movie-credit-list   *ngIf = "credits$ | async as credits" [credits] = "credits"></app-movie-credit-list>
+      </div>
     </mat-tab>
 </mat-tab-group>
 
