@@ -9,8 +9,10 @@ import {
 } from 'ngx-gallery';
 
 import { TVShow, PosterImageSizesInterface, GalleryImagesService, POSTER_IMAGE_SIZES,
-  galleryOptionsFullScreenOnly } from '@app/core';
-import { ImageURLPipe, YoutubeVideoDialogComponent } from '@app/shared';
+  galleryOptionsFullScreenOnly,
+  MediaTypeEnum} from '@app/core';
+import { ImageURLPipe, YoutubeVideoDialogComponent, FullScreenGalleryComponent } from '@app/shared';
+import { ImageTypeEnum } from '../../core/models/images/enums/image-type.enum';
 
 @Component({
   selector: 'app-tvshow-detail',
@@ -18,33 +20,34 @@ import { ImageURLPipe, YoutubeVideoDialogComponent } from '@app/shared';
   styleUrls: ['./tvshow-detail.component.scss']
 })
 export class TvshowDetailComponent implements OnInit {
+  @ViewChild('backdropsGallery') backdropGallery: FullScreenGalleryComponent;
+  @ViewChild('postersGallery') postersGallery: FullScreenGalleryComponent;
 
   tvShow: TVShow;
-  @ViewChild('onlyPreviewGallery') onlyPreviewGallery: NgxGalleryComponent;
   POSTER_IMAGE_SIZES: PosterImageSizesInterface;
   galleryOptions: NgxGalleryOptions[];
+  tvShowType: MediaTypeEnum;
+  posterType: ImageTypeEnum;
+  backdropType: ImageTypeEnum;
   galleryImages: NgxGalleryImage[];
+
   constructor(
     private route: ActivatedRoute,
-    public dialog: MatDialog,
     private galleryImageService: GalleryImagesService,
   ) {
+    this.posterType = ImageTypeEnum.POSTER;
+    this.backdropType = ImageTypeEnum.BACKDROP;
+    this.tvShowType = MediaTypeEnum.TV;
     this.POSTER_IMAGE_SIZES =  POSTER_IMAGE_SIZES;
     this.tvShow = new TVShow();
     this.galleryImages = new Array<NgxGalleryImage>();
   }
-  openPreviewImages(): void {
-    this.onlyPreviewGallery.openPreview(0);
+
+  openPreviewPosters() {
+    this.postersGallery.openPreviewImages();
   }
-  openTrailers(): void {
-    console.log(this.tvShow.getVideoKeys());
-    const dialogRef = this.dialog.open(YoutubeVideoDialogComponent, {
-      width: '750px',
-      height: '500px',
-      data: {
-        video_keys: this.tvShow.getVideoKeys()
-      }
-    });
+  openPreviewBackdrops() {
+    this.backdropGallery.openPreviewImages();
   }
 
   ngOnInit() {
@@ -52,9 +55,7 @@ export class TvshowDetailComponent implements OnInit {
     this.route.data.subscribe((data: { tvShow: TVShow }) => {
       this.tvShow = new TVShow();
       this.tvShow = TVShow.fromJSON(data.tvShow);
-      // this.galleryImages = this.galleryImageService.
-     // getFullScreenGalleryImages(this.tvShow.images.backdrops);
-
+      console.log(this.tvShow);
   });
   }
 
