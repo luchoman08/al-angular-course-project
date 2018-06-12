@@ -32,6 +32,13 @@ export class GalleryImagesService {
         }
         break;
       }
+      case  MediaTypeEnum.TV: {
+        switch ( imageType ) {
+          case ImageTypeEnum.BACKDROP: return BACKDROP_IMAGE_SIZES.W1280;
+          case ImageTypeEnum.POSTER: return POSTER_IMAGE_SIZES.W780;
+        }
+        break;
+      }
       case MediaTypeEnum.PERSON: {
         return PROFILE_IMAGE_SIZES.H632;
       }
