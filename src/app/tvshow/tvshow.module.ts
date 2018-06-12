@@ -5,13 +5,14 @@ import { TvshowDetailComponent } from './tvshow-detail/tvshow-detail.component';
 import { SharedModule } from '@app/shared/shared.module';
 import { TvShowService } from '@app/core';
 import { TvShowResolver } from './tvshow-detail/tvshow-detail-resolver.service';
+import { TvshowHomeComponent } from './tvshow-home/tvshow-home.component';
 
 @NgModule({
   imports: [
     SharedModule,
     TvshowRoutingModule
   ],
-  declarations: [TvshowDetailComponent],
+  declarations: [TvshowDetailComponent, TvshowHomeComponent],
   providers: [
     TvShowResolver,
     TvShowService

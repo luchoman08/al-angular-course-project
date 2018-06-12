@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TvshowDetailComponent } from './tvshow-detail/tvshow-detail.component';
 import { TvShowResolver } from './tvshow-detail/tvshow-detail-resolver.service';
+import { TvshowHomeComponent } from './tvshow-home/tvshow-home.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
     resolve: {
       tvShow: TvShowResolver
     }
+  },
+  {
+    path: '',
+    component: TvshowHomeComponent
   }
 ];
 

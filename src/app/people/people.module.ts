@@ -6,6 +6,7 @@ import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { PersonResolver } from './person-detail/person-detail-resolver.service';
 import { PeopleService } from '@app/core';
 import { CreditsModule } from '@app/credits/credits.module';
+import { PeopleHomeComponent } from './people-home/people-home.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { CreditsModule } from '@app/credits/credits.module';
     PeopleRoutingModule,
     CreditsModule
   ],
-  declarations: [PersonDetailComponent],
+  declarations: [PersonDetailComponent, PeopleHomeComponent],
   providers: [
     PeopleService,
     PersonResolver
