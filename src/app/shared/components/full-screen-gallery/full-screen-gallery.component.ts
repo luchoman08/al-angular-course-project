@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { NgxGalleryComponent, NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery';
 
 import {
@@ -16,7 +16,7 @@ import {
   templateUrl: './full-screen-gallery.component.html',
   styleUrls: ['./full-screen-gallery.component.scss']
 })
-export class FullScreenGalleryComponent implements OnInit {
+export class FullScreenGalleryComponent implements OnInit, OnChanges {
   @ViewChild('onlyPreviewGallery') onlyPreviewGallery: NgxGalleryComponent;
   @Input() images: Image[];
   @Input() mediaType: MediaTypeEnum;
@@ -30,13 +30,20 @@ export class FullScreenGalleryComponent implements OnInit {
     this.galleryImages = new Array<NgxGalleryImage>();
     this.galleryOptions = galleryOptionsFullScreenOnly;
    }
+   initGalleryImages(): void {
+    this.galleryImages = new Array<NgxGalleryImage>();
+    this.galleryImages = this.galleryImagesService.
+    getFullScreenGalleryImages(this.images, this.mediaType, this.imageType, true);
+   }
   openPreviewImages(): void {
     this.onlyPreviewGallery.openPreview(0);
   }
   ngOnInit() {
-
-    this.galleryImages = this.galleryImagesService.
-    getFullScreenGalleryImages(this.images, this.mediaType, this.imageType, true);
+    this.initGalleryImages();
   }
+  ngOnChanges(changes: SimpleChanges) {
+    this.initGalleryImages();
+
+}
 
 }
