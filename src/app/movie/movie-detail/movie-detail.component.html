@@ -27,7 +27,7 @@
         alt="movie poster image"
         srcset="">
         <div class="open-posters">
-            <button (click)="openPreviewPosters()" mat-button class="open-button">Open posters</button>
+            <button (click)="openPreviewPosters()" [matBadge]="movie.images.posters.length" mat-button class="open-button">Open posters</button>
         </div>
       </div>
       <div fxLayout="column" fxFlex="60%"  class=" principal-info">
@@ -39,7 +39,7 @@
                   <mat-icon class="icon-rate">star_rate</mat-icon>
                 <p class="icon-rate"> {{movie.vote_average}} </p>
 
-                <p class="vote-count"> Votos: {{movie.vote_count}}</p>
+                <p class="vote-count"> Votes: {{movie.vote_count}}</p>
               </div>
             </div>
           </div>
