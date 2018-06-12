@@ -1,5 +1,5 @@
 import { TVShow, Movie} from '@app/core/';
-import { ProductionCompany } from '@app/core/';
+
 /**
  * Api v4
  * User list, than allow have private lists for save
