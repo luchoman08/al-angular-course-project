@@ -46,7 +46,6 @@
     "popper.js": "1.14.3",
     "reframe.js": "^2.2.1",
     "rxjs": "6.2.0",
-    "typescript": "^2.7.2",
     "web-animations-js": "2.3.1",
     "zone.js": "0.8.26"
   },
@@ -68,6 +67,7 @@
     "karma-jasmine-html-reporter": "1.1.0",
     "protractor": "5.3.2",
     "ts-node": "6.1.0",
-    "tslint": "5.10.0"
+    "tslint": "5.10.0",
+    "typescript": "2.7.2"
   }
 }
