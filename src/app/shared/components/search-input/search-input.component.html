@@ -50,7 +50,8 @@
           width = "32" />
             <span>
             {{ result.name }} | Tv series |
-              <small> Popularity:   {{ result.vote_average   | number: '1.0-0' }}%</small>
+            <mat-icon>start_rate</mat-icon>
+            {{result.vote_average |  number: '1.1-1'}}
             </span>
         </a>
 
