@@ -1,10 +1,12 @@
 import {
     Image,
     Genre,
-    Video,
-    SpokenLanguage,
-    ProductionCompany
+    Video
   } from '../';
+import { KeywordsInterface } from './keyword.interface';
+import { CountryInterface } from '@app/core/models/interfaces/country.interface';
+import { CompanyInterface } from '@app/core/models/interfaces/company.interface';
+import { LanguageInterface } from '@app/core/models/interfaces/language.interface';
 
   export interface MovieInterface {
       id: number;
@@ -17,13 +19,18 @@ import {
       backdrop_path: string;
       genre_ids: number[];
       original_language?: string;
+      runtime: number;
+      revenew: string;
+      production_countries: CountryInterface[];
       original_title: string;
       popularity: number; // between 0 and 10
-      production_companies: ProductionCompany[];
-      spoken_languages: SpokenLanguage[];
+      production_companies: CompanyInterface[];
+      spoken_languages: LanguageInterface[];
       video: boolean; // movie video preview available?
       video_count: number;
       genres?: Genre[];
       videos?: {results: Video[]};
       images?: { backdrops: Image[], posters: Image[]};
+      keywords?: {keywords: KeywordsInterface[]};
+
   }
