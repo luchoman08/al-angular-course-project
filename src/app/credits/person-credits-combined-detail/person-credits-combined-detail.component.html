@@ -5,8 +5,12 @@
         <img
         class="poster-image"
         [ngStyle]="{'max-width.px' : '90'}"
-        src="{{personCredit.poster_path | imageURL: POSTER_IMAGE_SIZES.W154}}"
-        alt="Poster image" srcset="">
+        [src]="
+        personCredit.poster_path ?
+        (personCredit.poster_path  | imageURL: POSTER_IMAGE_SIZES.W154):
+        './assets/img/posters/poster_default.png'"
+        alt="movie poster image"
+        srcset="">
       </a>
     </td>
     <td valign="middle">
