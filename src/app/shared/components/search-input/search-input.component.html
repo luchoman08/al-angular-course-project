@@ -2,7 +2,7 @@
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Search movies and more" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
     <mat-autocomplete  #auto="matAutocomplete" >
-        <perfect-scrollbar *ngIf=" this.results$ | async as results  " style="max-width: 600px; max-height: 400px;" [config]="config">
+        <perfect-scrollbar *ngIf=" this.results$ | async as results  " style="max-width: 600px; max-height: 400px;">
 
         <div>
         <mat-option
