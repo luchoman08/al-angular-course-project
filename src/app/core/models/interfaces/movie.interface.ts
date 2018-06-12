@@ -20,7 +20,7 @@ import { LanguageInterface } from '@app/core/models/interfaces/language.interfac
       genre_ids: number[];
       original_language?: string;
       runtime: number;
-      revenew: string;
+      revenue: string;
       production_countries: CountryInterface[];
       original_title: string;
       popularity: number; // between 0 and 10

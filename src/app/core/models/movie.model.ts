@@ -24,7 +24,7 @@ export class Movie implements MovieInterface {
     release_date: string;
     genre_ids: number[];
     runtime: number;
-    revenew: string;
+    revenue: string;
     original_language?: string;
     keywords?: {keywords: KeywordsInterface[]};
     original_title: string;
