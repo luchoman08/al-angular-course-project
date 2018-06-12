@@ -1,12 +1,16 @@
 import {
   Image,
   Genre,
-  Video,
-  SpokenLanguage,
-  ProductionCompany
+  Video  
 } from './';
 
-import { MovieInterface } from './interfaces';
+import { 
+  MovieInterface,
+  KeywordsInterface,
+  CompanyInterface, 
+  CountryInterface,
+  LanguageInterface
+} from './interfaces';
 
 export class Movie implements MovieInterface {
     id: number;
@@ -19,11 +23,15 @@ export class Movie implements MovieInterface {
     backdrop_path: string;
     release_date: string;
     genre_ids: number[];
+    runtime: number;
+    revenew: string;
     original_language?: string;
+    keywords?: {keywords: KeywordsInterface[]};
     original_title: string;
     popularity: number; // between 0 and 10
-    production_companies: ProductionCompany[];
-    spoken_languages: SpokenLanguage[];
+    production_companies: CompanyInterface[];
+    spoken_languages: LanguageInterface[];
+    production_countries: CountryInterface[];
     video: boolean; // movie video preview available?
     video_count: number;
     genres?: Genre[];
