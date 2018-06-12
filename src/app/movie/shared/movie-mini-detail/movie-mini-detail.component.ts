@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {
+  Movie,
+  PosterImageSizesInterface,
+  POSTER_IMAGE_SIZES
+} from '@app/core/';
 
 @Component({
   selector: 'app-movie-mini-detail',
@@ -6,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-mini-detail.component.scss']
 })
 export class MovieMiniDetailComponent implements OnInit {
-
-  constructor() { }
-
+  @Input() movie: Movie;
+  POSTER_IMAGE_SIZES: PosterImageSizesInterface;
+  constructor() {
+    this.POSTER_IMAGE_SIZES = POSTER_IMAGE_SIZES;
+   }
   ngOnInit() {
   }
 

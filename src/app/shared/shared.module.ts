@@ -31,11 +31,17 @@ import {
 
 import { MaterialModule } from './material.module';
 import { NavbarComponent, FooterComponent } from './layout';
+
 import {
   MoviesGalleryComponent,
-  MovieMiniDetailComponent
+  MovieMiniDetailComponent,
+  MovieMiniDetailListComponent
 } from '@app/movie/shared';
 
+import {
+  ReviewDetailComponent,
+  ReviewListComponent
+} from '@app/social/shared';
 
 @NgModule({
   declarations: [
@@ -49,8 +55,12 @@ import {
     NavbarComponent,
     FooterComponent,
 
+    ReviewListComponent,
+    ReviewDetailComponent,
+
     MoviesGalleryComponent,
     MovieMiniDetailComponent,
+    MovieMiniDetailListComponent,
 
     SearchInputComponent
   ],
@@ -99,7 +109,11 @@ import {
     SearchInputComponent,
 
     MoviesGalleryComponent,
-    MovieMiniDetailComponent
+    MovieMiniDetailComponent,
+    MovieMiniDetailListComponent,
+
+    ReviewListComponent,
+    ReviewDetailComponent
   ],
   entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
 })
