@@ -28,10 +28,19 @@ export class TvShowService {
   constructor(private apiService: ApiService) { }
   get(id,
     videos: Boolean = false,
-    images: Boolean = false
+    images: Boolean = false,
+    keywords: Boolean = false
   ): Observable<TvShowService> {
-      const params = paramsAppendToResponse(videos, images);
-      return this.apiService.get('/tv/' + id, params)
-      .pipe(map(data => data));
+    
+    const append_to_response = new Array<string>();
+    videos? append_to_response.push('videos'): null;
+    images? append_to_response.push('images'): null;
+    keywords? append_to_response.push('keywords'): null;
+    const params = paramsAppendToResponse(append_to_response);
+    if( append_to_response.length > 0 ) {
+      return this.apiService.get('/tv/' + id, params);
+    } else {
+      return this.apiService.get('/tv/' + id);
+    }
 }
 }
