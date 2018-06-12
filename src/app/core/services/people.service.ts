@@ -31,7 +31,10 @@ export class PeopleService {
       videos: Boolean = false,
       images: Boolean = false
     ): Observable<Person> {
-        const params = paramsAppendToResponse(videos, images);
+      const append_to_response = new Array<string>();
+      videos? append_to_response.push('videos'): null;
+      images? append_to_response.push('images'): null;
+        const params = paramsAppendToResponse(append_to_response);
         return this.apiService.get('/person/' + id, params)
         .pipe(map(data => data));
   }
