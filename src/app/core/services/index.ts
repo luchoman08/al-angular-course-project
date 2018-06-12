@@ -7,3 +7,4 @@ export * from './credits.service';
 export * from './search.service';
 export * from './tv-show.service';
 export * from './gallery-images.service';
+export * from './reviews.service';

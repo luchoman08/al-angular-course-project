@@ -18,3 +18,4 @@ export * from './tv-season.model';
 export * from './const';
 export * from './interfaces';
 export * from './search';
+export * from './social';
