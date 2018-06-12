@@ -43,6 +43,12 @@ import {
   ReviewListComponent
 } from '@app/social/shared';
 
+import { KeywordsListComponent } from '@app/keywords/shared';
+
+import { GenresListComponent } from '@app/genre/shared';
+
+import { DurationPipe } from './pipes/duration.pipe';
+
 @NgModule({
   declarations: [
     SingleDataDialogEditOrAddComponent,
@@ -62,7 +68,13 @@ import {
     MovieMiniDetailComponent,
     MovieMiniDetailListComponent,
 
-    SearchInputComponent
+    SearchInputComponent,
+
+    KeywordsListComponent,
+
+    GenresListComponent,
+
+    DurationPipe
   ],
   imports: [
     CommonModule,
@@ -102,6 +114,7 @@ import {
     FirstWordPipe,
     ImageURLPipe,
     SortMediaPipe,
+    DurationPipe,
 
     NavbarComponent,
     FooterComponent,
@@ -113,7 +126,11 @@ import {
     MovieMiniDetailListComponent,
 
     ReviewListComponent,
-    ReviewDetailComponent
+    ReviewDetailComponent,
+    
+    KeywordsListComponent,
+
+    GenresListComponent
   ],
   entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
 })
