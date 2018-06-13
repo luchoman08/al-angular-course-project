@@ -48,16 +48,21 @@ import { KeywordsListComponent } from '@app/keywords/shared';
 import { GenresListComponent } from '@app/genre/shared';
 
 import { DurationPipe } from './pipes/duration.pipe';
+import { BackgroundImageDirective } from './directives/background-image.directive';
+import { PosterImageDirective } from './directives/poster-image.directive';
+import { ProfileImageDirective } from './directives/profile-image.directive';
 
 @NgModule({
   declarations: [
     SingleDataDialogEditOrAddComponent,
     YoutubeVideoDialogComponent,
     FullScreenGalleryComponent,
+
     CapitalizePipe,
     FirstWordPipe,
     SortMediaPipe,
     ImageURLPipe,
+
     NavbarComponent,
     FooterComponent,
 
@@ -74,7 +79,13 @@ import { DurationPipe } from './pipes/duration.pipe';
 
     GenresListComponent,
 
-    DurationPipe
+    DurationPipe,
+
+    BackgroundImageDirective,
+
+    PosterImageDirective,
+
+    ProfileImageDirective
   ],
   imports: [
     CommonModule,
@@ -116,6 +127,9 @@ import { DurationPipe } from './pipes/duration.pipe';
     SortMediaPipe,
     DurationPipe,
 
+    BackgroundImageDirective,
+    PosterImageDirective,
+
     NavbarComponent,
     FooterComponent,
 
@@ -130,7 +144,9 @@ import { DurationPipe } from './pipes/duration.pipe';
     
     KeywordsListComponent,
 
-    GenresListComponent
+    GenresListComponent,
+
+    ProfileImageDirective
   ],
   entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
 })
