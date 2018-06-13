@@ -1,3 +1,4 @@
+import { PeopleHomeComponent } from './people-home/people-home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
@@ -10,6 +11,10 @@ const routes: Routes = [
     resolve: {
       person: PersonResolver
     }
+  },
+  {
+    path: '',
+    component: PeopleHomeComponent
   }
 ];
 
