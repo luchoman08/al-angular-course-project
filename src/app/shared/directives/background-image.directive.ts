@@ -16,10 +16,7 @@ export class BackgroundImageDirective implements OnChanges{
    }
    ngOnChanges() {
     let imgURL = this.imageURLPipe.transform(this.path, this.size);
-    this.el.nativeElement.style.backgroundRepeat = 'no-repeat';
-    this.el.nativeElement.style.backgroundSize = 'cover';
-    this.el.nativeElement.style.width = '100%';
-    
+
     if ( this.difuminate )  {
       if( this.path != '') {
      this.el.nativeElement.style.background = `
@@ -37,6 +34,9 @@ export class BackgroundImageDirective implements OnChanges{
       } else {
         this.el.nativeElement.style.backgroundImage = `url(${imgURL})`;
       }
+      this.el.nativeElement.style.backgroundRepeat = 'no-repeat';
+      this.el.nativeElement.style.backgroundSize = 'cover';
+      this.el.nativeElement.style.width = '100%';  
    }
 
 }
