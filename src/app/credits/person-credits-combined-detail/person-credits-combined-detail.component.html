@@ -4,6 +4,7 @@
       <a [routerLink]="['/movies', personCredit.id]">
         <img
         appPosterImage
+        class="credit-image"
         [ngStyle]="{'max-width.px' : '90'}"
         [path]="personCredit.poster_path"
         [size]="POSTER_IMAGE_SIZES.W154"
@@ -14,12 +15,12 @@
     <td valign="middle">
       <ng-container *ngIf="personCredit.job">
         <div class = "info" >
-          {{personCredit.job}}
+          Work as  {{personCredit.job | indefiniteArticle }} {{personCredit.job}}
         </div>
         </ng-container>
       <ng-container *ngIf="personCredit.character">
           <div class = "info" >
-        {{personCredit.character}}
+        Interpreting {{personCredit.character}}
         </div>
       </ng-container>
     </td>
