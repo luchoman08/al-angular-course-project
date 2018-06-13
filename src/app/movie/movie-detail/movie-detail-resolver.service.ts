@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { MovieService } from '@app/core/';
 import { Movie } from '@app/core/';
 import { catchError } from 'rxjs/operators';
+import { MovieAppendToResponseOptions } from '@app/core/models';
 
 
 @Injectable()
@@ -17,7 +18,15 @@ export class MovieResolver implements Resolve<Movie> {
   resolve(
     route: ActivatedRouteSnapshot
   ): Observable<any> {
-    return this.movieService.get(route.params['id'], true, true, true, true)
+    let options: MovieAppendToResponseOptions = {
+      videos :true,
+      images: true,
+      keywords: true,
+      credits: true,
+      reviews: true,
+      similar: true
+    }
+    return this.movieService.get(route.params['id'], options)
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
 }
