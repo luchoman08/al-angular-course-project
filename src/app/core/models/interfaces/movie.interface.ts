@@ -1,12 +1,18 @@
+import { TranslationInterface } from './translation.interface';
+import { Review } from '../social/review.model';
+import { Movie } from '../movie.model';
+import { Results } from '../results.model';
 import {
     Image,
     Genre,
+    Cast,
+    Crew,
     Video
   } from '../';
 import { KeywordsInterface } from './keyword.interface';
-import { CountryInterface } from '@app/core/models/interfaces/country.interface';
-import { CompanyInterface } from '@app/core/models/interfaces/company.interface';
-import { LanguageInterface } from '@app/core/models/interfaces/language.interface';
+import { CountryInterface } from './country.interface';
+import { CompanyInterface } from './company.interface';
+import { LanguageInterface } from './language.interface';
 import { CreditsModel } from '@app/core';
 
   export interface MovieInterface {
@@ -30,9 +36,12 @@ import { CreditsModel } from '@app/core';
       video: boolean; // movie video preview available?
       video_count: number;
       genres?: Genre[];
+      credits?: CreditsModel;
       videos?: {results: Video[]};
       images?: { backdrops: Image[], posters: Image[]};
-      keywords?: {keywords: KeywordsInterface[]};
-      credits?: CreditsModel;
+      similar?: Results<Movie>;
+      credis?: {id: string, cast: Cast[], crew: Crew[]}
+      reviews?: Results<Review>;
+      translations?: Results<TranslationInterface>;
 
   }

@@ -1,17 +1,23 @@
-import { CreditsModel } from '@app/core/';
+import { Crew } from './credits/movie-crew.model';
+import { Cast } from './credits/movie-cast.model';
+import { CreditsModel } from './credits';
 import {
   Image,
   Genre,
-  Video
+  Video,
+  Results
 } from './';
 
 import {
   MovieInterface,
   KeywordsInterface,
+  TranslationInterface,
   CompanyInterface,
   CountryInterface,
   LanguageInterface
 } from './interfaces';
+import {  } from './results.model';
+import { Review } from './social/review.model';
 
 export class Movie implements MovieInterface {
     id: number;
@@ -39,6 +45,10 @@ export class Movie implements MovieInterface {
     credits?: CreditsModel;
     videos?: {results: Video[]};
     images?: { backdrops: Image[], posters: Image[]};
+    similar?: Results<Movie>;
+    credis?: {id: string, cast: Cast[], crew: Crew[]}
+    reviews?: Results<Review>;
+    translations?: Results<TranslationInterface>;
     public static fromJSON(json: MovieInterface): Movie {
       const movie = Object.create(Movie.prototype);
       return Object.assign(movie, json);

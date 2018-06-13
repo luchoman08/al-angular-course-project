@@ -88,9 +88,6 @@ export class MovieDetailComponent implements OnInit {
       this.movie = new Movie();
       this.movie = Movie.fromJSON(data.movie);
       console.log(data.movie);
-      this.resultsRelatedMovies$ = this.movieService.getRelated(this.movie.id);
-      this.credits$ = this.creditsService.getMovieCredits(this.movie.id);
-      this.resultsReviews$ = this.reviewService.getMovieReviews(this.movie.id);
     });
   }
 }

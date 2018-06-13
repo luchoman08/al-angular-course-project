@@ -6,3 +6,5 @@ export * from './keyword.interface';
 export * from './company.interface';
 export * from './country.interface';
 export * from './language.interface';
+export * from './translation.interface';
+export * from './movie-append-to-response-options.interface';
