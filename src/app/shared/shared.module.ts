@@ -51,6 +51,7 @@ import { DurationPipe } from './pipes/duration.pipe';
 import { BackgroundImageDirective } from './directives/background-image.directive';
 import { PosterImageDirective } from './directives/poster-image.directive';
 import { ProfileImageDirective } from './directives/profile-image.directive';
+import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,10 @@ import { ProfileImageDirective } from './directives/profile-image.directive';
 
     PosterImageDirective,
 
-    ProfileImageDirective
+    ProfileImageDirective,
+
+
+    IndefiniteArticlePipe
   ],
   imports: [
     CommonModule,
@@ -146,7 +150,10 @@ import { ProfileImageDirective } from './directives/profile-image.directive';
 
     GenresListComponent,
 
-    ProfileImageDirective
+    ProfileImageDirective,
+
+
+    IndefiniteArticlePipe
   ],
   entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
 })
