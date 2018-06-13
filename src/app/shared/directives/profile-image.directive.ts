@@ -1,11 +1,11 @@
-import { Directive, Input, ElementRef } from '@angular/core';
+import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
 import { ImageSizeValueModel, AssetsService } from '@app/core';
 import { ImageURLPipe } from '../pipes';
 
 @Directive({
   selector: '[appProfileImage]'
 })
-export class ProfileImageDirective {
+export class ProfileImageDirective implements OnChanges{
   @Input() path: string;
   @Input() size: ImageSizeValueModel;
   constructor( 
@@ -14,7 +14,7 @@ export class ProfileImageDirective {
     private imageURLPipe: ImageURLPipe) {
 
    }
-   ngOnInit() {
+   ngOnChanges() {
     if (this.path) {
       this.el.nativeElement.src = this.imageURLPipe.transform(this.path, this.size);
     } else {
