@@ -92,7 +92,7 @@
                 <li *ngFor="let language of movie.spoken_languages">{{language.name}}</li>
               </ul>
             </div>
-            <div div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
+            <div *ngIf="movie.production_countries.length > 0" div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
               <div fxLayout="row" fxLayoutGap="10px">
                 <mat-icon>map</mat-icon>
                 <span>Production countries</span>
