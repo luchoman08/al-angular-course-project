@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { GalleryImagesService } from '../../core/services/gallery-images.service';
 
 import {
   NgxGalleryOptions,
@@ -9,7 +7,6 @@ import {
 } from 'ngx-gallery';
 
 import {
-galleryOptionsMovieBackdropDetail,
 Movie, Results,
 MovieService
 } from '@app/core';
