@@ -1,147 +1,132 @@
 <div class="fill-available">
-<div class="movie-detail container-fluid" [ngStyle]="{'background': movie.images.backdrops[0]? '
-  linear-gradient(
-  rgba(0, 0, 0, 0.75),
-  rgba(0, 0, 0, 0.75)
-  ), url( ' + (movie.images.backdrops[0].file_path  | imageURL: BACKDROP_IMAGE_SIZES.W1280) + ')' :
-   'linear-gradient(
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0.75)
-    )' ,
-  'background-repeat': 'no-repeat',
-  'background-size': 'cover',
-  'width': '100%' }">
-
-
-  <div class="content">
-    <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="20px">
-      <div class="poster-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
-        <img class="image" [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}" [src]="
-        movie.poster_path?
-        (movie.poster_path | imageURL: POSTER_IMAGE_SIZES.W185):
-        './assets/img/posters/poster_default.png'" alt="movie poster image" srcset="">
-        <div class="open-posters">
-          <button (click)="openPreviewPosters()" [matBadge]="movie.images.posters.length" mat-button class="open-button">Open posters</button>
+  <div appBackgroundImage [path]="movie.backdrop_path" [size]="BACKDROP_IMAGE_SIZES.W1280" [difuminate]="true" class="movie-detail container-fluid">
+    <div class="content">
+      <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="20px">
+        <div class="poster-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
+          <img appPosterImage [path]="movie.poster_path" [size]="POSTER_IMAGE_SIZES.W185" [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
+            alt="movie poster image" srcset="">
+          <div class="open-posters">
+            <button (click)="openPreviewPosters()" [matBadge]="movie.images.posters.length" mat-button class="open-button">Open posters</button>
+          </div>
         </div>
-      </div>
-      <div fxLayout="column" fxFlex="60%" class=" principal-info">
-        <h3 i18n> {{movie.title}} {{ movie.release_date? '(' + (movie.release_date | date:'yyyy') + ')' : ''}}</h3>
-        <div fxLayout="row">
-          <div fxLayout="column" fxFlex="50%">
-            <div class="vote-average">
-              <div>
-                <mat-icon class="icon-rate">star_rate</mat-icon>
-                <p class="icon-rate"> {{movie.vote_average}} </p>
+        <div fxLayout="column" fxFlex="60%" class=" principal-info">
+          <h3 i18n> {{movie.title}} {{ movie.release_date? '(' + (movie.release_date | date:'yyyy') + ')' : ''}}</h3>
+          <div fxLayout="row">
+            <div fxLayout="column" fxFlex="50%">
+              <div class="vote-average">
+                <div>
+                  <mat-icon class="icon-rate">star_rate</mat-icon>
+                  <p class="icon-rate"> {{movie.vote_average}} </p>
 
-                <p class="vote-count"> Votes: {{movie.vote_count}}</p>
+                  <p class="vote-count"> Votes: {{movie.vote_count}}</p>
+                </div>
               </div>
             </div>
+            <div fxLayout="row">
+              <button matTooltip="Trailers" [matTooltipPosition]="'above'" [matBadge]="movie.videos.results.length" matBadgePosition="after"
+                matBadgeColor="default" [disabled]="movie.videos.results.length === 0" class="menu-item" mat-mini-fab (click)="openTrailers()">
+                <mat-icon>movie</mat-icon>
+              </button>
+              <button matTooltip="Backdrops" [matTooltipPosition]="'above'" [matBadge]="movie.images.backdrops.length" matBadgePosition="after"
+                matBadgeColor="default" [disabled]="movie.images.backdrops.length === 0" mat-mini-fab class="menu-item" (click)="openPreviewBackdrops()">
+                <mat-icon>photo_library</mat-icon>
+              </button>
+            </div>
           </div>
-          <div fxLayout="row">
-            <button matTooltip="Trailers" [matTooltipPosition]="'above'" [matBadge]="movie.videos.results.length" matBadgePosition="after"
-              matBadgeColor="default" [disabled]="movie.videos.results.length === 0" class="menu-item" mat-mini-fab (click)="openTrailers()">
-              <mat-icon>movie</mat-icon>
-            </button>
-            <button matTooltip="Backdrops" [matTooltipPosition]="'above'" [matBadge]="movie.images.backdrops.length" matBadgePosition="after"
-              matBadgeColor="default" [disabled]="movie.images.backdrops.length === 0" mat-mini-fab class="menu-item" (click)="openPreviewBackdrops()">
-              <mat-icon>photo_library</mat-icon>
-            </button>
-          </div>
+          <h5 i18n> Summary </h5>
+          <p align="justify">{{movie.overview}}</p>
         </div>
-        <h5 i18n> Summary </h5>
-        <p align="justify">{{movie.overview}}</p>
-      </div>
-      <!-- Image Galleries full screen-->
-      <app-full-screen-gallery #backdropsGallery [mediaType]="movieType" [imageType]="backdropType" [images]="movie.images.backdrops">
-      </app-full-screen-gallery>
+        <!-- Image Galleries full screen-->
+        <app-full-screen-gallery #backdropsGallery [mediaType]="movieType" [imageType]="backdropType" [images]="movie.images.backdrops">
+        </app-full-screen-gallery>
 
-      <app-full-screen-gallery #postersGallery [mediaType]="movieType" [imageType]="posterType" [images]="movie.images.posters">
-      </app-full-screen-gallery>
-      <!-- End image galleryes full screen-->
+        <app-full-screen-gallery #postersGallery [mediaType]="movieType" [imageType]="posterType" [images]="movie.images.posters">
+        </app-full-screen-gallery>
+        <!-- End image galleryes full screen-->
+      </div>
     </div>
   </div>
-</div>
-<mat-tab-group >
-  <mat-tab label="Details">
-    <div class="container">
-      <div fxLayout="row">
-        <div fxLayout="column" fxFlex="50%" fxLayoutGap="20px">
-          <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
-            <mat-icon>date_range</mat-icon>
-            <span>Released date: {{movie.release_date | date: 'longDate'}}</span>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
-            <mat-icon>access_time</mat-icon>
-            <span> Duration: {{movie.runtime | duration}} </span>
-          </div>
-
-          <div *ngIf="movie.production_companies.length>0" fxLayout="column">
-            <div fxLayout="row" fxLayoutGap="10px">
-              <mat-icon>account_balance</mat-icon>
-            <span>Production companies</span>
-          </div>
-            <ul>
-              <li *ngFor="let company of movie.production_companies">{{company.name}}</li>
-            </ul>
-          </div>
-          <div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
-            <div div fxLayout="row" fxLayoutAlign="left left" fxLayoutGap="10px">
-              <mat-icon>view_column</mat-icon>
-            <span>Genres</span>
-          </div>
-            <app-genres-list [genres]="movie.genres"></app-genres-list>
-
-          </div>
-        </div>
-        <div fxLayout="column" fxFlex="50%" fxLayoutGap="20px">
-          <div div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
-            <mat-icon>attach_money</mat-icon>
-            <span>Revenue: {{movie.revenue | currency}}</span>
-          </div>
-          <div fxLayout="column">
+  <mat-tab-group>
+    <mat-tab label="Details">
+      <div class="container">
+        <div fxLayout="row">
+          <div fxLayout="column" fxFlex="50%" fxLayoutGap="20px">
             <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
-              <mat-icon>language</mat-icon>
-              <span> Spoken languages </span>
+              <mat-icon>date_range</mat-icon>
+              <span>Released date: {{movie.release_date | date: 'longDate'}}</span>
             </div>
-            <ul>
-              <li *ngFor="let language of movie.spoken_languages">{{language.name}}</li>
-            </ul>
-          </div>
-          <div div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
-            <div fxLayout="row" fxLayoutGap="10px">
-              <mat-icon>map</mat-icon>
-            <span>Production countries</span>
-          </div>
-            <ul>
-              <li *ngFor="let country of  movie.production_countries">{{country.name}}</li>
-            </ul>
-          </div>
-          <div *ngIf="movie.keywords.keywords.length > 0" fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
-            <div fxLayout="row" fxLayoutAlign="left left" fxLayoutGap="10px">
-              <mat-icon>vpn_key</mat-icon>
-              <span>Keywords</span>
+            <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
+              <mat-icon>access_time</mat-icon>
+              <span> Duration: {{movie.runtime | duration}} </span>
             </div>
-            <app-keywords-list [keywords]="movie.keywords.keywords"></app-keywords-list>
+
+            <div *ngIf="movie.production_companies.length>0" fxLayout="column">
+              <div fxLayout="row" fxLayoutGap="10px">
+                <mat-icon>account_balance</mat-icon>
+                <span>Production companies</span>
+              </div>
+              <ul>
+                <li *ngFor="let company of movie.production_companies">{{company.name}}</li>
+              </ul>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
+              <div div fxLayout="row" fxLayoutAlign="left left" fxLayoutGap="10px">
+                <mat-icon>view_column</mat-icon>
+                <span>Genres</span>
+              </div>
+              <app-genres-list [genres]="movie.genres"></app-genres-list>
+
+            </div>
+          </div>
+          <div fxLayout="column" fxFlex="50%" fxLayoutGap="20px">
+            <div div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
+              <mat-icon>attach_money</mat-icon>
+              <span>Revenue: {{movie.revenue | currency}}</span>
+            </div>
+            <div fxLayout="column">
+              <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
+                <mat-icon>language</mat-icon>
+                <span> Spoken languages </span>
+              </div>
+              <ul>
+                <li *ngFor="let language of movie.spoken_languages">{{language.name}}</li>
+              </ul>
+            </div>
+            <div div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
+              <div fxLayout="row" fxLayoutGap="10px">
+                <mat-icon>map</mat-icon>
+                <span>Production countries</span>
+              </div>
+              <ul>
+                <li *ngFor="let country of  movie.production_countries">{{country.name}}</li>
+              </ul>
+            </div>
+            <div *ngIf="movie.keywords.keywords.length > 0" fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
+              <div fxLayout="row" fxLayoutAlign="left left" fxLayoutGap="10px">
+                <mat-icon>vpn_key</mat-icon>
+                <span>Keywords</span>
+              </div>
+              <app-keywords-list [keywords]="movie.keywords.keywords"></app-keywords-list>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </mat-tab>
-  <mat-tab label="Related Movies">
-    <br>
-    <app-movie-mini-detail-list *ngIf="resultsRelatedMovies$ | async as resultsRelatedMovies" [movies]="resultsRelatedMovies.results"></app-movie-mini-detail-list>
-  </mat-tab>
-  <mat-tab label="Reviews">
-    <div class="container">
-      <app-review-list *ngIf="resultsReviews$ | async as resultsReviews" [reviews]="resultsReviews.results">
-      </app-review-list>
-    </div>
-  </mat-tab>
-  <mat-tab label="Credits">
-    <div class="container" fxLayout="column" fxLayoutGap="20px">
-      <app-movie-credit-list *ngIf="credits$ | async as credits" [sliceValue]="4" [credits]="credits"></app-movie-credit-list>
-     <button mat-button color="accent" [routerLink]="'/movies/' + movie.id + '/credits'"> See full credits</button>
-    </div>
-  </mat-tab>
-</mat-tab-group>
+    </mat-tab>
+    <mat-tab label="Related Movies">
+      <br>
+      <app-movie-mini-detail-list *ngIf="resultsRelatedMovies$ | async as resultsRelatedMovies" [movies]="resultsRelatedMovies.results"></app-movie-mini-detail-list>
+    </mat-tab>
+    <mat-tab label="Reviews">
+      <div class="container">
+        <app-review-list *ngIf="resultsReviews$ | async as resultsReviews" [reviews]="resultsReviews.results">
+        </app-review-list>
+      </div>
+    </mat-tab>
+    <mat-tab label="Credits">
+      <div class="container" fxLayout="column" fxLayoutGap="20px">
+        <app-movie-credit-list *ngIf="credits$ | async as credits" [sliceValue]="4" [credits]="credits"></app-movie-credit-list>
+        <button mat-button color="accent" [routerLink]="'/movies/' + movie.id + '/credits'"> See full credits</button>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>

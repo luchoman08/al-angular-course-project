@@ -3,12 +3,10 @@
     <td valign="top">
       <a [routerLink]="['/movies', personCredit.id]">
         <img
-        class="poster-image"
+        appPosterImage
         [ngStyle]="{'max-width.px' : '90'}"
-        [src]="
-        personCredit.poster_path ?
-        (personCredit.poster_path  | imageURL: POSTER_IMAGE_SIZES.W154):
-        './assets/img/posters/poster_default.png'"
+        [path]="personCredit.poster_path"
+        [size]="POSTER_IMAGE_SIZES.W154"
         alt="movie poster image"
         srcset="">
       </a>

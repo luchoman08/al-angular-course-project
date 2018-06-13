@@ -2,9 +2,9 @@
   <a [routerLink]="['/people', credit.id]">
     <img
     width="90px"
-    [src]=
-      "credit.profile_path? (credit.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185) :
-      './assets/img/people/default-profile-men.png'"
+    appProfileImage
+    [path]='credit.profile_path'
+    [size]="PROFILE_IMAGE_SIZES.W185"
     > </a>
     {{credit.name}}
   <ng-container *ngIf="credit.character then credit_character; else credit_job">
