@@ -12,7 +12,8 @@ import {
   JwtService,
   SearchService,
   ApiImagesService,
-  GalleryImagesService
+  GalleryImagesService,
+  AssetsService
 } from './services';
 
 @NgModule({
@@ -29,6 +30,7 @@ import {
     SearchService,
     CreditsService,
     ApiImagesService,
+    AssetsService,
     GalleryImagesService,
     JwtService
   ],
