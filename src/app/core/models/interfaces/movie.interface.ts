@@ -7,6 +7,7 @@ import { KeywordsInterface } from './keyword.interface';
 import { CountryInterface } from '@app/core/models/interfaces/country.interface';
 import { CompanyInterface } from '@app/core/models/interfaces/company.interface';
 import { LanguageInterface } from '@app/core/models/interfaces/language.interface';
+import { CreditsModel } from '@app/core';
 
   export interface MovieInterface {
       id: number;
@@ -32,5 +33,6 @@ import { LanguageInterface } from '@app/core/models/interfaces/language.interfac
       videos?: {results: Video[]};
       images?: { backdrops: Image[], posters: Image[]};
       keywords?: {keywords: KeywordsInterface[]};
+      credits?: CreditsModel;
 
   }

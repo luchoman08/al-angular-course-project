@@ -36,7 +36,7 @@
           </div>
 
         </div>
-        <div class="biography row" *ngIf="person.biography; else nobiography">
+        <div fxLayout="column" fxLayoutAlign="left left" class="biography" *ngIf="person.biography; else nobiography">
           <h4>Biography</h4>
           <p align="justify">{{person.biography}} </p>
         </div>

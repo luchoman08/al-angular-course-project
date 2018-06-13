@@ -14,4 +14,7 @@ export class Person implements PersonInterface {
     imdb_id: string;
     place_of_birth: string | null;
     homepage: string | null;
+    public static sortMethod(person1: Person, person2: Person): number {
+      return person2.popularity - person1.popularity;
+    }
 }

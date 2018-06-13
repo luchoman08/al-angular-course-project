@@ -1,13 +1,14 @@
+import { CreditsModel } from '@app/core/';
 import {
   Image,
   Genre,
-  Video  
+  Video
 } from './';
 
-import { 
+import {
   MovieInterface,
   KeywordsInterface,
-  CompanyInterface, 
+  CompanyInterface,
   CountryInterface,
   LanguageInterface
 } from './interfaces';
@@ -35,6 +36,7 @@ export class Movie implements MovieInterface {
     video: boolean; // movie video preview available?
     video_count: number;
     genres?: Genre[];
+    credits?: CreditsModel;
     videos?: {results: Video[]};
     images?: { backdrops: Image[], posters: Image[]};
     public static fromJSON(json: MovieInterface): Movie {

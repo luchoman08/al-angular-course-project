@@ -14,7 +14,7 @@ export class MovieService {
     private apiService: ApiService
   ) {}
 
-  private getResultsMultiplePage(url: string, page?: number): Observable<Results<Movie>>{
+  private getResultsMultiplePage(url: string, page?: number): Observable<Results<Movie>> {
     if (page) {
       const params = new HttpParams().set('page', String(page));
       return this.apiService.get(url, params)
@@ -26,21 +26,22 @@ export class MovieService {
   }
 
   get(id,
-      videos: Boolean = false,
-      images: Boolean = false,
-      keywords: Boolean = false
+      videos?: Boolean,
+      images?: Boolean,
+      keywords?: Boolean,
+      credits?: Boolean
     ): Observable<Movie> {
       const append_to_response = new Array<string>();
-      videos? append_to_response.push('videos'): null;
-      images? append_to_response.push('images'): null;
-      keywords? append_to_response.push('keywords'): null;
+      videos ? append_to_response.push('videos') : null;
+      images ? append_to_response.push('images') : null;
+      keywords ? append_to_response.push('keywords') : null;
+      credits ? append_to_response.push('credits') : null;
       const params = paramsAppendToResponse(append_to_response);
-      if( append_to_response.length > 0 ) {
+      if ( append_to_response.length > 0 ) {
         return this.apiService.get('/movie/' + id, params);
       } else {
         return this.apiService.get('/movie/' + id);
       }
-      
   }
   getRelated(movieId: number, page?: number): Observable<Results<Movie>> {
     return this.getResultsMultiplePage(`/movie/${movieId}/similar`, page);

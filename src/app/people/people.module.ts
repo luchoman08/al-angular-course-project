@@ -7,6 +7,7 @@ import { PersonResolver } from './person-detail/person-detail-resolver.service';
 import { PeopleService } from '@app/core';
 import { CreditsModule } from '@app/credits/credits.module';
 import { PeopleHomeComponent } from './people-home/people-home.component';
+import { PeopleGalleryComponent } from './people-gallery/people-gallery.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { PeopleHomeComponent } from './people-home/people-home.component';
     PeopleRoutingModule,
     CreditsModule
   ],
-  declarations: [PersonDetailComponent, PeopleHomeComponent],
+  declarations: [PersonDetailComponent, PeopleHomeComponent, PeopleGalleryComponent],
   providers: [
     PeopleService,
     PersonResolver

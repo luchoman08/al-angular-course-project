@@ -10,8 +10,27 @@ export const galleryOptionsFullScreenOnly: NgxGalleryOptions[] = [{
 
 export const galleryOptionsMovieBackdropDetail: NgxGalleryOptions[] = [
       {
+        thumbnailsColumns: 3,
+        thumbnailsRows: 2,
+        thumbnailsPercent: 40,
+        imagePercent: 60,
+        thumbnailMargin: 2,
+        thumbnailsMargin: 2,
         imageDescription: true,
         lazyLoading: true
       },
       ];
-
+      export const galleryOptionsPeopleProfileDetail: NgxGalleryOptions[] = [
+        {
+          height: '600px',
+          width: '400px',
+          thumbnailsColumns: 4,
+          thumbnailsRows: 1,
+          thumbnailsPercent: 20,
+          imagePercent: 80,
+          thumbnailMargin: 2,
+          thumbnailsMargin: 2,
+          imageDescription: true,
+          lazyLoading: true
+        },
+        ];

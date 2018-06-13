@@ -6,6 +6,8 @@ import { AuthService } from '@app/core';
 import { SharedModule } from '@app/shared/shared.module';
 import { CreditsModule } from '@app/credits/credits.module';
 import { MoviesHomeComponent } from './movies-home/movies-home.component';
+import { MovieFullCreditsComponent } from './movie-full-credits/movie-full-credits.component';
+import { MovieMiniDetailSummaryComponent } from './movie-mini-detail-summary/movie-mini-detail-summary.component';
 @NgModule({
   imports: [
     SharedModule,
@@ -16,7 +18,7 @@ import { MoviesHomeComponent } from './movies-home/movies-home.component';
     MovieResolver,
     AuthService
   ],
-  declarations: [MovieDetailComponent, MoviesHomeComponent],
+  declarations: [MovieDetailComponent, MoviesHomeComponent, MovieFullCreditsComponent, MovieMiniDetailSummaryComponent],
   exports: [MovieDetailComponent],
   bootstrap: []
 })

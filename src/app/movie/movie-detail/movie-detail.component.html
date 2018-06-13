@@ -1,3 +1,4 @@
+<div class="fill-available">
 <div class="movie-detail container-fluid" [ngStyle]="{'background': movie.images.backdrops[0]? '
   linear-gradient(
   rgba(0, 0, 0, 0.75),
@@ -60,7 +61,7 @@
     </div>
   </div>
 </div>
-<mat-tab-group>
+<mat-tab-group >
   <mat-tab label="Details">
     <div class="container">
       <div fxLayout="row">
@@ -74,7 +75,7 @@
             <span> Duration: {{movie.runtime | duration}} </span>
           </div>
 
-          <div fxLayout="column">
+          <div *ngIf="movie.production_companies.length>0" fxLayout="column">
             <div fxLayout="row" fxLayoutGap="10px">
               <mat-icon>account_balance</mat-icon>
             <span>Production companies</span>
@@ -89,7 +90,7 @@
             <span>Genres</span>
           </div>
             <app-genres-list [genres]="movie.genres"></app-genres-list>
-            
+
           </div>
         </div>
         <div fxLayout="column" fxFlex="50%" fxLayoutGap="20px">
@@ -115,7 +116,7 @@
               <li *ngFor="let country of  movie.production_countries">{{country.name}}</li>
             </ul>
           </div>
-          <div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
+          <div *ngIf="movie.keywords.keywords.length > 0" fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
             <div fxLayout="row" fxLayoutAlign="left left" fxLayoutGap="10px">
               <mat-icon>vpn_key</mat-icon>
               <span>Keywords</span>
@@ -127,21 +128,20 @@
     </div>
   </mat-tab>
   <mat-tab label="Related Movies">
-
     <br>
     <app-movie-mini-detail-list *ngIf="resultsRelatedMovies$ | async as resultsRelatedMovies" [movies]="resultsRelatedMovies.results"></app-movie-mini-detail-list>
   </mat-tab>
   <mat-tab label="Reviews">
     <div class="container">
-      <br>
       <app-review-list *ngIf="resultsReviews$ | async as resultsReviews" [reviews]="resultsReviews.results">
       </app-review-list>
     </div>
   </mat-tab>
   <mat-tab label="Credits">
-
-    <div class="container">
-      <app-movie-credit-list *ngIf="credits$ | async as credits" [credits]="credits"></app-movie-credit-list>
+    <div class="container" fxLayout="column" fxLayoutGap="20px">
+      <app-movie-credit-list *ngIf="credits$ | async as credits" [sliceValue]="4" [credits]="credits"></app-movie-credit-list>
+     <button mat-button color="accent" [routerLink]="'/movies/' + movie.id + '/credits'"> See full credits</button>
     </div>
   </mat-tab>
 </mat-tab-group>
+</div>
