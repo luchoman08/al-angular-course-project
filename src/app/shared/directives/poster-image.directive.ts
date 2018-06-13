@@ -15,7 +15,6 @@ export class PosterImageDirective implements OnChanges {
 
    }
    ngOnChanges() {
-     console.log('pana no');
     if (this.path) {
       this.el.nativeElement.src = this.imageURLPipe.transform(this.path, this.size);
     } else {
