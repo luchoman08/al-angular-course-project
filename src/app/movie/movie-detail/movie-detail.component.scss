@@ -43,15 +43,15 @@ button:focus { outline-style: none; }
   margin-left: 15px;
 }
 
-.poster-image:hover .open-posters {
-  opacity: 1;
-}
+
 
 .mat-tab {
   padding-top: 20px;
 }
 
-
+.poster-image:hover .open-posters {
+  opacity: 1;
+}
 .poster-image:hover .image {
   opacity: 0.3;
 }

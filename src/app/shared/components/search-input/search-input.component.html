@@ -14,7 +14,10 @@
     <a
     *ngSwitchCase="MEDIA_TYPE.PERSON" [routerLink]="['./people', result.id]">
         <img
-        [ngClass]="{'zoom': (i!==0 ||  results.results.length <= 3), 'zoom-first': (i===0 && results.results.length > 3), 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
+        [ngClass]=
+        "{'zoom': (i!==0 ||  results.results.length <= 3), 
+        'zoom-first': (i===0 && results.results.length > 3), 
+        'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
         style="vertical-align:middle;"
         aria-hidden
         height="45"
@@ -42,7 +45,8 @@
         *ngSwitchCase="MEDIA_TYPE.TV"
         [routerLink]="['./tv', result.id]">
           <img
-          [ngClass]="{'zoom': (i!==0 ||  results.results.length < 3), 'zoom-first': (i===0 && results.results.length > 3), 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
+          [ngClass]="{'zoom': (i!==0 ||  results.results.length < 3), 'zoom-first': (i===0 && results.results.length > 3), 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"
+          [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
           flexLayout="row" flexAlign="center"
           [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE"
           aria-hidden

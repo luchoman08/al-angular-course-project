@@ -1,20 +1,21 @@
 <ng-container *ngIf="person">
 
   <div class="container">
-    <div class="row">
-      <div class="col-3">
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div class="profile-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
         <img
         appProfileImage
-        class="profile-image"
+        class="image"
         [ngStyle] = "{'max-width.px': PROFILE_IMAGE_SIZES.W185.width}"
         [path]='person.profile_path'
         [size]="PROFILE_IMAGE_SIZES.W185"
         alt="person_profile_image" srcset="">
-        <div class="">
-          <button mat-button>
-            <mat-icon>photo_library</mat-icon> Ver imagenes</button>
+        <div class="open-posters">
+          <button (click)="openPreviewPosters()" [matBadge]="person.images.profiles.length" mat-button class="open-button">Open posters</button>
         </div>
       </div>
+
+
 
       <div class="col-9">
         <div class="row">

@@ -3,7 +3,7 @@
     <div class="content">
       <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="20px">
         <div class="poster-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
-          <img appPosterImage [path]="movie.poster_path" [size]="POSTER_IMAGE_SIZES.W185" [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
+          <img class="image" appPosterImage [path]="movie.poster_path" [size]="POSTER_IMAGE_SIZES.W185" [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
             alt="movie poster image" srcset="">
           <div class="open-posters">
             <button (click)="openPreviewPosters()" [matBadge]="movie.images.posters.length" mat-button class="open-button">Open posters</button>

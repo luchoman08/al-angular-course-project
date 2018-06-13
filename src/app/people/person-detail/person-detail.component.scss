@@ -13,3 +13,36 @@
   margin-top: 0.3em; // cosmetic
   margin-right: 1em; // cosmetic
 }
+
+
+
+
+
+
+
+
+.profile-image:hover .image {
+  opacity: 0.3;
+}
+.profile-image:hover .open-posters {
+  opacity: 1;
+}
+.profile-image {
+  width: 100%;
+  position: relative;
+
+}
+.open-posters {
+  transition: .2s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+
+  .open-button {
+    background-color: purple;
+  }
+}
