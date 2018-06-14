@@ -9,7 +9,8 @@ import { Results } from '@app/core/';
 import {
   PersonCreditsCombinedModel,
   Person,
-  PersonInterface
+  PersonInterface,
+  PersonAppendToResponseOptions
 } from '@app/core/models';
 
 @Injectable()
@@ -29,16 +30,20 @@ export class PeopleService {
     const tvShow = Object.create(Person.prototype);
     return Object.assign(tvShow, json);
   }
-  get(id,
-      videos: Boolean = false,
-      images: Boolean = false
+  get(id: string | Number, options?: PersonAppendToResponseOptions
     ): Observable<Person> {
+      if ( options ) {
       const append_to_response = new Array<string>();
-      videos ? append_to_response.push('videos') : null;
-      images ? append_to_response.push('images') : null;
-        const params = paramsAppendToResponse(append_to_response);
-        return this.apiService.get('/person/' + id, params)
-        .pipe(map(data => data));
+      options.videos ? append_to_response.push('videos') : null;
+      options.images ? append_to_response.push('images') : null;
+      options.movie_credits ? append_to_response.push('movie_credits') : null;
+      options.tv_credits ? append_to_response.push('tv_credits') : null;
+      const params = paramsAppendToResponse(append_to_response);
+      return this.apiService.get('/person/' + id, params);
+      } else {
+        return this.apiService.get('/person/' + id);
+      }
+
   }
   getCreditsCombined(personId: number|string): Observable<PersonCreditsCombinedModel> {
     return this.apiService.get(`/person/${personId}/combined_credits`)
