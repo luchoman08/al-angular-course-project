@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./person-credits-combined-list.component.scss']
 })
 export class PersonCreditsCombinedListComponent implements OnInit {
-  @Input() personCreditsCombined$: Observable<PersonCreditsCombinedModel>;
+  @Input() personCreditsCombined: PersonCreditsCombinedModel;
   constructor() { }
 
   ngOnInit() {
