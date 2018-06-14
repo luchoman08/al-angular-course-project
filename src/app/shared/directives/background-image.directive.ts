@@ -6,19 +6,19 @@ import { ImageURLPipe } from '@app/shared/pipes';
   selector: '[appBackgroundImage]'
 })
 export class BackgroundImageDirective implements OnChanges{
-  @Input('path') path: string;
-  @Input('size') size: ImageSizeValueModel;
-  @Input('difuminate') difuminate: boolean;
+  @Input() path: string;
+  @Input() size: ImageSizeValueModel;
+  @Input() blurred: boolean;
   constructor(
     private el: ElementRef,
     private imageURLPipe: ImageURLPipe) {
 
    }
    ngOnChanges() {
-    let imgURL = this.imageURLPipe.transform(this.path, this.size);
+    const imgURL = this.imageURLPipe.transform(this.path, this.size);
 
-    if ( this.difuminate )  {
-      if( this.path != '') {
+    if ( this.blurred )  {
+      if ( this.path !== '') {
      this.el.nativeElement.style.background = `
     linear-gradient(
       rgba(0, 0, 0, 0.75),
@@ -36,7 +36,7 @@ export class BackgroundImageDirective implements OnChanges{
       }
       this.el.nativeElement.style.backgroundRepeat = 'no-repeat';
       this.el.nativeElement.style.backgroundSize = 'cover';
-      this.el.nativeElement.style.width = '100%';  
+      this.el.nativeElement.style.width = '100%';
    }
 
 }
