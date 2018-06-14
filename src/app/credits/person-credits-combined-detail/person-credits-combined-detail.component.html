@@ -7,19 +7,21 @@
   </div>
   <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="8px">
 
-      <h4 *ngIf="personCredit.title">{{personCredit.title}}</h4>
-      <h4 *ngIf="personCredit.name">{{personCredit.name}}</h4>
-      <div fxLayout="row" fxLayoutGap="10px">
-        <p>Vote average: </p>
-        <mat-icon>star_rate</mat-icon>
-        <p>{{personCredit.vote_average}}</p>
-        <p>Votes: {{personCredit.vote_count}}</p>
-        <p>Popularity: {{personCredit.popularity | number: '1.0-0'}}%</p>
+    <h4 *ngIf="personCredit.title">{{personCredit.title}}</h4>
+    <h4 *ngIf="personCredit.name">{{personCredit.name}}</h4>
+    <div fxLayout="row" fxLayoutGap="10px">
+      <span>Vote average: </span>
+      <div fxLayout="row" fxLayoutAlign="left center">
+        <mat-icon fxFlexAlign="center">star_rate</mat-icon>
+        <span>{{personCredit.vote_average}}</span>
       </div>
+      <span>Votes: {{personCredit.vote_count}}</span>
+      <span>Popularity: {{personCredit.popularity | number: '1.0-0'}}%</span>
+    </div>
 
-      <div *ngIf="personCredit.job" class="info">
-        Work as  {{personCredit.job}}
-      </div>
+    <div *ngIf="personCredit.job" class="info">
+      Work as {{personCredit.job}}
+    </div>
     <ng-container *ngIf="personCredit.character">
       <div class="info">
         Interpreting {{personCredit.character}}
