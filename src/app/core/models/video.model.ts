@@ -7,4 +7,5 @@ export class Video {
     site: string;
     size: number;
     type: string; // Trailer |
+    succes?: boolean;
 }

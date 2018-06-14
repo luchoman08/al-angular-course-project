@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="stretch stretch" fxLayoutGap="10px">
+<div [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
   <div *ngIf="movies.length===0" class="container">
     <h3>No movies found</h3>
   </div>

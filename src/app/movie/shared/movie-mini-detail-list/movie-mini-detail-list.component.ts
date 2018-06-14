@@ -9,10 +9,16 @@ import { Movie } from '@app/core/';
 })
 export class MovieMiniDetailListComponent implements OnInit {
   @Input() movies: Movie[];
+  @Input() slice: number;
+  @Input() wrap: boolean;
+  @Input() layoutAlign: string;
   constructor() { }
 
   ngOnInit() {
-    this.movies.slice(0, 9);
+    if ( this.slice ) {
+      this.movies.slice(0, this.slice);
+    }
+    
   }
 
 }
