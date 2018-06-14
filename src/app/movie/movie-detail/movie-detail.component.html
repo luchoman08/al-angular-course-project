@@ -1,9 +1,9 @@
 <div class="fill-available">
-  <div 
-  appBackgroundImage 
-  [path]="movie.backdrop_path" 
-  [size]="BACKDROP_IMAGE_SIZES.W1280" 
-  [difuminate]="true" 
+  <div
+  appBackgroundImage
+  [path]="movie.backdrop_path"
+  [size]="BACKDROP_IMAGE_SIZES.W1280"
+  [blurred]="true"
   class="movie-detail container-fluid">
     <div class="content">
       <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="20px">
@@ -47,7 +47,7 @@
 
         <app-full-screen-gallery #postersGallery [mediaType]="movieType" [imageType]="posterType" [images]="movie.images.posters">
         </app-full-screen-gallery>
-        <!-- End image galleryes full screen-->
+        <!-- End image galleries full screen-->
       </div>
     </div>
   </div>
