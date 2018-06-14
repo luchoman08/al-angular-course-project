@@ -5,7 +5,7 @@ import { ImageURLPipe } from '@app/shared/pipes';
 @Directive({
   selector: '[appBackgroundImage]'
 })
-export class BackgroundImageDirective implements OnChanges{
+export class BackgroundImageDirective implements OnChanges {
   @Input() path: string;
   @Input() size: ImageSizeValueModel;
   @Input() blurred: boolean;
@@ -24,7 +24,7 @@ export class BackgroundImageDirective implements OnChanges{
       rgba(0, 0, 0, 0.75),
       rgba(0, 0, 0, 0.75)
       ), url('${imgURL}')`;
-    } else{
+    } else {
       this.el.nativeElement.style.background = `
       linear-gradient(
         rgba(0, 0, 0, 0.75),

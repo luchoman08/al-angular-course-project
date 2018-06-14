@@ -1,4 +1,4 @@
-import { Injectable, } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -18,14 +18,14 @@ export class MovieResolver implements Resolve<Movie> {
   resolve(
     route: ActivatedRouteSnapshot
   ): Observable<any> {
-    let options: MovieAppendToResponseOptions = {
-      videos :true,
+    const options: MovieAppendToResponseOptions = {
+      videos : true,
       images: true,
       keywords: true,
       credits: true,
       reviews: true,
       similar: true
-    }
+    };
     return this.movieService.get(route.params['id'], options)
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
