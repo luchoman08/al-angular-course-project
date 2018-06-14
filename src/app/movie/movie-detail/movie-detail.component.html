@@ -11,7 +11,11 @@
           <img class="image" appPosterImage [path]="movie.poster_path" [size]="POSTER_IMAGE_SIZES.W185" [ngStyle]="{'max-width.px' : POSTER_IMAGE_SIZES.W185.width}"
             alt="movie poster image" srcset="">
           <div class="open-posters">
-            <button (click)="openPreviewPosters()" [matBadge]="movie.images.posters.length" mat-button class="open-button">Open posters</button>
+            <button (click)="openPreviewPosters()" [matBadge]="movie.images.posters.length" mat-button class="open-button">
+                <ng-template *ngIf="movie.images.posters.length !==0; then images else no_images"></ng-template>
+                <ng-template #images>Open poster images </ng-template>
+                <ng-template #no_images>No poster images available</ng-template>
+            </button>
           </div>
         </div>
         <div fxLayout="column" fxFlex="60%" class=" principal-info">

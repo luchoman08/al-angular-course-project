@@ -6,7 +6,11 @@
           <img appProfileImage class="image" [ngStyle]="{'max-width.px': PROFILE_IMAGE_SIZES.W185.width}" [path]='person.profile_path'
             [size]="PROFILE_IMAGE_SIZES.W185" alt="person_profile_image" srcset="">
           <div class="open-profile-images">
-            <button (click)="openProfileImages()" [matBadge]="person.images.profiles.length" mat-button class="open-button">Open profile images</button>
+            <button [disabled]="!(person.images.profiles.length !==0)" (click)="openProfileImages()" [matBadge]="person.images.profiles.length" mat-button class="open-button">
+              <ng-template *ngIf="person.images.profiles.length !==0; then images else no_images"></ng-template>
+              <ng-template #images>Open profile images </ng-template>
+              <ng-template #no_images>No profile images available</ng-template>
+            </button>
           </div>
         </div>
         <div class="col-9">
