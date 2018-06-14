@@ -1,9 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Person, ProfileImageSizesInterface, PROFILE_IMAGE_SIZES } from '@app/core/';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { Observable } from 'rxjs';
-import { PeopleService } from '../../core/services/people.service';
-import { PersonCreditsCombinedModel } from '@app/core/';
+
+import { FullScreenGalleryComponent } from '@app/shared';
+
+import {
+  Person,
+  ImageTypeEnum,
+  PersonCreditsCombinedModel,
+  MediaTypeEnum,
+  PeopleService,
+  ProfileImageSizesInterface,
+  PROFILE_IMAGE_SIZES
+} from '@app/core/';
 
 @Component({
   selector: 'app-person-detail',
@@ -11,16 +21,19 @@ import { PersonCreditsCombinedModel } from '@app/core/';
   styleUrls: ['./person-detail.component.scss']
 })
 export class PersonDetailComponent implements OnInit {
+  @ViewChild('profilesGallery') profilesGallery: FullScreenGalleryComponent;
   person: Person;
   mode: string;
-  personCreditsCombined$: Observable<PersonCreditsCombinedModel>;
+  profileImageType: ImageTypeEnum;
   PROFILE_IMAGE_SIZES: ProfileImageSizesInterface;
+  personType: MediaTypeEnum;
   constructor(
     private route: ActivatedRoute,
     private peopleService: PeopleService
   ) {
-    this.PROFILE_IMAGE_SIZES = PROFILE_IMAGE_SIZES;
-    this.mode = 'determinate';
+    this.profileImageType = ImageTypeEnum.PROFILE;
+    this.personType = MediaTypeEnum.PERSON;
+    this. PROFILE_IMAGE_SIZES = PROFILE_IMAGE_SIZES;
     this.person = new Person();
    }
   ngOnInit() {
@@ -28,9 +41,11 @@ export class PersonDetailComponent implements OnInit {
       (data: { person: Person })  => {
         console.log(data);
         this.person = data.person;
-        this.personCreditsCombined$ = this.peopleService.getCreditsCombined(this.person.id);
       }
     );
+  }
+  openProfileImages() {
+  this.profilesGallery.openPreviewImages();
   }
 
 }

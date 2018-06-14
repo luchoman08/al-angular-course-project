@@ -1,56 +1,62 @@
 <ng-container *ngIf="person">
-
-  <div class="container">
-    <div fxLayout="row" fxLayoutGap="20px">
-      <div class="profile-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
-        <img
-        appProfileImage
-        class="image"
-        [ngStyle] = "{'max-width.px': PROFILE_IMAGE_SIZES.W185.width}"
-        [path]='person.profile_path'
-        [size]="PROFILE_IMAGE_SIZES.W185"
-        alt="person_profile_image" srcset="">
-        <div class="open-posters">
-          <button (click)="openPreviewPosters()" [matBadge]="person.images.profiles.length" mat-button class="open-button">Open posters</button>
-        </div>
-      </div>
-
-
-
-      <div class="col-9">
-        <div class="row">
-          <h2 class="name">{{person.name}} </h2>
-
-        </div>
-        <div class="row birth-day">
-
-          <div class="mini-detail-element" *ngIf="person.also_known_as.length > 0">
-            <small>Also known as: {{(person.also_known_as | slice:0:2).join(', ')}}</small>
+  <div class="fill-available">
+    <div class="container">
+      <div fxLayout="row" fxLayoutGap="20px">
+        <div class="profile-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
+          <img appProfileImage class="image" [ngStyle]="{'max-width.px': PROFILE_IMAGE_SIZES.W185.width}" [path]='person.profile_path'
+            [size]="PROFILE_IMAGE_SIZES.W185" alt="person_profile_image" srcset="">
+          <div class="open-profile-images">
+            <button (click)="openProfileImages()" [matBadge]="person.images.profiles.length" mat-button class="open-button">Open profile images</button>
           </div>
-          <div *ngIf="person.birthday" class="mini-detail-element">
-            <mat-icon>today</mat-icon>
-            <small>Birth date: {{person.birthday | date: 'dd/MM/yyyy'}}</small>
-          </div>
-          <div *ngIf="person.deathday" class="mini-detail-element">
-            <mat-icon>today</mat-icon>
-            <small>Dead dathe: {{person.deathday | date: 'dd/MM/yyyy'}}</small>
-          </div>
+        </div>
+        <div class="col-9">
+          <div class="row">
+            <h2 class="name">{{person.name}} </h2>
 
-        </div>
-        <div fxLayout="column" fxLayoutAlign="left left" class="biography" *ngIf="person.biography; else nobiography">
-          <h4>Biography</h4>
-          <p align="justify">{{person.biography}} </p>
-        </div>
-        <ng-template #nobiography>
-          <div class="biography row">
-            <h4>Biography not available</h4>
-            <p align="justify">{{person.biography}}</p>
           </div>
-        </ng-template>
+          <div class="row birth-day">
+
+            <div class="mini-detail-element" *ngIf="person.also_known_as.length > 0">
+              <small>Also known as: {{(person.also_known_as | slice:0:2).join(', ')}}</small>
+            </div>
+            <div *ngIf="person.birthday" class="mini-detail-element">
+              <mat-icon>today</mat-icon>
+              <small>Birth date: {{person.birthday | date: 'dd/MM/yyyy'}}</small>
+            </div>
+            <div *ngIf="person.deathday" class="mini-detail-element">
+              <mat-icon>today</mat-icon>
+              <small>Dead dathe: {{person.deathday | date: 'dd/MM/yyyy'}}</small>
+            </div>
+
+          </div>
+          <div fxLayout="column" fxLayoutAlign="left left" class="biography" *ngIf="person.biography; else nobiography">
+            <h4>Biography</h4>
+            <p align="justify">{{person.biography}} </p>
+          </div>
+          <ng-template #nobiography>
+            <div class="biography row">
+              <h4>Biography not available</h4>
+              <p align="justify">{{person.biography}}</p>
+            </div>
+          </ng-template>
+        </div>
       </div>
     </div>
+    <app-full-screen-gallery #profilesGallery [mediaType]="personType" [imageType]="profileImageType" [images]="person.images.profiles">
+    </app-full-screen-gallery>
+
+    <mat-tab-group>
+      <mat-tab label="Movie Credits">
+        <div class="container">
+          <app-person-credits-combined-list [personCreditsCombined]="person.movie_credits"></app-person-credits-combined-list>
+        </div>
+      </mat-tab>
+      <mat-tab label="Tv Credits">
+          <div class="container">
+          <app-person-credits-combined-list [personCreditsCombined]="person.tv_credits"></app-person-credits-combined-list>
+          </div>
+      </mat-tab>
+    </mat-tab-group>
+
   </div>
 </ng-container>
-<div class="container">
-<app-person-credits-combined-list [personCreditsCombined$] = "personCreditsCombined$"></app-person-credits-combined-list>
-</div>
