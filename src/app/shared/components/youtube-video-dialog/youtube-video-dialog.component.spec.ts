@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { YoutubeVideoDialogComponent } from './youtube-video-dialog.component';
+import { YouTubeVideoDialogComponent } from './youtube-video-dialog.component';
 
-describe('YoutubeVideoDialogComponent', () => {
-  let component: YoutubeVideoDialogComponent;
-  let fixture: ComponentFixture<YoutubeVideoDialogComponent>;
+describe('YouTubeVideoDialogComponent', () => {
+  let component: YouTubeVideoDialogComponent;
+  let fixture: ComponentFixture<YouTubeVideoDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YoutubeVideoDialogComponent ]
+      declarations: [ YouTubeVideoDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(YoutubeVideoDialogComponent);
+    fixture = TestBed.createComponent(YouTubeVideoDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

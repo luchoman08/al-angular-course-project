@@ -28,7 +28,7 @@ import {
 } from '@app/core/';
 
 import {
-  YoutubeVideoDialogComponent,
+  YouTubeVideoDialogComponent,
  } from '@app/shared';
 
 
@@ -73,7 +73,7 @@ export class MovieDetailComponent implements OnInit {
   }
   openTrailers(): void {
     console.log(this.movie.getVideoKeys());
-    const dialogRef = this.dialog.open(YoutubeVideoDialogComponent, {
+    const dialogRef = this.dialog.open(YouTubeVideoDialogComponent, {
       width: '750px',
       height: '500px',
       data: {

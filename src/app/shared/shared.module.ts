@@ -24,7 +24,7 @@ import {
 
 import {
   SingleDataDialogEditOrAddComponent,
-  YoutubeVideoDialogComponent,
+  YouTubeVideoDialogComponent,
   SearchInputComponent,
   FullScreenGalleryComponent
 } from './components';
@@ -56,7 +56,7 @@ import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
 @NgModule({
   declarations: [
     SingleDataDialogEditOrAddComponent,
-    YoutubeVideoDialogComponent,
+    YouTubeVideoDialogComponent,
     FullScreenGalleryComponent,
 
     CapitalizePipe,
@@ -123,7 +123,7 @@ import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
 
     SingleDataDialogEditOrAddComponent,
     FullScreenGalleryComponent,
-    YoutubeVideoDialogComponent,
+    YouTubeVideoDialogComponent,
     FullScreenGalleryComponent,
     CapitalizePipe,
     FirstWordPipe,
@@ -145,7 +145,7 @@ import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
 
     ReviewListComponent,
     ReviewDetailComponent,
-    
+
     KeywordsListComponent,
 
     GenresListComponent,
@@ -155,6 +155,6 @@ import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
 
     IndefiniteArticlePipe
   ],
-  entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
+  entryComponents: [SingleDataDialogEditOrAddComponent, YouTubeVideoDialogComponent]
 })
 export class SharedModule { }

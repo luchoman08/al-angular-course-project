@@ -11,7 +11,7 @@ import {
 import { TVShow, PosterImageSizesInterface, GalleryImagesService, POSTER_IMAGE_SIZES,
   galleryOptionsFullScreenOnly,
   MediaTypeEnum} from '@app/core';
-import { ImageURLPipe, YoutubeVideoDialogComponent, FullScreenGalleryComponent } from '@app/shared';
+import { ImageURLPipe, YouTubeVideoDialogComponent, FullScreenGalleryComponent } from '@app/shared';
 import { ImageTypeEnum } from '../../core/models/images/enums/image-type.enum';
 
 @Component({
