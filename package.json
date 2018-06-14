@@ -5,12 +5,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "publish": "ngh",
+    "publish": "ngh -S",
     "analyze": "ng build --prod --vendor-chunk --stats-json && webpack-bundle-analyzer dist/stats.json",
     "serve-c9": "ng serve --host 0.0.0.0 --port $PORT --public $C9_HOSTNAME",
     "build": "ng build --prod",
     "build-github": "ng build --named-chunks true --prod --output-hashing all  --aot --base-href 'https://luchoman08.github.io/al-angular-course-project/' ",
-    "build-publish": "npm run build-github & npm run publish",
+    "build-publish": "npm run build-github && npm run publish",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
