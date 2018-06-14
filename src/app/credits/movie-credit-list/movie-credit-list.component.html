@@ -1,12 +1,12 @@
-<div fxLayout="row">
+<div fxLayout="row" fxLayoutGap="15px">
 
 
-  <div *ngIf="credits.cast.length > 0" [fxFlex]="credits.crew.length > 0?'50%' : '100%'">
+  <div fxLayout="column" fxLayoutGap="15px" *ngIf="credits.cast.length > 0" [fxFlex]="credits.crew.length > 0?'50%' : '100%'">
     <h3>Cast</h3>
-    <app-movie-credit-detail *ngFor="let cast of credits.cast | slice:0: sliceValue" [credit]="cast"> </app-movie-credit-detail>
+    <app-movie-credit-detail  *ngFor="let cast of credits.cast | slice:0: sliceValue" [credit]="cast"> </app-movie-credit-detail>
   </div>
 
-  <div *ngIf="credits.crew.length > 0" [fxFlex]="credits.cast.length > 0? '50%' : '100%'">
+  <div fxLayout="column" fxLayoutGap="15px" *ngIf="credits.crew.length > 0" [fxFlex]="credits.cast.length > 0? '50%' : '100%'">
     <h3>Crew</h3>
     <app-movie-credit-detail *ngFor="let crew of credits.crew | slice:0 : sliceValue" [credit]="crew"> </app-movie-credit-detail>
   </div>
