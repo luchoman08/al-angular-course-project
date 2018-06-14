@@ -8,3 +8,4 @@ export * from './country.interface';
 export * from './language.interface';
 export * from './translation.interface';
 export * from './movie-append-to-response-options.interface';
+export * from './person-append-to-response-options.interface';
