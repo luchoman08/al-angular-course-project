@@ -3,10 +3,11 @@ import { PersonCreditInterface } from '@app/core/models/interfaces/person-credit
 export class PersonCastCreditCombinedModel  implements PersonCreditInterface {
   id: string;
   backdrop_path: string;
-  title: string;
+  title?: string;
   overview: string;
   character: string;
   job?: string; // trick for credit combined
+  name?: string;
   media_type: string; // movie or tv
   episode_count: number;
   vote_average: number;

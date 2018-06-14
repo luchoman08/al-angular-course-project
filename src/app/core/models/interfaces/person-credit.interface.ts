@@ -1,7 +1,8 @@
 export interface PersonCreditInterface {
   id: string;
   backdrop_path: string;
-  title: string;
+  title?: string;
+  name?: string;
   character?: string;
   job?: string;
   vote_average: number;
