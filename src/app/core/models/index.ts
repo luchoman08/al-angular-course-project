@@ -1,5 +1,5 @@
 export * from './genre.model';
-export * from './movie.model';
+export * from './movies';
 export * from './video.model';
 export * from './user-movie-list.model';
 export * from './person.model';

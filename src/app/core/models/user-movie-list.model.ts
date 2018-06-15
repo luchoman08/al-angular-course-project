@@ -6,5 +6,5 @@ export class UserMovieList {
     item_count: number;
     poster_path: string;
     items: Movie [];
-
 }
+

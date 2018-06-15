@@ -1,4 +1,3 @@
-export * from './movie.interface';
 export * from './person-credit.interface';
 export * from './tv-show.interface';
 export * from './person.interface';
@@ -7,5 +6,4 @@ export * from './company.interface';
 export * from './country.interface';
 export * from './language.interface';
 export * from './translation.interface';
-export * from './movie-append-to-response-options.interface';
 export * from './person-append-to-response-options.interface';
