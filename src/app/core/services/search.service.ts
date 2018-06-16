@@ -26,11 +26,14 @@ import {
   PersonInterface,
   TvShowInterface
 } from '@app/core/models';
+import { MovieFactory } from '@app/core/factories';
+import { FactoriesService } from './factories.service';
 
 @Injectable()
 export class SearchService {
   constructor (
     private apiService: ApiService,
+    private factoriesService: FactoriesService
   ) {}
 
 
@@ -48,7 +51,7 @@ export class SearchService {
               map((data: Results<Movie>) => {
                   return data.results
                       .map((movie: MovieInterface) => {
-                          return Movie.fromJSON(movie);
+                          return this.factoriesService.makeMovie(movie);
                       })
                       .sort(Movie.sortMethod);
               })

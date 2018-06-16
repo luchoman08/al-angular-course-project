@@ -19,7 +19,7 @@
           </div>
         </div>
         <div fxLayout="column" fxFlex="60%" class=" principal-info">
-          <h3 i18n> {{movie.title}} {{ movie.release_date? '(' + (movie.release_date | date:'yyyy') + ')' : ''}}</h3>
+          <h3 i18n> (Movie) {{movie.title}} {{ movie.release_date? '(' + (movie.release_date | date:'yyyy') + ')' : ''}}</h3>
           <div fxLayout="row">
             <div fxLayout="column" fxFlex="50%">
               <div class="vote-average">
