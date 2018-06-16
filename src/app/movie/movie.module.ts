@@ -8,6 +8,7 @@ import { CreditsModule } from '@app/credits/credits.module';
 import { MoviesHomeComponent } from './movies-home/movies-home.component';
 import { MovieFullCreditsComponent } from './movie-full-credits/movie-full-credits.component';
 import { MovieMiniDetailSummaryComponent } from './movie-mini-detail-summary/movie-mini-detail-summary.component';
+import { MovieFullCreditsResolver } from '@app/movie/movie-full-credits/movie-full-credits-resolver.service';
 @NgModule({
   imports: [
     SharedModule,
@@ -16,9 +17,15 @@ import { MovieMiniDetailSummaryComponent } from './movie-mini-detail-summary/mov
   ],
   providers: [
     MovieResolver,
+    MovieFullCreditsResolver,
     AuthService
   ],
-  declarations: [MovieDetailComponent, MoviesHomeComponent, MovieFullCreditsComponent, MovieMiniDetailSummaryComponent],
+  declarations: [
+    MovieDetailComponent,
+    MoviesHomeComponent,
+    MovieFullCreditsComponent,
+    MovieMiniDetailSummaryComponent
+  ],
   exports: [MovieDetailComponent],
   bootstrap: []
 })
