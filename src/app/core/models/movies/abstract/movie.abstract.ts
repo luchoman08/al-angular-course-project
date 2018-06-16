@@ -27,7 +27,7 @@ export abstract class MovieAbstract {
   runtime: number;
   revenue: string;
   original_language?: string;
-  keywords?: {keywords: KeywordsInterface[]};
+  keywords?: { keywords: KeywordsInterface[] };
   original_title: string;
   popularity: number; // between 0 and 10
   production_companies: CompanyInterface[];
@@ -37,10 +37,10 @@ export abstract class MovieAbstract {
   video_count: number;
   genres?: Genre[];
   credits?: CreditsModel;
-  videos?: {results: Video[]};
-  images?: { backdrops: Image[], posters: Image[]};
+  videos?: { results: Video[] };
+  images?: { backdrops: Image[], posters: Image[] };
   similar?: Results<Movie>;
-  credis?: {id: string, cast: Cast[], crew: Crew[]}
+  credis?: { id: string, cast: Cast[], crew: Crew[] }
   reviews?: Results<Review>;
   translations?: Results<TranslationInterface>;
 }

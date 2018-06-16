@@ -13,7 +13,8 @@ import {
   SearchService,
   ApiImagesService,
   GalleryImagesService,
-  AssetsService
+  AssetsService,
+  FactoriesService
 } from './services';
 
 @NgModule({
@@ -25,6 +26,7 @@ import {
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true },
     ApiService,
+    FactoriesService,
     MovieService,
     PeopleService,
     SearchService,
