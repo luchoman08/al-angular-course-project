@@ -84,9 +84,8 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: { movie: Movie }) => {
-
       this.movie = new Movie();
-      this.movie = Movie.fromJSON(data.movie);
+      this.movie = data.movie;
       console.log(data.movie);
     });
   }
