@@ -22,6 +22,7 @@ export class PeopleGalleryComponent implements OnInit {
 
   ngOnInit() {
     this.gallery = this.galeryImagesService.getPeoplePosterDescriptionGallery(this.people);
+    console.log(this.people);
     this.selectedImage = this.gallery.images[0];
   }
   /**
