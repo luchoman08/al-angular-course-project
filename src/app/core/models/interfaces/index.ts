@@ -7,3 +7,5 @@ export * from './country.interface';
 export * from './language.interface';
 export * from './translation.interface';
 export * from './person-append-to-response-options.interface';
+export * from './results.interface';
+export * from './genre.interface';
