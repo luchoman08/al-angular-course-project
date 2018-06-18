@@ -8,9 +8,15 @@ import { Genre } from '@app/core';
 })
 export class GenresListComponent implements OnInit {
   @Input() genres: Genre[];
+  @Input('max-items') maxItems: number ;
   constructor() { }
 
   ngOnInit() {
+    this.maxItems = 0;
+    if ( this.genres ) {
+      this.maxItems = this.genres.length - 1; 
+      this.genres.slice(0,this.maxItems);
+    }
   }
 
 }
