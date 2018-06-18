@@ -6,7 +6,7 @@ import { ApiService } from './shared';
 
 import {
   Review,
-  Results
+  ResultsInterface
 } from '@app/core/models';
 
 @Injectable({
@@ -14,7 +14,7 @@ import {
 })
 export class ReviewsService {
   constructor(private apiService: ApiService) { }
-  getMovieReviews(movieId: number): Observable<Results<Review>> {
+  getMovieReviews(movieId: number): Observable<ResultsInterface<Review>> {
     return this.apiService.get(`/movie/${movieId}/reviews`);
   }
 }

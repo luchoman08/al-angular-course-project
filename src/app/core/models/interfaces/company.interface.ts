@@ -1,6 +1,6 @@
-export class ProductionCompany {
+export interface CompanyInterface {
     id: number;
     name: string;
-    logo_path: string | null;
+    log_path: string;
     origin_country: string;
 }

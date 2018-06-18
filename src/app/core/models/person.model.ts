@@ -1,5 +1,12 @@
 import { Gender, Image } from './';
 import { PersonInterface } from './interfaces';
+import { PersonCreditsCombinedModel } from './credits';
+
+import {
+  PersonCrewCreditCombinedModel,
+  PersonCastCreditCombinedModel
+} from './credits/';
+
 export class Person implements PersonInterface {
     id: number;
     name: string;
@@ -14,4 +21,9 @@ export class Person implements PersonInterface {
     imdb_id: string;
     place_of_birth: string | null;
     homepage: string | null;
+    tv_credits?: PersonCreditsCombinedModel;
+    movie_credits?: PersonCreditsCombinedModel;
+    public static sortMethod(person1: Person, person2: Person): number {
+      return person2.popularity - person1.popularity;
+    }
 }

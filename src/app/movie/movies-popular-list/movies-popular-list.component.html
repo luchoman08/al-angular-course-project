@@ -1,0 +1,8 @@
+<div class="container">
+  <h3>Popular movies</h3>
+  <app-movies-list-table 
+  [movies]="movies$"
+  (pageChange)="onSetPage($event)"
+  [resultsLength] = "resultsLength">
+  </app-movies-list-table>
+</div>

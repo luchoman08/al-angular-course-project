@@ -11,13 +11,14 @@ import {
   ProfileImageSizesInterface,
 
   MediaTypeEnum,
-  Results,
+  ResultsInterface,
   SearchService,
 
   PROFILE_IMAGE_SIZES,
   POSTER_IMAGE_SIZES,
 
 } from '@app/core/';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-search-input',
@@ -31,7 +32,7 @@ export class SearchInputComponent implements OnInit {
     PROFILE_IMAGE_SIZES: ProfileImageSizesInterface;
     MEDIA_TYPE = MediaTypeEnum;
     results$:   Observable <
-    Results <
+    ResultsInterface <
       MovieCombinedInterface |
       PersonCombinedInterface |
       TvCombinedInterface
@@ -43,6 +44,9 @@ export class SearchInputComponent implements OnInit {
         this.PROFILE_IMAGE_SIZES = PROFILE_IMAGE_SIZES;
         this.stateCtrl = new FormControl();
         this.results$ = this.searchService.searchCombined(this.stateCtrl.valueChanges);
+        this.results$.pipe(tap( results => 
+            console.log(results, 'results from search componsne'))
+        )
     }
     ngOnInit() {}
 }

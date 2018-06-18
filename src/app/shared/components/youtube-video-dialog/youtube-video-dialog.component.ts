@@ -7,14 +7,14 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './youtube-video-dialog.component.html',
   styleUrls: ['./youtube-video-dialog.component.scss']
 })
-export class YoutubeVideoDialogComponent implements OnInit {
+export class YouTubeVideoDialogComponent implements OnInit {
   public video_keys: string[];
   public width: string;
   public urlf: string;
   public height: string;
   constructor(
     private sanitizer: DomSanitizer,
-     public dialogRef: MatDialogRef<YoutubeVideoDialogComponent>,
+     public dialogRef: MatDialogRef<YouTubeVideoDialogComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: {video_keys: string[], width: string, height: string}) {
       this.video_keys = data.video_keys;

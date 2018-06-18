@@ -1,47 +1,79 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Movie } from '@app/core/models';
-import { ApiService } from './shared';
-
+import { HttpParams } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 import { map } from 'rxjs/operators';
-import { paramsAppendToResponse } from '@app/core/services/shared';
-import { Results } from '../models/results.model';
-import { HttpParams } from '@angular/common/http';
+
+import { ResultsInterface } from '@app/core/models/interfaces/results.interface';
+import { Movie, MovieInterface } from '@app/core/models';
+import { ApiService } from './shared';
+import { paramsAppendToResponseMoviesAndTv } from './shared';
+import { MovieAppendToResponseOptions } from '@app/core/models';
+import { FactoriesService } from '@app/core/services/factories.service';
+import { defaultMovieResults } from '@app/core/factories/movie-results-factory';
 @Injectable()
 export class MovieService {
-  constructor (
-    private apiService: ApiService
-  ) {}
-
-  private getResultsMultiplePage(url: string, page?: number): Observable<Results<Movie>>{
-    if (page) {
-      const params = new HttpParams().set('page', String(page));
-      return this.apiService.get(url, params)
-      .pipe( map ((data: Results<Movie>) => data));
+  constructor(
+    private apiService: ApiService,
+    private factoriesService: FactoriesService
+  ) { }
+    /**
+     * Search movies from string input and return them ordered by vote average
+     *
+     * @private
+     * @param {string} query
+     * @returns {Observable<Movie[]>}
+     * @memberof SearchService
+     */
+    public searchMovies(query: string, page?: number): Observable<ResultsInterface<Movie>> {
+      if ( query === '') {
+      return of( defaultMovieResults);
     } else {
-    return this.apiService.get(url)
-    .pipe( map ((data: Results<Movie>) => data));
+      const params = new HttpParams().set('query', query);
+      
+      return this.getResultsMultiplePage('/search/movie', page, params);
     }
   }
-
-  get(id,
-      videos: Boolean = false,
-      images: Boolean = false
-    ): Observable<Movie> {
-        const params = paramsAppendToResponse(videos, images);
-        return this.apiService.get('/movie/' + id, params);
+  private getResultsMultiplePage(url: string, page?: number, paramsInput?: HttpParams): Observable<ResultsInterface<Movie>> {
+    let pageNormalized = page + 1 ;
+    let params: HttpParams;
+    if ( !paramsInput && pageNormalized) {
+      params = new HttpParams().set('page', String(pageNormalized));
+    }
+    if ( paramsInput && !pageNormalized) {
+      params = new HttpParams({fromString: paramsInput.toString()})
+    }
+    if ( paramsInput && pageNormalized) {
+      params = new HttpParams({fromString: paramsInput.toString()}).set('page', String(pageNormalized));
+    }
+    return this.apiService.get(url, params)
+    .pipe(map((data: ResultsInterface<MovieInterface>) => this.factoriesService.makeMovieResults(data)));
   }
-  getRelated(movieId: number, page?: number): Observable<Results<Movie>> {
+
+  get(id: string | number, options?: MovieAppendToResponseOptions): Observable<Movie> {
+    if (options) {
+      const params = paramsAppendToResponseMoviesAndTv(options);
+        return this.apiService.get('/movie/' + id, params)
+        .pipe(
+          map (
+            (movieInterface: MovieInterface) =>
+            this.factoriesService.makeMovie(movieInterface)
+          )
+        );
+    } else {
+      return this.apiService.get('/movie/' + id);
+    }
+  }
+  getSimilar(movieId: number, page?: number): Observable<ResultsInterface<Movie>> {
     return this.getResultsMultiplePage(`/movie/${movieId}/similar`, page);
   }
-  getPopular(page?: number): Observable<Results<Movie>> {
+  getPopular(page?: number): Observable<ResultsInterface<Movie>> {
     return this.getResultsMultiplePage('/movie/popular', page);
   }
-  getInTheatres(page?: number): Observable<Results<Movie>> {
+  getInTheatres(page?: number): Observable<ResultsInterface<Movie>> {
     return this.getResultsMultiplePage('/movie/now_playing', page);
   }
-  getTopRated(page?: number): Observable<Results<Movie>> {
+  getTopRated(page?: number): Observable<ResultsInterface<Movie>> {
     return this.getResultsMultiplePage('/movie/top_rated', page);
   }
 

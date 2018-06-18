@@ -7,10 +7,14 @@ import {  CreditsModel } from '@app/core';
 })
 export class MovieCreditListComponent implements OnInit {
   @Input() credits: CreditsModel;
+  @Input() sliceValue: number;
   constructor() {
      }
 
   ngOnInit() {
+    if ( !this.sliceValue ) {
+      this.sliceValue = Math.max(this.credits.crew.length, this.credits.cast.length);
+    }
   }
 
 }

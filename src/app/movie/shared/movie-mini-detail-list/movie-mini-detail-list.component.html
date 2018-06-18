@@ -1,9 +1,7 @@
-<div fxLayout="row"   fxLayoutAlign="stretch stretch" fxLayoutGap="10px">
-  <app-movie-mini-detail
-  fxFlex="200px"
-  *ngFor="let movie of movies"
-  fxLayoutAlign="stretch stretch"
-  [movie]="movie"
-  >
+<div [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" fxLayoutGap="12px" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
+  <div *ngIf="movies.length===0" class="container">
+    <h3>No movies found</h3>
+  </div>
+  <app-movie-mini-detail fxFlex="200px" *ngFor="let movie of movies" fxLayoutAlign="stretch stretch" [movie]="movie">
   </app-movie-mini-detail>
 </div>

@@ -5,6 +5,14 @@
 
 }
 
+.fill-available {
+  min-height: 100%;
+  min-height: -moz-available;          /* WebKit-based browsers will ignore this. */
+  min-height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  min-height: stretch;
+
+}
+
 .movie-detail {
   min-height: 400px;
 }
@@ -35,13 +43,15 @@ button:focus { outline-style: none; }
   margin-left: 15px;
 }
 
+
+
+.mat-tab {
+  padding-top: 20px;
+}
+
 .poster-image:hover .open-posters {
   opacity: 1;
 }
-
-
-
-
 .poster-image:hover .image {
   opacity: 0.3;
 }
@@ -64,4 +74,10 @@ button:focus { outline-style: none; }
   .open-button {
     background-color: purple;
   }
+}
+
+
+.container {
+  margin-top: 30px;
+  overflow: hidden;
 }

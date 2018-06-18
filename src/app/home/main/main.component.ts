@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { GalleryImagesService } from '../../core/services/gallery-images.service';
 
 import {
   NgxGalleryOptions,
@@ -9,8 +7,7 @@ import {
 } from 'ngx-gallery';
 
 import {
-galleryOptionsMovieBackdropDetail,
-Movie, Results,
+Movie, ResultsInterface,
 MovieService
 } from '@app/core';
 
@@ -21,9 +18,9 @@ MovieService
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  popularMoviesResults$: Observable<Results<Movie>>;
-  inTheatresMoviesResults$: Observable<Results<Movie>>;
-  topRatedMoviesResults$: Observable<Results<Movie>>;
+  popularMoviesResults$: Observable<ResultsInterface<Movie>>;
+  inTheatresMoviesResults$: Observable<ResultsInterface<Movie>>;
+  topRatedMoviesResults$: Observable<ResultsInterface<Movie>>;
   constructor( private moviesService: MovieService) { }
 
   ngOnInit() {

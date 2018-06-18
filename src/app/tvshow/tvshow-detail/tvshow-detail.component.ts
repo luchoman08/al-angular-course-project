@@ -8,11 +8,19 @@ import {
   NgxGalleryImage
 } from 'ngx-gallery';
 
-import { TVShow, PosterImageSizesInterface, GalleryImagesService, POSTER_IMAGE_SIZES,
+import {
+  TVShow,
+  PosterImageSizesInterface,
+  GalleryImagesService,
+  POSTER_IMAGE_SIZES,
   galleryOptionsFullScreenOnly,
-  MediaTypeEnum} from '@app/core';
-import { ImageURLPipe, YoutubeVideoDialogComponent, FullScreenGalleryComponent } from '@app/shared';
-import { ImageTypeEnum } from '../../core/models/images/enums/image-type.enum';
+  MediaTypeEnum,
+  BACKDROP_IMAGE_SIZES,
+  BackdropImageSizesInterface,
+  ImageTypeEnum
+} from '@app/core';
+
+import { FullScreenGalleryComponent } from '@app/shared';
 
 @Component({
   selector: 'app-tvshow-detail',
@@ -25,6 +33,7 @@ export class TvshowDetailComponent implements OnInit {
 
   tvShow: TVShow;
   POSTER_IMAGE_SIZES: PosterImageSizesInterface;
+  BACKDROP_IMAGE_SIZES: BackdropImageSizesInterface;
   galleryOptions: NgxGalleryOptions[];
   tvShowType: MediaTypeEnum;
   posterType: ImageTypeEnum;
@@ -39,6 +48,7 @@ export class TvshowDetailComponent implements OnInit {
     this.backdropType = ImageTypeEnum.BACKDROP;
     this.tvShowType = MediaTypeEnum.TV;
     this.POSTER_IMAGE_SIZES =  POSTER_IMAGE_SIZES;
+    this.BACKDROP_IMAGE_SIZES = BACKDROP_IMAGE_SIZES;
     this.tvShow = new TVShow();
     this.galleryImages = new Array<NgxGalleryImage>();
   }

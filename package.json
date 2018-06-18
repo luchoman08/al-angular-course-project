@@ -5,9 +5,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "publish": "ngh -S",
+    "analyze": "ng build --prod --vendor-chunk --stats-json && webpack-bundle-analyzer dist/stats.json",
     "serve-c9": "ng serve --host 0.0.0.0 --port $PORT --public $C9_HOSTNAME",
     "build": "ng build --prod",
-    "build-github": "ng build   --named-chunks true --prod --output-hashing all  --aot --base-href 'https://luchoman08.github.io/al-angular-course-project/' ",
+    "build-github": "ng build --named-chunks true --prod --output-hashing all  --aot --base-href 'https://luchoman08.github.io/al-angular-course-project/' ",
+    "build-publish": "npm run build-github && npm run publish",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -40,9 +43,7 @@
     "mdbootstrap": "^4.5.4",
     "moment": "2.22.2",
     "ngx-gallery": "^5.3.2",
-    "ngx-perfect-scrollbar": "^6.2.0",
     "ngx-youtube-player": "^6.0.0",
-    "perfect-scrollbar": "1.4.0",
     "popper.js": "1.14.3",
     "reframe.js": "^2.2.1",
     "rxjs": "6.2.0",
@@ -57,6 +58,7 @@
     "@types/jasminewd2": "2.0.3",
     "@types/jquery": "3.3.2",
     "@types/node": "10.3.2",
+    "angular-cli-ghpages": "^0.5.2",
     "codelyzer": "4.3.0",
     "jasmine-core": "3.1.0",
     "jasmine-spec-reporter": "4.2.1",
@@ -68,6 +70,7 @@
     "protractor": "5.3.2",
     "ts-node": "6.1.0",
     "tslint": "5.10.0",
-    "typescript": "^2.7.2"
+    "typescript": "^2.7.2",
+    "webpack-bundle-analyzer": "^2.13.1"
   }
 }

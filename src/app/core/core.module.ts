@@ -12,8 +12,11 @@ import {
   JwtService,
   SearchService,
   ApiImagesService,
-  GalleryImagesService
+  GalleryImagesService,
+  AssetsService,
+  FactoriesService
 } from './services';
+import { GenreService } from '@app/core/services/genre.service';
 
 @NgModule({
   imports: [
@@ -24,11 +27,14 @@ import {
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true },
     ApiService,
+    FactoriesService,
+    GenreService,
     MovieService,
     PeopleService,
     SearchService,
     CreditsService,
     ApiImagesService,
+    AssetsService,
     GalleryImagesService,
     JwtService
   ],

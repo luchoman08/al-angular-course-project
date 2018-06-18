@@ -1,25 +1,31 @@
-<table>
-  <tr>
-    <td valign="top">
-      <a [routerLink]="['/movies', personCredit.id]">
-        <img
-        class="poster-image"
-        [ngStyle]="{'max-width.px' : '90'}"
-        src="{{personCredit.poster_path | imageURL: POSTER_IMAGE_SIZES.W154}}"
-        alt="Poster image" srcset="">
-      </a>
-    </td>
-    <td valign="middle">
-      <ng-container *ngIf="personCredit.job">
-        <div class = "info" >
-          {{personCredit.job}}
-        </div>
-        </ng-container>
-      <ng-container *ngIf="personCredit.character">
-          <div class = "info" >
-        {{personCredit.character}}
-        </div>
-      </ng-container>
-    </td>
-  </tr>
-</table>
+<div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="left center" class="credit">
+  <div>
+    <a [routerLink]="personCredit.title? ['/movies', personCredit.id]: ['/tv', personCredit.id]">
+      <img appPosterImage class="credit-image" [ngStyle]="{'max-width.px' : '90'}" [path]="personCredit.poster_path" [size]="POSTER_IMAGE_SIZES.W154"
+        alt="movie poster image" srcset="">
+    </a>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="8px">
+
+    <h4 *ngIf="personCredit.title">{{personCredit.title}}</h4>
+    <h4 *ngIf="personCredit.name">{{personCredit.name}}</h4>
+    <div fxLayout="row" fxLayoutGap="10px">
+      <span>Vote average: </span>
+      <div fxLayout="row" fxLayoutAlign="left center">
+        <mat-icon fxFlexAlign="center">star_rate</mat-icon>
+        <span>{{personCredit.vote_average}}</span>
+      </div>
+      <span>Votes: {{personCredit.vote_count}}</span>
+      <span>Popularity: {{personCredit.popularity | number: '1.0-0'}}%</span>
+    </div>
+
+    <div *ngIf="personCredit.job" class="info">
+      Work as {{personCredit.job}}
+    </div>
+    <ng-container *ngIf="personCredit.character">
+      <div class="info">
+        Interpreting {{personCredit.character}}
+      </div>
+    </ng-container>
+  </div>
+</div>

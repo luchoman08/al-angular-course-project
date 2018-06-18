@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ApiService } from './shared/api.service';
-import { paramsAppendToResponse } from './shared/shared-functions';
-import { TVShow, TvShowInterface } from '@app/core/models';
+import { paramsAppendToResponseMoviesAndTv } from './shared/shared-functions';
+import { TVShow, TvShowInterface, MovieAppendToResponseOptions } from '@app/core/models';
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +26,13 @@ export class TvShowService {
     return Object.assign(person, json);
   }
   constructor(private apiService: ApiService) { }
-  get(id,
-    videos: Boolean = false,
-    images: Boolean = false
+  get(id, options?: MovieAppendToResponseOptions
   ): Observable<TvShowService> {
-      const params = paramsAppendToResponse(videos, images);
-      return this.apiService.get('/tv/' + id, params)
-      .pipe(map(data => data));
+    if (options) {
+    const params = paramsAppendToResponseMoviesAndTv(options);
+      return this.apiService.get('/tv/' + id, params);
+    } else {
+      return this.apiService.get('/tv/' + id);
+    }
 }
 }

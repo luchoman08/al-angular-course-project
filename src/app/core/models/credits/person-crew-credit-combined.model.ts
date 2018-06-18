@@ -5,6 +5,7 @@ export class PersonCrewCreditCombinedModel  implements PersonCreditInterface {
   backdrop_path: string;
   title: string;
   character?: string;
+  name?: string;
   job: string; // trick for credit combined
   overview: string;
   media_type: string;

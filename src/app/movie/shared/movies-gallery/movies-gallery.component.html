@@ -1,7 +1,7 @@
 <ngx-gallery
-*ngIf="galleryMovieImages.length > 0"
+*ngIf="gallery.images.length > 0"
 (previewOpen)="goToMovie()"
 (change)="changeMoviePreview($event)"
-[options]="galleryOptions"
-[images]="galleryMovieImages">
+[options]="gallery.options"
+[images]="gallery.images">
 </ngx-gallery>

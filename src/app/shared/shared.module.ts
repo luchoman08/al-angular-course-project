@@ -7,14 +7,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NgxGalleryModule } from 'ngx-gallery';
 
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
-
 import {
   CapitalizePipe,
   ImageURLPipe,
@@ -24,7 +16,7 @@ import {
 
 import {
   SingleDataDialogEditOrAddComponent,
-  YoutubeVideoDialogComponent,
+  YouTubeVideoDialogComponent,
   SearchInputComponent,
   FullScreenGalleryComponent
 } from './components';
@@ -43,15 +35,28 @@ import {
   ReviewListComponent
 } from '@app/social/shared';
 
+import { KeywordsListComponent } from '@app/keywords/shared';
+
+import { GenresListComponent } from '@app/genre/shared';
+
+import { DurationPipe } from './pipes/duration.pipe';
+import { BackgroundImageDirective } from './directives/background-image.directive';
+import { PosterImageDirective } from './directives/poster-image.directive';
+import { ProfileImageDirective } from './directives/profile-image.directive';
+import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
+import { ZoomImageDirective } from './directives/zoom-image.directive';
+
 @NgModule({
   declarations: [
     SingleDataDialogEditOrAddComponent,
-    YoutubeVideoDialogComponent,
+    YouTubeVideoDialogComponent,
     FullScreenGalleryComponent,
+
     CapitalizePipe,
     FirstWordPipe,
     SortMediaPipe,
     ImageURLPipe,
+
     NavbarComponent,
     FooterComponent,
 
@@ -62,7 +67,25 @@ import {
     MovieMiniDetailComponent,
     MovieMiniDetailListComponent,
 
-    SearchInputComponent
+    SearchInputComponent,
+
+    KeywordsListComponent,
+
+    GenresListComponent,
+
+    DurationPipe,
+
+    BackgroundImageDirective,
+
+    PosterImageDirective,
+
+    ProfileImageDirective,
+
+
+    IndefiniteArticlePipe,
+
+
+    ZoomImageDirective
   ],
   imports: [
     CommonModule,
@@ -71,15 +94,10 @@ import {
     NgxGalleryModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    PerfectScrollbarModule,
     FormsModule
   ],
   providers: [
     ImageURLPipe,
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    },
     FirstWordPipe,
     CapitalizePipe
   ],
@@ -96,12 +114,16 @@ import {
 
     SingleDataDialogEditOrAddComponent,
     FullScreenGalleryComponent,
-    YoutubeVideoDialogComponent,
+    YouTubeVideoDialogComponent,
     FullScreenGalleryComponent,
     CapitalizePipe,
     FirstWordPipe,
     ImageURLPipe,
     SortMediaPipe,
+    DurationPipe,
+
+    BackgroundImageDirective,
+    PosterImageDirective,
 
     NavbarComponent,
     FooterComponent,
@@ -113,8 +135,17 @@ import {
     MovieMiniDetailListComponent,
 
     ReviewListComponent,
-    ReviewDetailComponent
+    ReviewDetailComponent,
+
+    KeywordsListComponent,
+
+    GenresListComponent,
+
+    ProfileImageDirective,
+    ZoomImageDirective,
+
+    IndefiniteArticlePipe
   ],
-  entryComponents: [SingleDataDialogEditOrAddComponent, YoutubeVideoDialogComponent]
+  entryComponents: [SingleDataDialogEditOrAddComponent, YouTubeVideoDialogComponent]
 })
 export class SharedModule { }

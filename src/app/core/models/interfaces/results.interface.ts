@@ -1,5 +1,5 @@
 
-export interface Results<T> {
+export interface ResultsInterface<T> {
     page: number;
     total_results: number;
     results: T[];

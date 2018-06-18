@@ -12,7 +12,7 @@ import { MovieService, Image } from '@app/core/';
 import {
   Movie,
   CreditsModel,
-  Results,
+  ResultsInterface,
   Review,
 
   BackdropImageSizesInterface,
@@ -28,7 +28,7 @@ import {
 } from '@app/core/';
 
 import {
-  YoutubeVideoDialogComponent,
+  YouTubeVideoDialogComponent,
  } from '@app/shared';
 
 
@@ -48,9 +48,9 @@ export class MovieDetailComponent implements OnInit {
   backdropType: ImageTypeEnum;
   posterType: ImageTypeEnum;
   movieType: MediaTypeEnum;
-  resultsRelatedMovies$: Observable<Results<Movie>>;
+  resultsRelatedMovies$: Observable<ResultsInterface<Movie>>;
   credits$: Observable<CreditsModel>;
-  resultsReviews$: Observable<Results<Review>>;
+  resultsReviews$: Observable<ResultsInterface<Review>>;
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
@@ -73,7 +73,7 @@ export class MovieDetailComponent implements OnInit {
   }
   openTrailers(): void {
     console.log(this.movie.getVideoKeys());
-    const dialogRef = this.dialog.open(YoutubeVideoDialogComponent, {
+    const dialogRef = this.dialog.open(YouTubeVideoDialogComponent, {
       width: '750px',
       height: '500px',
       data: {
@@ -84,13 +84,7 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: { movie: Movie }) => {
-
-      this.movie = new Movie();
-      this.movie = Movie.fromJSON(data.movie);
-      console.log(data.movie);
-      this.resultsRelatedMovies$ = this.movieService.getRelated(this.movie.id);
-      this.credits$ = this.creditsService.getMovieCredits(this.movie.id);
-      this.resultsReviews$ = this.reviewService.getMovieReviews(this.movie.id);
+      this.movie = data.movie;
     });
   }
 }

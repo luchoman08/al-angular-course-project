@@ -1,3 +1,8 @@
-.info {
-  margin-left: 20px;
+/* size when no have image loaded, for non broken view*/
+.credit-image {
+  min-width: 90px;
+  min-height: 135px;
+}
+.credit {
+  background-color: rgb(20,20,20);
 }

@@ -2,7 +2,7 @@ import { Injectable, } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { PeopleService, Person } from '@app/core/';
+import { PeopleService, Person, PersonAppendToResponseOptions } from '@app/core/';
 import { catchError } from 'rxjs/operators';
 
 
@@ -16,8 +16,13 @@ export class PersonResolver implements Resolve<Person> {
   resolve(
     route: ActivatedRouteSnapshot
   ): Observable<any> {
-
-    return this.peopleService.get(route.params['id'], true, true)
+    const options: PersonAppendToResponseOptions = {
+      images: true,
+      videos: true,
+      movie_credits: true,
+      tv_credits: true
+    };
+    return this.peopleService.get(route.params['id'], options)
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
 }

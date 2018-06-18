@@ -6,8 +6,7 @@ import { NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery';
 import {
   Movie,
   MovieService,
-  GalleryImagesService,
-  galleryOptionsMovieBackdropDetail
+  GalleryImagesService
 } from '@app/core/';
 
 @Component({
@@ -19,20 +18,17 @@ export class MoviesGalleryComponent implements OnInit {
 
   @Input() movies: Movie[];
   selectedImage: NgxGalleryImage;
-  galleryOptions: NgxGalleryOptions[];
-  galleryMovieImages: NgxGalleryImage[];
+  gallery: {images: NgxGalleryImage[], options: NgxGalleryOptions[]};
   constructor(
     private router: Router,
     private galeryImagesService: GalleryImagesService,
     private moviesService: MovieService
   ) {
-    this.galleryMovieImages = new Array<NgxGalleryImage>();
-    this.galleryOptions = galleryOptionsMovieBackdropDetail;
-   }
+  }
 
   ngOnInit() {
-    this.galleryMovieImages = this.galeryImagesService.getMovieBackdropDescriptionGalleryImages(this.movies);
-    this.selectedImage = this.galleryMovieImages[0];
+    this.gallery = this.galeryImagesService.getMovieBackdropDescriptionGalleryImages(this.movies);
+    this.selectedImage = this.gallery.images[0];
   }
   /**
    * React at change movie in preview, updated selectedImage (NgxGalleryImage)
