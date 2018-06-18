@@ -2,27 +2,27 @@ import { DefaultValues } from '@app/core/models/enums/coreDefaultValues.enum';
 import { BaseFactory } from './base-factory.interface';
 import { MovieInterface, Movie} from '../models';
 export const movieDefaultObject: MovieInterface = {
-    id: -1,
+    id: 0,
     title: '',
     overview: '',
     poster_path: '',
-    vote_average: -1,
-    vote_count: -1,
+    vote_average: 0,
+    vote_count: 0,
     imdb_id: '',
     backdrop_path: '',
     release_date: '',
     genre_ids: null,
-    runtime: -1,
-    revenue: '',
+    runtime: 0,
+    revenue: '0',
     original_language: '',
     keywords: null,
     original_title: '',
-    popularity: -1,
+    popularity: 0,
     production_companies: null,
     spoken_languages: null,
     production_countries: null,
     video: null,
-    video_count: -1,
+    video_count: 0,
     genres: null,
     credits: null,
     videos: null,
@@ -70,6 +70,9 @@ export const movieDefaultObject: MovieInterface = {
       movieInterface.reviews ? movie.reviews = movieInterface.reviews : movie.reviews = movieDefaultObject.reviews;
       movieInterface.translations ? movie.translations = movieInterface.translations : movie.translations = movieDefaultObject.translations
       return movie;
+    }
+    makeMultiple(movieInterfaces: MovieInterface[]): Movie[] {
+      return movieInterfaces.map(movieInterface => this.make(movieInterface));
     }
   
   }
