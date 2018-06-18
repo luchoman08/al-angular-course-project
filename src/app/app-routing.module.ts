@@ -15,7 +15,8 @@ const routes: Routes = [
     },
     {
       path: '',
-      loadChildren: './home/home.module#HomeModule'
+      redirectTo: '/movies',
+      pathMatch: 'full'
     }
 ];
 
