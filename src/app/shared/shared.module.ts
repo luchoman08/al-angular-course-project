@@ -44,6 +44,7 @@ import { BackgroundImageDirective } from './directives/background-image.directiv
 import { PosterImageDirective } from './directives/poster-image.directive';
 import { ProfileImageDirective } from './directives/profile-image.directive';
 import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
+import { ZoomImageDirective } from './directives/zoom-image.directive';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,10 @@ import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
     ProfileImageDirective,
 
 
-    IndefiniteArticlePipe
+    IndefiniteArticlePipe,
+
+
+    ZoomImageDirective
   ],
   imports: [
     CommonModule,
@@ -138,7 +142,7 @@ import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
     GenresListComponent,
 
     ProfileImageDirective,
-
+    ZoomImageDirective,
 
     IndefiniteArticlePipe
   ],
