@@ -5,6 +5,10 @@ import { MovieResolver } from './movie-detail/movie-detail-resolver.service';
 import { MoviesHomeComponent } from './movies-home/movies-home.component';
 import { MovieFullCreditsComponent } from './movie-full-credits/movie-full-credits.component';
 import { MovieFullCreditsResolver } from '@app/movie/movie-full-credits/movie-full-credits-resolver.service';
+import { MovieSearchComponent } from '@app/movie/movie-search/movie-search.component';
+import { MoviesPopularListComponent } from '@app/movie/movies-popular-list/movies-popular-list.component';
+import { MovieInTheatresListComponent } from '@app/movie/movie-in-theatres-list/movie-in-theatres-list.component';
+import { MovieTopRatedListComponent } from '@app/movie/movie-top-rated-list/movie-top-rated-list.component';
 const routes: Routes = [
   {
     path: ':id',
@@ -12,6 +16,18 @@ const routes: Routes = [
     resolve: {
       movie: MovieResolver
     },
+  },
+  {
+    path: 'in_theatres/list',
+    component: MovieInTheatresListComponent
+  },
+  {
+    path: 'top_rated/list',
+    component: MovieTopRatedListComponent
+  },
+  {
+    path: 'popular/list',
+    component: MoviesPopularListComponent
   },
   {
     path: ':id/credits',
@@ -23,6 +39,10 @@ const routes: Routes = [
   {
     path: '',
     component: MoviesHomeComponent
+  },
+  {
+    path: 'search/table',
+    component: MovieSearchComponent
   }
 ];
 
