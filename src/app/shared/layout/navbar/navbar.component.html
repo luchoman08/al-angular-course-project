@@ -1,23 +1,34 @@
+<mat-toolbar color="primary" class=" top-toolbar mat-elevation-z6">
+  <div class="main-icon">
+    <a routerLink="./">TMdb
+      <mat-icon matBadgeColor="warn">local_movies</mat-icon>
+    </a>
+  </div>
+  <div class="menu-items" (mouseover)="movieSubitems.hidden=false" (mouseout)="movieSubitems.hidden=true">
+    <a routerLink="/movies">
+      <button  mat-button>Movies</button>
+    </a><br>
+    <mat-button-toggle-group [style.position] = "'fixed'" [hidden]="true" #movieSubitems name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle [style.backgroundColor]="'black'" routerLink="/movies/search/table"  value="bold">Search</mat-button-toggle>
+      <mat-button-toggle [style.backgroundColor]="'black'" routerLink="/movies/popular/list" value="italic">Popular</mat-button-toggle>
+      <mat-button-toggle [style.backgroundColor]="'black'" routerLink="/movies/in_theatres/list" value="underline">In theatres</mat-button-toggle>
+      <mat-button-toggle [style.backgroundColor]="'black'" routerLink="/movies/top_rated/list" value="underline">Top rated</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <a routerLink="/people">
+    <button mat-button>Actors</button>
+  </a>
+  <a routerLink="/tv">
+    <button mat-button>Tv Series</button>
+  </a>
+  <span class="spacer"></span>
 
-        <mat-toolbar  color="primary" class=" top-toolbar mat-elevation-z6">
-          <div class="main-icon">
-              <a routerLink="./" >TMdb <mat-icon matBadgeColor="warn">local_movies</mat-icon></a>
-          </div>
-            <a routerLink="/movies" ><button mat-button>Movies</button></a>
-          <a routerLink="/people">
-            <button mat-button>Actors</button>
-          </a>
-          <a routerLink="/tv">
-            <button mat-button>Tv Series</button>
-          </a>
-          <span class="spacer"></span>
-
-<span class="search-input">
-<app-search-input ></app-search-input>
-</span>
+  <span class="search-input">
+    <app-search-input></app-search-input>
+  </span>
 
 
 
 
 
-        </mat-toolbar>
+</mat-toolbar>

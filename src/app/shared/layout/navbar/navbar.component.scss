@@ -4,8 +4,12 @@
     float: right;
     cursor: pointer;
 }
-
-
+.menu-items {
+  z-index: 999;
+}
+.movie-subitems {
+  position: fixed!important;
+}
 .top-toolbar {
   @include background-color();
 }
