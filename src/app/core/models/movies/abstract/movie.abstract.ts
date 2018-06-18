@@ -11,7 +11,8 @@ import { Video } from '@app/core/models/video.model';
 import { Image } from '@app/core/models/image.model';
 import { Review } from '@app/core/models/social';
 import { Movie } from '@app/core/models/movies/movie.model';
-import { Results } from '@app/core/models/results.model';
+import { ResultsInterface } from '@app/core/models/interfaces/results.interface';
+import { Observable } from 'rxjs';
 
 export abstract class MovieAbstract {
   id: number;
@@ -35,12 +36,12 @@ export abstract class MovieAbstract {
   production_countries: CountryInterface[];
   video: boolean; // movie video preview available?
   video_count: number;
-  genres?: Genre[];
+  genres?: Genre[] | Observable<Genre[]>;
   credits?: CreditsModel;
   videos?: { results: Video[] };
   images?: { backdrops: Image[], posters: Image[] };
-  similar?: Results<Movie>;
+  similar?: ResultsInterface<Movie>;
   credis?: { id: string, cast: Cast[], crew: Crew[] }
-  reviews?: Results<Review>;
-  translations?: Results<TranslationInterface>;
+  reviews?: ResultsInterface<Review>;
+  translations?: ResultsInterface<TranslationInterface>;
 }
