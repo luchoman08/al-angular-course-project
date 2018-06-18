@@ -7,7 +7,7 @@ import {
 } from 'ngx-gallery';
 
 import {
-Movie, Results,
+Movie, ResultsInterface,
 MovieService
 } from '@app/core';
 
@@ -18,9 +18,9 @@ MovieService
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  popularMoviesResults$: Observable<Results<Movie>>;
-  inTheatresMoviesResults$: Observable<Results<Movie>>;
-  topRatedMoviesResults$: Observable<Results<Movie>>;
+  popularMoviesResults$: Observable<ResultsInterface<Movie>>;
+  inTheatresMoviesResults$: Observable<ResultsInterface<Movie>>;
+  topRatedMoviesResults$: Observable<ResultsInterface<Movie>>;
   constructor( private moviesService: MovieService) { }
 
   ngOnInit() {
