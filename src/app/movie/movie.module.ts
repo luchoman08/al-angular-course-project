@@ -1,3 +1,4 @@
+import { MovieListByGenreResolver } from './movie-list-by-genre/movie-list-by-genre-resolver.service';
 import { NgModule } from '@angular/core';
 import { MovieRoutingModule } from './movie-routing.module';
 import { MovieResolver } from './movie-detail/movie-detail-resolver.service';
@@ -14,6 +15,8 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { MoviesPopularListComponent } from './movies-popular-list/movies-popular-list.component';
 import { MovieInTheatresListComponent } from './movie-in-theatres-list/movie-in-theatres-list.component';
 import { MovieTopRatedListComponent } from './movie-top-rated-list/movie-top-rated-list.component';
+import { MovieListByGenreComponent } from './movie-list-by-genre/movie-list-by-genre.component';
+import { GenreResolver } from '@app/movie/movie-list-by-genre/genre-resolver.serivce';
 @NgModule({
   imports: [
     SharedModule,
@@ -23,6 +26,8 @@ import { MovieTopRatedListComponent } from './movie-top-rated-list/movie-top-rat
   providers: [
     MovieResolver,
     MovieFullCreditsResolver,
+    MovieListByGenreResolver,
+    GenreResolver,
     AuthService
   ],
   declarations: [
@@ -34,7 +39,8 @@ import { MovieTopRatedListComponent } from './movie-top-rated-list/movie-top-rat
     MovieSearchComponent,
     MoviesPopularListComponent,
     MovieInTheatresListComponent,
-    MovieTopRatedListComponent
+    MovieTopRatedListComponent,
+    MovieListByGenreComponent
    ],
   exports: [MovieDetailComponent],
   bootstrap: []

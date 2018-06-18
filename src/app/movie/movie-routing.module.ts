@@ -9,6 +9,9 @@ import { MovieSearchComponent } from '@app/movie/movie-search/movie-search.compo
 import { MoviesPopularListComponent } from '@app/movie/movies-popular-list/movies-popular-list.component';
 import { MovieInTheatresListComponent } from '@app/movie/movie-in-theatres-list/movie-in-theatres-list.component';
 import { MovieTopRatedListComponent } from '@app/movie/movie-top-rated-list/movie-top-rated-list.component';
+import { MovieListByGenreComponent } from '@app/movie/movie-list-by-genre/movie-list-by-genre.component';
+import { MovieListByGenreResolver } from './movie-list-by-genre/movie-list-by-genre-resolver.service';
+import { GenreResolver } from '@app/movie/movie-list-by-genre/genre-resolver.serivce';
 const routes: Routes = [
   {
     path: ':id',
@@ -16,6 +19,14 @@ const routes: Routes = [
     resolve: {
       movie: MovieResolver
     },
+  },
+  {
+    path: 'genres/:id',
+    component: MovieListByGenreComponent,
+    resolve : {
+      genre: GenreResolver,
+      movies: MovieListByGenreResolver
+    }
   },
   {
     path: 'in_theatres/list',

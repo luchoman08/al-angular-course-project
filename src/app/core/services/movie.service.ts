@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ResultsInterface } from '@app/core/models/interfaces/results.interface';
-import { Movie, MovieInterface } from '@app/core/models';
+import { Movie, MovieInterface, Genre, CreatedAtSortMethod } from '@app/core/models';
 import { ApiService } from './shared';
 import { paramsAppendToResponseMoviesAndTv } from './shared';
 import { MovieAppendToResponseOptions } from '@app/core/models';
@@ -76,6 +76,29 @@ export class MovieService {
   getTopRated(page?: number): Observable<ResultsInterface<Movie>> {
     return this.getResultsMultiplePage('/movie/top_rated', page);
   }
+  /**
+   * 
+   * @param genre number if you want pass the genre id or Genre if you want pass Genre instance
+   * @param page optional argument for page 
+   * @param sortMethod optional parameter than sort the results by created date, asc or desc 
+   */
+  getByGenre(genre: Genre | number, page?: number, sortMethod?: CreatedAtSortMethod): Observable<ResultsInterface<Movie>> {
+    let genreId: number;
+    if ( typeof genre === "number" ) {
+      genreId = genre;
+    }
+    if ( genre instanceof Genre) {
+      genreId = genre.id;
+    }
+    if ( sortMethod ) {
+      const params = new HttpParams().set('sort_by', sortMethod);
+      return this.getResultsMultiplePage(`/genre/${genreId}/movies`, page, params);
+
+    } else {
+    return this.getResultsMultiplePage(`/genre/${genreId}/movies`, page);
+    }
+  }
+
 
 }
 
