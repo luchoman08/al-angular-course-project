@@ -2,4 +2,7 @@
     <mat-chip  *ngFor="let genre of genres">
       {{genre.name}}
     </mat-chip>
+    <mat-chip  *ngIf="!genres">
+      No genres found
+    </mat-chip>
   </mat-chip-list>
