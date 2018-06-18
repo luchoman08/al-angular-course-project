@@ -2,7 +2,7 @@ import { Injectable, } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { TvShowService, TVShow } from '@app/core/';
+import { TvShowService, TVShow, MovieAppendToResponseOptions } from '@app/core/';
 import { catchError } from 'rxjs/operators';
 
 
@@ -16,8 +16,15 @@ export class TvShowResolver implements Resolve<TVShow> {
   resolve(
     route: ActivatedRouteSnapshot
   ): Observable<any> {
-
-    return this.tvShowService.get(route.params['id'], true, true)
+    const options: MovieAppendToResponseOptions = {
+      videos : true,
+      images: true,
+      keywords: true,
+      credits: true,
+      reviews: true,
+      similar: true
+    };
+    return this.tvShowService.get(route.params['id'], options)
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
 }
