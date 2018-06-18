@@ -36,7 +36,7 @@ export class GenreService {
   }
 
   getMultiple(ids: number[], maxElements?: number): Observable<Genre[]>{
-    maxElements? null : maxElements = ids.length - 1 ; 
+    maxElements? null : maxElements = ids.length  ; 
     return forkJoin(ids.slice(0, maxElements).map(
       (id: number) => {
         return this.get(id).pipe(

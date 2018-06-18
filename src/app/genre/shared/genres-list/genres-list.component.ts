@@ -12,9 +12,8 @@ export class GenresListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.maxItems = 0;
-    if ( this.genres ) {
-      this.maxItems = this.genres.length - 1; 
+    if ( this.genres && !this.maxItems ) {
+      this.maxItems = this.genres.length; 
       this.genres.slice(0,this.maxItems);
     }
   }

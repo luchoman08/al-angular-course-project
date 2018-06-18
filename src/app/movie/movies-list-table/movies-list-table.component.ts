@@ -45,7 +45,7 @@ export class MoviesListTableComponent implements OnInit, OnChanges {
     this.movies = this.movies.pipe(map(
       (movies: Movie[])=>{
         return movies.map(movie => {
-          movie.genres = this.genreService.getMultiple(movie.genre_ids, 3).pipe(debounceTime(100));
+          movie.genres = this.genreService.getMultiple(movie.genre_ids).pipe(debounceTime(100));
           return movie;
           }); }));
   }
