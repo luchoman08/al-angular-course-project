@@ -12,7 +12,7 @@ import { MovieService, Image } from '@app/core/';
 import {
   Movie,
   CreditsModel,
-  Results,
+  ResultsInterface,
   Review,
 
   BackdropImageSizesInterface,
@@ -48,9 +48,9 @@ export class MovieDetailComponent implements OnInit {
   backdropType: ImageTypeEnum;
   posterType: ImageTypeEnum;
   movieType: MediaTypeEnum;
-  resultsRelatedMovies$: Observable<Results<Movie>>;
+  resultsRelatedMovies$: Observable<ResultsInterface<Movie>>;
   credits$: Observable<CreditsModel>;
-  resultsReviews$: Observable<Results<Review>>;
+  resultsReviews$: Observable<ResultsInterface<Review>>;
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
@@ -84,9 +84,7 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: { movie: Movie }) => {
-      this.movie = new Movie();
       this.movie = data.movie;
-      console.log(data.movie);
     });
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Results, Movie, MovieService } from '@app/core/';
+import { ResultsInterface, Movie, MovieService } from '@app/core/';
 
 @Component({
   selector: 'app-movies-home',
@@ -10,9 +10,9 @@ import { Results, Movie, MovieService } from '@app/core/';
 })
 export class MoviesHomeComponent implements OnInit {
 
-    popularMoviesResults$: Observable<Results<Movie>>;
-    inTheatresMoviesResults$: Observable<Results<Movie>>;
-    topRatedMoviesResults$: Observable<Results<Movie>>;
+    popularMoviesResults$: Observable<ResultsInterface<Movie>>;
+    inTheatresMoviesResults$: Observable<ResultsInterface<Movie>>;
+    topRatedMoviesResults$: Observable<ResultsInterface<Movie>>;
     constructor( private moviesService: MovieService) { }
   
     ngOnInit() {
