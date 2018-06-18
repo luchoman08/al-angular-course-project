@@ -13,12 +13,14 @@
     <a
     *ngSwitchCase="MEDIA_TYPE.PERSON" [routerLink]="['./people', result.id]">
         <img
-        [ngClass]=
-        "{'zoom': (i!==0 ||  results.results.length <= 3),
-        'zoom-first': (i===0 && results.results.length > 3),
-        'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
+       [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
         style="vertical-align:middle;"
         aria-hidden
+        appZoomImage
+        position_hover="absolute"
+        [align_top_left]="true"
+        [index]="i"
+        [number_of_elements]="results.results.length"
         height="45"
         width = "32" />
           <span>
@@ -28,8 +30,12 @@
       </a>
       <a
       *ngSwitchCase="MEDIA_TYPE.MOVIE" [routerLink]="['./movies', result.id]">
-          <img
-          [ngClass]="{'zoom': (i!==0 ||  results.results.length <= 3), 'zoom-first': (i===0 && results.results.length > 3), 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"        [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
+          <img 
+          appZoomImage
+          position_hover="absolute"
+          [align_top_left]="true"
+          [index]="i"
+          [number_of_elements]="results.results.length"
           [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE"
           aria-hidden
           height = "45"
@@ -44,10 +50,14 @@
         *ngSwitchCase="MEDIA_TYPE.TV"
         [routerLink]="['./tv', result.id]">
           <img
-          [ngClass]="{'zoom': (i!==0 ||  results.results.length < 3), 'zoom-first': (i===0 && results.results.length > 3), 'zoom-last': i===(results.results.length -1) && results.results.length > 2}"
           [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON"
           flexLayout="row" flexAlign="center"
           [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE"
+          appZoomImage
+          position_hover="absolute"
+          [align_top_left]="true"
+          [index]="i"
+          [number_of_elements]="results.results.length"
           aria-hidden
           height="45"
           width = "32" />
