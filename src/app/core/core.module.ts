@@ -16,6 +16,7 @@ import {
   AssetsService,
   FactoriesService
 } from './services';
+import { GenreService } from '@app/core/services/genre.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import {
     { provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true },
     ApiService,
     FactoriesService,
+    GenreService,
     MovieService,
     PeopleService,
     SearchService,
