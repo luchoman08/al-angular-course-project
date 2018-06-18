@@ -172,14 +172,17 @@ getPeoplePosterDescriptionGallery(people: Person[]): {images: NgxGalleryImage[],
                 small: this.imageURLPipe.transform(
                 person.profile_path,
                 POSTER_IMAGE_SIZES.W185,
+                MediaTypeEnum.PERSON
               ),
               medium: this.imageURLPipe.transform(
                 person.profile_path,
-                POSTER_IMAGE_SIZES.W500
+                POSTER_IMAGE_SIZES.W500,
+                MediaTypeEnum.PERSON
               ),
               big: this.imageURLPipe.transform(
                 person.profile_path,
-                POSTER_IMAGE_SIZES.W780
+                POSTER_IMAGE_SIZES.W780,
+                MediaTypeEnum.PERSON
               )
             });
           }
