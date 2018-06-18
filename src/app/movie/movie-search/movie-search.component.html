@@ -1,0 +1,15 @@
+<div class="container">
+  <mat-form-field class="search-field">
+    <input [formControl]="searchCtrl" matInput placeholder="Search movies">
+    <button mat-button *ngIf="searchCtrl.value" matSuffix mat-icon-button aria-label="Clear" (click)="searchCtrl.setValue('')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+ 
+  <app-movies-list-table 
+  [movies]="movies$"
+  (pageChange)="onSetPage($event)"
+  [resultsLength] = "resultsLength">
+ 
+  </app-movies-list-table>
+</div>
