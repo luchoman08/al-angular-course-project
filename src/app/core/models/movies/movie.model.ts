@@ -1,6 +1,5 @@
 import { MovieAbstract } from './abstract';
 import { Video } from '@app/core/models';
-import { FormGroup, FormControl } from '@angular/forms';
 export class Movie extends MovieAbstract  {
 
     public static sortMethod(movie1: Movie, movie2: Movie): number {
