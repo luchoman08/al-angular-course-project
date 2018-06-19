@@ -21,6 +21,7 @@ export class ZoomImageDirective {
   }
   @HostListener('mouseover') onmouseover(){
     this.renderer.setElementStyle(this.el.nativeElement, 'transition', 'transform .1s');
+    this.renderer.setElementStyle(this.el.nativeElement, 'z-index', '1');
     if ( this.align_top_left ) {
       this.renderer.setElementStyle(this.el.nativeElement, 'transform-origin', 'left top');
     }
@@ -38,18 +39,16 @@ export class ZoomImageDirective {
       } else {
         this.renderer.setElementStyle(this.el.nativeElement, 'margin-top', '-30px');
         this.renderer.setElementStyle(this.el.nativeElement, 'transform', 'scale(2.5)');
-        this.renderer.setElementStyle(this.el.nativeElement, 'z-index', '1');
       }
     } else {
       this.renderer.setElementStyle(this.el.nativeElement, 'transform', 'scale(2.5)');
-      this.renderer.setElementStyle(this.el.nativeElement, 'z-index', '1');
     }
   }
   @HostListener('mouseout') onmousedown(){
     this.renderer.setElementStyle(this.el.nativeElement, 'transform', 'scale(1)');
     this.renderer.setElementStyle(this.el.nativeElement, 'z-index', '0');
     if ( this.position_hover ) {
-      this.renderer.setElementStyle(this.el.nativeElement, 'position', 'initial');
+     this.renderer.setElementStyle(this.el.nativeElement, 'position', 'initial');
     }    
     if ( this.index ) {
       this.renderer.setElementStyle(this.el.nativeElement, 'margin-top', '0px');
