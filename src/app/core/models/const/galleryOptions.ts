@@ -13,6 +13,7 @@ export const galleryOptionsMovieBackdropDetail: NgxGalleryOptions[] = [
         thumbnailsColumns: 3,
         thumbnailsRows: 2,
         thumbnailsPercent: 40,
+        thumbnailsMoveSize: 3,
         imagePercent: 60,
         thumbnailMargin: 2,
         thumbnailsMargin: 2,
