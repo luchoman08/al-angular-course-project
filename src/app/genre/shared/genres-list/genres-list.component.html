@@ -1,8 +1,9 @@
 <mat-chip-list >
-    <a *ngFor="let genre of genres" [routerLink]="['/movie/genres', genre.id]" ><mat-chip  >
-      {{genre.name}}
+    <mat-chip  *ngFor="let genre of genres">  
+        <a  [routerLink]="['/movies/genres', genre.id]">  
+          {{genre.name}}
+        </a>
     </mat-chip>
-  </a>
     <mat-chip  *ngIf="!genres">
       No genres found
     </mat-chip>
