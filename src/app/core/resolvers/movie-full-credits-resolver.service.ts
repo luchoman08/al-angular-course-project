@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { MovieService } from '@app/core/';
-import { Movie } from '@app/core/';
 import { catchError } from 'rxjs/operators';
-import { MovieAppendToResponseOptions } from '@app/core/models';
+
+import { MovieService } from '@app/core/services';
+import { MovieAppendToResponseOptions, Movie } from '@app/core/models';
 
 
 @Injectable()

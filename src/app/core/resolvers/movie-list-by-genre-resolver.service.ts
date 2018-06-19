@@ -5,10 +5,9 @@ import { catchError } from 'rxjs/operators';
 
 import {
   Movie,
-  ResultsInterface,
-  MovieService 
-} from '@app/core/';
-
+  ResultsInterface 
+} from '@app/core';
+import { MovieService } from '@app/core/services';
 
 @Injectable()
 export class MovieListByGenreResolver implements Resolve<ResultsInterface<Movie>> {

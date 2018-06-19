@@ -14,9 +14,17 @@ import {
   ApiImagesService,
   GalleryImagesService,
   AssetsService,
-  FactoriesService
-} from './services';
-import { GenreService } from '@app/core/services/genre.service';
+  FactoriesService,
+  GenreService,
+} from '@app/core/services';
+import {
+  MovieListByGenreResolver,
+  MovieListByKeywordResolver,
+  GenreResolver,
+  KeywordResolver,
+  MovieResolver,
+  MovieFullCreditsResolver
+} from '@app/core/resolvers';
 
 @NgModule({
   imports: [
@@ -36,7 +44,14 @@ import { GenreService } from '@app/core/services/genre.service';
     ApiImagesService,
     AssetsService,
     GalleryImagesService,
-    JwtService
+    JwtService,
+
+    MovieResolver,
+    MovieListByGenreResolver,
+    MovieListByKeywordResolver,
+    MovieFullCreditsResolver,
+    GenreResolver,
+    KeywordResolver
   ],
   declarations: []
 })

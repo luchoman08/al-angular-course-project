@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { GenreService } from '@app/core/services/genre.service';
-import { ResultsInterface } from '@app/core/';
+import { ResultsInterface } from '@app/core';
 import { Movie } from '@app/core';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
