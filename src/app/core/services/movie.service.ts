@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ResultsInterface } from '@app/core/models/interfaces/results.interface';
-import { Movie, MovieInterface, Genre, CreatedAtSortMethod } from '@app/core/models';
+import { Movie, MovieInterface, Genre, CreatedAtSortMethod, KeywordsInterface } from '@app/core/models';
 import { ApiService } from './shared';
 import { paramsAppendToResponseMoviesAndTv } from './shared';
 import { MovieAppendToResponseOptions } from '@app/core/models';
@@ -77,6 +77,7 @@ export class MovieService {
     return this.getResultsMultiplePage('/movie/top_rated', page);
   }
   /**
+   * Get movies for given genre
    * 
    * @param genre number if you want pass the genre id or Genre if you want pass Genre instance
    * @param page optional argument for page 
@@ -97,6 +98,11 @@ export class MovieService {
     } else {
     return this.getResultsMultiplePage(`/genre/${genreId}/movies`, page);
     }
+  }
+  getByKeyword( keyword: KeywordsInterface | number, page?: number ) : Observable<ResultsInterface<Movie>> {
+    let keywordId: number;
+    keywordId = typeof keyword === 'number'? keyword: keyword.id;
+    return this.getResultsMultiplePage(`/keyword/${keywordId}/movies`, page);
   }
 
 
