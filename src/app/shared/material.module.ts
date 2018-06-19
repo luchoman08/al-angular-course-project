@@ -20,7 +20,6 @@ import {
   MatSelectModule,
   MatChipsModule,
   MatCardModule,
-  MatSlideToggleModule,
   MatPaginatorModule,
   MatInputModule,
   MatOptionModule,
