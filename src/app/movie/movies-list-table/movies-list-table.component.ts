@@ -1,9 +1,15 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ChangeDetectorRef, OnChanges } from '@angular/core';
-import { Movie, PosterImageSizesInterface, POSTER_IMAGE_SIZES, Genre } from '@app/core';
-import { Observable, merge, forkJoin } from 'rxjs';
+import { Observable } from 'rxjs';
 import { MatPaginator, MatSort, Sort, PageEvent } from '@angular/material';
-import { map, mergeMap, switchMap, debounceTime } from 'rxjs/operators';
-import { GenreService } from '@app/core/services/genre.service';
+import { map, debounceTime } from 'rxjs/operators';
+
+import {
+  Movie,
+  GenreService,
+  PosterImageSizesInterface,
+  POSTER_IMAGE_SIZES
+} from '@app/core';
+
 @Component({
   selector: 'app-movies-list-table',
   templateUrl: './movies-list-table.component.html',
@@ -12,10 +18,10 @@ import { GenreService } from '@app/core/services/genre.service';
 export class MoviesListTableComponent implements OnInit, OnChanges {
   @Input() movies: Observable<Movie[]> = new Observable<Movie[]>();
   @Output() pageChange = new EventEmitter<number>();
-  genresLoaded =  false;
+  @Input() showGenres: boolean;
   @ViewChild( MatPaginator ) paginator: MatPaginator;
   @ViewChild( MatSort ) sort: MatSort = new MatSort();
-  displayedColumns = ['title', 'release_date', 'vote_count', 'vote_average', 'genres'];
+  displayedColumns: string[];
   @Input() resultsLength: number;
   searchValueChages: Observable<string>;
   POSTER_IMAGE_SIZES: PosterImageSizesInterface;
@@ -23,6 +29,8 @@ export class MoviesListTableComponent implements OnInit, OnChanges {
 
   constructor( private cd: ChangeDetectorRef , private genreService: GenreService) {
       this.POSTER_IMAGE_SIZES = POSTER_IMAGE_SIZES;
+      this.showGenres = true;
+      this.displayedColumns = ['title', 'release_date', 'vote_count', 'vote_average']
   }
 
   ngOnInit() {
@@ -31,9 +39,11 @@ export class MoviesListTableComponent implements OnInit, OnChanges {
         console.log(page);
         this.pageChange.emit(page.pageIndex);
       }
+
     );
-    
-    console.log(this.resultsLength);
+    if ( this.showGenres ) {
+      this.displayedColumns.push('genres');
+    }
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe((sort) => {
       this.sortData(sort);
@@ -50,7 +60,9 @@ export class MoviesListTableComponent implements OnInit, OnChanges {
           }); }));
   }
   ngOnChanges() {
+    if ( this.showGenres ) {
     this.getGenres();
+    }
   }
   
   sortData(sort: Sort) {
