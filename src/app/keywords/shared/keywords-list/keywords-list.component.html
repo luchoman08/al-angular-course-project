@@ -1,5 +1,5 @@
 <mat-chip-list >
     <mat-chip  *ngFor="let keyword of keywords">
-      {{keyword.name}}
+      <a [routerLink]="['/movies/keywords', keyword.id] ">{{keyword.name}}</a>
     </mat-chip>
   </mat-chip-list>
