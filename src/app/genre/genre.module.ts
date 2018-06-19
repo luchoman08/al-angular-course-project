@@ -5,7 +5,6 @@ import { GenreRoutingModule } from './genre-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule,
     GenreRoutingModule
   ],
   declarations: []
