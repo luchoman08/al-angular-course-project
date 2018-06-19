@@ -1,0 +1,12 @@
+<div class="container">
+  <div *ngIf="keyword" fxLayout="row" fxLayoutGap="10px" >
+    <h3>
+      Movies by keyword:
+    </h3>
+    <mat-chip-list>
+      <mat-chip>{{keyword.name}}</mat-chip>
+    </mat-chip-list>
+  </div>
+  <app-movies-list-table [movies]="movies$" [resultsLength]="resultsLength" [showGenres]="false" (pageChange)="onSetPage($event)">
+  </app-movies-list-table>
+</div>
