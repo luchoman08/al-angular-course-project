@@ -1,7 +1,7 @@
-<div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="left center" class="credit">
+<div [ngStyle]="{'min-height.px': 135}" fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="left center" class="credit">
   <div>
     <a [routerLink]="personCredit.title? ['/movies', personCredit.id]: ['/tv', personCredit.id]">
-      <img appPosterImage class="credit-image" [ngStyle]="{'max-width.px' : '90'}" [path]="personCredit.poster_path" [size]="POSTER_IMAGE_SIZES.W154"
+      <img  appZoomImage position_hover="relative" appPosterImage class="credit-image" [ngStyle]="{'max-width.px' : '90'}" [path]="personCredit.poster_path" [size]="POSTER_IMAGE_SIZES.W154"
         alt="movie poster image" srcset="">
     </a>
   </div>
