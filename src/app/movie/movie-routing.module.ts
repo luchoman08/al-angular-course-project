@@ -14,10 +14,12 @@ import { MovieListByGenreResolver } from '@app/core/resolvers/movie-list-by-genr
 import { GenreResolver } from '@app/core/resolvers/genre-resolver.serivce';
 import { MovieListByKeywordComponent } from '@app/movie/movie-list-by-keyword/movie-list-by-keyword.component';
 import { KeywordResolver, MovieListByKeywordResolver } from '@app/core';
+import { MovieSearchResolver } from '../core/resolvers/movie-search-resolver.serivce';
 const routes: Routes = [
   {
     path: ':id',
     component: MovieDetailComponent,
+    pathMatch: 'full',
     resolve: {
       movie: MovieResolver
     },
@@ -62,8 +64,11 @@ const routes: Routes = [
     component: MoviesHomeComponent
   },
   {
-    path: 'search/table',
-    component: MovieSearchComponent
+    path: 'search/:query',
+    component: MovieSearchComponent,
+    resolve: {
+      moviesResult: MovieSearchResolver
+    }
   }
 ];
 

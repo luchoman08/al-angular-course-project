@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Movie } from '@app/core/';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-mini-detail-list',
@@ -8,7 +10,7 @@ import { Movie } from '@app/core/';
   styleUrls: ['./movie-mini-detail-list.component.scss']
 })
 export class MovieMiniDetailListComponent implements OnInit {
-  @Input() movies: Movie[];
+  @Input() movies$: Observable<Movie[]>;
   @Input() slice: number;
   @Input() wrap: boolean;
   @Input() layoutAlign: string;
@@ -16,7 +18,7 @@ export class MovieMiniDetailListComponent implements OnInit {
 
   ngOnInit() {
     if ( this.slice ) {
-      this.movies.slice(0, this.slice);
+      this.movies$ = this.movies$.pipe(map( movies=> movies.slice(0, this.slice)));
     }
     
   }

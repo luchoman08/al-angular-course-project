@@ -9,7 +9,7 @@
       <button  mat-button>Movies</button>
     </a><br>
     <mat-button-toggle-group [style.position] = "'fixed'" [hidden]="true" #movieSubitems name="fontStyle" aria-label="Font Style">
-      <mat-button-toggle [style.backgroundColor]="'black'" routerLink="/movies/search/table"  value="bold">Search</mat-button-toggle>
+      <mat-button-toggle [style.backgroundColor]="'black'" [routerLink]="['/movies/search', EMPTY_SEARCH_SYMBOL]"  value="bold">Search</mat-button-toggle>
       <mat-button-toggle [style.backgroundColor]="'black'" routerLink="/movies/popular/list" value="italic">Popular</mat-button-toggle>
       <mat-button-toggle [style.backgroundColor]="'black'" routerLink="/movies/in_theatres/list" value="underline">In theatres</mat-button-toggle>
       <mat-button-toggle [style.backgroundColor]="'black'" routerLink="/movies/top_rated/list" value="underline">Top rated</mat-button-toggle>

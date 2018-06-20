@@ -1,33 +1,27 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import {
   FullScreenGalleryComponent,
 } from '@app/shared';
 
-import { MovieService, Image } from '@app/core/';
+import { MovieService } from '@app/core/';
 
 import {
   Movie,
-  CreditsModel,
-  ResultsInterface,
-  Review,
 
   BackdropImageSizesInterface,
   PosterImageSizesInterface,
   POSTER_IMAGE_SIZES,
   BACKDROP_IMAGE_SIZES,
 
-  CreditsService,
-  ReviewsService,
-
   ImageTypeEnum,
   MediaTypeEnum
 } from '@app/core/';
-
 import {
+
   YouTubeVideoDialogComponent,
  } from '@app/shared';
 
@@ -47,16 +41,11 @@ export class MovieDetailComponent implements OnInit {
   BACKDROP_IMAGE_SIZES: BackdropImageSizesInterface;
   backdropType: ImageTypeEnum;
   posterType: ImageTypeEnum;
+  similarMovies$: Observable<Movie[]>;
   movieType: MediaTypeEnum;
-  resultsRelatedMovies$: Observable<ResultsInterface<Movie>>;
-  credits$: Observable<CreditsModel>;
-  resultsReviews$: Observable<ResultsInterface<Review>>;
   constructor(
     private route: ActivatedRoute,
-    public dialog: MatDialog,
-    private reviewService: ReviewsService,
-    private movieService: MovieService,
-    private creditsService: CreditsService
+    public dialog: MatDialog
   ) {
     this.movie = new Movie();
     this.movieType = MediaTypeEnum.MOVIE;
@@ -85,6 +74,7 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe((data: { movie: Movie }) => {
       this.movie = data.movie;
+      this.similarMovies$ = of(this.movie.similar.results);
     });
   }
 }

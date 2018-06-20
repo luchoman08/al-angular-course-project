@@ -49,7 +49,6 @@ export class MovieService {
     return this.apiService.get(url, params)
     .pipe(map((data: ResultsInterface<MovieInterface>) => this.factoriesService.makeMovieResults(data)));
   }
-
   get(id: string | number, options?: MovieAppendToResponseOptions): Observable<Movie> {
     if (options) {
       const params = paramsAppendToResponseMoviesAndTv(options);

@@ -1,4 +1,4 @@
 export abstract class GenreAbstract {
         id: number;
-        name: string;  
+        name: string;
 }

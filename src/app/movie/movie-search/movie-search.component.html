@@ -5,11 +5,22 @@
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
- 
-  <app-movies-list-table 
+  <mat-form-field>
+      <mat-select panelClass="panel-control" placeholder="View type">
+        <mat-option  [value]="'table'">
+          Table view
+        </mat-option>
+        <mat-option  [value]="'square'">
+            Square
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+  <!--app-movies-list-table 
   [movies]="movies$"
   (pageChange)="onSetPage($event)"
   [resultsLength] = "resultsLength">
  
-  </app-movies-list-table>
+  </app-movies-list-table-->
+  <app-movie-mini-detail-list  [wrap]="true" [movies$]="movies$"></app-movie-mini-detail-list>
 </div>

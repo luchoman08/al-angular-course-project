@@ -23,7 +23,8 @@ import {
   GenreResolver,
   KeywordResolver,
   MovieResolver,
-  MovieFullCreditsResolver
+  MovieFullCreditsResolver,
+  MovieSearchResolver
 } from '@app/core/resolvers';
 
 @NgModule({
@@ -50,6 +51,7 @@ import {
     MovieListByGenreResolver,
     MovieListByKeywordResolver,
     MovieFullCreditsResolver,
+    MovieSearchResolver,
     GenreResolver,
     KeywordResolver
   ],

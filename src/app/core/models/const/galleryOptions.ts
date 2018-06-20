@@ -23,8 +23,7 @@ export const galleryOptionsMovieBackdropDetail: NgxGalleryOptions[] = [
       ];
       export const galleryOptionsPeopleProfileDetail: NgxGalleryOptions[] = [
         {
-          height: '600px',
-          width: '400px',
+          width: '100%',
           thumbnailsColumns: 4,
           imageAutoPlay: true,
           imageAutoPlayPauseOnHover: true,

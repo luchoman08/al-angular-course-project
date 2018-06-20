@@ -59,7 +59,7 @@ export const movieDefaultObject: MovieInterface = {
       movieInterface.production_companies ? movie.production_companies = movieInterface.production_companies : movie.production_companies = movieDefaultObject.production_companies;
       movieInterface.spoken_languages ? movie.spoken_languages = movieInterface.spoken_languages : movie.spoken_languages = movieDefaultObject.spoken_languages;
       movieInterface.production_countries ? movie.production_countries = movieInterface.production_countries : movie.production_countries = movieDefaultObject.production_countries;
-      movieInterface.video ? movie.video = movieInterface.video : movie.video = movieDefaultObject.video;
+      movie.video = movieInterface.video? movieInterface.video :  movieDefaultObject.video;
       movieInterface.video_count ? movie.video_count = movieInterface.video_count : movie.video_count = movieDefaultObject.video_count;
       movieInterface.genres ? movie.genres = movieInterface.genres : movie.genres = movieDefaultObject.genres;
       movieInterface.credits ? movie.credits = movieInterface.credits : movie.credits = movieDefaultObject.credits;
