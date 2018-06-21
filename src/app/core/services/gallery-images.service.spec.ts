@@ -1,3 +1,4 @@
+import { ImageURLPipe } from './../../shared/pipes/imagesURL.pipe';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { GalleryImagesService } from './gallery-images.service';
@@ -5,7 +6,7 @@ import { GalleryImagesService } from './gallery-images.service';
 describe('GalleryImagesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GalleryImagesService]
+      providers: [GalleryImagesService, ImageURLPipe],
     });
   });
 

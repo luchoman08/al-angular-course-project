@@ -1,3 +1,4 @@
+import { SharedModule } from '@app/shared/shared.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieCreditListComponent } from '@app/credits/movie-credit-list/movie-credit-list.component';
@@ -8,7 +9,8 @@ describe('MovieCreditListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieCreditListComponent ]
+      declarations: [ MovieCreditListComponent ],
+      imports:      [ SharedModule ]
     })
     .compileComponents();
   }));

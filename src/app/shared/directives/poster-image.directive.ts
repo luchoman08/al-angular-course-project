@@ -11,10 +11,12 @@ export class PosterImageDirective implements OnChanges {
   constructor( 
     private el: ElementRef,
     private assetsService: AssetsService,
-    private imageURLPipe: ImageURLPipe) {
+    private imageURLPipe: ImageURLPipe) { 
 
    }
    ngOnChanges() {
+    this.el.nativeElement.width = this.size.width;
+
     if (this.path) {
       this.el.nativeElement.src = this.imageURLPipe.transform(this.path, this.size);
     } else {

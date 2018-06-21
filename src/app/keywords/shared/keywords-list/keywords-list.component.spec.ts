@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { KeywordsListComponent } from './keywords-list.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('KeywordsListComponent', () => {
   let component: KeywordsListComponent;
@@ -8,7 +9,8 @@ describe('KeywordsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KeywordsListComponent ]
+      declarations: [ KeywordsListComponent ],
+      schemas:      [ NO_ERRORS_SCHEMA ],
     })
     .compileComponents();
   }));

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MoviesListTableComponent } from './movies-list-table.component';
+import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 
 describe('MoviesListTableComponent', () => {
   let component: MoviesListTableComponent;
@@ -8,7 +9,9 @@ describe('MoviesListTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoviesListTableComponent ]
+      declarations: [ MoviesListTableComponent ],
+      
+      schemas:      [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

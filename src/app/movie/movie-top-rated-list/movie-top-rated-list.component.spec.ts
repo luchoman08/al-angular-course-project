@@ -1,6 +1,9 @@
+import { ApiService } from './../../core/services/shared/api.service';
+import { MovieService } from '@app/core/';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieTopRatedListComponent } from './movie-top-rated-list.component';
+import { HttpClient } from '@angular/common/http';
 
 describe('MovieTopRatedListComponent', () => {
   let component: MovieTopRatedListComponent;
@@ -8,7 +11,8 @@ describe('MovieTopRatedListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieTopRatedListComponent ]
+      declarations: [ MovieTopRatedListComponent ],
+      providers: [ MovieService, ApiService, HttpClient ]
     })
     .compileComponents();
   }));

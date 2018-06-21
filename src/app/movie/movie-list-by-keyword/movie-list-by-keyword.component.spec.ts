@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MaterialModule } from '@app/shared/material.module';
 import { MovieListByKeywordComponent } from './movie-list-by-keyword.component';
 
 describe('MovieListByKeywordComponent', () => {
@@ -8,7 +9,8 @@ describe('MovieListByKeywordComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieListByKeywordComponent ]
+      declarations: [ MovieListByKeywordComponent ],
+      imports:      [ MaterialModule ]
     })
     .compileComponents();
   }));

@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { MovieService } from './movie.service';
@@ -8,9 +9,9 @@ describe('MovieService', () => {
     let movieService: MovieService;
     let apiService: ApiService;
   beforeEach(() => {
-    const spy = jasmine.createSpyObj('ApiService', ['get']);
     TestBed.configureTestingModule({
-      providers: [MovieService, {provide: ApiService, useValue: spy}]
+      providers: [MovieService, ApiService],
+      imports: [HttpClientModule]
     });
     movieService = TestBed.get(MovieService);
     apiService = TestBed.get(ApiService);

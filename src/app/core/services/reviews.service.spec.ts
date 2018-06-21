@@ -1,3 +1,4 @@
+import { ApiService } from '@app/core/services/shared';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ReviewsService } from './reviews.service';
@@ -5,7 +6,7 @@ import { ReviewsService } from './reviews.service';
 describe('ReviewsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ReviewsService]
+      providers: [ReviewsService, ApiService]
     });
   });
 

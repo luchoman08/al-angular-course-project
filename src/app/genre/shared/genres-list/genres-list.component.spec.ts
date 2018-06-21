@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GenresListComponent } from './genres-list.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('GenresListComponent', () => {
   let component: GenresListComponent;
@@ -8,7 +9,8 @@ describe('GenresListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenresListComponent ]
+      declarations: [ GenresListComponent ],
+      schemas:      [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

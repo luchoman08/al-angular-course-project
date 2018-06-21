@@ -1,9 +1,9 @@
 <mat-card >
-  <mat-card-content fxLayout="column" fxLayoutGap="3px" fxLayoutAlign="start center" >
+  <mat-card-content fxLayout="column" fxLayoutGap="3px" fxLayoutAlign="center center" >
       <a  [routerLink]="['/movies', movie.id]">
-        <img mat-card-image [src]="movie.poster_path | imageURL: POSTER_IMAGE_SIZES.W342" alt="{{movie.title}}">
+        <img mat-card-image appPosterImage  [path]="movie.poster_path" [size]="POSTER_IMAGE_SIZES.W342" alt="{{movie.title}}">
       </a>
-    <b align="center">{{movie.title}}</b>
+    <b class="title" >{{movie.title}}</b>
     <div  fxLayout="row" fxLayoutAlign="center" >
       <mat-icon>star_rate</mat-icon>
       <p >{{movie.vote_average}}</p>

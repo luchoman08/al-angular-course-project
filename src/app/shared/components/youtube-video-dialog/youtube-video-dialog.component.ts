@@ -11,6 +11,7 @@ export class YouTubeVideoDialogComponent implements OnInit {
   public video_keys: string[];
   public width: string;
   public urlf: string;
+  public trailersURL: any;
   public height: string;
   constructor(
     private sanitizer: DomSanitizer,
@@ -24,10 +25,8 @@ export class YouTubeVideoDialogComponent implements OnInit {
      onNoClick(): void {
       this.dialogRef.close();
     }
-    trailersURL() {
-      return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed?rel=0&playlist=' + this.video_keys.join(','));
-    }
   ngOnInit() {
+    this.trailersURL =  this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed?rel=0&playlist=' + this.video_keys.join(','));
   }
 
 }

@@ -1,6 +1,9 @@
+import { RouterModule } from '@angular/router';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieFullCreditsComponent } from './movie-full-credits.component';
+import { MovieService } from '@app/core/';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('MovieFullCreditsComponent', () => {
   let component: MovieFullCreditsComponent;
@@ -8,7 +11,10 @@ describe('MovieFullCreditsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieFullCreditsComponent ]
+      declarations: [ MovieFullCreditsComponent ],
+      providers: [ MovieService ],
+      schemas:      [ NO_ERRORS_SCHEMA ],
+      imports: [ RouterModule ]
     })
     .compileComponents();
   }));

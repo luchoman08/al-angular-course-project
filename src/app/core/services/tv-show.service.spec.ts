@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from '@app/core/services/shared';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { TvShowService } from './tv-show.service';
@@ -5,7 +7,8 @@ import { TvShowService } from './tv-show.service';
 describe('TvShowService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TvShowService]
+      imports: [ HttpClientModule ],
+      providers: [TvShowService, ApiService]
     });
   });
 

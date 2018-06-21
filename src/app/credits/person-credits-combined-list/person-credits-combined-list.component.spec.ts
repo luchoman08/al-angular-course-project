@@ -1,3 +1,4 @@
+import { SharedModule } from '@app/shared/shared.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PersonCreditsCombinedListComponent } from '@app/credits/person-credits-combined-list/person-credits-combined-list.component';
@@ -8,7 +9,8 @@ describe('PersonCreditsCombinedListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PersonCreditsCombinedListComponent ]
+      declarations: [ PersonCreditsCombinedListComponent ],
+      imports:      [ SharedModule ]
     })
     .compileComponents();
   }));
