@@ -9,6 +9,10 @@ export class ZoomImageDirective {
   @Input() align_top_left?: boolean;
   @Input() position_hover: string;
   @Input() zoom_value?: number;
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer
+  ) {}
   /**
    * In case than the image is in a vertical list, is the first element and are more than 1 elements 
    * applyFirst return true
@@ -54,8 +58,5 @@ export class ZoomImageDirective {
       this.renderer.setElementStyle(this.el.nativeElement, 'margin-top', '0px');
     }
   }
-  constructor(
-    private el: ElementRef,
-    private renderer: Renderer
-  ) {}
+
 }
