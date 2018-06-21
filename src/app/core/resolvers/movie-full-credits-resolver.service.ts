@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { MovieService } from '@app/core/services';
-import { MovieAppendToResponseOptions, Movie } from '@app/core/models';
+import { MovieAppendToResponseOptions, Movie, ResultsInterface } from '@app/core/models';
 
 
 @Injectable()
@@ -13,14 +13,21 @@ export class MovieFullCreditsResolver implements Resolve<Movie> {
     private movieService: MovieService,
     private router: Router
   ) {}
-
-  resolve(
+/**
+ * Resolve a movie with all credits added, get movie  by `id` param in activated route
+ *
+ * @param {ActivatedRouteSnapshot} route
+ * @returns {Observable<Movie>}
+ * @memberof MovieFullCreditsResolver
+ */
+resolve(
     route: ActivatedRouteSnapshot
   ): Observable<any> {
     const options: MovieAppendToResponseOptions = {
       credits: true
     };
-    return this.movieService.get(route.params['id'], options)
+    let movieId = Number(route.params['id']);
+    return this.movieService.get( movieId, options )
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
 }

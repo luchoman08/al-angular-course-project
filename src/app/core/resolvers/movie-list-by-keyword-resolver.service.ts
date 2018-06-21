@@ -15,11 +15,18 @@ export class MovieListByKeywordResolver implements Resolve<ResultsInterface<Movi
     private movieService: MovieService,
     private router: Router
   ) {}
-
+  /**
+   * Resolve movies by keyword `id` extracted from the activated route
+   *
+   * @param {ActivatedRouteSnapshot} route
+   * @returns {Observable<any>}
+   * @memberof MovieListByKeywordResolver
+   */
   resolve(
     route: ActivatedRouteSnapshot
   ): Observable<any> {
-    return this.movieService.getByKeyword(Number(route.params['id']) )
+    let keywordId = Number(route.params['id']);
+    return this.movieService.getByKeyword( keywordId )
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
 }

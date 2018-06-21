@@ -62,7 +62,7 @@ export class SearchInputComponent implements OnInit {
         this.mediaSearch = this.MEDIA_TYPE.MOVIE;
     }
     hideSearchAditionalSearch(){
-        setTimeout(()=> this.hideAditionalSearch = true, 100);
+        setTimeout(()=> this.hideAditionalSearch = true, 300);
     }
     selectSearchPeople(){
         this.mediaSearch = this.MEDIA_TYPE.PERSON;

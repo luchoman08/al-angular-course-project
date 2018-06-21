@@ -38,6 +38,13 @@ export const movieDefaultObject: MovieInterface = {
     constructor () {
         this.defaultValuesObject = movieDefaultObject;
     }
+    /**
+     * Make instance of `Movie` from `MovieInterface` instance, and initialize
+     * in a default value if does not exist in the incoming interface
+     * @param {MovieInterface} movieInterface
+     * @returns {Movie}
+     * @memberof MovieFactory
+     */
     make(movieInterface: MovieInterface): Movie {
       let movie: Movie = new Movie();
       movieInterface.id ? movie.id = movieInterface.id : movie.id = movieDefaultObject.id;

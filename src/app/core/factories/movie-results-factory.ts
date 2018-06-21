@@ -11,6 +11,14 @@ export const defaultMovieResults: ResultsInterface<Movie> = {
 
 export class MovieResultsFactory implements BaseResultsFactoryInterface<Movie, MovieInterface> {
     factory: MovieFactory = new MovieFactory();
+    /**
+     * Make instance of `ResultsInterface<Movie>` from `ResultsInterface<MovieInterface>` instance, and initialize
+     * in a default value if does not exist in the incoming interface
+     *
+     * @param {ResultsInterface<MovieInterface>} resultsInterface
+     * @returns resultsMovie: ResultsInterface<Movie>
+     * @memberof MovieResultsFactory
+     */
     make(resultsInterface: ResultsInterface<MovieInterface>) {
         let resultsMovie: ResultsInterface<Movie> = {
         page: resultsInterface.page ? resultsInterface.page :  defaultMovieResults.page,

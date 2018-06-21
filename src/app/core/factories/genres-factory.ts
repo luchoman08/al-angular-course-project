@@ -8,6 +8,13 @@ export const defaultValuesGenre: GenreInterface = {
 
 export class GenreFactory implements BaseFactory<Genre, GenreInterface> {
     defaultValuesObject: GenreInterface = defaultValuesGenre;
+    /**
+     * Make instance of `Genre` from `GenreInterface` instance, and initialize
+     * in a default value if does not exist in the incoming interface
+     * @param {GenreInterface} genreInterface
+     * @returns {Genre}
+     * @memberof GenreFactory
+     */
     make(genreInterface: GenreInterface): Genre {
         let genre: Genre = new Genre();
         genreInterface.id ? genre.id = genreInterface.id : genre.id = defaultValuesGenre.id;

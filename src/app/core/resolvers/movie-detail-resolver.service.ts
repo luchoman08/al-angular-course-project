@@ -14,8 +14,15 @@ export class MovieResolver implements Resolve<Movie> {
     private movieService: MovieService,
     private router: Router
   ) {}
-
-  resolve(
+/**
+ * Resolve movie for movie detail page, with `videos, images keywords, credits, reviews and similar` 
+ * added using append to response, the movie id is given by `id` param in activated route
+ * 
+ * @param {ActivatedRouteSnapshot} route
+ * @returns {Observable<Movie>}
+ * @memberof MovieResolver
+ */
+resolve(
     route: ActivatedRouteSnapshot
   ): Observable<any> {
     const options: MovieAppendToResponseOptions = {
@@ -26,7 +33,8 @@ export class MovieResolver implements Resolve<Movie> {
       reviews: true,
       similar: true
     };
-    return this.movieService.get(route.params['id'], options)
+    let movieId = Number(route.params['id']);
+    return this.movieService.get( movieId, options )
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
 }

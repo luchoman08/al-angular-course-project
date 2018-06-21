@@ -15,11 +15,18 @@ export class MovieListByGenreResolver implements Resolve<ResultsInterface<Movie>
     private movieService: MovieService,
     private router: Router
   ) {}
-
-  resolve(
+/**
+ * Resolve movies result by genre indicated by `id` param in router, this id is the `genre id`
+ *
+ * @param {ActivatedRouteSnapshot} route
+ * @returns {Observable<ResultsInterface<Movie>>}
+ * @memberof MovieListByGenreResolver
+ */
+resolve(
     route: ActivatedRouteSnapshot
-  ): Observable<any> {
-    return this.movieService.getByGenre(Number(route.params['id']) )
+  ): Observable<any>{
+    let genreId = Number(route.params['id']);
+    return this.movieService.getByGenre( genreId )
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
 }
