@@ -18,11 +18,7 @@ export class ApiService {
     return this.http.get(`${this.api_url}${path}`, { params })
       .pipe(catchError(this.formatErrors));
   }
-  getf(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${path}`, { params })
-      .pipe(catchError(this.formatErrors))
-      ;
-  }
+  
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.put(
       `${this.api_url}${path}`,
