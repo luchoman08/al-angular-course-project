@@ -1,4 +1,4 @@
-@import '~sass/mixins';
+@import 'sass/mixins';
 .principal-container {
   @include background-color();
   @include text-color();
