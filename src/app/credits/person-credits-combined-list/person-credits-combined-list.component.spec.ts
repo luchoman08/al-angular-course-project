@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PersonCreditsCombinedListComponent } from '@app/credits/person-credits-combined-list/person-credits-combined.component-list';
+import { PersonCreditsCombinedListComponent } from '@app/credits/person-credits-combined-list/person-credits-combined-list.component';
 
 describe('PersonCreditsCombinedListComponent', () => {
   let component: PersonCreditsCombinedListComponent;

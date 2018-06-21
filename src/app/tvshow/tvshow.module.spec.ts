@@ -1,10 +1,10 @@
-import { TvshowModule } from './tvshow.module';
+import { TvShowModule } from './tvshow.module';
 
-describe('TvshowModule', () => {
-  let tvshowModule: TvshowModule;
+describe('TvShowModule', () => {
+  let tvshowModule: TvShowModule;
 
   beforeEach(() => {
-    tvshowModule = new TvshowModule();
+    tvshowModule = new TvShowModule();
   });
 
   it('should create an instance', () => {
