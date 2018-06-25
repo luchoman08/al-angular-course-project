@@ -1,6 +1,7 @@
 import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
-import { ImageSizeValueModel, AssetsService } from '@app/core';
+import { ImageSizeValueModel, AssetsService, MediaTypeEnum } from '@app/core';
 import { ImageURLPipe } from '../pipes';
+import { Person } from '../../core/models/person.model';
 
 @Directive({
   selector: '[appProfileImage]'
@@ -16,7 +17,7 @@ export class ProfileImageDirective implements OnChanges{
    }
    ngOnChanges() {
     if (this.path) {
-      this.el.nativeElement.src = this.imageURLPipe.transform(this.path, this.size);
+      this.el.nativeElement.src = this.imageURLPipe.transform(this.path, this.size, MediaTypeEnum.PERSON);
     } else {
       this.el.nativeElement.src = this.assetsService.getDefaltProfileImageURL();
     }

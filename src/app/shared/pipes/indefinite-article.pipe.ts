@@ -6,9 +6,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class IndefiniteArticlePipe implements PipeTransform {
 
   transform( word: string ): string {
-    let isVowelFirstChar = ['a', 'e', 'i', 'o', 'u'].indexOf(word.charAt(0).toLowerCase()) !== -1;
     let article: string = '';
-    isVowelFirstChar? article = 'an' : article = 'a';
+    if( word && word !== '' ) {
+    let isVowelFirstChar = ['a', 'e', 'i', 'o', 'u'].indexOf(word.charAt(0).toLowerCase()) !== -1;
+    article = isVowelFirstChar?  'an' : 'a';
+    } else {
+      article = '';
+    }
     return article; 
   }
 

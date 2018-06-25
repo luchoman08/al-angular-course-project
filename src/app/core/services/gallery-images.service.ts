@@ -49,7 +49,7 @@ export class GalleryImagesService {
     }
   private getBigURL(file_path: string, mediaType: MediaTypeEnum, imageType: ImageTypeEnum) {
     const bigSize = this.getBigSize(mediaType, imageType);
-    return this.imageURLPipe.transform( file_path, bigSize);
+    return this.imageURLPipe.transform( file_path, bigSize, mediaType);
   }
 
   getFullScreenGalleryImages(
@@ -130,6 +130,7 @@ getFullScreenPosterGalleryImages(images: Image[], sort: boolean = false): NgxGal
      * @memberof GalleryImagesService
      */
     getMovieBackdropDescriptionGalleryImages(movies: Movie[]): {images: NgxGalleryImage[], options: NgxGalleryOptions[]} {
+      //movies.map(movie=> console.log(movie.backdrop_path, 'gallery images service get movie backdrop');
       const galleryImages = new Array<NgxGalleryImage>();
         for (const movie of movies.sort(Movie.sortMethod)) {
           galleryImages.push({
@@ -140,14 +141,17 @@ getFullScreenPosterGalleryImages(images: Image[], sort: boolean = false): NgxGal
               small: this.imageURLPipe.transform(
               movie.backdrop_path,
               BACKDROP_IMAGE_SIZES.W300,
+              MediaTypeEnum.MOVIE
             ),
             medium: this.imageURLPipe.transform(
               movie.backdrop_path,
-              BACKDROP_IMAGE_SIZES.W780
+              BACKDROP_IMAGE_SIZES.W780,
+              MediaTypeEnum.MOVIE
             ),
             big: this.imageURLPipe.transform(
               movie.backdrop_path,
-              BACKDROP_IMAGE_SIZES.W1280
+              BACKDROP_IMAGE_SIZES.W1280,
+              MediaTypeEnum.MOVIE
             )
           });
         }

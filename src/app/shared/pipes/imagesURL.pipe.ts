@@ -12,8 +12,8 @@ import {
 })
 export class ImageURLPipe implements PipeTransform {
     api_url  = environment.imagesTMDB_URL;
-    transform(path: string, size: ImageSizeValueModel, mediaType?: MediaTypeEnum): string  {
-      if ( path ) {
+    transform(path: string, size: ImageSizeValueModel, mediaType: MediaTypeEnum): string  {
+      if ( path && path != '' ) {
         return `${this.api_url}/${size.name}${path}`;
       } else if ( mediaType ) {
         switch ( mediaType ) {

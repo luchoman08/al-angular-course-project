@@ -1,5 +1,5 @@
 import { Directive, Input, ElementRef,  OnChanges } from '@angular/core';
-import { AssetsService, ImageSizeValueModel } from '@app/core';
+import { AssetsService, ImageSizeValueModel, MediaTypeEnum } from '@app/core';
 import { ImageURLPipe } from '../pipes';
 
 @Directive({
@@ -18,7 +18,7 @@ export class PosterImageDirective implements OnChanges {
     this.el.nativeElement.width = this.size.width;
 
     if (this.path) {
-      this.el.nativeElement.src = this.imageURLPipe.transform(this.path, this.size);
+      this.el.nativeElement.src = this.imageURLPipe.transform(this.path, this.size, MediaTypeEnum.MOVIE);
     } else {
       this.el.nativeElement.src = this.assetsService.getDefaultPosterImageURL();
     }

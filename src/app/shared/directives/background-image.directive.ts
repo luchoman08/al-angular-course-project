@@ -1,7 +1,6 @@
 import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
-import { ImageSizeValueModel } from '@app/core';
+import { ImageSizeValueModel, MediaTypeEnum } from '@app/core';
 import { ImageURLPipe } from '@app/shared/pipes';
-
 @Directive({
   selector: '[appBackgroundImage]'
 })
@@ -15,7 +14,8 @@ export class BackgroundImageDirective implements OnChanges {
 
    }
    ngOnChanges() {
-    const imgURL = this.imageURLPipe.transform(this.path, this.size);
+
+    const imgURL = this.imageURLPipe.transform(this.path, this.size, MediaTypeEnum.MOVIE);
 
     if ( this.blurred )  {
       if ( this.path !== '') {

@@ -11,11 +11,11 @@
     {{credit.name}}
   <ng-container *ngIf="credit.character then credit_character; else credit_job">
   </ng-container >
-  <ng-template #credit_character>
+  <ng-template #credit_character >
       as   <em><{{credit.character}}></em>
   </ng-template>
   <ng-template #credit_job>
-      working as  {{credit.job | indefiniteArticle }} <em>{{credit.job}}</em>
+      <span  *ngIf="credit.job" >  working as  {{credit.job | indefiniteArticle }} <em>{{credit.job}}</em></span>
   </ng-template>
 
 </div>
