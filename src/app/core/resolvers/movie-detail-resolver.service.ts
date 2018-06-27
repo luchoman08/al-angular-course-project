@@ -19,7 +19,7 @@ export class MovieResolver implements Resolve<Movie> {
  * added using append to response, the movie id is given by `id` param in activated route
  * 
  * @param {ActivatedRouteSnapshot} route
- * @returns {Observable<Movie>}
+ * @returns {Observable<Movie>} observable of movie
  * @memberof MovieResolver
  */
 resolve(

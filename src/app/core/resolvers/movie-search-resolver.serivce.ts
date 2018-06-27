@@ -40,7 +40,7 @@ export class MovieSearchResolver implements Resolve<ResultsInterface<Movie>> {
     ), catchError((err) => this.router.navigateByUrl('/')));
     return resultPopularMovies;
     }
-    /** Is not empty query, return the search result */
+    /** if is not empty query, return the search result by the given query*/
     else {
       return this.movieService.searchMovies(query)
       .pipe(catchError((err) => this.router.navigateByUrl('/')));  
