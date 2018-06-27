@@ -34,6 +34,16 @@ export class MovieService {
       return this.getResultsMultiplePage('/search/movie', page, params);
     }
   }
+  /**
+   * Support get movies results from a multiple page format, with optional initial `HttParams` 
+   *
+   * @private
+   * @param {string} url
+   * @param {number} [page]
+   * @param {HttpParams} [paramsInput] initial params to be cloned and extended
+   * @returns {Observable<ResultsInterface<Movie>>}
+   * @memberof MovieService
+   */
   private getResultsMultiplePage(url: string, page?: number, paramsInput?: HttpParams): Observable<ResultsInterface<Movie>> {
     let pageNormalized = page + 1;
     let params: HttpParams;
@@ -98,6 +108,14 @@ export class MovieService {
       return this.getResultsMultiplePage(`/genre/${genreId}/movies`, page);
     }
   }
+  /**
+   * Return all movies from backend filtered by keyword
+   *
+   * @param {(KeywordsInterface | number)} keyword
+   * @param {number} [page]
+   * @returns {Observable<ResultsInterface<Movie>>}
+   * @memberof MovieService
+   */
   getByKeyword(keyword: KeywordsInterface | number, page?: number): Observable<ResultsInterface<Movie>> {
     let keywordId: number;
     keywordId = typeof keyword === 'number' ? keyword : keyword.id;
