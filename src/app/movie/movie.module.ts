@@ -45,6 +45,7 @@ import { MovieCreditListComponent } from '@app/movie/components/movie-credit-lis
     MovieSearchComponent,
     MoviesPopularListComponent,
     MovieGenresListComponent,
+    MoviesGalleryComponent,
     MovieInTheatresListComponent,
     MovieTopRatedListComponent,
     MovieListByGenreComponent,
