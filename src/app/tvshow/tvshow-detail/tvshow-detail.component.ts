@@ -65,7 +65,6 @@ export class TvshowDetailComponent implements OnInit {
     this.route.data.subscribe((data: { tvShow: TVShow }) => {
       this.tvShow = new TVShow();
       this.tvShow = TVShow.fromJSON(data.tvShow);
-      console.log(this.tvShow);
   });
   }
 

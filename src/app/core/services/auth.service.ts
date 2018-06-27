@@ -30,7 +30,6 @@ export class AuthService {
         .pipe(map((request_token_obj: RequestToken) => {
             this.request_token_obj = request_token_obj;
             this.jwtService.saveToken(this.request_token_obj.request_token);
-            console.log(this.request_token_obj);
             window.location.href =
               `https://www.themoviedb.org/authenticate/${request_token_obj.request_token}?redirect_to=http://localhost:4200`;
            return request_token_obj;
@@ -42,7 +41,6 @@ export class AuthService {
       return this.apiService.get('/authentication/session/new', params).pipe(
         map(
           response =>  {
-          console.log(response);
           return response;
           }
         )

@@ -26,7 +26,6 @@ export class MovieListByKeywordComponent implements OnInit {
     this.movieResults$ = this.movieService.getByKeyword(this.keyword, this.page);
     this.movieResults$.subscribe(
       (moviesResults: ResultsInterface<Movie>) => {
-        console.log(moviesResults);
        this.movies$ = of(moviesResults.results);
        this.resultsLength = moviesResults.total_results;
       }

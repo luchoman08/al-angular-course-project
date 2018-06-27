@@ -41,8 +41,7 @@ export class PeopleService {
 
   }
   getCreditsCombined(personId: number|string): Observable<PersonCreditsCombinedModel> {
-    return this.apiService.get(`/person/${personId}/combined_credits`)
-    .pipe(map(data => { console.log(data); return data; }));
+    return this.apiService.get(`/person/${personId}/combined_credits`);
   }
   private getResultsMultiplePage(url: string, page?: number): Observable<ResultsInterface<Person>> {
     if (page) {

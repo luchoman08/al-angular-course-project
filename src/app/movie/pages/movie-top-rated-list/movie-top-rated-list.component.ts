@@ -21,7 +21,6 @@ export class MovieTopRatedListComponent implements OnInit {
     this.movieResults$ = this.movieService.getTopRated(this.page);
     this.movieResults$.subscribe(
       (moviesResults: ResultsInterface<Movie>) => {
-        console.log(moviesResults);
        this.movies$ = of(moviesResults.results);
        this.resultsLength = moviesResults.total_results;
       }

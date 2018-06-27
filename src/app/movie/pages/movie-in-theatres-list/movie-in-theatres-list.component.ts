@@ -22,7 +22,6 @@ export class MovieInTheatresListComponent implements OnInit {
     this.movieResults$ = this.movieService.getInTheatres(this.page);
     this.movieResults$.subscribe(
       (moviesResults: ResultsInterface<Movie>) => {
-        console.log(moviesResults);
        this.movies$ = of(moviesResults.results);
        this.resultsLength = moviesResults.total_results;
       }

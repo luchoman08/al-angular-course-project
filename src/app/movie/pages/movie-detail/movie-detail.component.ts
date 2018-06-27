@@ -57,7 +57,6 @@ export class MovieDetailComponent implements OnInit {
     this.backdropGallery.openPreviewImages();
   }
   openTrailers(): void {
-    console.log(this.movie.getVideoKeys());
     const dialogRef = this.dialog.open(YouTubeVideoDialogComponent, {
       width: '750px',
       height: '500px',

@@ -39,7 +39,6 @@ export class PersonDetailComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(
       (data: { person: Person })  => {
-        console.log(data);
         this.person = data.person;
       }
     );

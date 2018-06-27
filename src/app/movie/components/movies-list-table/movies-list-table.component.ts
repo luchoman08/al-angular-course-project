@@ -36,7 +36,6 @@ export class MoviesListTableComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.paginator.page.subscribe(
       (page: PageEvent) => {
-        console.log(page);
         this.pageChange.emit(page.pageIndex);
       }
 

@@ -22,7 +22,6 @@ export class MoviesPopularListComponent implements OnInit {
     this.movieResults$ = this.movieService.getPopular(this.page);
     this.movieResults$.subscribe(
       (moviesResults: ResultsInterface<Movie>) => {
-        console.log(moviesResults);
        this.movies$ = of(moviesResults.results);
        this.resultsLength = moviesResults.total_results;
       }

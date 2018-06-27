@@ -28,7 +28,6 @@ export class MovieListByGenreComponent implements OnInit {
     this.movieResults$ = this.movieService.getByGenre(this.genre.id, this.page);
     this.movieResults$.subscribe(
       (moviesResults: ResultsInterface<Movie>) => {
-        console.log(moviesResults);
        this.movies$ = of(moviesResults.results);
        this.resultsLength = moviesResults.total_results;
       }

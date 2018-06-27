@@ -130,7 +130,6 @@ getFullScreenPosterGalleryImages(images: Image[], sort: boolean = false): NgxGal
      * @memberof GalleryImagesService
      */
     getMovieBackdropDescriptionGalleryImages(movies: Movie[]): {images: NgxGalleryImage[], options: NgxGalleryOptions[]} {
-      //movies.map(movie=> console.log(movie.backdrop_path, 'gallery images service get movie backdrop');
       const galleryImages = new Array<NgxGalleryImage>();
         for (const movie of movies.sort(Movie.sortMethod)) {
           galleryImages.push({

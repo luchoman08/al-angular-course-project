@@ -16,7 +16,6 @@ export class MovieFullCreditsComponent implements OnInit {
 
       this.movie = new Movie();
       this.movie = data.movie;
-      console.log(data.movie);
     });
   }
 

@@ -54,9 +54,7 @@ export class SearchInputComponent implements OnInit {
         this.EMPTY_SEARCH_SYMBOL = EMPTY_SEARCH_SYMBOL
         this.stateCtrl = new FormControl();
         this.results$ = this.searchService.searchCombined(this.stateCtrl.valueChanges);
-        this.results$.pipe(tap( results => 
-            console.log(results, 'results from search componsne'))
-        )
+
     }
     selectSearchMovies() {
         this.mediaSearch = this.MEDIA_TYPE.MOVIE;
