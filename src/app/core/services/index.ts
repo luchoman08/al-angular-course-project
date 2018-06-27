@@ -6,7 +6,6 @@ export * from './auth.service';
 export * from './search.service';
 export * from './tv-show.service';
 export * from './gallery-images.service';
-export * from './reviews.service';
 export * from './assets.service';
 export * from './factories.service';
 export * from './keyword.service';

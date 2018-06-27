@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ResultsInterface } from '@app/core/models/interfaces/results.interface';
-import { Movie, MovieInterface, Genre, CreatedAtSortMethod, KeywordsInterface, Cast, Crew } from '@app/core/models';
+import { Movie, MovieInterface, Genre, CreatedAtSortMethod, KeywordsInterface, Cast, Crew, Review } from '@app/core/models';
 import { ApiService } from './shared';
 import { paramsAppendToResponseMoviesAndTv } from './shared';
 import { MovieAppendToResponseOptions } from '@app/core/models';
@@ -128,10 +128,20 @@ export class MovieService {
    * @returns {Observable<{id: string, cast: Cast[], crew: Crew[]}>}
    * @memberof MovieService
    */
-  getMovieCredits(idMovie: string|number): Observable<{id: string, cast: Cast[], crew: Crew[]}> {
+  getMovieCredits(idMovie: string | number): Observable<{ id: string, cast: Cast[], crew: Crew[] }> {
     return this.apiService.get(`/movie/${idMovie}/credits`)
-    .pipe(map(data => data));
-}
+      .pipe(map(data => data));
+  }
+  /**
+   * Get movie revies by movie id
+   *
+   * @param {number} movieId
+   * @returns {Observable<ResultsInterface<Review>>}
+   * @memberof MovieService
+   */
+  getMovieReviews(movieId: number): Observable<ResultsInterface<Review>> {
+    return this.apiService.get(`/movie/${movieId}/reviews`);
+  }
 
 }
 
