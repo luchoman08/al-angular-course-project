@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ResultsInterface } from '@app/core/models/interfaces/results.interface';
-import { Movie, MovieInterface, Genre, CreatedAtSortMethod, KeywordsInterface } from '@app/core/models';
+import { Movie, MovieInterface, Genre, CreatedAtSortMethod, KeywordsInterface, Cast, Crew } from '@app/core/models';
 import { ApiService } from './shared';
 import { paramsAppendToResponseMoviesAndTv } from './shared';
 import { MovieAppendToResponseOptions } from '@app/core/models';
@@ -17,46 +17,46 @@ export class MovieService {
     private apiService: ApiService,
     private factoriesService: FactoriesService
   ) { }
-    /**
-     * Search movies from string input and return them ordered by vote average
-     *
-     * @private
-     * @param {string} query
-     * @returns {Observable<Movie[]>}
-     * @memberof SearchService
-     */
-    public searchMovies(query: string, page?: number): Observable<ResultsInterface<Movie>> {
-      if ( query === '') {
-      return of( defaultMovieResults);
+  /**
+   * Search movies from string input and return them ordered by vote average
+   *
+   * @private
+   * @param {string} query
+   * @returns {Observable<Movie[]>}
+   * @memberof SearchService
+   */
+  public searchMovies(query: string, page?: number): Observable<ResultsInterface<Movie>> {
+    if (query === '') {
+      return of(defaultMovieResults);
     } else {
       const params = new HttpParams().set('query', query);
-      
+
       return this.getResultsMultiplePage('/search/movie', page, params);
     }
   }
   private getResultsMultiplePage(url: string, page?: number, paramsInput?: HttpParams): Observable<ResultsInterface<Movie>> {
-    let pageNormalized = page + 1 ;
+    let pageNormalized = page + 1;
     let params: HttpParams;
-    if ( !paramsInput && pageNormalized) {
+    if (!paramsInput && pageNormalized) {
       params = new HttpParams().set('page', String(pageNormalized));
     }
-    if ( paramsInput && !pageNormalized) {
-      params = new HttpParams({fromString: paramsInput.toString()})
+    if (paramsInput && !pageNormalized) {
+      params = new HttpParams({ fromString: paramsInput.toString() })
     }
-    if ( paramsInput && pageNormalized) {
-      params = new HttpParams({fromString: paramsInput.toString()}).set('page', String(pageNormalized));
+    if (paramsInput && pageNormalized) {
+      params = new HttpParams({ fromString: paramsInput.toString() }).set('page', String(pageNormalized));
     }
     return this.apiService.get(url, params)
-    .pipe(map((data: ResultsInterface<MovieInterface>) => this.factoriesService.makeMovieResults(data)));
+      .pipe(map((data: ResultsInterface<MovieInterface>) => this.factoriesService.makeMovieResults(data)));
   }
   get(id: string | number, options?: MovieAppendToResponseOptions): Observable<Movie> {
     if (options) {
       const params = paramsAppendToResponseMoviesAndTv(options);
-        return this.apiService.get('/movie/' + id, params)
+      return this.apiService.get('/movie/' + id, params)
         .pipe(
-          map (
+          map(
             (movieInterface: MovieInterface) =>
-            this.factoriesService.makeMovie(movieInterface)
+              this.factoriesService.makeMovie(movieInterface)
           )
         );
     } else {
@@ -84,26 +84,36 @@ export class MovieService {
    */
   getByGenre(genre: Genre | number, page?: number, sortMethod?: CreatedAtSortMethod): Observable<ResultsInterface<Movie>> {
     let genreId: number;
-    if ( typeof genre === "number" ) {
+    if (typeof genre === "number") {
       genreId = genre;
     }
-    if ( genre instanceof Genre) {
+    if (genre instanceof Genre) {
       genreId = genre.id;
     }
-    if ( sortMethod ) {
+    if (sortMethod) {
       const params = new HttpParams().set('sort_by', sortMethod);
       return this.getResultsMultiplePage(`/genre/${genreId}/movies`, page, params);
 
     } else {
-    return this.getResultsMultiplePage(`/genre/${genreId}/movies`, page);
+      return this.getResultsMultiplePage(`/genre/${genreId}/movies`, page);
     }
   }
-  getByKeyword( keyword: KeywordsInterface | number, page?: number ) : Observable<ResultsInterface<Movie>> {
+  getByKeyword(keyword: KeywordsInterface | number, page?: number): Observable<ResultsInterface<Movie>> {
     let keywordId: number;
-    keywordId = typeof keyword === 'number'? keyword: keyword.id;
+    keywordId = typeof keyword === 'number' ? keyword : keyword.id;
     return this.getResultsMultiplePage(`/keyword/${keywordId}/movies`, page);
   }
-
+  /**
+   * Return movie credits by movie id
+   *
+   * @param {(string|number)} idMovie
+   * @returns {Observable<{id: string, cast: Cast[], crew: Crew[]}>}
+   * @memberof MovieService
+   */
+  getMovieCredits(idMovie: string|number): Observable<{id: string, cast: Cast[], crew: Crew[]}> {
+    return this.apiService.get(`/movie/${idMovie}/credits`)
+    .pipe(map(data => data));
+}
 
 }
 

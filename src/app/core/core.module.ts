@@ -7,7 +7,6 @@ import { ApiKeyInterceptor, LanguageInterceptor } from './interceptors';
 import {
   MovieService,
   PeopleService,
-  CreditsService,
   ApiService,
   JwtService,
   SearchService,
@@ -41,7 +40,6 @@ import {
     MovieService,
     PeopleService,
     SearchService,
-    CreditsService,
     ApiImagesService,
     AssetsService,
     GalleryImagesService,
