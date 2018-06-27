@@ -1,8 +1,8 @@
-import { Gender, Image } from './';
-import { PersonInterface } from './interfaces';
+import { Gender, Image } from '@app/core/models';
+import { PersonInterface } from '@app/core/models/interfaces';
 import {
   PersonCreditsCombinedModel
-} from './credits/';
+} from '@app/core/models/credits';
 
 export class Person implements PersonInterface {
     id: number;

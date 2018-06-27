@@ -1,4 +1,4 @@
-import { PeopleService } from './../../../core/services/people.service';
+import { PeopleService } from '@app/core/services/people.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -18,7 +18,7 @@ import {
   PROFILE_IMAGE_SIZES,
   POSTER_IMAGE_SIZES,
 
-} from '@app/core/';
+} from '@app/core';
 import { tap } from 'rxjs/operators';
 import { MovieService } from '@app/core/services';
 import { EMPTY_SEARCH_SYMBOL } from '@app/core';

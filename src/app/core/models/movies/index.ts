@@ -1,3 +1,3 @@
-export * from './interfaces';
-export * from './abstract';
-export * from './movie.model';
+export * from '@app/core/models/movies/interfaces';
+export * from '@app/core/models/movies/abstract';
+export * from '@app/core/models/movies/movie.model';

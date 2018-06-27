@@ -1,6 +1,6 @@
 import { Directive, Input, ElementRef,  OnChanges } from '@angular/core';
 import { AssetsService, ImageSizeValueModel, MediaTypeEnum } from '@app/core';
-import { ImageURLPipe } from '../pipes';
+import { ImageURLPipe } from '@app/shared/pipes';
 
 @Directive({
   selector: '[appPosterImage]'

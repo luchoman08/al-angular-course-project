@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService, paramsAppendToResponsePeople } from './shared';
+import { ApiService, paramsAppendToResponsePeople } from '@app/core/services/shared';
 
 
 import { map, tap } from 'rxjs/operators';
 import { HttpParams } from '@angular/common/http';
-import { ResultsInterface } from '@app/core/';
+import { ResultsInterface } from '@app/core';
 import {
   PersonCreditsCombinedModel,
   Person,

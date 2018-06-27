@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-import { ApiKeyInterceptor, LanguageInterceptor } from './interceptors';
+import { ApiKeyInterceptor, LanguageInterceptor } from '@app/core/interceptors';
 
 import {
   MovieService,

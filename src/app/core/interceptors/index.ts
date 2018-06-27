@@ -1,2 +1,2 @@
-export * from './api-key.interceptor';
-export * from './language.interceptor';
+export * from '@app/core/interceptors/api-key.interceptor';
+export * from '@app/core/interceptors/language.interceptor';

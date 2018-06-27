@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MovieRoutingModule } from './movie-routing.module';
+import { MovieRoutingModule } from '@app/movie/movie-routing.module';
 import { MovieDetailComponent } from '@app/movie/pages/movie-detail/movie-detail.component';
 import { SharedModule } from '@app/shared/shared.module';
 import { MoviesHomeComponent } from '@app/movie/pages/movies-home/movies-home.component';
@@ -12,7 +12,6 @@ import { MovieInTheatresListComponent } from '@app/movie/pages/movie-in-theatres
 import { MovieTopRatedListComponent } from '@app/movie/pages/movie-top-rated-list/movie-top-rated-list.component';
 import { MovieListByGenreComponent } from '@app/movie/pages/movie-list-by-genre/movie-list-by-genre.component';
 import { MovieListByKeywordComponent } from '@app/movie/pages/movie-list-by-keyword/movie-list-by-keyword.component';
-import { MoviesGalleryComponent } from '@app/movie/components/movies-gallery/movies-gallery.component';
 import { MovieMiniDetailComponent } from '@app/movie/components/movie-mini-detail/movie-mini-detail.component';
 import { MovieMiniDetailListComponent } from '@app/movie/components/movie-mini-detail-list/movie-mini-detail-list.component';
 import { MovieReviewDetailComponent } from '@app/movie/components/movie-review-detail/movie-review-detail.component';
@@ -34,7 +33,6 @@ import { MovieCreditListComponent } from '@app/movie/components/movie-credit-lis
     MovieFullCreditsComponent,
     MovieMiniDetailSummaryComponent,
     MoviesListTableComponent,
-    MoviesGalleryComponent,
     MovieMiniDetailComponent,
     MovieReviewDetailComponent,
     MovieReviewListComponent,
@@ -45,7 +43,6 @@ import { MovieCreditListComponent } from '@app/movie/components/movie-credit-lis
     MovieSearchComponent,
     MoviesPopularListComponent,
     MovieGenresListComponent,
-    MoviesGalleryComponent,
     MovieInTheatresListComponent,
     MovieTopRatedListComponent,
     MovieListByGenreComponent,

@@ -1,7 +1,7 @@
 import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
 import { ImageSizeValueModel, AssetsService, MediaTypeEnum } from '@app/core';
-import { ImageURLPipe } from '../pipes';
-import { Person } from '../../core/models/person.model';
+import { ImageURLPipe } from '@app/shared/pipes';
+import { Person } from '@app/core/models/person.model';
 
 @Directive({
   selector: '[appProfileImage]'

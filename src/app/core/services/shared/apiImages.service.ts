@@ -1,5 +1,5 @@
 import { environment } from '@env/environment';
-import { ApiService } from './api.service';
+import { ApiService } from '@app/core/services/shared/api.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 

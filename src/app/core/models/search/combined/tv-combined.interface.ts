@@ -1,4 +1,4 @@
-import { CombinedInterface } from './combined.interface';
+import { CombinedInterface } from '@app/core/models/search/combined/combined.interface';
 
 export interface TvCombinedInterface extends CombinedInterface {
   backdrop_path: string;

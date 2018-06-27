@@ -1,2 +1,2 @@
-export * from './credit.interface';
-export * from './genre.abstract';
+export * from '@app/core/models/abstract/credit.interface';
+export * from '@app/core/models/abstract/genre.abstract';

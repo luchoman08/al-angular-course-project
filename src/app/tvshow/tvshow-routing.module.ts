@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TvshowDetailComponent } from './tvshow-detail/tvshow-detail.component';
-import { TvShowResolver } from './tvshow-detail/tvshow-detail-resolver.service';
-import { TvshowHomeComponent } from './tvshow-home/tvshow-home.component';
+import { TvshowDetailComponent } from '@app/tvshow/tvshow-detail/tvshow-detail.component';
+import { TvShowResolver } from '@app/tvshow/tvshow-detail/tvshow-detail-resolver.service';
+import { TvshowHomeComponent } from '@app/tvshow/tvshow-home/tvshow-home.component';
 
 const routes: Routes = [
   {

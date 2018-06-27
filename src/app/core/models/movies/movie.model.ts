@@ -1,4 +1,4 @@
-import { MovieAbstract } from './abstract';
+import { MovieAbstract } from '@app/core/models/movies/abstract';
 import { Video } from '@app/core/models';
 export class Movie extends MovieAbstract  {
 

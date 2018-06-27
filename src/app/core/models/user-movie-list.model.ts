@@ -1,4 +1,4 @@
-import { Movie } from '@app/core/';
+import { Movie } from '@app/core';
 export class UserMovieList {
     id: number;
     name: string;

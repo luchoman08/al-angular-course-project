@@ -1,4 +1,4 @@
-import { TVShow, Movie} from '@app/core/';
+import { TVShow, Movie} from '@app/core';
 
 /**
  * Api v4

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '@app/shared/shared.module';
-import { PeopleRoutingModule } from './people-routing.module';
+import { PeopleRoutingModule } from '@app/people/people-routing.module';
 import { PersonDetailComponent } from '@app/people/pages/person-detail/person-detail.component';
 import { PersonResolver } from '@app/people/pages/person-detail/person-detail-resolver.service';
 import { PeopleService } from '@app/core';

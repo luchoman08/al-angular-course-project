@@ -10,7 +10,7 @@ import {
     startWith
 } from 'rxjs/operators';
 
-import { ApiService } from './shared/api.service';
+import { ApiService } from '@app/core/services/shared/api.service';
 import { ResultsInterface, MovieCombinedInterface, PersonCombinedInterface } from '@app/core/models';
 import { TvCombinedInterface } from '@app/core/models/search/combined/tv-combined.interface';
 
@@ -18,7 +18,7 @@ import {
     Movie,
     MovieInterface
 } from '@app/core/models';
-import { FactoriesService } from './factories.service';
+import { FactoriesService } from '@app/core/services/factories.service';
 import { MovieService } from '@app/core/services/movie.service';
 
 @Injectable()

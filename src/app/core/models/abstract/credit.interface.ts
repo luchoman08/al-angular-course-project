@@ -1,4 +1,4 @@
-import { Gender } from '@app/core/';
+import { Gender } from '@app/core';
 export interface CreditInterface {
     id: string;
     gender: Gender;

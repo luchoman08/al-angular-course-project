@@ -1,5 +1,5 @@
-import { ImageSizeEnum } from '../enums';
-import { ImageSizeValueModel } from '../image-sizes-values.model';
+import { ImageSizeEnum } from '@app/core/models/images/enums';
+import { ImageSizeValueModel } from '@app/core/models/images/image-sizes-values.model';
 export interface ProfileImageSizesInterface {
   W45: ImageSizeValueModel;
   W185: ImageSizeValueModel;

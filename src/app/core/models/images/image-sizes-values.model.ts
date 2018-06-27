@@ -1,4 +1,4 @@
-import { ImageSizeValueInterface } from './interfaces';
+import { ImageSizeValueInterface } from '@app/core/models/images/interfaces';
 
 export class ImageSizeValueModel implements ImageSizeValueInterface {
   name: string;

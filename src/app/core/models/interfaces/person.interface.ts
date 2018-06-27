@@ -1,5 +1,5 @@
-import { Gender, Image } from '../';
-import { PersonCreditsCombinedModel } from '../credits';
+import { Gender, Image } from '@app/core/models';
+import { PersonCreditsCombinedModel } from '@app/core/models/credits';
 export interface PersonInterface {
     id: number;
     name: string;

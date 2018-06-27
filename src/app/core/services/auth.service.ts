@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 
 
 import { map } from 'rxjs/operators';
-import { JwtService } from './jwt.service';
+import { JwtService } from '@app/core/services/jwt.service';
 import { HttpParams } from '@angular/common/http';
-import { ApiService } from './shared';
+import { ApiService } from '@app/core/services/shared';
 
 class RequestToken {
     succes: boolean;

@@ -1,3 +1,3 @@
-export * from './api.service';
-export * from './shared-functions';
-export * from './apiImages.service';
+export * from '@app/core/services/shared/api.service';
+export * from '@app/core/services/shared/shared-functions';
+export * from '@app/core/services/shared/apiImages.service';

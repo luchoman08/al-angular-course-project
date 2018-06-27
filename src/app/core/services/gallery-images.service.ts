@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery';
 
 import { ImageURLPipe } from '@app/shared/pipes';
-import { galleryOptionsPeopleProfileDetail } from '../models/const/galleryOptions';
+import { galleryOptionsPeopleProfileDetail } from '@app/core/models/const/galleryOptions';
 
 import {
   Image,

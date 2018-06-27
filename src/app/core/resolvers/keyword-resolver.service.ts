@@ -2,8 +2,8 @@ import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
-import { ResultsInterface, Movie} from '@app/core/';
-import { KeywordService } from '../services';
+import { ResultsInterface, Movie} from '@app/core';
+import { KeywordService } from '@app/core/services';
 import { KeywordsInterface } from '@app/core/models';
 @Injectable()
 export class KeywordResolver implements Resolve<KeywordsInterface> {

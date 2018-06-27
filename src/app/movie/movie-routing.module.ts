@@ -14,7 +14,7 @@ import { MovieListByGenreResolver } from '@app/core/resolvers/movie-list-by-genr
 import { GenreResolver } from '@app/core/resolvers/genre-resolver.serivce';
 import { MovieListByKeywordComponent } from '@app/movie/pages/movie-list-by-keyword/movie-list-by-keyword.component';
 import { KeywordResolver, MovieListByKeywordResolver } from '@app/core';
-import { MovieSearchResolver } from '../core/resolvers/movie-search-resolver.serivce';
+import { MovieSearchResolver } from '@app/core/resolvers/movie-search-resolver.serivce';
 const routes: Routes = [
   {
     path: ':id',

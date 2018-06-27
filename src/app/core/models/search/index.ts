@@ -1,1 +1,1 @@
-export * from './combined';
+export * from '@app/core/models/search/combined';

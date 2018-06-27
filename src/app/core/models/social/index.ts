@@ -1,1 +1,1 @@
-export * from './review.model';
+export * from '@app/core/models/social/review.model';

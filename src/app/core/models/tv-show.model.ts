@@ -3,11 +3,11 @@ import {
   Image,
   TvSeriesStatusEnum,
   Video
-} from './';
+} from '@app/core/models';
 
-import { TvSeriesTypeEnum } from './enums/tvseries-type.enum';
+import { TvSeriesTypeEnum } from '@app/core/models/enums/tvseries-type.enum';
 
-import {TvShowInterface } from './interfaces';
+import {TvShowInterface } from '@app/core/models/interfaces';
 
 export class TVShow implements TvShowInterface {
     id: number;

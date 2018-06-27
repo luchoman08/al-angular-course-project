@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ApiService } from './shared/api.service';
-import { paramsAppendToResponseMoviesAndTv } from './shared/shared-functions';
+import { ApiService } from '@app/core/services/shared/api.service';
+import { paramsAppendToResponseMoviesAndTv } from '@app/core/services/shared/shared-functions';
 import { TVShow, TvShowInterface, MovieAppendToResponseOptions } from '@app/core/models';
 
 @Injectable({

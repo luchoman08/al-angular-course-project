@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 
 import { ResultsInterface } from '@app/core/models/interfaces/results.interface';
 import { Movie, MovieInterface, Genre, CreatedAtSortMethod, KeywordsInterface, Cast, Crew, Review } from '@app/core/models';
-import { ApiService } from './shared';
-import { paramsAppendToResponseMoviesAndTv } from './shared';
+import { ApiService } from '@app/core/services/shared';
+import { paramsAppendToResponseMoviesAndTv } from '@app/core/services/shared';
 import { MovieAppendToResponseOptions } from '@app/core/models';
 import { FactoriesService } from '@app/core/services/factories.service';
 import { defaultMovieResults } from '@app/core/factories/movie-results-factory';

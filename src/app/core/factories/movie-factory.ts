@@ -1,6 +1,6 @@
 import { DefaultValues } from '@app/core/models/enums/coreDefaultValues.enum';
-import { BaseFactory } from './base-factory.interface';
-import { MovieInterface, Movie} from '../models';
+import { BaseFactory } from '@app/core/factories/base-factory.interface';
+import { MovieInterface, Movie} from '@app/core/models';
 export const movieDefaultObject: MovieInterface = {
     id: 0,
     title: '',

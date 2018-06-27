@@ -14,29 +14,35 @@ import {
   SortMediaPipe,
   DurationPipe,
   IndefiniteArticlePipe
-} from './pipes';
+} from '@app/shared/pipes';
 
 import {
   BackgroundImageDirective,
   ProfileImageDirective,
   ZoomImageDirective,
-  PosterImageDirective 
-} from './directives';
+  PosterImageDirective
+} from '@app/shared/directives';
 
 import {
   SingleDataDialogEditOrAddComponent,
   YouTubeVideoDialogComponent,
   SearchInputComponent,
   FullScreenGalleryComponent
-} from './components';
+} from '@app/shared/components';
 
-import { MaterialModule } from './material.module';
-import { NavbarComponent, FooterComponent } from './layout';
+import {
+  MoviesGalleryComponent
+} from '@app/movie/shared';
+
+import { MaterialModule } from '@app/shared/material.module';
+import { NavbarComponent, FooterComponent } from '@app/shared/layout';
 
 
 
 @NgModule({
   declarations: [
+    /** Movie's shared components  */
+    MoviesGalleryComponent,
     /** Common Components */
     SingleDataDialogEditOrAddComponent,
     YouTubeVideoDialogComponent,
@@ -88,9 +94,11 @@ import { NavbarComponent, FooterComponent } from './layout';
     YouTubeVideoDialogComponent,
     FullScreenGalleryComponent,
     SearchInputComponent,
+    /** Movie's shared components  */
+    MoviesGalleryComponent,
     /* Layout components */
     NavbarComponent,
-    FooterComponent,    
+    FooterComponent,
     /* Pipes */
     CapitalizePipe,
     FirstWordPipe,
