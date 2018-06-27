@@ -1,10 +1,7 @@
 import { Gender, Image } from './';
 import { PersonInterface } from './interfaces';
-import { PersonCreditsCombinedModel } from './credits';
-
 import {
-  PersonCrewCreditCombinedModel,
-  PersonCastCreditCombinedModel
+  PersonCreditsCombinedModel
 } from './credits/';
 
 export class Person implements PersonInterface {
