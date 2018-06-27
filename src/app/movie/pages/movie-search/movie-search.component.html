@@ -1,0 +1,10 @@
+<div class="container">
+  <mat-form-field class="search-field">
+    <input [formControl]="searchCtrl" matInput placeholder="Search movies">
+    <button mat-button *ngIf="searchCtrl.value" matSuffix mat-icon-button aria-label="Clear" (click)="searchCtrl.setValue('')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  
+  <app-movie-mini-detail-list  [wrap]="true" [movies$]="movies$"></app-movie-mini-detail-list>
+</div>

@@ -1,8 +1,8 @@
-import { PeopleHomeComponent } from './people-home/people-home.component';
+import { PeopleHomeComponent } from '@app/people/pages/people-home/people-home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PersonDetailComponent } from './person-detail/person-detail.component';
-import { PersonResolver } from './person-detail/person-detail-resolver.service';
+import { PersonDetailComponent } from '@app/people/pages/person-detail/person-detail.component';
+import { PersonResolver } from '@app/people/pages/person-detail/person-detail-resolver.service';
 
 const routes: Routes = [
   {

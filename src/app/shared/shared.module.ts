@@ -24,20 +24,6 @@ import {
 import { MaterialModule } from './material.module';
 import { NavbarComponent, FooterComponent } from './layout';
 
-import {
-  MoviesGalleryComponent,
-  MovieMiniDetailComponent,
-  MovieMiniDetailListComponent
-} from '@app/movie/shared';
-
-import {
-  ReviewDetailComponent,
-  ReviewListComponent
-} from '@app/social/shared';
-
-import { KeywordsListComponent } from '@app/keywords/shared';
-
-import { GenresListComponent } from '@app/genre/shared';
 
 import { DurationPipe } from './pipes/duration.pipe';
 import { BackgroundImageDirective } from './directives/background-image.directive';
@@ -48,10 +34,11 @@ import { ZoomImageDirective } from './directives/zoom-image.directive';
 
 @NgModule({
   declarations: [
+    /** Common Components */
     SingleDataDialogEditOrAddComponent,
     YouTubeVideoDialogComponent,
     FullScreenGalleryComponent,
-
+    /** Pipes */
     CapitalizePipe,
     FirstWordPipe,
     SortMediaPipe,
@@ -60,18 +47,7 @@ import { ZoomImageDirective } from './directives/zoom-image.directive';
     NavbarComponent,
     FooterComponent,
 
-    ReviewListComponent,
-    ReviewDetailComponent,
-
-    MoviesGalleryComponent,
-    MovieMiniDetailComponent,
-    MovieMiniDetailListComponent,
-
     SearchInputComponent,
-
-    KeywordsListComponent,
-
-    GenresListComponent,
 
     DurationPipe,
 
@@ -108,8 +84,6 @@ import { ZoomImageDirective } from './directives/zoom-image.directive';
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
-
-
     NgxGalleryModule,
 
     SingleDataDialogEditOrAddComponent,
@@ -129,18 +103,6 @@ import { ZoomImageDirective } from './directives/zoom-image.directive';
     FooterComponent,
 
     SearchInputComponent,
-
-    MoviesGalleryComponent,
-    MovieMiniDetailComponent,
-    MovieMiniDetailListComponent,
-
-    ReviewListComponent,
-    ReviewDetailComponent,
-
-    KeywordsListComponent,
-
-    GenresListComponent,
-
     ProfileImageDirective,
     ZoomImageDirective,
 
