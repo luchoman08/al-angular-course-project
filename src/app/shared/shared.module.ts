@@ -11,8 +11,17 @@ import {
   CapitalizePipe,
   ImageURLPipe,
   FirstWordPipe,
-  SortMediaPipe
+  SortMediaPipe,
+  DurationPipe,
+  IndefiniteArticlePipe
 } from './pipes';
+
+import {
+  BackgroundImageDirective,
+  ProfileImageDirective,
+  ZoomImageDirective,
+  PosterImageDirective 
+} from './directives';
 
 import {
   SingleDataDialogEditOrAddComponent,
@@ -25,12 +34,6 @@ import { MaterialModule } from './material.module';
 import { NavbarComponent, FooterComponent } from './layout';
 
 
-import { DurationPipe } from './pipes/duration.pipe';
-import { BackgroundImageDirective } from './directives/background-image.directive';
-import { PosterImageDirective } from './directives/poster-image.directive';
-import { ProfileImageDirective } from './directives/profile-image.directive';
-import { IndefiniteArticlePipe } from './pipes/indefinite-article.pipe';
-import { ZoomImageDirective } from './directives/zoom-image.directive';
 
 @NgModule({
   declarations: [
@@ -38,32 +41,25 @@ import { ZoomImageDirective } from './directives/zoom-image.directive';
     SingleDataDialogEditOrAddComponent,
     YouTubeVideoDialogComponent,
     FullScreenGalleryComponent,
+    SearchInputComponent,
     /** Pipes */
     CapitalizePipe,
+    DurationPipe,
     FirstWordPipe,
     SortMediaPipe,
     ImageURLPipe,
-
+    IndefiniteArticlePipe,
+    /* Layout components */
     NavbarComponent,
     FooterComponent,
-
-    SearchInputComponent,
-
-    DurationPipe,
-
+    /* Directives */
     BackgroundImageDirective,
-
     PosterImageDirective,
-
     ProfileImageDirective,
-
-
-    IndefiniteArticlePipe,
-
-
     ZoomImageDirective
   ],
   imports: [
+    /* Common vendors */
     CommonModule,
     RouterModule,
     MaterialModule,
@@ -78,6 +74,7 @@ import { ZoomImageDirective } from './directives/zoom-image.directive';
     CapitalizePipe
   ],
   exports: [
+    /* Vendor */
     CommonModule,
     RouterModule,
     MaterialModule,
@@ -85,28 +82,27 @@ import { ZoomImageDirective } from './directives/zoom-image.directive';
     ReactiveFormsModule,
     FormsModule,
     NgxGalleryModule,
-
+    /* Components */
     SingleDataDialogEditOrAddComponent,
     FullScreenGalleryComponent,
     YouTubeVideoDialogComponent,
     FullScreenGalleryComponent,
+    SearchInputComponent,
+    /* Layout components */
+    NavbarComponent,
+    FooterComponent,    
+    /* Pipes */
     CapitalizePipe,
     FirstWordPipe,
     ImageURLPipe,
     SortMediaPipe,
     DurationPipe,
-
+    IndefiniteArticlePipe,
+    /* Directives */
+    ProfileImageDirective,
     BackgroundImageDirective,
     PosterImageDirective,
-
-    NavbarComponent,
-    FooterComponent,
-
-    SearchInputComponent,
-    ProfileImageDirective,
-    ZoomImageDirective,
-
-    IndefiniteArticlePipe
+    ZoomImageDirective
   ],
   entryComponents: [SingleDataDialogEditOrAddComponent, YouTubeVideoDialogComponent]
 })
