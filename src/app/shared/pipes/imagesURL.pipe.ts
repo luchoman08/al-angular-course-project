@@ -5,7 +5,8 @@ import {
   ImageSizeValueModel,
   MediaTypeEnum
 } from '@app/core/models';
-import { AssetsService } from '@app/core';
+
+import { AssetsService } from '@app/core/services/assets.service';
 
 
 @Pipe({
