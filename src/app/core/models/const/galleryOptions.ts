@@ -10,6 +10,10 @@ export const galleryOptionsFullScreenOnly: NgxGalleryOptions[] = [{
 
 export const galleryOptionsMovieBackdropDetail: NgxGalleryOptions[] = [
       {
+        imageAutoPlay: true,
+        imageAutoPlayInterval: 4000,
+        imageAutoPlayPauseOnHover: true,
+        imageInfinityMove: true,
         thumbnailsColumns: 3,
         thumbnailsRows: 2,
         imageArrowsAutoHide: true,
@@ -31,12 +35,12 @@ export const galleryOptionsMovieBackdropDetail: NgxGalleryOptions[] = [
           thumbnailsRows: 2,
           imageDescription: true,
           imageAutoPlay: true,
+          imageAutoPlayInterval: 4000,
           imageAutoPlayPauseOnHover: true,
           imageInfinityMove: true,
           thumbnailsMoveSize: 4,
           thumbnailsPercent: 30,
           imagePercent: 70,
-          imageAutoPlayInterval: 4000,
           thumbnailMargin: 15,
           thumbnailsMargin: 15,
           lazyLoading: true
