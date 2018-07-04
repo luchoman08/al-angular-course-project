@@ -1,4 +1,4 @@
-import { Gender, Image } from '@app/core/models';
+import { Gender, Image$ } from '@app/core/models';
 import { PersonInterface } from '@app/core/models/interfaces';
 import {
   PersonCreditsCombinedModel
@@ -11,7 +11,7 @@ export class Person implements PersonInterface {
     also_known_as: string[];
     profile_path: string; // name of image to profile image
     biography: string;
-    images?: { profiles: Image[]};
+    images?: { profiles: Image$[]};
     birthday: string;
     deathday: string;
     gender: Gender;

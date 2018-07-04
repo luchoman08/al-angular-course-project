@@ -1,6 +1,6 @@
 import {
   TvSeason,
-  Image,
+  Image$,
   TvSeriesStatusEnum,
   Video
 } from '@app/core/models';
@@ -24,7 +24,7 @@ export class TVShow implements TvShowInterface {
     backdrop_path: string;
     seasons: TvSeason[];
     videos?: {results: Video[]};
-    images?: { backdrops: Image[], posters: Image[]};
+    images?: { backdrops: Image$[], posters: Image$[]};
 
     public static fromJSON(json: TvShowInterface) {
         const tvShow = Object.create(TVShow.prototype);

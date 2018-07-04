@@ -8,7 +8,7 @@ import {
 import { Genre } from '@app/core/models/genre.model';
 import { CreditsModel, Cast, Crew } from '@app/core/models/credits';
 import { Video } from '@app/core/models/video.model';
-import { Image } from '@app/core/models/image.model';
+import { Image$ } from '@app/core/models/image.model';
 import { Review } from '@app/core/models/social';
 import { Movie } from '@app/core/models/movies/movie.model';
 import { ResultsInterface } from '@app/core/models/interfaces/results.interface';
@@ -39,7 +39,7 @@ export abstract class MovieAbstract {
   genres?: Genre[] | Observable<Genre[]>;
   credits?: CreditsModel;
   videos?: { results: Video[] };
-  images?: { backdrops: Image[], posters: Image[] };
+  images?: { backdrops: Image$[], posters: Image$[] };
   similar?: ResultsInterface<Movie>;
   credis?: { id: string, cast: Cast[], crew: Crew[] }
   reviews?: ResultsInterface<Review>;

@@ -1,4 +1,4 @@
-import { Gender, Image } from '@app/core/models';
+import { Gender, Image$ } from '@app/core/models';
 import { PersonCreditsCombinedModel } from '@app/core/models/credits';
 export interface PersonInterface {
     id: number;
@@ -13,7 +13,7 @@ export interface PersonInterface {
     imdb_id: string;
     place_of_birth: string | null;
     homepage: string | null;
-    images?: { profiles: Image[]};
+    images?: { profiles: Image$[]};
     tv_credits?: PersonCreditsCombinedModel;
     movie_credits?: PersonCreditsCombinedModel;
 }

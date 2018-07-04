@@ -1,6 +1,6 @@
 import {
   TvSeason,
-  Image,
+  Image$,
   TvSeriesStatusEnum,
   Video
 } from '@app/core/models';
@@ -20,5 +20,5 @@ export interface TvShowInterface {
   backdrop_path: string;
   seasons: TvSeason[];
   videos?: {results: Video[]};
-  images?: { backdrops: Image[], posters: Image[]};
+  images?: { backdrops: Image$[], posters: Image$[]};
 }

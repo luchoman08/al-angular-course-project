@@ -1,4 +1,4 @@
-export class Image {
+export class Image$ {
     aspect_ratio: number;
     file_path: string;
     height: number;
@@ -8,7 +8,7 @@ export class Image {
     width: number;
     constructor() {}
 
-    public static sortMethod(image1: Image, image2: Image): number {
+    public static sortMethod(image1: Image$, image2: Image$): number {
       return image2.vote_average - image1.vote_average;
     }
 }
