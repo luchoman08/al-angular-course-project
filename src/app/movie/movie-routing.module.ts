@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MovieDetailComponent } from '@app/movie/pages/movie-detail/movie-detail.component';
-import { MovieResolver } from '@app/core/resolvers/movie-detail-resolver.service';
+import { MovieResolver } from '@app/core/resolvers/movie-resolvers/movie-detail-resolver.service';
 import { MoviesHomeComponent } from '@app/movie/pages/movies-home/movies-home.component';
 import { MovieFullCreditsComponent } from '@app/movie/pages/movie-full-credits/movie-full-credits.component';
-import { MovieFullCreditsResolver } from '@app/core/resolvers/movie-full-credits-resolver.service';
+import { MovieFullCreditsResolver } from '@app/core/resolvers/movie-resolvers/movie-full-credits-resolver.service';
 import { MovieSearchComponent } from '@app/movie/pages/movie-search/movie-search.component';
 import { MoviesPopularListComponent } from '@app/movie/pages/movies-popular-list/movies-popular-list.component';
 import { MovieInTheatresListComponent } from '@app/movie/pages/movie-in-theatres-list/movie-in-theatres-list.component';
 import { MovieTopRatedListComponent } from '@app/movie/pages/movie-top-rated-list/movie-top-rated-list.component';
 import { MovieListByGenreComponent } from '@app/movie/pages/movie-list-by-genre/movie-list-by-genre.component';
-import { MovieListByGenreResolver } from '@app/core/resolvers/movie-list-by-genre-resolver.service';
+import { MovieListByGenreResolver } from '@app/core/resolvers/movie-resolvers/movie-list-by-genre-resolver.service';
 import { GenreResolver } from '@app/core/resolvers/genre-resolver.serivce';
 import { MovieListByKeywordComponent } from '@app/movie/pages/movie-list-by-keyword/movie-list-by-keyword.component';
 import { KeywordResolver, MovieListByKeywordResolver } from '@app/core';
-import { MovieSearchResolver } from '@app/core/resolvers/movie-search-resolver.serivce';
+import { MovieSearchResolver } from '@app/core/resolvers/movie-resolvers/movie-search-resolver.serivce';
 const routes: Routes = [
   {
     path: ':id',
