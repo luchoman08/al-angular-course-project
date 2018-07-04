@@ -12,11 +12,13 @@ import {
   PersonInterface,
   PersonAppendToResponseOptions
 } from '@app/core/models';
+import { FactoriesService } from '@app/core/services/factories.service';
 
 @Injectable()
 export class PeopleService {
   constructor (
-    private apiService: ApiService
+    private apiService: ApiService,
+    private factoriesService: FactoriesService
   ) {}
   /**
    * Make a person model object from json with structure in person interface
@@ -43,21 +45,16 @@ export class PeopleService {
   getCreditsCombined(personId: number|string): Observable<PersonCreditsCombinedModel> {
     return this.apiService.get(`/person/${personId}/combined_credits`);
   }
-  private getResultsMultiplePage(url: string, page?: number): Observable<ResultsInterface<Person>> {
-    if (page) {
-      const params = new HttpParams().set('page', String(page));
-      return this.apiService.get(url, params)
-      .pipe( map ((data: ResultsInterface<Person>) => data));
-    } else {
-    return this.apiService.get(url)
-    .pipe( map ((data: ResultsInterface<Person>) => data));
-    }
+
+  private getPeopleResultsMultiplePage(url: string, page = 1, paramsInput = new HttpParams()): Observable<ResultsInterface<Person>> {
+    return this.apiService.getResultsMultiplePage<PersonInterface>(url, page, paramsInput);
+    /** To do, return people from factory */
   }
-  getPopular(page?: number): Observable<Person[]> {
-    return this.getResultsMultiplePage(`/person/popular`, page)
-    .pipe(
-      map(
-        (results: ResultsInterface<Person>) =>
-          results.results ));
+  getPopular(page?: number): Observable<ResultsInterface<Person>> {
+    return this.getPeopleResultsMultiplePage(`/person/popular`, page)
+  }
+  searchPeople(query: string, page = 1): Observable<ResultsInterface<Person>>{
+    const params = new HttpParams().set('query', query);
+    return this.getPeopleResultsMultiplePage('/people/search/' , page, params )
   }
 }

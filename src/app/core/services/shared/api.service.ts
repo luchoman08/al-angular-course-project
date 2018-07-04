@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {  HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from '@env/environment';
+import { ResultsInterface } from '@app/core/models';
 @Injectable()
 export class ApiService {
   protected api_url = environment.apiTMDBURL_V3;
@@ -37,6 +38,31 @@ export class ApiService {
     return this.http.delete(
       `${this.api_url}${path}`
     ).pipe(catchError(this.formatErrors));
+  }
+
+    /**
+   * Support get movies results from a multiple page format, with optional initial `HttParams` 
+   *
+   * @private
+   * @param {string} url
+   * @param {number} [page]
+   * @param {HttpParams} [paramsInput] initial params to be cloned and extended
+   * @returns {Observable<ResultsInterface<Interface>>}
+   * @memberof MovieService
+   */
+  getResultsMultiplePage<Interface>(url: string, page?: number, paramsInput?: HttpParams): Observable<ResultsInterface<Interface>> {
+    let pageNormalized = page + 1;
+    let params: HttpParams;
+    if (!paramsInput && pageNormalized) {
+      params = new HttpParams().set('page', String(pageNormalized));
+    }
+    if (paramsInput && !pageNormalized) {
+      params = new HttpParams({ fromString: paramsInput.toString() })
+    }
+    if (paramsInput && pageNormalized) {
+      params = new HttpParams({ fromString: paramsInput.toString() }).set('page', String(pageNormalized));
+    }
+    return this.get(url, params);
   }
 }
 
