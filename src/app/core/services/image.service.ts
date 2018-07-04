@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 
-import { Image } from '@app/core/models';
+import { Image$ } from '@app/core/models';
+import { ApiService } from '@app/core/services/shared';
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
+  constructor(
+    private apiService: ApiService
+  ) { }
 
-  orderImages(images: Image[]): Image[] {
-    return images.sort(Image.sortMethod);
+  orderImages(images: Image$[]): Image$[] {
+    return images.sort(Image$.sortMethod);
   }
-  constructor() { }
+  preload(url: string) {
+    var image = new Image();
+    image.src = url;
+  }
+
 }
