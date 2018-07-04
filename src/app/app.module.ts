@@ -6,7 +6,6 @@ import { AppComponent } from '@app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared/shared.module';
 

@@ -16,6 +16,7 @@ import {
   FactoriesService,
   GenreService,
 } from '@app/core/services';
+
 import {
   MovieListByGenreResolver,
   MovieListByKeywordResolver,
@@ -32,8 +33,10 @@ import {
     HttpClientModule
   ],
   providers: [
+    /** Interceptors */
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true },
+    /** Services */
     ApiService,
     FactoriesService,
     GenreService,
@@ -44,7 +47,7 @@ import {
     AssetsService,
     GalleryImagesService,
     JwtService,
-
+    /** Resolvers */
     MovieResolver,
     MovieListByGenreResolver,
     MovieListByKeywordResolver,
