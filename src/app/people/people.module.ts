@@ -9,8 +9,9 @@ import { PeopleHomeComponent } from '@app/people/pages/people-home/people-home.c
 import { PeopleGalleryComponent } from '@app/people/components/people-gallery/people-gallery.component';
 import { PersonCreditsCombinedDetailComponent } from '@app/people/components/person-credits-combined-detail/person-credits-combined-detail.component';
 import { PersonCreditsCombinedListComponent } from '@app/people/components/person-credits-combined-list/person-credits-combined-list.component';
-import { PeopleMiniDetailComponent } from './components/people-mini-detail/people-mini-detail.component';
-import { PeopleMiniDetailListComponent } from './components/people-mini-detail-list/people-mini-detail-list.component';
+import { PeopleMiniDetailComponent } from '@app/people/components/people-mini-detail/people-mini-detail.component';
+import { PeopleMiniDetailListComponent } from '@app/people/components/people-mini-detail-list/people-mini-detail-list.component';
+import { PeopleSearchComponent } from '@app/people/pages/people-search/people-search.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { PeopleMiniDetailListComponent } from './components/people-mini-detail-l
     PersonCreditsCombinedDetailComponent,
     PersonCreditsCombinedListComponent,
     PeopleMiniDetailComponent,
-    PeopleMiniDetailListComponent
+    PeopleMiniDetailListComponent,
+    PeopleSearchComponent
   ],
   providers: [
     PeopleService,
