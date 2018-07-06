@@ -15,12 +15,14 @@
       <mat-button-toggle [style.backgroundColor]="'black'" routerLink="/movies/top_rated/list" value="underline">Top rated</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-  <a routerLink="/people">
-    <button mat-button>Actors</button>
-  </a>
-  <!--a routerLink="/tv">
-    <button mat-button>Tv Series</button>
-  </a-->
+  <div class="menu-items" (mouseover)="peopleSubitems.hidden=false"  (mouseout)="peopleSubitems.hidden=true">
+    <a routerLink="/people">
+      <button mat-button>Actors</button>
+    </a><br>
+    <mat-button-toggle-group [style.position] = "'fixed'" [hidden]="true" #peopleSubitems name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle [style.backgroundColor]="'black'" [routerLink]="['/people/search', EMPTY_SEARCH_SYMBOL]"  value="bold">Search</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
   <span class="spacer"></span>
 
   <span class="search-input">

@@ -1,8 +1,9 @@
-<form   fxLayout="row" class="example-form">
+<form fxLayout="row" class="example-form">
 
   <mat-form-field class="example-full-width">
 
-    <input #searchInput (focus)="hideAditionalSearch=false" (focusout)="hideSearchAditionalSearch()" matInput placeholder="Search movies and more"  aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+    <input #searchInput (focus)="hideAditionalSearch=false" (focusout)="hideSearchAditionalSearch()" matInput placeholder="Search movies and more"
+      aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
     <mat-autocomplete #auto="matAutocomplete">
 
       <div *ngIf=" this.results$ | async as results  ">
@@ -29,7 +30,7 @@
                 {{result.vote_average | number: '1.1-1'}}
               </span>
             </a>
-            <a *ngSwitchCase="MEDIA_TYPE.TV" [routerLink]="['./tv', result.id]">
+            <!-- a *ngSwitchCase="MEDIA_TYPE.TV" [routerLink]="['./tv', result.id]">
               <img [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON" flexLayout="row" flexAlign="center"
                 [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE" appZoomImage position_hover="absolute"
                 [align_top_left]="true" [index]="i" [number_of_elements]="results.results.length" aria-hidden height="45" width="32"
@@ -39,21 +40,25 @@
                 <mat-icon>start_rate</mat-icon>
                 {{result.vote_average | number: '1.1-1'}}
               </span>
-            </a>
+            </a -->
 
           </ng-container>
         </mat-option>
-      
+
       </div>
     </mat-autocomplete>
   </mat-form-field>
-  <div [hidden]="hideAditionalSearch"  fxLayout="row" #aditionalSearchs fxLayoutAlign="center center">
-      
-      <a  [routerLink]="['/movies/search', searchInput.value!==''? searchInput.value: EMPTY_SEARCH_SYMBOL]" matTooltip="Search movies" mat-icon-button>
-       <mat-icon  >movie</mat-icon> 
+  <!-- Redirect to search people or movies -->
+  <div [hidden]="hideAditionalSearch" fxLayout="row" #aditionalSearchs fxLayoutAlign="center center">
+
+    <a [routerLink]="['/movies/search', searchInput.value!==''? searchInput.value: EMPTY_SEARCH_SYMBOL]" matTooltip="Search movies"
+      mat-icon-button>
+      <mat-icon>movie</mat-icon>
     </a>
-      <button matTooltip="Search people" mat-icon-button>
-        <mat-icon  >person</mat-icon>
-      </button>
-    </div>
+    <a [routerLink]="['/people/search', searchInput.value!==''? searchInput.value: EMPTY_SEARCH_SYMBOL]" matTooltip="Search people"
+      mat-icon-button>
+      <mat-icon>people</mat-icon>
+    </a>
+  </div>
+  <!-- End redirect to search people or movies -->
 </form>
