@@ -45,7 +45,7 @@
           <h5 i18n> Summary </h5>
           <p align="justify">{{movie.overview}}</p>
         </div>
-        <!-- Image Galleries full screen-->
+        <!-- Image$ Galleries full screen-->
         <app-full-screen-gallery #backdropsGallery [mediaType]="movieType" [imageType]="backdropType" [images]="movie.images.backdrops">
         </app-full-screen-gallery>
 
@@ -123,7 +123,7 @@
     </mat-tab>
     <mat-tab label="Related Movies">
       <br>
-      <app-movie-mini-detail-list  [movies$]="similarMovies$"></app-movie-mini-detail-list>
+      <app-movie-mini-detail-list  [movies]="similarMovies"></app-movie-mini-detail-list>
     </mat-tab>
     <mat-tab label="Reviews">
       <div class="container">
