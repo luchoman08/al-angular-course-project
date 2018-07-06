@@ -11,7 +11,8 @@ export class FooterComponent implements OnInit {
   addClick() {
     this.clicks = this.clicks +1 ;
     if( this.clicks >= 5 ) {
-      window.location.href = "/assets/img/author.png";
+      window.location.href = "assets/img/author.png";
+      this.clicks  = 0;
     }
   }
   ngOnInit() {
