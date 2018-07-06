@@ -33,7 +33,7 @@ export class MovieSearchResolver implements Resolve<ResultsInterface<Movie>> {
           total_pages: 1,
           total_results: 20,
           results: results.results,
-          page: 0
+          page: 1
         };
         return resultsPredefined;
       }
