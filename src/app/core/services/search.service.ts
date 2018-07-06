@@ -51,7 +51,7 @@ export class SearchService {
         PersonCombinedInterface |
         TvCombinedInterface
         >
-        > {
+        > | null {
         return observable.pipe(
             startWith(''),
             debounceTime(300),
