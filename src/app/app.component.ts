@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
     constructor(private router: Router) {}
 
     ngOnInit() {
+        /** After each route change, move scroll to top */
         this.router.events.subscribe(evt => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
