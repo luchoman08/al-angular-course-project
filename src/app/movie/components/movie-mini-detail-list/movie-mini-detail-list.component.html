@@ -1,5 +1,5 @@
-<div *ngIf="movies$ | async as movies" [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" fxLayoutGap="12px" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
-  <div *ngIf=" movies.length===0" class="container">
+<div detect-scroll [bottomOffset]="1" (onScroll)="handleScroll($event)" *ngIf="movies" [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" fxLayoutGap="3px" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
+  <div *ngIf="movies.length===0" class="container">
     <h3>No movies found</h3>
   </div>
   <app-movie-mini-detail class="mini-detail" fxFlex="200px" *ngFor="let movie of movies" fxLayoutAlign="stretch stretch" [movie]="movie">
