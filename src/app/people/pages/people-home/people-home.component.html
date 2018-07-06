@@ -4,7 +4,7 @@
       <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
         <div fxLayout="column">
           <h3>Popular people</h3>
-          <app-people-gallery *ngIf="popularPeople$ | async as popularPeople" [people]="popularPeople"> </app-people-gallery>
+          <app-people-mini-detail-list *ngIf="popularPeople$ | async as popularPeople" [people]="popularPeople"> </app-people-mini-detail-list>
           </div>
       </div>
     </div>

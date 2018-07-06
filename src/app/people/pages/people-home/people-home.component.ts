@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PeopleService, Person } from '@app/core';
+import { PeopleService, Person, ResultsInterface } from '@app/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-people-home',
@@ -14,7 +15,10 @@ export class PeopleHomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.popularPeople$ = this.peopleService.getPopular();
+    this.popularPeople$ = this.peopleService.getPopular()
+    .pipe( map((results: ResultsInterface<Person>) => {
+      return results.results
+    }));
   }
 
 }
