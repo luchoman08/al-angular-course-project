@@ -1,3 +1,6 @@
-<p>
-  people-mini-detail-list works!
-</p>
+<div detect-scroll [bottomOffset]="1" (onScroll)="handleScroll($event)" fxLayout="row wrap" fxLayoutGap="20px">
+  <ng-container *ngIf="people.length > 0">
+    <app-people-mini-detail class="mini-detail" *ngFor="let person of people" [person]="person"></app-people-mini-detail>
+  </ng-container>
+  <h3 *ngIf="people.length === 0">No results found</h3>
+</div>
