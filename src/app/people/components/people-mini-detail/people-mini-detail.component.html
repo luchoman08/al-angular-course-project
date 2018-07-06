@@ -1,3 +1,12 @@
-<p>
-  people-mini-detail works!
-</p>
+<mat-card >
+  <mat-card-content fxLayout="column" fxLayoutGap="3px" fxLayoutAlign="center center" >
+      <a   [routerLink]="['/people', person.id]">
+        <img mat-card-image appPosterImage [default_size]="true" [path]="person.profile_path" [size]="PROFILE_IMAGE_SIZES.W185" alt="{{person.name}}">
+      </a>
+    <b class="name" >{{person.name}}</b>
+    <div  fxLayout="row" fxLayoutAlign="center" >
+      <p >Popularity: {{person.popularity | number: '1.0-0'}}%</p>
+    </div>
+
+  </mat-card-content>
+</mat-card>
