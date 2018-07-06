@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { Observable, of } from 'rxjs';
 
 
 import {
@@ -37,13 +36,14 @@ export class MovieDetailComponent implements OnInit {
   BACKDROP_IMAGE_SIZES: BackdropImageSizesInterface;
   backdropType: ImageTypeEnum;
   posterType: ImageTypeEnum;
-  similarMovies$: Observable<Movie[]>;
+  similarMovies: Movie[];
   movieType: MediaTypeEnum;
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) {
     this.movie = new Movie();
+    this.similarMovies = new Array<Movie>();
     this.movieType = MediaTypeEnum.MOVIE;
     this.posterType = ImageTypeEnum.POSTER;
     this.backdropType = ImageTypeEnum.BACKDROP;
@@ -69,7 +69,8 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe((data: { movie: Movie }) => {
       this.movie = data.movie;
-      this.similarMovies$ = of(this.movie.similar.results);
+      this.similarMovies = this.movie.similar.results;
     });
   }
+  
 }
