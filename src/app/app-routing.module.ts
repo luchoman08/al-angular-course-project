@@ -10,10 +10,6 @@ const routes: Routes = [
       loadChildren: './people/people.module#PeopleModule'
     },
     {
-      path: 'tv',
-      loadChildren: './tvshow/tvshow.module#TvShowModule'
-    },
-    {
       path: '',
       redirectTo: '/movies',
       pathMatch: 'full'

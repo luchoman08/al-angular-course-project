@@ -4,14 +4,12 @@ import { NgxGalleryComponent, NgxGalleryOptions, NgxGalleryImage } from 'ngx-gal
 import {
   galleryOptionsFullScreenOnly,
   GalleryImagesService,
-  ApiService,
 
   MediaTypeEnum,
 
   Image$,
   ImageTypeEnum
  } from '@app/core';
-import { ImageService } from '@app/core/services/image.service';
 
 @Component({
   selector: 'app-full-screen-gallery',
