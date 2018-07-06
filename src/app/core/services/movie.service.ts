@@ -17,7 +17,7 @@ export class MovieService {
     private apiService: ApiService,
     private factoriesService: FactoriesService
   ) { }
-  private getMovieResultsMultiplePage(url: string, page = 1, paramsInput = new HttpParams()): Observable<ResultsInterface<Movie>> {
+  private getMovieResultsMultiplePage(url: string, page = 0, paramsInput = new HttpParams()): Observable<ResultsInterface<Movie>> {
     return this.apiService.getResultsMultiplePage<MovieInterface>(url, page, paramsInput)
     .pipe(
       map(data => this.factoriesService.makeMovieResults(data)));
@@ -30,7 +30,7 @@ export class MovieService {
    * @returns {Observable<Movie[]>}
    * @memberof SearchService
    */
-  public searchMovies(query: string, page?: number): Observable<ResultsInterface<Movie>> {
+  public searchMovies(query: string, page = 0): Observable<ResultsInterface<Movie>> {
     if (query === '') {
       return of(defaultMovieResults);
     } else {
