@@ -46,20 +46,21 @@
         </div>
       </div>
     </div>
+    <!-- Profiles gallery -->
     <app-full-screen-gallery #profilesGallery [mediaType]="personType" [imageType]="profileImageType" [images]="person.images.profiles">
     </app-full-screen-gallery>
-
+    <!-- End of Profiles gallery -->
     <mat-tab-group>
       <mat-tab label="Movie Credits">
         <div class="container">
           <app-person-credits-combined-list [personCreditsCombined]="person.movie_credits"></app-person-credits-combined-list>
         </div>
       </mat-tab>
-      <mat-tab label="Tv Credits">
+      <!--mat-tab label="Tv Credits">
           <div class="container">
           <app-person-credits-combined-list [personCreditsCombined]="person.tv_credits"></app-person-credits-combined-list>
           </div>
-      </mat-tab>
+      </mat-tab-->
     </mat-tab-group>
 
   </div>
