@@ -2,7 +2,7 @@
 
   <mat-form-field class="example-full-width">
 
-    <input #searchInput (focus)="hideAditionalSearch=false" (focusout)="hideSearchAditionalSearch()" matInput placeholder="Search movies and more"
+    <input #searchInput (click)="hideAditionalSearch=false" (focus)="hideAditionalSearch=false" (focusout)="hideSearchAditionalSearch()" matInput placeholder="Search movies and more"
       aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
     <mat-autocomplete #auto="matAutocomplete">
 
