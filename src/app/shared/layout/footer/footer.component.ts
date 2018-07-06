@@ -6,9 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
+  clicks = 0;
   constructor() { }
-
+  addClick() {
+    this.clicks = this.clicks +1 ;
+    if( this.clicks >= 5 ) {
+      window.location.href = "/assets/img/author.png";
+    }
+  }
   ngOnInit() {
   }
 
