@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NgxGalleryModule } from 'ngx-gallery';
+import { ScrollEventModule } from 'ngx-scroll-event';
 
 import {
   CapitalizePipe,
@@ -72,7 +73,8 @@ import { NavbarComponent, FooterComponent } from '@app/shared/layout';
     NgxGalleryModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ScrollEventModule
   ],
   providers: [
     ImageURLPipe,
@@ -88,6 +90,7 @@ import { NavbarComponent, FooterComponent } from '@app/shared/layout';
     ReactiveFormsModule,
     FormsModule,
     NgxGalleryModule,
+    ScrollEventModule,
     /* Components */
     SingleDataDialogEditOrAddComponent,
     FullScreenGalleryComponent,
