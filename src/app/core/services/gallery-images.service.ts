@@ -16,7 +16,7 @@ import {
   PROFILE_IMAGE_SIZES,
   POSTER_IMAGE_SIZES
 } from '@app/core/models';
-import { HttpClient } from '@angular/common/http';
+import { ImageService } from '@app/core/services/image.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class GalleryImagesService {
 
   constructor(
     private imageURLPipe: ImageURLPipe,
-    private httpClient: HttpClient
+    private imageService: ImageService
   ) { }
 
   private getBigSize(mediaType: MediaTypeEnum, imageType: ImageTypeEnum): ImageSizeValueModel {
@@ -170,7 +170,7 @@ export class GalleryImagesService {
     const url = image.big;
     if (typeof url === 'string' ) {
       console.log(url);
-      
+      this.imageService.preload(url);
     }
   }
   /**
