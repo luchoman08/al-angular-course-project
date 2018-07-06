@@ -1,3 +1,7 @@
+ngx-gallery@5.3.2
+MIT
+MIT
+
 @angular/material@6.2.1
 MIT
 The MIT License
@@ -21,10 +25,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-ngx-gallery@5.3.2
-MIT
-MIT
 
 font-awesome@4.7.0
 (OFL-1.1 AND MIT)
@@ -397,6 +397,10 @@ Apache License
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
+
+ngx-scroll-event@1.0.8
+MIT
+MIT
 
 @angular/animations@6.0.4
 MIT
