@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 import { Movie } from '@app/core';
-import { Observable, Subject } from 'rxjs';
-import { map, debounceTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { ScrollEvent } from 'ngx-scroll-event';
 
 @Component({

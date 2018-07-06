@@ -32,6 +32,17 @@ export class MovieSearchComponent implements OnInit {
       debounceTime(400),
       distinctUntilChanged());
   }
+  /**
+   * Preload next page of results, if exists
+   *
+   * @memberof MovieSearchComponent
+   */
+  preloadNextPage() {
+    const nextPage = this.page + 1;
+    if ( !(nextPage >= this.totalPages) ){
+        this.movieService.searchMovies(this.searchCtrl.value, nextPage);
+      }
+  }
   updateData() {
     this.movieResults$ = this.movieService.searchMovies(this.searchCtrl.value, this.page);
     this.movieResults$.subscribe(
@@ -40,6 +51,8 @@ export class MovieSearchComponent implements OnInit {
         this.loading_results = false;
         this.totalPages  = moviesResults.total_pages;
         this.resultsLength = moviesResults.total_results;
+        /** Preload next page in browser cache */
+        this.preloadNextPage();
       }
     );
   }
@@ -62,6 +75,7 @@ export class MovieSearchComponent implements OnInit {
       this.movies = new Array<Movie>();
       this.movies = this.movies.concat(data.moviesResult.results) ;
       this.totalPages = data.moviesResult.total_pages;
+      this.page = data.moviesResult.page;
       this.resultsLength = data.moviesResult.total_results;
     });
   }

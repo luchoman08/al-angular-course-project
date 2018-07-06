@@ -37,10 +37,18 @@ export class PeopleSearchComponent implements OnInit {
         this.totalPages = peopleResult.total_pages;
         this.loading_results = false;
         this.resultsLength = peopleResult.total_results;
+        /** Preload next page  */
+        this.preloadPage();
       }
     );
   }
-
+  /** Preload next page in cache */
+  preloadPage() {
+    const nextPage = this.page + 1;
+    if ( !(nextPage >= this.totalPages) ){
+        this.peopleService.searchPeople(this.searchCtrl.value, nextPage);
+      }
+  }
   getNextPage() {
     if ( !(this.page >= this.totalPages) ){
     this.page = this.page + 1;
