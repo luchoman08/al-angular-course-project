@@ -39,7 +39,6 @@ export class MovieMiniDetailListComponent implements OnInit {
    * @memberof MovieMiniDetailListComponent
    */
   emitEnd() {
-    console.log('he llegado al fin :v')
     this.debouncer.next(true);
   }
   /**

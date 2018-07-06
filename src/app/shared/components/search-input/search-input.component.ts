@@ -59,7 +59,6 @@ export class SearchInputComponent implements OnInit {
                     if (data) {
                         /** Does not support tv  */
                         data.results = data.results.filter(result => result.media_type != this.MEDIA_TYPE.TV);
-                        console.log(data);
                     }
                     return data;
                 }

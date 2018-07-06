@@ -45,7 +45,7 @@ export class PeopleSearchResolver implements Resolve<ResultsInterface<Person>> {
     /** if is not empty query, return the search result by the given query*/
     else {
       return this.peopleService.searchPeople(query)
-      .pipe(tap (data=> console.log(data)), catchError((err) => this.router.navigateByUrl('/')));  
+      .pipe(catchError((err) => this.router.navigateByUrl('/')));  
     }
   }
 }

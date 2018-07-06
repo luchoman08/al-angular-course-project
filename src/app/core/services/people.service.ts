@@ -58,8 +58,7 @@ export class PeopleService {
       return this.getPopular();
     } else {
     const params = new HttpParams().set('query', query);
-    return this.getPeopleResultsMultiplePage('/search/person' , page, params )
-    .pipe( tap (data => console.log(data)));
+    return this.getPeopleResultsMultiplePage('/search/person' , page, params );
     }
   }
 }

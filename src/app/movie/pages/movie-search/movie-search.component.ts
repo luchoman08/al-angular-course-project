@@ -60,7 +60,6 @@ export class MovieSearchComponent implements OnInit {
     );
     this._route.data.subscribe((data: { moviesResult: ResultsInterface<Movie> }) => {
       this.movies = new Array<Movie>();
-      console.log(data.moviesResult);
       this.movies = this.movies.concat(data.moviesResult.results) ;
       this.totalPages = data.moviesResult.total_pages;
       this.resultsLength = data.moviesResult.total_results;

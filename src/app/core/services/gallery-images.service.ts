@@ -169,7 +169,6 @@ export class GalleryImagesService {
   preload(image: NgxGalleryImage) {
     const url = image.big;
     if (typeof url === 'string' ) {
-      console.log(url);
       this.imageService.preload(url);
     }
   }

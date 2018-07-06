@@ -39,7 +39,6 @@ export class FullScreenGalleryComponent implements OnInit, OnChanges {
    }
 
    changeImagePreview(change: { index: number; image: NgxGalleryImage; }) {
-     console.log(this.galleryImages[change.index+1].big);
     this.galleryImagesService.preload(this.galleryImages[change.index+1]);
   }
   openPreviewImages(): void {
