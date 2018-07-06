@@ -1,5 +1,4 @@
 export * from '@app/core/models/interfaces/person-credit.interface';
-export * from '@app/core/models/interfaces/tv-show.interface';
 export * from '@app/core/models/interfaces/person.interface';
 export * from '@app/core/models/interfaces/keyword.interface';
 export * from '@app/core/models/interfaces/company.interface';

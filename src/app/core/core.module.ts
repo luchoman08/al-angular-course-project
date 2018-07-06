@@ -8,7 +8,6 @@ import {
   MovieService,
   PeopleService,
   ApiService,
-  JwtService,
   SearchService,
   ApiImagesService,
   GalleryImagesService,
@@ -47,7 +46,6 @@ import { PeopleSearchResolver } from '@app/core/resolvers/people-resolvers';
     ApiImagesService,
     AssetsService,
     GalleryImagesService,
-    JwtService,
     /** Resolvers */
     MovieResolver,
     MovieListByGenreResolver,
