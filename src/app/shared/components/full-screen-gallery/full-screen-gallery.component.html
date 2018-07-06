@@ -1,1 +1,9 @@
-<ngx-gallery #onlyPreviewGallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+<ngx-gallery
+#onlyPreviewGallery 
+*ngIf="galleryImages.length > 0"
+[options]="galleryOptions"
+[images]="galleryImages"
+(previewChange)="changeImagePreview($event)"
+>
+
+</ngx-gallery>
