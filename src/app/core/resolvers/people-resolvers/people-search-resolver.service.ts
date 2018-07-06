@@ -2,7 +2,7 @@ import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { EMPTY_SEARCH_SYMBOL, Person } from '@app/core/models';
 import { ResultsInterface } from '@app/core';
@@ -45,7 +45,7 @@ export class PeopleSearchResolver implements Resolve<ResultsInterface<Person>> {
     /** if is not empty query, return the search result by the given query*/
     else {
       return this.peopleService.searchPeople(query)
-      .pipe(catchError((err) => this.router.navigateByUrl('/')));  
+      .pipe(tap (data=> console.log(data)), catchError((err) => this.router.navigateByUrl('/')));  
     }
   }
 }
