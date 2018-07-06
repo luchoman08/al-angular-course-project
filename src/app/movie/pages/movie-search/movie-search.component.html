@@ -6,5 +6,7 @@
     </button>
   </mat-form-field>
   
-  <app-movie-mini-detail-list  [wrap]="true" [movies$]="movies$"></app-movie-mini-detail-list>
+  <app-movie-mini-detail-list (endList)="getNextPage()" [wrap]="true" [movies]="movies"></app-movie-mini-detail-list>
+  <mat-progress-bar *ngIf="loading_results" mode="indeterminate"></mat-progress-bar>
+  <h5 *ngIf="page === totalPages"> End of resutls</h5>
 </div>
