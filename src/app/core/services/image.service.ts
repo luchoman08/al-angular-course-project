@@ -7,7 +7,6 @@ import { ApiService } from '@app/core/services/shared';
 })
 export class ImageService {
   constructor(
-    private apiService: ApiService
   ) { }
 
   orderImages(images: Image$[]): Image$[] {
