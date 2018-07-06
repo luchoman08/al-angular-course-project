@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ApiService, paramsAppendToResponsePeople } from '@app/core/services/shared';
 
 
@@ -53,8 +53,13 @@ export class PeopleService {
   getPopular(page?: number): Observable<ResultsInterface<Person>> {
     return this.getPeopleResultsMultiplePage(`/person/popular`, page)
   }
-  searchPeople(query: string, page = 1): Observable<ResultsInterface<Person>>{
+  searchPeople(query: string, page = 0): Observable<ResultsInterface<Person>>{
+    if( query  === '' ) {
+      return this.getPopular();
+    } else {
     const params = new HttpParams().set('query', query);
-    return this.getPeopleResultsMultiplePage('/people/search/' , page, params )
+    return this.getPeopleResultsMultiplePage('/search/person' , page, params )
+    .pipe( tap (data => console.log(data)));
+    }
   }
 }
