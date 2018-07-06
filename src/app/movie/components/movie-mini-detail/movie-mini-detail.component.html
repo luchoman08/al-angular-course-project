@@ -1,7 +1,7 @@
-<mat-card >
-  <mat-card-content fxLayout="column" fxLayoutGap="3px" fxLayoutAlign="center center" >
+<mat-card [ngStyle]="{'max-width.px': POSTER_IMAGE_SIZES.W185.width}" >
+  <mat-card-content  fxLayout="column" fxLayoutGap="2px" fxLayoutAlign="center center" >
       <a  [routerLink]="['/movies', movie.id]">
-        <img mat-card-image appPosterImage  [path]="movie.poster_path" [size]="POSTER_IMAGE_SIZES.W342" alt="{{movie.title}}">
+        <img mat-card-image appPosterImage [default_size]="true"  [path]="movie.poster_path" [size]="POSTER_IMAGE_SIZES.W185" alt="{{movie.title}}">
       </a>
     <b class="title" >{{movie.title}}</b>
     <div  fxLayout="row" fxLayoutAlign="center" >
