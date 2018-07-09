@@ -4,8 +4,10 @@
       <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
         <div fxLayout="column">
           <h3>Popular people</h3>
-          <app-people-mini-detail-list *ngIf="popularPeople$ | async as popularPeople" [people]="popularPeople"> </app-people-mini-detail-list>
+          <app-people-mini-detail-list *ngIf="people"  (endList)="getNextPage()" [people]="people"> </app-people-mini-detail-list>
           </div>
       </div>
     </div>
+    <mat-progress-bar *ngIf="loading_results" mode="indeterminate"></mat-progress-bar>
+    <h5 *ngIf="page === totalPages"> End of resutls</h5>
   </div>

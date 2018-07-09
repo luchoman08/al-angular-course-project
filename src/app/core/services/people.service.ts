@@ -50,7 +50,7 @@ export class PeopleService {
     return this.apiService.getResultsMultiplePage<PersonInterface>(url, page, paramsInput);
     /** To do, return people from factory */
   }
-  getPopular(page?: number): Observable<ResultsInterface<Person>> {
+  getPopular(page: number = 0): Observable<ResultsInterface<Person>> {
     return this.getPeopleResultsMultiplePage(`/person/popular`, page)
   }
   searchPeople(query: string, page = 0): Observable<ResultsInterface<Person>>{
