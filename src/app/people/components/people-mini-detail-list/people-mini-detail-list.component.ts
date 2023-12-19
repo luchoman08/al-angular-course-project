@@ -1,28 +1,27 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Person } from '@app/core';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import { ScrollEvent } from 'ngx-scroll-event';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Person } from "@app/core";
+import { Subject } from "rxjs";
+import { debounceTime } from "rxjs/operators";
+import { ScrollEvent } from "ngx-scroll-event";
 @Component({
-  selector: 'app-people-mini-detail-list',
-  templateUrl: './people-mini-detail-list.component.html',
-  styleUrls: ['./people-mini-detail-list.component.scss']
+  selector: "app-people-mini-detail-list",
+  templateUrl: "./people-mini-detail-list.component.html",
+  styleUrls: ["./people-mini-detail-list.component.scss"],
 })
 export class PeopleMiniDetailListComponent implements OnInit {
   @Input() people: Person[];
   @Output() endList = new EventEmitter<boolean>();
   private debouncer: Subject<boolean> = new Subject<boolean>();
   constructor() {
-        /** Emit each 1000 milliseconds event `end of list` */
-        this.debouncer.pipe(
-          debounceTime(1000))
-          .subscribe((val) => this.endList.emit(val));
-   }
-
-  ngOnInit() {
+    /** Emit each 1000 milliseconds event `end of list` */
+    this.debouncer
+      .pipe(debounceTime(1000))
+      .subscribe((val) => this.endList.emit(val));
   }
 
-    /**
+  ngOnInit() {}
+
+  /**
    * Emit `true` when the user has been see all movie details
    *
    * @memberof MovieMiniDetailListComponent
@@ -41,5 +40,4 @@ export class PeopleMiniDetailListComponent implements OnInit {
       this.emitEnd();
     }
   }
-
 }
