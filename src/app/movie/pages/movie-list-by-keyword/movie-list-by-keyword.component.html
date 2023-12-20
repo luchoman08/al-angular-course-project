@@ -4,9 +4,9 @@
       <h3>
         Movies by keyword:
       </h3>
-      <mat-chip-list>
+      <mat-chip-set>
         <mat-chip>{{keyword.name}}</mat-chip>
-      </mat-chip-list>
+      </mat-chip-set>
     </div>
   }
   <app-movies-list-table [movies]="movies$" [resultsLength]="resultsLength" [showGenres]="false" (pageChange)="onSetPage($event)">
