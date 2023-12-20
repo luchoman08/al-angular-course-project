@@ -10,7 +10,6 @@
     "declaration": false,
     "allowJs": true,
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
     "baseUrl": "./",
