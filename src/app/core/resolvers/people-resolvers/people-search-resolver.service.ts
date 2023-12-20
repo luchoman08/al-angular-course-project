@@ -1,4 +1,4 @@
-import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -8,7 +8,7 @@ import { EMPTY_SEARCH_SYMBOL, Person } from '@app/core/models';
 import { ResultsInterface } from '@app/core';
 import { PeopleService } from '@app/core/services';
 @Injectable()
-export class PeopleSearchResolver implements Resolve<ResultsInterface<Person>> {
+export class PeopleSearchResolver  {
   constructor(
     private peopleService: PeopleService,
     private router: Router

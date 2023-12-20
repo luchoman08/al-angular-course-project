@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import {
 
 import { MovieService } from '@app/core/services';
 @Injectable()
-export class MovieListByKeywordResolver implements Resolve<ResultsInterface<Movie>> {
+export class MovieListByKeywordResolver  {
   constructor(
     private movieService: MovieService,
     private router: Router

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -8,7 +8,7 @@ import { MovieAppendToResponseOptions, Movie, ResultsInterface } from '@app/core
 
 
 @Injectable()
-export class MovieFullCreditsResolver implements Resolve<Movie> {
+export class MovieFullCreditsResolver  {
   constructor(
     private movieService: MovieService,
     private router: Router

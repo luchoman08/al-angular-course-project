@@ -12,7 +12,7 @@ import { SharedModule } from "@app/shared/shared.module";
   imports: [
     BrowserAnimationsModule,
 
-    LoadingBarModule.forRoot(),
+    LoadingBarModule,
 
     CoreModule,
     SharedModule,

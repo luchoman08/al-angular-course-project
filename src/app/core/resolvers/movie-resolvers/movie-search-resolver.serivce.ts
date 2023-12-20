@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Movie, EMPTY_SEARCH_SYMBOL } from '@app/core/models';
 import { ResultsInterface } from '@app/core';
 import { MovieService } from '@app/core/services';
 @Injectable()
-export class MovieSearchResolver implements Resolve<ResultsInterface<Movie>> {
+export class MovieSearchResolver  {
   constructor(
     private movieService: MovieService,
     private router: Router

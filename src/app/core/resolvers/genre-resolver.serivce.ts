@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs';
-import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot } from '@angular/router';
 import { GenreService } from '@app/core/services/genre.service';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { Genre } from '@app/core/models';
 @Injectable()
-export class GenreResolver implements Resolve<Genre> {
+export class GenreResolver  {
   constructor(
     private genreService: GenreService,
     private router: Router

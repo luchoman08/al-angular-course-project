@@ -1,5 +1,5 @@
 import { Injectable, } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { PeopleService, Person, PersonAppendToResponseOptions } from '@app/core';
@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 
 
 @Injectable()
-export class PersonResolver implements Resolve<Person> {
+export class PersonResolver  {
   constructor(
     private peopleService: PeopleService,
     private router: Router
