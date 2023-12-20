@@ -75,7 +75,6 @@ import { NavbarComponent, FooterComponent } from "@app/shared/layout";
   providers: [ImageURLPipe, FirstWordPipe, CapitalizePipe],
   exports: [
     /* Vendor */
-    CommonModule,
     RouterModule,
     MaterialModule,
     FlexLayoutModule,
