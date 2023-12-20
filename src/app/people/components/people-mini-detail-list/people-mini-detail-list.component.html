@@ -1,4 +1,4 @@
-<div fxLayout="row wrap" fxLayoutGap="20px">
+<div libScrollEvent (onscroll)="handleScroll($event)" [bottomOffset]="400" fxLayout="row wrap" fxLayoutGap="20px">
   @if (people.length > 0) {
     @for (person of people; track person) {
       <app-people-mini-detail class="mini-detail" [person]="person"></app-people-mini-detail>

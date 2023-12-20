@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Person } from "@app/core";
+import { NgxScrollEvent } from "@app/shared/directives";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 @Component({
@@ -34,9 +35,9 @@ export class PeopleMiniDetailListComponent implements OnInit {
    * @param {ScrollEvent} event
    * @memberof MovieMiniDetailListComponent
    */
-  //public handleScroll(event: ScrollEvent) {
-  //  if (event.isReachingBottom) {
-  //    this.emitEnd();
-  //  }
-  //}
+  public handleScroll(event: NgxScrollEvent) {
+    if (event.isReachingBottom) {
+      this.emitEnd();
+    }
+  }
 }

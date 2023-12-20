@@ -21,6 +21,7 @@ import {
   ProfileImageDirective,
   ZoomImageDirective,
   PosterImageDirective,
+  NgxScrollEventDirective,
 } from "@app/shared/directives";
 
 import {
@@ -59,6 +60,7 @@ import { NavbarComponent, FooterComponent } from "@app/shared/layout";
     PosterImageDirective,
     ProfileImageDirective,
     ZoomImageDirective,
+    NgxScrollEventDirective,
   ],
   imports: [
     /* Common vendors */
@@ -102,6 +104,7 @@ import { NavbarComponent, FooterComponent } from "@app/shared/layout";
     BackgroundImageDirective,
     PosterImageDirective,
     ZoomImageDirective,
+    NgxScrollEventDirective,
   ],
 })
 export class SharedModule {}

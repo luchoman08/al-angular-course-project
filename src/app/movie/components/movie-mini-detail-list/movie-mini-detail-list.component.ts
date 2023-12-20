@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 
 import { Movie } from "@app/core";
+import { NgxScrollEvent } from "@app/shared/directives";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 
@@ -52,9 +53,9 @@ export class MovieMiniDetailListComponent implements OnInit {
    * @param {ScrollEvent} event
    * @memberof MovieMiniDetailListComponent
    */
-  //public handleScroll(event: ScrollEvent) {
-  //  if (event.isReachingBottom) {
-  //    this.emitEnd();
-  //  }
-  // }
+  public handleScroll(event: NgxScrollEvent) {
+    if (event.isReachingBottom) {
+      this.emitEnd();
+    }
+  }
 }

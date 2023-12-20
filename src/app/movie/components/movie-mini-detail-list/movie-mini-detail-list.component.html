@@ -1,5 +1,5 @@
 @if (movies) {
-  <div [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" fxLayoutGap="3px" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
+  <div libScrollEvent (onscroll)="handleScroll($event)" [bottomOffset]="400" [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" fxLayoutGap="3px" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
     @if (movies.length===0) {
       <div class="container">
         <h3>No movies found</h3>

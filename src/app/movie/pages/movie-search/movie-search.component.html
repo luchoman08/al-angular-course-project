@@ -2,7 +2,7 @@
   <mat-form-field class="search-field">
     <input [formControl]="searchCtrl" matInput placeholder="Search movies">
     @if (searchCtrl.value) {
-      <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="searchCtrl.setValue('')">
+      <button  matSuffix mat-icon-button aria-label="Clear" (click)="searchCtrl.setValue('')">
         <mat-icon>close</mat-icon>
       </button>
     }
