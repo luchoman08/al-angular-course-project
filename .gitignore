@@ -28,6 +28,7 @@ src/app/mokcs/generated_daily_tar
 !.vscode/extensions.json
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage

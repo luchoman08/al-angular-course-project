@@ -37,78 +37,74 @@ import { MaterialModule } from "@app/shared/material.module";
 import { NavbarComponent, FooterComponent } from "@app/shared/layout";
 
 @NgModule({
-  declarations: [
-    /** Movie's shared components  */
-    MoviesGalleryComponent,
-    /** Common Components */
-    SingleDataDialogEditOrAddComponent,
-    YouTubeVideoDialogComponent,
-    FullScreenGalleryComponent,
-    SearchInputComponent,
-    /** Pipes */
-    CapitalizePipe,
-    DurationPipe,
-    FirstWordPipe,
-    SortMediaPipe,
-    ImageURLPipe,
-    IndefiniteArticlePipe,
-    /* Layout components */
-    NavbarComponent,
-    FooterComponent,
-    /* Directives */
-    BackgroundImageDirective,
-    PosterImageDirective,
-    ProfileImageDirective,
-    ZoomImageDirective,
-  ],
-  imports: [
-    /* Common vendors */
-    CommonModule,
-    RouterModule,
-    MaterialModule,
-    NgxGalleryModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ScrollEventModule,
-  ],
-  providers: [ImageURLPipe, FirstWordPipe, CapitalizePipe],
-  exports: [
-    /* Vendor */
-    RouterModule,
-    MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgxGalleryModule,
-    ScrollEventModule,
-    /* Components */
-    SingleDataDialogEditOrAddComponent,
-    FullScreenGalleryComponent,
-    YouTubeVideoDialogComponent,
-    FullScreenGalleryComponent,
-    SearchInputComponent,
-    /** Movie's shared components  */
-    MoviesGalleryComponent,
-    /* Layout components */
-    NavbarComponent,
-    FooterComponent,
-    /* Pipes */
-    CapitalizePipe,
-    FirstWordPipe,
-    ImageURLPipe,
-    SortMediaPipe,
-    DurationPipe,
-    IndefiniteArticlePipe,
-    /* Directives */
-    ProfileImageDirective,
-    BackgroundImageDirective,
-    PosterImageDirective,
-    ZoomImageDirective,
-  ],
-  entryComponents: [
-    SingleDataDialogEditOrAddComponent,
-    YouTubeVideoDialogComponent,
-  ],
+    declarations: [
+        /** Movie's shared components  */
+        MoviesGalleryComponent,
+        /** Common Components */
+        SingleDataDialogEditOrAddComponent,
+        YouTubeVideoDialogComponent,
+        FullScreenGalleryComponent,
+        SearchInputComponent,
+        /** Pipes */
+        CapitalizePipe,
+        DurationPipe,
+        FirstWordPipe,
+        SortMediaPipe,
+        ImageURLPipe,
+        IndefiniteArticlePipe,
+        /* Layout components */
+        NavbarComponent,
+        FooterComponent,
+        /* Directives */
+        BackgroundImageDirective,
+        PosterImageDirective,
+        ProfileImageDirective,
+        ZoomImageDirective,
+    ],
+    imports: [
+        /* Common vendors */
+        CommonModule,
+        RouterModule,
+        MaterialModule,
+        NgxGalleryModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ScrollEventModule,
+    ],
+    providers: [ImageURLPipe, FirstWordPipe, CapitalizePipe],
+    exports: [
+        /* Vendor */
+        RouterModule,
+        MaterialModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgxGalleryModule,
+        ScrollEventModule,
+        /* Components */
+        SingleDataDialogEditOrAddComponent,
+        FullScreenGalleryComponent,
+        YouTubeVideoDialogComponent,
+        FullScreenGalleryComponent,
+        SearchInputComponent,
+        /** Movie's shared components  */
+        MoviesGalleryComponent,
+        /* Layout components */
+        NavbarComponent,
+        FooterComponent,
+        /* Pipes */
+        CapitalizePipe,
+        FirstWordPipe,
+        ImageURLPipe,
+        SortMediaPipe,
+        DurationPipe,
+        IndefiniteArticlePipe,
+        /* Directives */
+        ProfileImageDirective,
+        BackgroundImageDirective,
+        PosterImageDirective,
+        ZoomImageDirective,
+    ]
 })
 export class SharedModule {}
