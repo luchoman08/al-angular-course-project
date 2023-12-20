@@ -2,11 +2,11 @@
 
 
 /* Reboot */
- @import "~bootstrap/scss/functions";
- @import "~bootstrap/scss/variables";
- @import "~bootstrap/scss/mixins";
- @import "~bootstrap/scss/reboot";
- @import "~bootstrap/scss/mixins/image";
+ @import "bootstrap/scss/functions";
+ @import "bootstrap/scss/variables";
+ @import "bootstrap/scss/mixins";
+ @import "bootstrap/scss/reboot";
+ @import "bootstrap/scss/mixins/image";
 
  /* Grid */
  @at-root {
@@ -25,6 +25,6 @@ html {
 }
 
 
-@import "~bootstrap/scss/grid";
-@import "~bootstrap/scss/utilities/display";
-@import "~bootstrap/scss/utilities/flex";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/utilities/display";
+@import "bootstrap/scss/utilities/flex";
