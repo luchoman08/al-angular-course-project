@@ -1,22 +1,21 @@
 <div  [ngStyle]="{'min-height.px' : 120}"  class="credit-detail">
   <a [routerLink]="['/people', credit.id]">
     <img
-    appZoomImage position_hover="absolute"
-    appProfileImage
-    [path]='credit.profile_path'
-    [size]="PROFILE_IMAGE_SIZES.W185"
-    width="90px"
-    height="120px"
+      appZoomImage position_hover="absolute"
+      appProfileImage
+      [path]='credit.profile_path'
+      [size]="PROFILE_IMAGE_SIZES.W185"
+      width="90px"
+      height="120px"
     > </a>
     {{credit.name}}
-  <ng-container *ngIf="credit.character then credit_character; else credit_job">
-  </ng-container >
-  <ng-template #credit_character >
+    @if (credit.character) {
       as   <em><{{credit.character}}></em>
-  </ng-template>
-  <ng-template #credit_job>
-      <span  *ngIf="credit.job" >  working as  {{credit.job | indefiniteArticle }} <em>{{credit.job}}</em></span>
-  </ng-template>
+    } @else {
+      @if (credit.job) {
+        <span  >  working as  {{credit.job | indefiniteArticle }} <em>{{credit.job}}</em></span>
+      }
+    }
 
-</div>
+  </div>
 

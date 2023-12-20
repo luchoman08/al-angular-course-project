@@ -1,7 +1,13 @@
-<div *ngIf="movies" [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" fxLayoutGap="3px" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
-  <div *ngIf="movies.length===0" class="container">
-    <h3>No movies found</h3>
+@if (movies) {
+  <div [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" fxLayoutGap="3px" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
+    @if (movies.length===0) {
+      <div class="container">
+        <h3>No movies found</h3>
+      </div>
+    }
+    @for (movie of movies; track movie) {
+      <app-movie-mini-detail class="mini-detail" fxFlex="200px" fxLayoutAlign="stretch stretch" [movie]="movie">
+      </app-movie-mini-detail>
+    }
   </div>
-  <app-movie-mini-detail class="mini-detail" fxFlex="200px" *ngFor="let movie of movies" fxLayoutAlign="stretch stretch" [movie]="movie">
-  </app-movie-mini-detail>
-</div>
+}

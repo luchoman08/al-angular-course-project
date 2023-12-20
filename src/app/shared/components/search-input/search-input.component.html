@@ -6,46 +6,51 @@
       aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
     <mat-autocomplete #auto="matAutocomplete">
 
-      <div *ngIf=" this.results$ | async as results  ">
-        <mat-option [style.minHeight]="(results.results.length <= 3)? '100px': '50px'" *ngFor="let result of results.results; let i = index"
-          [value]="result.name">
-          <ng-container [ngSwitch]="result.media_type">
-
-            <a  *ngSwitchCase="MEDIA_TYPE.PERSON" [routerLink]="['./people', result.id]">
-              <img [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON" style="vertical-align:middle;"
-                aria-hidden appZoomImage position_hover="absolute" [align_top_left]="true" [index]="i" [number_of_elements]="results.results.length"
-                height="45" width="32" />
-              <span>
-                {{ result.name }} | People |
-                <small> Popularity: {{result.popularity | number: '1.0-0'}}%</small>
-              </span>
-            </a>
-            <a class="container" fxLayout="row" fxLayoutGap="8px" *ngSwitchCase="MEDIA_TYPE.MOVIE" [routerLink]="['./movies', result.id]">
-              <img appZoomImage position_hover="absolute" [align_top_left]="true" [index]="i" [number_of_elements]="results.results.length"
-                [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE" aria-hidden height="45" width="32"
-              />
-              <span>
-                {{ result.title }} | Movie |
-                <mat-icon>start_rate</mat-icon>
-                {{result.vote_average | number: '1.1-1'}}
-              </span>
-            </a>
-            <!-- a *ngSwitchCase="MEDIA_TYPE.TV" [routerLink]="['./tv', result.id]">
-              <img [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON" flexLayout="row" flexAlign="center"
-                [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE" appZoomImage position_hover="absolute"
-                [align_top_left]="true" [index]="i" [number_of_elements]="results.results.length" aria-hidden height="45" width="32"
-              />
-              <span>
-                {{ result.name }} | Tv series |
-                <mat-icon>start_rate</mat-icon>
-                {{result.vote_average | number: '1.1-1'}}
-              </span>
-            </a -->
-
-          </ng-container>
-        </mat-option>
-
-      </div>
+      @if ( this.results$ | async; as results  ) {
+        <div>
+          @for (result of results.results; track result; let i = $index) {
+            <mat-option [style.minHeight]="(results.results.length <= 3)? '100px': '50px'"
+              [value]="result.name">
+              @switch (result.media_type) {
+                @case (MEDIA_TYPE.PERSON) {
+                  <a  [routerLink]="['./people', result.id]">
+                    <img [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON" style="vertical-align:middle;"
+                      aria-hidden appZoomImage position_hover="absolute" [align_top_left]="true" [index]="i" [number_of_elements]="results.results.length"
+                      height="45" width="32" />
+                    <span>
+                      {{ result.name }} | People |
+                      <small> Popularity: {{result.popularity | number: '1.0-0'}}%</small>
+                    </span>
+                  </a>
+                }
+                @case (MEDIA_TYPE.MOVIE) {
+                  <a class="container" fxLayout="row" fxLayoutGap="8px" [routerLink]="['./movies', result.id]">
+                    <img appZoomImage position_hover="absolute" [align_top_left]="true" [index]="i" [number_of_elements]="results.results.length"
+                      [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE" aria-hidden height="45" width="32"
+                      />
+                    <span>
+                      {{ result.title }} | Movie |
+                      <mat-icon>start_rate</mat-icon>
+                      {{result.vote_average | number: '1.1-1'}}
+                    </span>
+                  </a>
+                }
+                <!-- a *ngSwitchCase="MEDIA_TYPE.TV" [routerLink]="['./tv', result.id]">
+                <img [src]="result.profile_path | imageURL: PROFILE_IMAGE_SIZES.W185 : MEDIA_TYPE.PERSON" flexLayout="row" flexAlign="center"
+                  [src]="result.poster_path | imageURL: POSTER_IMAGE_SIZE.W154 : MEDIA_TYPE.MOVIE" appZoomImage position_hover="absolute"
+                  [align_top_left]="true" [index]="i" [number_of_elements]="results.results.length" aria-hidden height="45" width="32"
+                  />
+                <span>
+                  {{ result.name }} | Tv series |
+                  <mat-icon>start_rate</mat-icon>
+                  {{result.vote_average | number: '1.1-1'}}
+                </span>
+                </a -->
+              }
+            </mat-option>
+          }
+        </div>
+      }
     </mat-autocomplete>
   </mat-form-field>
   <!-- Redirect to search people or movies -->

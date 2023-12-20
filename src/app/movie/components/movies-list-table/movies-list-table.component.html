@@ -13,12 +13,12 @@
         <th mat-header-cell mat-sort-header *matHeaderCellDef>Title</th>
         <td mat-cell *matCellDef="let row">
           <a [routerLink]="['/movies', row.id]">
-          <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="left center">
-            <img appZoomImage appPosterImage class="image" [path]="row.poster_path" [size]="POSTER_IMAGE_SIZES.W154" [ngStyle]="{'max-width.px' : (POSTER_IMAGE_SIZES.W154.width / 3), 'max-height.px': (POSTER_IMAGE_SIZES.W154.height / 3)}"
-              alt="movie poster image" srcset="">
-            <span>{{ row.title }}</span>
-          </div>
-        </a>
+            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="left center">
+              <img appZoomImage appPosterImage class="image" [path]="row.poster_path" [size]="POSTER_IMAGE_SIZES.W154" [ngStyle]="{'max-width.px' : (POSTER_IMAGE_SIZES.W154.width / 3), 'max-height.px': (POSTER_IMAGE_SIZES.W154.height / 3)}"
+                alt="movie poster image" srcset="">
+              <span>{{ row.title }}</span>
+            </div>
+          </a>
         </td>
 
       </ng-container>
@@ -46,7 +46,9 @@
           Genres
         </th>
         <td mat-cell *matCellDef="let row">
-          <app-movie-genres-list *ngIf="row.genres" [genres]="row.genres | async" [max-items]="12"> </app-movie-genres-list>
+          @if (row.genres) {
+            <app-movie-genres-list [genres]="row.genres | async" [max-items]="12"> </app-movie-genres-list>
+          }
         </td>
       </ng-container>
       <tr mat-header-row  *matHeaderRowDef="displayedColumns"></tr>

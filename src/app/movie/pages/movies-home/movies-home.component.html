@@ -2,26 +2,32 @@
   <div class="movies">
     <h1>Movies</h1>
     <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
-      <div *ngIf="popularMoviesResults$ | async as popularMoviesResults" fxLayout="column">
-        <a routerLink="/movies/popular/list">
-          <h3>Popular movies</h3>
-        </a>
-        <app-movies-gallery [movies]="popularMoviesResults.results"></app-movies-gallery>
-      </div>
-      <div *ngIf="inTheatresMoviesResults$ | async as inTheatresMoviesResults" fxLayout="column">
-        <a routerLink="/movies/in_theatres/list">
-          <h3>In theatres</h3>
-        </a>
-        <app-movies-gallery [movies]="inTheatresMoviesResults.results"></app-movies-gallery>
-      </div>
+      @if (popularMoviesResults$ | async; as popularMoviesResults) {
+        <div fxLayout="column">
+          <a routerLink="/movies/popular/list">
+            <h3>Popular movies</h3>
+          </a>
+          <app-movies-gallery [movies]="popularMoviesResults.results"></app-movies-gallery>
+        </div>
+      }
+      @if (inTheatresMoviesResults$ | async; as inTheatresMoviesResults) {
+        <div fxLayout="column">
+          <a routerLink="/movies/in_theatres/list">
+            <h3>In theatres</h3>
+          </a>
+          <app-movies-gallery [movies]="inTheatresMoviesResults.results"></app-movies-gallery>
+        </div>
+      }
     </div>
     <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
-      <div *ngIf="topRatedMoviesResults$ | async as topRatedMoviesResults" fxLayout="column">
-        <a routerLink="/movies/top_rated/list">
-          <h3>Top Rated</h3>
-        </a>
-        <app-movies-gallery [movies]="topRatedMoviesResults.results"></app-movies-gallery>
-      </div>
+      @if (topRatedMoviesResults$ | async; as topRatedMoviesResults) {
+        <div fxLayout="column">
+          <a routerLink="/movies/top_rated/list">
+            <h3>Top Rated</h3>
+          </a>
+          <app-movies-gallery [movies]="topRatedMoviesResults.results"></app-movies-gallery>
+        </div>
+      }
     </div>
   </div>
 </div>

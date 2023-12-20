@@ -1,5 +1,7 @@
 <mat-chip-listbox >
-    <mat-chip-option color="warn" *ngFor="let keyword of keywords">
+  @for (keyword of keywords; track keyword) {
+    <mat-chip-option color="warn">
       <a [routerLink]="['/movies/keywords', keyword.id] ">{{keyword.name}}</a>
     </mat-chip-option>
-  </mat-chip-listbox>
+  }
+</mat-chip-listbox>

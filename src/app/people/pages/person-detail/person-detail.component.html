@@ -1,4 +1,4 @@
-<ng-container *ngIf="person">
+@if (person) {
   <div class="fill-available">
     <div class="container">
       <div fxLayout="row" fxLayoutGap="20px">
@@ -7,42 +7,49 @@
             [size]="PROFILE_IMAGE_SIZES.W185" alt="person_profile_image" srcset="">
           <div class="open-profile-images">
             <button [disabled]="!(person.images.profiles.length !==0)" (click)="openProfileImages()" [matBadge]="person.images.profiles.length" mat-button class="open-button">
-              <ng-template *ngIf="person.images.profiles.length !==0; then images else no_images"></ng-template>
+              @if (person.images.profiles.length !==0) {
+                Open profile images
+              } @else {
+                No profile images available
+              }
               <ng-template #images>Open profile images </ng-template>
-              <ng-template #no_images>No profile images available</ng-template>
             </button>
           </div>
         </div>
         <div class="col-9">
           <div class="row">
             <h2 class="name">{{person.name}} </h2>
-
           </div>
           <div class="row birth-day">
-
-            <div class="mini-detail-element" *ngIf="person.also_known_as.length > 0">
-              <small>Also known as: {{(person.also_known_as | slice:0:2).join(', ')}}</small>
-            </div>
-            <div *ngIf="person.birthday" class="mini-detail-element">
-              <mat-icon>today</mat-icon>
-              <small>Birth date: {{person.birthday | date: 'dd/MM/yyyy'}}</small>
-            </div>
-            <div *ngIf="person.deathday" class="mini-detail-element">
-              <mat-icon>today</mat-icon>
-              <small>Dead date: {{person.deathday | date: 'dd/MM/yyyy'}}</small>
-            </div>
-
+            @if (person.also_known_as.length > 0) {
+              <div class="mini-detail-element">
+                <small>Also known as: {{(person.also_known_as | slice:0:2).join(', ')}}</small>
+              </div>
+            }
+            @if (person.birthday) {
+              <div class="mini-detail-element">
+                <mat-icon>today</mat-icon>
+                <small>Birth date: {{person.birthday | date: 'dd/MM/yyyy'}}</small>
+              </div>
+            }
+            @if (person.deathday) {
+              <div class="mini-detail-element">
+                <mat-icon>today</mat-icon>
+                <small>Dead date: {{person.deathday | date: 'dd/MM/yyyy'}}</small>
+              </div>
+            }
           </div>
-          <div fxLayout="column" fxLayoutAlign="left left" class="biography" *ngIf="person.biography; else nobiography">
-            <h4>Biography</h4>
-            <p align="justify">{{person.biography}} </p>
-          </div>
-          <ng-template #nobiography>
+          @if (person.biography) {
+            <div fxLayout="column" fxLayoutAlign="left left" class="biography">
+              <h4>Biography</h4>
+              <p align="justify">{{person.biography}} </p>
+            </div>
+          } @else {
             <div class="biography row">
               <h4>Biography not available</h4>
               <p align="justify">{{person.biography}}</p>
             </div>
-          </ng-template>
+          }
         </div>
       </div>
     </div>
@@ -57,11 +64,10 @@
         </div>
       </mat-tab>
       <!--mat-tab label="Tv Credits">
-          <div class="container">
-          <app-person-credits-combined-list [personCreditsCombined]="person.tv_credits"></app-person-credits-combined-list>
-          </div>
-      </mat-tab-->
-    </mat-tab-group>
-
-  </div>
-</ng-container>
+      <div class="container">
+        <app-person-credits-combined-list [personCreditsCombined]="person.tv_credits"></app-person-credits-combined-list>
+      </div>
+    </mat-tab-->
+  </mat-tab-group>
+</div>
+}

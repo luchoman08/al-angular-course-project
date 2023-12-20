@@ -1,10 +1,10 @@
 <div class="fill-available">
   <div
-  appBackgroundImage
-  [path]="movie.backdrop_path"
-  [size]="BACKDROP_IMAGE_SIZES.W1280"
-  [blurred]="true"
-  class="movie-detail container-fluid">
+    appBackgroundImage
+    [path]="movie.backdrop_path"
+    [size]="BACKDROP_IMAGE_SIZES.W1280"
+    [blurred]="true"
+    class="movie-detail container-fluid">
     <div class="content">
       <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="20px">
         <div class="poster-image" fxLayoutAlign="center center" fxLayout="column" fxFlex="20%" fxFlex.sm="100%">
@@ -12,9 +12,12 @@
             alt="movie poster image" srcset="">
           <div class="open-posters">
             <button (click)="openPreviewPosters()" [matBadge]="movie.images.posters.length" mat-button class="open-button">
-                <ng-template *ngIf="movie.images.posters.length !==0; then images else no_images"></ng-template>
-                <ng-template #images>Open poster images </ng-template>
-                <ng-template #no_images>No poster images available</ng-template>
+              @if (movie.images.posters.length !==0) {
+                Open poster images
+              } @else {
+                No poster images available
+              }
+              <ng-template #images>Open poster images </ng-template>
             </button>
           </div>
         </div>
@@ -69,15 +72,19 @@
               <span> Duration: {{movie.runtime | duration}} </span>
             </div>
 
-            <div *ngIf="movie.production_companies.length>0" fxLayout="column">
-              <div fxLayout="row" fxLayoutGap="10px">
-                <mat-icon>account_balance</mat-icon>
-                <span>Production companies</span>
+            @if (movie.production_companies.length>0) {
+              <div fxLayout="column">
+                <div fxLayout="row" fxLayoutGap="10px">
+                  <mat-icon>account_balance</mat-icon>
+                  <span>Production companies</span>
+                </div>
+                <ul>
+                  @for (company of movie.production_companies; track company) {
+                    <li>{{company.name}}</li>
+                  }
+                </ul>
               </div>
-              <ul>
-                <li *ngFor="let company of movie.production_companies">{{company.name}}</li>
-              </ul>
-            </div>
+            }
             <div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
               <div div fxLayout="row" fxLayoutAlign="left left" fxLayoutGap="10px">
                 <mat-icon>view_column</mat-icon>
@@ -98,44 +105,52 @@
                 <span> Spoken languages </span>
               </div>
               <ul>
-                <li *ngFor="let language of movie.spoken_languages">{{language.name}}</li>
+                @for (language of movie.spoken_languages; track language) {
+                  <li>{{language.name}}</li>
+                }
               </ul>
             </div>
-            <div *ngIf="movie.production_countries.length > 0" div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
-              <div fxLayout="row" fxLayoutGap="10px">
-                <mat-icon>map</mat-icon>
-                <span>Production countries</span>
+            @if (movie.production_countries.length > 0) {
+              <div div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
+                <div fxLayout="row" fxLayoutGap="10px">
+                  <mat-icon>map</mat-icon>
+                  <span>Production countries</span>
+                </div>
+                <ul>
+                  @for (country of  movie.production_countries; track country) {
+                    <li>{{country.name}}</li>
+                  }
+                </ul>
               </div>
-              <ul>
-                <li *ngFor="let country of  movie.production_countries">{{country.name}}</li>
-              </ul>
-            </div>
-            <div *ngIf="movie.keywords.keywords.length > 0" fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
-              <div fxLayout="row" fxLayoutAlign="left left" fxLayoutGap="10px">
-                <mat-icon>vpn_key</mat-icon>
-                <span>Keywords</span>
+            }
+            @if (movie.keywords.keywords.length > 0) {
+              <div fxLayout="column" fxLayoutAlign="left left" fxLayoutGap="10px">
+                <div fxLayout="row" fxLayoutAlign="left left" fxLayoutGap="10px">
+                  <mat-icon>vpn_key</mat-icon>
+                  <span>Keywords</span>
+                </div>
+                <app-movie-keywords-list [keywords]="movie.keywords.keywords"></app-movie-keywords-list>
               </div>
-              <app-movie-keywords-list [keywords]="movie.keywords.keywords"></app-movie-keywords-list>
-            </div>
+            }
           </div>
         </div>
       </div>
     </mat-tab>
     <mat-tab label="Related Movies">
       <br>
-      <app-movie-mini-detail-list  [movies]="similarMovies"></app-movie-mini-detail-list>
-    </mat-tab>
-    <mat-tab label="Reviews">
-      <div class="container">
-        <app-movie-review-list  [reviews]="movie.reviews.results">
-        </app-movie-review-list>
-      </div>
-    </mat-tab>
-    <mat-tab label="Credits">
-      <div class="container" fxLayout="column" fxLayoutGap="20px">
-        <app-movie-credit-list  [sliceValue]="4" [credits]="movie.credits"></app-movie-credit-list>
-        <button mat-button color="accent" [routerLink]="'/movies/' + movie.id + '/credits'"> See full credits</button>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+        <app-movie-mini-detail-list  [movies]="similarMovies"></app-movie-mini-detail-list>
+      </mat-tab>
+      <mat-tab label="Reviews">
+        <div class="container">
+          <app-movie-review-list  [reviews]="movie.reviews.results">
+          </app-movie-review-list>
+        </div>
+      </mat-tab>
+      <mat-tab label="Credits">
+        <div class="container" fxLayout="column" fxLayoutGap="20px">
+          <app-movie-credit-list  [sliceValue]="4" [credits]="movie.credits"></app-movie-credit-list>
+          <button mat-button color="accent" [routerLink]="'/movies/' + movie.id + '/credits'"> See full credits</button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>

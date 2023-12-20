@@ -1,10 +1,14 @@
 <mat-chip-set >
-    <mat-chip color="warn" *ngFor="let genre of genres">  
-        <a  [routerLink]="['/movies/genres', genre.id]">  
-          {{genre.name}}
-        </a>
+  @for (genre of genres; track genre) {
+    <mat-chip color="warn">
+      <a  [routerLink]="['/movies/genres', genre.id]">
+        {{genre.name}}
+      </a>
     </mat-chip>
-    <mat-chip  *ngIf="!genres">
+  }
+  @if (!genres) {
+    <mat-chip >
       No genres found
     </mat-chip>
-  </mat-chip-set>
+  }
+</mat-chip-set>

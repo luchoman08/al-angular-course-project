@@ -1,6 +1,10 @@
 <div fxLayout="row wrap" fxLayoutGap="20px">
-  <ng-container *ngIf="people.length > 0">
-    <app-people-mini-detail class="mini-detail" *ngFor="let person of people" [person]="person"></app-people-mini-detail>
-  </ng-container>
-  <h3 *ngIf="people.length === 0">No results found</h3>
+  @if (people.length > 0) {
+    @for (person of people; track person) {
+      <app-people-mini-detail class="mini-detail" [person]="person"></app-people-mini-detail>
+    }
+  }
+  @if (people.length === 0) {
+    <h3>No results found</h3>
+  }
 </div>

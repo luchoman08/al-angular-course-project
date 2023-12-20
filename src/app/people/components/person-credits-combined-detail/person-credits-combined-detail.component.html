@@ -7,8 +7,12 @@
   </div>
   <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="8px">
 
-    <h4 *ngIf="personCredit.title">{{personCredit.title}}</h4>
-    <h4 *ngIf="personCredit.name">{{personCredit.name}}</h4>
+    @if (personCredit.title) {
+      <h4>{{personCredit.title}}</h4>
+    }
+    @if (personCredit.name) {
+      <h4>{{personCredit.name}}</h4>
+    }
     <div fxLayout="row" fxLayoutGap="10px">
       <span>Vote average: </span>
       <div fxLayout="row" fxLayoutAlign="left center">
@@ -19,13 +23,15 @@
       <span>Popularity: {{personCredit.popularity | number: '1.0-0'}}%</span>
     </div>
 
-    <div *ngIf="personCredit.job" class="info">
-      Work as {{personCredit.job}}
-    </div>
-    <ng-container *ngIf="personCredit.character">
+    @if (personCredit.job) {
+      <div class="info">
+        Work as {{personCredit.job}}
+      </div>
+    }
+    @if (personCredit.character) {
       <div class="info">
         Interpreting {{personCredit.character}}
       </div>
-    </ng-container>
+    }
   </div>
 </div>

@@ -1,33 +1,35 @@
 
 
-  <div fxLayoutGap="15px" fxLayout="row">
+<div fxLayoutGap="15px" fxLayout="row">
 
-      <div
-      *ngIf="personCreditsCombined.cast.length > 0"
+  @if (personCreditsCombined.cast.length > 0) {
+    <div
       fxLayout="column"
       fxLayoutGap="15px"
       [fxFlex]="personCreditsCombined.crew.length > 0? '50%' : '100%'">
-        <h3>Cast </h3>
+      <h3>Cast </h3>
+      @for ( cast of personCreditsCombined.cast | slice: 0 : 7; track  cast) {
         <app-person-credits-combined-detail
-         *ngFor=" let cast of personCreditsCombined.cast | slice: 0 : 7"
-         [personCredit] = "cast">>
+          [personCredit] = "cast">>
         </app-person-credits-combined-detail>
-      </div>
+      }
+    </div>
+  }
 
 
-      <div
+  @if (personCreditsCombined.crew.length > 0) {
+    <div
       fxLayout="column"
       fxLayoutGap="15px"
-      *ngIf="personCreditsCombined.crew.length > 0"
       [fxFlex]="personCreditsCombined.cast.length > 0? '50%' : '100%'">
-        <h3>Crew </h3>
+      <h3>Crew </h3>
+      @for ( crew of personCreditsCombined.crew | slice: 0 : 7; track  crew) {
+        <app-person-credits-combined-detail
+          [personCredit] = "crew">
+        </app-person-credits-combined-detail>
+      }
+    </div>
+  }
 
-       <app-person-credits-combined-detail
-
-       *ngFor=" let crew of personCreditsCombined.crew | slice: 0 : 7"
-       [personCredit] = "crew">
-      </app-person-credits-combined-detail>
-      </div>
-
-  </div>
+</div>
 

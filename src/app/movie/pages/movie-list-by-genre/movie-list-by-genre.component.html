@@ -1,8 +1,10 @@
 <div class="container">
-  <h3 *ngIf="genre" >Movies in genre: <mat-chip>{{genre.name}}</mat-chip></h3>
-  <app-movies-list-table 
-  [movies]="movies$"
-  (pageChange)="onSetPage($event)"
-  [resultsLength] = "resultsLength">
+  @if (genre) {
+    <h3 >Movies in genre: <mat-chip>{{genre.name}}</mat-chip></h3>
+  }
+  <app-movies-list-table
+    [movies]="movies$"
+    (pageChange)="onSetPage($event)"
+    [resultsLength] = "resultsLength">
   </app-movies-list-table>
 </div>
