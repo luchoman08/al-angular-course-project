@@ -1,5 +1,5 @@
-<mat-chip-listbox >
-    <mat-chip  *ngFor="let genre of genres">  
+<mat-chip-set >
+    <mat-chip color="warn" *ngFor="let genre of genres">  
         <a  [routerLink]="['/movies/genres', genre.id]">  
           {{genre.name}}
         </a>
@@ -7,4 +7,4 @@
     <mat-chip  *ngIf="!genres">
       No genres found
     </mat-chip>
-  </mat-chip-listbox>
+  </mat-chip-set>
