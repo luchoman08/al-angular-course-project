@@ -1,14 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+} from "@angular/core";
 
-import { Movie } from '@app/core';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import { ScrollEvent } from 'ngx-scroll-event';
+import { Movie } from "@app/core";
+import { Subject } from "rxjs";
+import { debounceTime } from "rxjs/operators";
 
 @Component({
-  selector: 'app-movie-mini-detail-list',
-  templateUrl: './movie-mini-detail-list.component.html',
-  styleUrls: ['./movie-mini-detail-list.component.scss']
+  selector: "app-movie-mini-detail-list",
+  templateUrl: "./movie-mini-detail-list.component.html",
+  styleUrls: ["./movie-mini-detail-list.component.scss"],
 })
 export class MovieMiniDetailListComponent implements OnInit {
   @Input() movies: Movie[];
@@ -20,8 +26,8 @@ export class MovieMiniDetailListComponent implements OnInit {
 
   constructor() {
     /** Emit each 1000 milliseconds event `end of list` */
-    this.debouncer.pipe(
-      debounceTime(1000))
+    this.debouncer
+      .pipe(debounceTime(1000))
       .subscribe((val) => this.endList.emit(val));
     this.endList = new EventEmitter<boolean>();
     this.movies = new Array<Movie>();
@@ -31,7 +37,6 @@ export class MovieMiniDetailListComponent implements OnInit {
     if (this.slice) {
       this.movies = this.movies.slice(0, this.slice);
     }
-
   }
   /**
    * Emit `true` when the user has been see all movie details
@@ -47,10 +52,9 @@ export class MovieMiniDetailListComponent implements OnInit {
    * @param {ScrollEvent} event
    * @memberof MovieMiniDetailListComponent
    */
-  public handleScroll(event: ScrollEvent) {
-    if (event.isReachingBottom) {
-      this.emitEnd();
-    }
-  }
-
+  //public handleScroll(event: ScrollEvent) {
+  //  if (event.isReachingBottom) {
+  //    this.emitEnd();
+  //  }
+  // }
 }

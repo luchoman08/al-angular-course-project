@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ResultsInterface, Person, PeopleService } from '@app/core';
 @Component({
@@ -16,13 +16,13 @@ export class PeopleSearchComponent implements OnInit {
   loading_results = false;
   totalPages: number;
   resultsLength: number;
-  searchCtrl: FormControl;
+  searchCtrl: UntypedFormControl;
   page: number;
   searchValueChages: Observable<string>;
   constructor(
     private _route: ActivatedRoute,
     private peopleService: PeopleService) {
-    this.searchCtrl = new FormControl();
+    this.searchCtrl = new UntypedFormControl();
     this.page = 0;
     this.resultsLength = 20; // default page size
     this.searchValueChages = this.searchCtrl.valueChanges.pipe(

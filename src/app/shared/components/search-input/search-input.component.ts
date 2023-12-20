@@ -1,6 +1,6 @@
 import { PeopleService } from '@app/core/services/people.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
@@ -29,7 +29,7 @@ import { EMPTY_SEARCH_SYMBOL } from '@app/core';
     styleUrls: ['./search-input.component.scss']
 })
 export class SearchInputComponent implements OnInit {
-    stateCtrl: FormControl;
+    stateCtrl: UntypedFormControl;
     mediaSearch: MediaTypeEnum;
     hideAditionalSearch: boolean;
     EMPTY_SEARCH_SYMBOL: string;
@@ -52,7 +52,7 @@ export class SearchInputComponent implements OnInit {
         this.POSTER_IMAGE_SIZE = POSTER_IMAGE_SIZES;
         this.PROFILE_IMAGE_SIZES = PROFILE_IMAGE_SIZES;
         this.EMPTY_SEARCH_SYMBOL = EMPTY_SEARCH_SYMBOL
-        this.stateCtrl = new FormControl();
+        this.stateCtrl = new UntypedFormControl();
         this.results$ = this.searchService.searchCombined(this.stateCtrl.valueChanges)
             .pipe(
                 map(data => {

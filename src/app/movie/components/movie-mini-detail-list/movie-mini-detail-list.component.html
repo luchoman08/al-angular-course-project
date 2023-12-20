@@ -1,4 +1,4 @@
-<div detect-scroll [bottomOffset]="2" (onScroll)="handleScroll($event)" *ngIf="movies" [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" fxLayoutGap="3px" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
+<div [bottomOffset]="2" *ngIf="movies" [fxLayout]="'row' + ' ' + (wrap ? 'wrap' : '')" fxLayoutGap="3px" [fxLayoutAlign]="layoutAlign ? layoutAlign : 'stretch stretch'">
   <div *ngIf="movies.length===0" class="container">
     <h3>No movies found</h3>
   </div>

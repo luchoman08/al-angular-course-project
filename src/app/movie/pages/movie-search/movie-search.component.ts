@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { startWith, debounceTime, distinctUntilChanged, } from 'rxjs/operators';
 import { MovieService, ResultsInterface, Movie } from '@app/core';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./movie-search.component.scss']
 })
 export class MovieSearchComponent implements OnInit {
-  searchCtrl: FormControl;
+  searchCtrl: UntypedFormControl;
   searchValueChages: Observable<string>;
   resultsLength: number;
   loading_results: boolean;
@@ -25,7 +25,7 @@ export class MovieSearchComponent implements OnInit {
   ) {
     this.movies = new Array<Movie>();
     this.loading_results = false;
-    this.searchCtrl = new FormControl();
+    this.searchCtrl = new UntypedFormControl();
     this.page = 0;
     this.resultsLength = 20; // default page size
     this.searchValueChages = this.searchCtrl.valueChanges.pipe(

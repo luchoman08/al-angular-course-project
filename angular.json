@@ -115,7 +115,6 @@
       }
     }
   },
-  "defaultProject": "al-angular-course-project",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
