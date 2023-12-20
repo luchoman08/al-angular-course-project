@@ -28,8 +28,8 @@ import {
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
-  @ViewChild('backdropsGallery') backdropGallery: FullScreenGalleryComponent;
-  @ViewChild('postersGallery') postersGallery: FullScreenGalleryComponent;
+  @ViewChild('backdropsGallery', { static: true }) backdropGallery: FullScreenGalleryComponent;
+  @ViewChild('postersGallery', { static: true }) postersGallery: FullScreenGalleryComponent;
 
   movie: Movie;
   POSTER_IMAGE_SIZES: PosterImageSizesInterface;

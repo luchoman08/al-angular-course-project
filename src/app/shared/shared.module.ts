@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
-import { NgxGalleryModule } from 'ngx-gallery';
-import { ScrollEventModule } from 'ngx-scroll-event';
+import { NgxGalleryModule } from "@kolkov/ngx-gallery";
+import { ScrollEventModule } from "ngx-scroll-event";
 
 import {
   CapitalizePipe,
@@ -14,31 +14,27 @@ import {
   FirstWordPipe,
   SortMediaPipe,
   DurationPipe,
-  IndefiniteArticlePipe
-} from '@app/shared/pipes';
+  IndefiniteArticlePipe,
+} from "@app/shared/pipes";
 
 import {
   BackgroundImageDirective,
   ProfileImageDirective,
   ZoomImageDirective,
-  PosterImageDirective
-} from '@app/shared/directives';
+  PosterImageDirective,
+} from "@app/shared/directives";
 
 import {
   SingleDataDialogEditOrAddComponent,
   YouTubeVideoDialogComponent,
   SearchInputComponent,
-  FullScreenGalleryComponent
-} from '@app/shared/components';
+  FullScreenGalleryComponent,
+} from "@app/shared/components";
 
-import {
-  MoviesGalleryComponent
-} from '@app/movie/shared';
+import { MoviesGalleryComponent } from "@app/movie/shared";
 
-import { MaterialModule } from '@app/shared/material.module';
-import { NavbarComponent, FooterComponent } from '@app/shared/layout';
-
-
+import { MaterialModule } from "@app/shared/material.module";
+import { NavbarComponent, FooterComponent } from "@app/shared/layout";
 
 @NgModule({
   declarations: [
@@ -63,7 +59,7 @@ import { NavbarComponent, FooterComponent } from '@app/shared/layout';
     BackgroundImageDirective,
     PosterImageDirective,
     ProfileImageDirective,
-    ZoomImageDirective
+    ZoomImageDirective,
   ],
   imports: [
     /* Common vendors */
@@ -74,13 +70,9 @@ import { NavbarComponent, FooterComponent } from '@app/shared/layout';
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
-    ScrollEventModule
+    ScrollEventModule,
   ],
-  providers: [
-    ImageURLPipe,
-    FirstWordPipe,
-    CapitalizePipe
-  ],
+  providers: [ImageURLPipe, FirstWordPipe, CapitalizePipe],
   exports: [
     /* Vendor */
     CommonModule,
@@ -113,8 +105,11 @@ import { NavbarComponent, FooterComponent } from '@app/shared/layout';
     ProfileImageDirective,
     BackgroundImageDirective,
     PosterImageDirective,
-    ZoomImageDirective
+    ZoomImageDirective,
   ],
-  entryComponents: [SingleDataDialogEditOrAddComponent, YouTubeVideoDialogComponent]
+  entryComponents: [
+    SingleDataDialogEditOrAddComponent,
+    YouTubeVideoDialogComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

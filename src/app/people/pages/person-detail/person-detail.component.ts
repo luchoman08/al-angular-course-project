@@ -21,7 +21,7 @@ import {
   styleUrls: ['./person-detail.component.scss']
 })
 export class PersonDetailComponent implements OnInit {
-  @ViewChild('profilesGallery') profilesGallery: FullScreenGalleryComponent;
+  @ViewChild('profilesGallery', { static: false }) profilesGallery: FullScreenGalleryComponent;
   person: Person;
   mode: string;
   profileImageType: ImageTypeEnum;

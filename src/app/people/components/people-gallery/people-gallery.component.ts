@@ -1,27 +1,28 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Person, GalleryImagesService } from '@app/core';
-import { NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery';
-import { Router } from '@angular/router';
-import { PeopleService } from '@app/core';
+import { Component, OnInit, Input } from "@angular/core";
+import { Person, GalleryImagesService } from "@app/core";
+import { NgxGalleryImage, NgxGalleryOptions } from "@kolkov/ngx-gallery";
+import { Router } from "@angular/router";
+import { PeopleService } from "@app/core";
 
 @Component({
-  selector: 'app-people-gallery',
-  templateUrl: './people-gallery.component.html',
-  styleUrls: ['./people-gallery.component.scss']
+  selector: "app-people-gallery",
+  templateUrl: "./people-gallery.component.html",
+  styleUrls: ["./people-gallery.component.scss"],
 })
 export class PeopleGalleryComponent implements OnInit {
   @Input() people: Person[];
   selectedImage: NgxGalleryImage;
-  gallery: {images: NgxGalleryImage[], options: NgxGalleryOptions[]};
+  gallery: { images: NgxGalleryImage[]; options: NgxGalleryOptions[] };
   constructor(
     private router: Router,
     private galeryImagesService: GalleryImagesService,
     private peopleService: PeopleService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
-    this.gallery = this.galeryImagesService.getPeoplePosterDescriptionGallery(this.people);
+    this.gallery = this.galeryImagesService.getPeoplePosterDescriptionGallery(
+      this.people
+    );
     this.selectedImage = this.gallery.images[0];
   }
   /**
@@ -31,7 +32,7 @@ export class PeopleGalleryComponent implements OnInit {
    * @param {{ index: number; image: NgxGalleryImage; }} change
    * @memberof MoviesGalleryComponent
    */
-  changeMoviePreview(change: { index: number; image: NgxGalleryImage; }) {
+  changeMoviePreview(change: { index: number; image: NgxGalleryImage }) {
     this.selectedImage = change.image;
     this.peopleService.get(this.getIdSelectedPerson());
   }
@@ -43,9 +44,9 @@ export class PeopleGalleryComponent implements OnInit {
 
   getIdSelectedPerson(): number {
     return this.people.filter(
-      person =>
-      this.selectedImage.description.indexOf(person.name) !== -1)[0].id;
-   }
+      (person) => this.selectedImage.description.indexOf(person.name) !== -1
+    )[0].id;
+  }
   /**
    * On click in preview image redirect to the profile detail
    *
@@ -53,8 +54,6 @@ export class PeopleGalleryComponent implements OnInit {
    */
   goToPerson() {
     const idSelectedPerson = this.getIdSelectedPerson();
-    this.router.navigate(['./people', idSelectedPerson]);
+    this.router.navigate(["./people", idSelectedPerson]);
   }
-
-
 }

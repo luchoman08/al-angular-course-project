@@ -1,33 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input } from "@angular/core";
+import { Router } from "@angular/router";
 
-import { NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery';
+import { NgxGalleryImage, NgxGalleryOptions } from "@kolkov/ngx-gallery";
 
-import {
-  Movie,
-  MovieService,
-  GalleryImagesService
-} from '@app/core';
+import { Movie, MovieService, GalleryImagesService } from "@app/core";
 
 @Component({
-  selector: 'app-movies-gallery',
-  templateUrl: './movies-gallery.component.html',
-  styleUrls: ['./movies-gallery.component.scss']
+  selector: "app-movies-gallery",
+  templateUrl: "./movies-gallery.component.html",
+  styleUrls: ["./movies-gallery.component.scss"],
 })
 export class MoviesGalleryComponent implements OnInit {
-
   @Input() movies: Movie[];
   selectedImage: NgxGalleryImage;
-  gallery: {images: NgxGalleryImage[], options: NgxGalleryOptions[]};
+  gallery: { images: NgxGalleryImage[]; options: NgxGalleryOptions[] };
   constructor(
     private router: Router,
     private galeryImagesService: GalleryImagesService,
     private moviesService: MovieService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
-    this.gallery = this.galeryImagesService.getMovieBackdropDescriptionGalleryImages(this.movies);
+    this.gallery =
+      this.galeryImagesService.getMovieBackdropDescriptionGalleryImages(
+        this.movies
+      );
     this.selectedImage = this.gallery.images[0];
   }
   /**
@@ -37,7 +34,7 @@ export class MoviesGalleryComponent implements OnInit {
    * @param {{ index: number; image: NgxGalleryImage; }} change
    * @memberof MoviesGalleryComponent
    */
-  changeMoviePreview(change: { index: number; image: NgxGalleryImage; }) {
+  changeMoviePreview(change: { index: number; image: NgxGalleryImage }) {
     this.selectedImage = change.image;
     this.moviesService.get(this.getIdSelectedMovie());
   }
@@ -47,14 +44,13 @@ export class MoviesGalleryComponent implements OnInit {
    * @return movie id
    */
 
-   getIdSelectedMovie(): number {
+  getIdSelectedMovie(): number {
     return this.movies.filter(
-      movie =>
-      this.selectedImage.description.indexOf(movie.title) !== -1)[0].id;
-   }
+      (movie) => this.selectedImage.description.indexOf(movie.title) !== -1
+    )[0].id;
+  }
   goToMovie() {
     const idSelectedMovie = this.getIdSelectedMovie();
-    this.router.navigate(['./movies', idSelectedMovie]);
+    this.router.navigate(["./movies", idSelectedMovie]);
   }
-
 }

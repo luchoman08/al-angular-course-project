@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery';
+import { Injectable } from "@angular/core";
+import { NgxGalleryImage, NgxGalleryOptions } from "@kolkov/ngx-gallery";
 
-import { ImageURLPipe } from '@app/shared/pipes';
-import { galleryOptionsPeopleProfileDetail } from '@app/core/models/const/galleryOptions';
+import { ImageURLPipe } from "@app/shared/pipes";
+import { galleryOptionsPeopleProfileDetail } from "@app/core/models/const/galleryOptions";
 
 import {
   Image$,
@@ -14,33 +14,39 @@ import {
   galleryOptionsMovieBackdropDetail,
   ImageTypeEnum,
   PROFILE_IMAGE_SIZES,
-  POSTER_IMAGE_SIZES
-} from '@app/core/models';
-import { ImageService } from '@app/core/services/image.service';
+  POSTER_IMAGE_SIZES,
+} from "@app/core/models";
+import { ImageService } from "@app/core/services/image.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class GalleryImagesService {
-
   constructor(
     private imageURLPipe: ImageURLPipe,
     private imageService: ImageService
-  ) { }
+  ) {}
 
-  private getBigSize(mediaType: MediaTypeEnum, imageType: ImageTypeEnum): ImageSizeValueModel {
+  private getBigSize(
+    mediaType: MediaTypeEnum,
+    imageType: ImageTypeEnum
+  ): ImageSizeValueModel {
     switch (mediaType) {
       case MediaTypeEnum.MOVIE: {
         switch (imageType) {
-          case ImageTypeEnum.BACKDROP: return BACKDROP_IMAGE_SIZES.W1280;
-          case ImageTypeEnum.POSTER: return POSTER_IMAGE_SIZES.W780;
+          case ImageTypeEnum.BACKDROP:
+            return BACKDROP_IMAGE_SIZES.W1280;
+          case ImageTypeEnum.POSTER:
+            return POSTER_IMAGE_SIZES.W780;
         }
         break;
       }
       case MediaTypeEnum.TV: {
         switch (imageType) {
-          case ImageTypeEnum.BACKDROP: return BACKDROP_IMAGE_SIZES.W1280;
-          case ImageTypeEnum.POSTER: return POSTER_IMAGE_SIZES.W780;
+          case ImageTypeEnum.BACKDROP:
+            return BACKDROP_IMAGE_SIZES.W1280;
+          case ImageTypeEnum.POSTER:
+            return POSTER_IMAGE_SIZES.W780;
         }
         break;
       }
@@ -49,7 +55,11 @@ export class GalleryImagesService {
       }
     }
   }
-  private getBigURL(file_path: string, mediaType: MediaTypeEnum, imageType: ImageTypeEnum) {
+  private getBigURL(
+    file_path: string,
+    mediaType: MediaTypeEnum,
+    imageType: ImageTypeEnum
+  ) {
     const bigSize = this.getBigSize(mediaType, imageType);
     return this.imageURLPipe.transform(file_path, bigSize, mediaType);
   }
@@ -58,7 +68,8 @@ export class GalleryImagesService {
     images: Image$[],
     mediaType: MediaTypeEnum,
     imageType: ImageTypeEnum,
-    sortImages: boolean = false): NgxGalleryImage[] {
+    sortImages: boolean = false
+  ): NgxGalleryImage[] {
     if (sortImages) {
       images.sort(Image$.sortMethod);
     }
@@ -66,13 +77,17 @@ export class GalleryImagesService {
     for (const image of images) {
       const bigURL = this.getBigURL(image.file_path, mediaType, imageType);
       galleryImages.push({
-        big: bigURL
+        big: bigURL,
       });
     }
     return galleryImages;
   }
   getFullScreenBackdropGalleryImages(images: Image$[]): NgxGalleryImage[] {
-    return this.getFullScreenGalleryImages(images, MediaTypeEnum.MOVIE, ImageTypeEnum.BACKDROP);
+    return this.getFullScreenGalleryImages(
+      images,
+      MediaTypeEnum.MOVIE,
+      ImageTypeEnum.BACKDROP
+    );
   }
   /**
    * Get full screen poster gallery images based in array of images
@@ -81,11 +96,18 @@ export class GalleryImagesService {
    * @returns {NgxGalleryImage[]}
    * @memberof GalleryImagesService
    */
-  getFullScreenPosterGalleryImages(images: Image$[], sort: boolean = false): NgxGalleryImage[] {
+  getFullScreenPosterGalleryImages(
+    images: Image$[],
+    sort: boolean = false
+  ): NgxGalleryImage[] {
     if (sort) {
       images.sort(Image$.sortMethod);
     }
-    return this.getFullScreenGalleryImages(images, MediaTypeEnum.MOVIE, ImageTypeEnum.POSTER);
+    return this.getFullScreenGalleryImages(
+      images,
+      MediaTypeEnum.MOVIE,
+      ImageTypeEnum.POSTER
+    );
   }
 
   /**
@@ -98,13 +120,24 @@ export class GalleryImagesService {
    * @returns {string}
    * @memberof GalleryImagesService
    */
-  private getBackdropDescription(movieTitle: string, vote_average?: number, vote_count?: number): string {
+  private getBackdropDescription(
+    movieTitle: string,
+    vote_average?: number,
+    vote_count?: number
+  ): string {
     let backdropDescription: string = movieTitle;
     if (vote_average) {
-      backdropDescription = backdropDescription.concat('    ', '&#9733;', String(vote_average));
+      backdropDescription = backdropDescription.concat(
+        "    ",
+        "&#9733;",
+        String(vote_average)
+      );
     }
     if (vote_count) {
-      backdropDescription = backdropDescription.concat('    Votes: ', String(vote_count));
+      backdropDescription = backdropDescription.concat(
+        "    Votes: ",
+        String(vote_count)
+      );
     }
     return backdropDescription;
   }
@@ -117,10 +150,17 @@ export class GalleryImagesService {
    * @returns {string}
    * @memberof GalleryImagesService
    */
-  private getPosterDescription(personName: string, popularity?: number): string {
+  private getPosterDescription(
+    personName: string,
+    popularity?: number
+  ): string {
     let backdropDescription: string = personName;
     if (popularity) {
-      backdropDescription = backdropDescription.concat('    Popularity: ', String(popularity.toFixed(0)), '%');
+      backdropDescription = backdropDescription.concat(
+        "    Popularity: ",
+        String(popularity.toFixed(0)),
+        "%"
+      );
     }
     return backdropDescription;
   }
@@ -131,14 +171,18 @@ export class GalleryImagesService {
    * @returns {NgxGalleryImage[]}
    * @memberof GalleryImagesService
    */
-  getMovieBackdropDescriptionGalleryImages(movies: Movie[]): { images: NgxGalleryImage[], options: NgxGalleryOptions[] } {
+  getMovieBackdropDescriptionGalleryImages(movies: Movie[]): {
+    images: NgxGalleryImage[];
+    options: NgxGalleryOptions[];
+  } {
     const galleryImages = new Array<NgxGalleryImage>();
     for (const movie of movies.sort(Movie.sortMethod)) {
       galleryImages.push({
         description: this.getBackdropDescription(
           movie.title,
           movie.vote_average,
-          movie.vote_count),
+          movie.vote_count
+        ),
         small: this.imageURLPipe.transform(
           movie.backdrop_path,
           BACKDROP_IMAGE_SIZES.W300,
@@ -153,14 +197,17 @@ export class GalleryImagesService {
           movie.backdrop_path,
           BACKDROP_IMAGE_SIZES.W1280,
           MediaTypeEnum.MOVIE
-        )
+        ),
       });
     }
 
-    return { images: galleryImages, options: galleryOptionsMovieBackdropDetail };
+    return {
+      images: galleryImages,
+      options: galleryOptionsMovieBackdropDetail,
+    };
   }
 
-    /**
+  /**
    * Make get petition to image url for save it in browser cache
    *
    * @param {string} imageRoute
@@ -168,7 +215,7 @@ export class GalleryImagesService {
    */
   preload(image: NgxGalleryImage) {
     const url = image.big;
-    if (typeof url === 'string' ) {
+    if (typeof url === "string") {
       this.imageService.preload(url);
     }
   }
@@ -180,13 +227,14 @@ export class GalleryImagesService {
    * @returns {{images: NgxGalleryImage[], options: NgxGalleryOptions[]}}
    * @memberof GalleryImagesService
    */
-  getPeoplePosterDescriptionGallery(people: Person[]): { images: NgxGalleryImage[], options: NgxGalleryOptions[] } {
+  getPeoplePosterDescriptionGallery(people: Person[]): {
+    images: NgxGalleryImage[];
+    options: NgxGalleryOptions[];
+  } {
     const galleryImages = new Array<NgxGalleryImage>();
     for (const person of people.sort(Person.sortMethod)) {
       galleryImages.push({
-        description: this.getPosterDescription(
-          person.name,
-          person.popularity),
+        description: this.getPosterDescription(person.name, person.popularity),
         small: this.imageURLPipe.transform(
           person.profile_path,
           POSTER_IMAGE_SIZES.W185,
@@ -201,9 +249,12 @@ export class GalleryImagesService {
           person.profile_path,
           POSTER_IMAGE_SIZES.W780,
           MediaTypeEnum.PERSON
-        )
+        ),
       });
     }
-    return { images: galleryImages, options: galleryOptionsPeopleProfileDetail };
+    return {
+      images: galleryImages,
+      options: galleryOptionsPeopleProfileDetail,
+    };
   }
 }

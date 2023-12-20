@@ -19,8 +19,8 @@ export class MoviesListTableComponent implements OnInit, OnChanges {
   @Input() movies: Observable<Movie[]> = new Observable<Movie[]>();
   @Output() pageChange = new EventEmitter<number>();
   @Input() showGenres: boolean;
-  @ViewChild( MatPaginator ) paginator: MatPaginator;
-  @ViewChild( MatSort ) sort: MatSort = new MatSort();
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort();
   displayedColumns: string[];
   @Input() resultsLength: number;
   searchValueChages: Observable<string>;
